@@ -1,0 +1,463 @@
+@ multi_001 multi secondary=injury_medical
+S Housekeeping staff reports a burst pipe in a corridor and a colleague who slipped on the water and hurt their wrist.
+U water_leak
++ leak_source water_spread :: A pipe has burst above the corridor and water is spreading everywhere.
++ injury_kind persons_involved :: My colleague slipped in it and landed on her wrist.
+A person_conscious,near_electrical :: Is she conscious and okay, and is the water near anything electrical?
+U water_leak
++ person_conscious :: She's awake and talking, but her wrist is swelling.
++ near_electrical :: There's a floor socket under the water.
+A building,floor :: Help is coming. Which building and floor?
+U water_leak
++ building floor :: Maple block, floor two.
+- :: What a morning.
+A :: First aid and the plumbers are on the way. Keep everyone off the wet floor.
+
+@ multi_002 multi secondary=fire_smoke
+S Senior engineer reports a printer sparking and smoking, and the fire alarm going off.
+U electrical_hazard
++ hazard_kind :: The printer by my desk just sparked and now it's smoking.
++ smoke_present alarm_triggered :: There's grey smoke and the fire alarm has gone off.
+A fire_visible :: If you see flames, leave now and call the emergency number. Are there any flames?
+U electrical_hazard
++ fire_visible :: No flames, just smoke.
++ evacuation_status :: People are heading to the stairs.
++ building floor :: N, floor six.
+A :: The response team and electricians are on the way. Please leave with everyone.
+
+@ multi_003 multi secondary=injury_medical
+S Receptionist reports a coffee spill in the lobby and a visitor who slipped and hit their head.
+U spill_cleanup
++ spill_substance :: Someone spilled a big coffee in the lobby.
++ injury_kind persons_involved :: A visitor slipped on it and hit his head on the floor.
+A person_conscious :: Is he conscious?
+U spill_cleanup
++ person_conscious :: Yes, he's sitting up but dizzy.
++ slip_hazard :: The coffee is still right in the walkway.
++ building :: The Orchard building.
+A :: First aid and housekeeping are on the way.
+
+@ multi_004 multi secondary=injury_medical
+S Cafeteria manager reports a fryer fire and a cook with a burned hand.
+U fire_smoke
++ fire_visible :: The fryer caught fire in the kitchen.
++ injury_kind :: One of the cooks burned his hand trying to move the pan.
+A evacuation_status,person_conscious :: Leave the kitchen and call the emergency number. Is the cook conscious, and is the kitchen cleared?
+U fire_smoke
++ person_conscious :: He's conscious, holding it under water.
++ evacuation_status :: The kitchen is empty now.
++ building :: QRC cafeteria.
+A :: The response team and first aid are on the way.
+
+@ multi_005 multi secondary=elevator_fault
+S Night-shift worker reports a building power cut and a colleague stuck in a lift.
+U power_outage
++ outage_scope :: The whole building has lost power.
++ persons_trapped :: My colleague is stuck in the lift between floors.
+A critical_equipment_affected,elevator_id :: Help is coming. Is any critical equipment affected, and which lift?
+U power_outage
++ critical_equipment_affected :: The server room alarms are going.
++ elevator_id :: The left lift in the main lobby.
++ building :: Willowbrook office.
+A :: Electricians, the lift engineer and security are on the way.
+
+@ multi_006 multi secondary=injury_medical
+S Lab technician reports an acid spill and a colleague with a splash on their arm.
+U chemical_spill
++ substance_name spill_quantity :: About a cup of hydrochloric acid spilled on the bench.
++ persons_exposed injury_kind :: My colleague got some on her forearm and it's red.
+A person_conscious :: Get her under the safety shower. Is she conscious and okay?
+U chemical_spill
++ person_conscious :: She's fine, under the shower now.
++ building floor :: The analytical chemistry lab on floor two of the Hollis building.
+A :: The emergency team and EHS are on the way.
+
+@ multi_007 multi secondary=injury_medical
+S Manager reports a ceiling tile that fell and hit someone.
+U structural_damage
++ damage_kind :: A ceiling tile fell in our meeting room.
++ injury_kind persons_involved :: It hit my colleague on the head.
+A person_conscious,falling_or_injury_risk :: Is he conscious, and could more tiles fall?
+U structural_damage
++ person_conscious :: He's conscious, a bit dazed.
++ falling_or_injury_risk :: Two more tiles look loose.
++ building floor :: Tower B, floor four.
+A :: First aid and facilities are on the way. Keep people out of the room.
+
+@ multi_008 multi secondary=access_control_fault
+S Senior engineer reports a laptop stolen from a lab whose door has been stuck open all week.
+U theft_missing_asset
++ asset_kind :: My work laptop has been stolen from the lab.
++ door_state :: The lab door has been stuck open all week, anyone could walk in.
+A contains_confidential,secure_area :: Does the laptop hold confidential data, and is the lab a restricted area?
+U theft_missing_asset
++ contains_confidential :: Yes, unreleased designs.
++ secure_area :: Yes, it's supposed to be badge-only.
++ building floor :: QRC, floor four.
+A :: Raised as critical with security for both the theft and the door.
+
+@ multi_009 multi secondary=cctv_fault
+S Security guard reports a suspicious person in the car park and the camera there being dead.
+U suspicious_activity
++ behavior :: A man is wandering the car park trying car doors.
++ camera_location :: And the camera on that level isn't working, so we can't see him on screen.
+A person_description :: Can you describe him?
+U suspicious_activity
++ person_description :: Dark jacket, hood up, slim.
++ building :: Under the N building.
+A :: Officers are on the way, and I've logged the camera fault.
+
+@ multi_010 multi secondary=cafeteria_issue
+S Visitor sees a mouse in the cafeteria and food left uncovered.
+U pest_sighting
++ pest_kind space_type :: I just saw a mouse run across the cafeteria.
++ cafeteria_issue :: And the salad bar is uncovered right next to where it ran.
+A food_safety_concern :: Is food still being served from there?
+U pest_sighting
++ food_safety_concern :: Yes, people are still eating from it.
++ building :: The Harbour building.
+A :: Raised urgently with pest control and the cafeteria manager.
+
+@ multi_011 multi secondary=water_leak
+S Housekeeping staff reports an overflowing toilet and water leaking through to the floor below.
+U washroom_plumbing
++ fixture_type plumbing_issue :: A toilet on floor three is overflowing.
++ leak_source :: Water is dripping through the ceiling into the office below.
+A water_spread,near_electrical :: Is the water spreading below, and near anything electrical?
+U washroom_plumbing
++ water_spread :: It's spreading across the desks.
++ near_electrical :: There are computers right underneath.
++ building :: Block C.
+A :: Raised as urgent with plumbing and electricians.
+
+@ multi_012 multi secondary=lab_utility_failure
+S Lab manager reports the lab overheating because the chiller failed and the room AC is off too.
+U hvac_issue
++ hvac_condition space_type :: Our lab is way too hot, the air conditioning has stopped.
++ lab_utility :: The process chiller has also tripped.
+A affected_scope,test_in_progress :: Is it the whole lab, and is a test running?
+U hvac_issue
++ affected_scope :: The whole lab.
++ test_in_progress :: Yes, a burn-in test.
++ building floor :: QRC, floor three.
+A :: Raised as a priority with HVAC and lab facilities.
+
+@ multi_013 multi secondary=conference_room_av
+S Manager reports the floor's wifi is down and the room VC unit is also dead.
+U network_outage
++ connection_type network_scope :: Wifi is down on our whole floor.
++ av_equipment :: And the video call unit in our meeting room won't even turn on.
+A meeting_in_progress :: Is a meeting happening now?
+U network_outage
++ meeting_in_progress :: Yes, we're supposed to be on a client call.
++ building floor :: N, floor ten.
+A :: Raised with the network and AV teams.
+
+@ multi_014 multi secondary=electrical_hazard
+S Receptionist reports a broken printer whose plug is scorched.
+U device_fault
++ device_kind :: The reception printer has stopped working.
++ hazard_kind :: And its plug is scorched black.
+A smoke_present :: Is there any smoke?
+U device_fault
++ smoke_present :: No smoke.
++ immediate_actions_taken :: I've unplugged it.
++ building :: Lakeside annex.
+A :: Logged with IT and raised the plug with the electricians.
+
+@ multi_015 multi secondary=chemical_spill
+S Lab technician reports a broken spin coater that spilled solvent.
+U lab_equipment_fault
++ equipment_kind :: The spin coater has jammed.
++ substance_name spill_quantity :: When it stopped it flung solvent all over the inside, about a beaker's worth.
+A test_in_progress,persons_exposed :: Was a process running, and was anyone exposed?
+U lab_equipment_fault
++ test_in_progress :: Yes, a wafer was in it.
++ persons_exposed :: No one touched it.
++ building :: Hollis research building.
+A :: Raised with the lab team and EHS.
+
+@ multi_016 multi secondary=lab_equipment_fault
+S Senior engineer reports an ungrounded ESD bench and a probe station damaged by static.
+U esd_issue
++ esd_issue :: The ESD ground on our bench is disconnected.
++ equipment_kind :: And now the probe station's input stage is dead, probably zapped.
+A test_in_progress :: Was a test running?
+U esd_issue
++ test_in_progress :: Yes, we were probing.
++ building floor :: N, floor six.
+A :: Logged for the lab team for both issues.
+
+@ multi_017 multi secondary=theft_missing_asset
+S Manager lost their badge and their laptop bag seems stolen with it.
+U lost_badge
++ :: My badge is gone.
++ last_seen :: I had it in the cafeteria at one.
++ asset_kind :: My laptop bag was next to it and that's gone too.
+A contains_confidential :: Does the laptop hold confidential data?
+U lost_badge
++ contains_confidential :: Yes.
++ building :: QRC.
+A :: Raised with security to deactivate the badge and report the theft.
+
+@ multi_018 multi secondary=unsafe_condition
+S Security guard reports car park lights out and an open trench in the dark walkway.
+U lighting_fault
++ lighting_scope space_type :: All the lights on the car park walkway are out.
++ hazard_description :: There's an open trench along that walkway with no barrier.
+A building :: Which building?
+U lighting_fault
++ building :: Willowbrook office.
+- :: Someone is going to fall in tonight.
+A :: Logged for the electricians and raised the trench with EHS.
+
+@ multi_019 multi secondary=injury_medical
+S Intern reports a chair collapsed and they hurt their back.
+U furniture_fixture
++ furniture_item :: My chair just collapsed under me.
++ injury_kind :: I landed on my back and it really hurts.
+A person_conscious :: Are you able to move and talk okay?
+U furniture_fixture
++ person_conscious :: I can talk fine, just sore.
++ building floor :: Block C, floor two.
+A :: First aid is on the way and I've logged the chair.
+
+@ multi_020 multi secondary=pest_sighting
+S Housekeeping reports a filthy washroom with cockroaches.
+U washroom_hygiene
++ hygiene_issue :: The washroom on floor one is filthy.
++ pest_kind :: There are cockroaches near the drain too.
+A building :: Which building?
+U washroom_hygiene
++ building :: The Harbour building.
+- :: Nobody's cleaned it since Friday.
+A :: Logged with housekeeping and pest control.
+
+@ multi_021 multi secondary=injury_medical
+S Visitor reports a lift that dropped and jolted, and their knee hurts.
+U elevator_fault
++ :: The lift dropped suddenly and jolted to a stop.
++ injury_kind :: I fell and hurt my knee.
+A persons_trapped,person_conscious :: Are you still inside, and are you okay to talk?
+U elevator_fault
++ persons_trapped :: I'm out now, the doors opened.
++ person_conscious :: I'm fine to talk.
++ building elevator_id :: The Orchard building, the lift by the cafe.
+A :: First aid and the lift engineer are on the way.
+
+@ multi_022 multi secondary=suspicious_activity
+S Security guard reports a broken door reader and a stranger tailgating through it.
+U access_control_fault
++ door_state :: The reader on the lab door is dead so the door is unlocked.
++ behavior :: I just saw a stranger walk straight in.
+A secure_area,person_description :: Is the lab restricted, and can you describe the person?
+U access_control_fault
++ secure_area :: Yes, restricted.
++ person_description :: Grey jacket, cap, no badge.
++ building :: N.
+A :: Officers are on the way and the door is logged.
+
+@ multi_023 multi secondary=theft_missing_asset
+S GSOC analyst reports a camera offline at the store room and a prototype missing.
+U cctv_fault
++ camera_location :: The camera covering the prototype store has been offline since yesterday.
++ asset_kind :: And this morning a prototype handset is missing from the store.
+A contains_confidential :: Is it unreleased hardware?
+U cctv_fault
++ contains_confidential :: Yes.
++ building :: QRC.
+A :: Raised as critical with security for both.
+
+@ multi_024 multi secondary=structural_damage
+S Manager reports a blocked exit and cracked fire door frame.
+U unsafe_condition
++ hazard_description :: The fire exit is blocked by furniture.
++ damage_kind :: And the fire door frame is cracked so it doesn't close.
+A falling_or_injury_risk :: Could anything fall?
+U unsafe_condition
++ falling_or_injury_risk :: No, it's just cracked.
++ building floor :: Maple block, floor three.
+A :: Raised with EHS and facilities.
+
+@ multi_025 multi secondary=chemical_spill
+S Lab technician reports the fume hood stopped and a bottle tipped over inside.
+U lab_utility_failure
++ lab_utility :: The fume hood extraction has stopped.
++ substance_name :: And a bottle of acetone tipped over inside it when the sash dropped.
+A test_in_progress,persons_exposed :: Was a process running, and was anyone exposed?
+U lab_utility_failure
++ test_in_progress :: A cleaning step was running.
++ persons_exposed :: No.
++ building :: Hollis research building.
+A :: Raised urgently with lab facilities and EHS.
+
+@ multi_026 multi secondary=power_outage
+S Receptionist reports the boardroom screen dead because the room lost power.
+U conference_room_av
++ av_equipment :: The boardroom display won't turn on.
++ outage_scope :: Actually the whole boardroom has no power.
+A meeting_in_progress,critical_equipment_affected :: Is a meeting on, and is anything critical affected?
+U conference_room_av
++ meeting_in_progress :: Yes, the board meeting is in ten minutes.
++ critical_equipment_affected :: Nothing critical.
++ building :: Riverside campus main building.
+A :: Raised with AV and the electricians.
+
+@ multi_027 multi secondary=hvac_issue
+S Night-shift worker reports a smoking server rack and the server room getting hot.
+U fire_smoke
++ fire_visible space_type :: One of the racks in the server room is smoking.
++ hvac_condition :: The room's cooling also seems to have stopped, it's boiling in here.
+A evacuation_status :: Leave the server room and call the emergency number. Is anyone else in there?
+U fire_smoke
++ evacuation_status :: I'm out, nobody else was there.
++ building :: Tower B, ground floor.
+A :: The response team and HVAC are on the way.
+
+@ multi_028 multi secondary=network_outage
+S Contractor reports they cut a cable that caused a power trip and network loss on the floor.
+U power_outage
++ outage_scope :: We cut through a cable and the whole floor lost power.
++ network_scope connection_type :: The network is down too, both wired and wifi.
+A critical_equipment_affected :: Is any critical equipment affected?
+U power_outage
++ critical_equipment_affected :: The network cupboard down the hall is sounding an alarm.
++ building floor :: Block C, floor three.
+- :: Really sorry about this.
+A :: Raised as critical with the electricians and network team.
+
+@ multi_029 multi secondary=injury_medical
+S Security guard reports a fight in the lobby and one person bleeding.
+U suspicious_activity
++ behavior :: Two men are fighting in the lobby.
++ injury_kind :: One of them has a cut above his eye and it's bleeding.
+A person_description,person_conscious :: Can you describe them, and is the injured man conscious?
+U suspicious_activity
++ person_description :: One in a red hoodie, one in a suit.
++ person_conscious :: He's conscious, sitting down.
++ building :: The Harbour building.
+A :: Officers and first aid are on the way.
+
+@ multi_030 multi secondary=washroom_hygiene
+S Housekeeping staff reports a blocked toilet and the washroom being filthy.
+U washroom_plumbing
++ fixture_type plumbing_issue :: Two toilets in the men's are blocked.
++ hygiene_issue :: The whole washroom is a mess and smells awful.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: Tower B, floor three.
+- :: It's been a rough Monday in there.
+A :: Logged with plumbing and housekeeping.
+
+@ multi_031 multi secondary=spill_cleanup
+S Intern reports a leaking water cooler and the water making the floor slippery.
+U water_leak
++ leak_source :: The water cooler is leaking from its base.
++ slip_hazard :: The puddle is in the walkway and someone nearly slipped.
+A water_spread,near_electrical :: Is it spreading, and is it near anything electrical?
+U water_leak
++ water_spread :: It's spreading slowly.
++ near_electrical :: The cooler's own plug is right there.
++ building floor :: Maple block, floor one.
+A :: Raised with plumbing and housekeeping.
+
+@ multi_032 multi secondary=lighting_fault
+S Lab technician reports a lab utility power failure that also killed the lab lights.
+U lab_utility_failure
++ lab_utility :: The bench power in our lab has gone off.
++ lighting_scope :: And the lights in the lab went off at the same time.
+A test_in_progress :: Was a test running?
+U lab_utility_failure
++ test_in_progress :: Yes, an overnight run.
++ building floor :: Hollis research building, in the first floor test lab.
+A :: Raised with lab facilities and the electricians.
+
+@ multi_033 multi secondary=unsafe_condition
+S Senior engineer reports a broken stair tread and an unlit stairwell together.
+U structural_damage
++ damage_kind :: A stair tread in the back stairwell is cracked through.
++ hazard_description :: The stairwell lights have been out for days, so you can't see the crack.
+A falling_or_injury_risk :: Could someone fall?
+U structural_damage
++ falling_or_injury_risk :: Definitely.
++ building :: Willowbrook office.
+A :: Raised with facilities and EHS.
+
+@ multi_034 multi secondary=device_fault
+S Receptionist reports a visitor kiosk down and the visitor badge printer jammed.
+U access_control_fault
++ door_state :: The visitor turnstile reader isn't accepting any passes.
++ device_kind :: And the badge printer at reception is jammed, so we can't make new passes.
+A secure_area :: Is it the controlled entrance?
+U access_control_fault
++ secure_area :: Yes, the main gate.
++ building :: The Orchard building.
+A :: Raised with security systems and IT.
+
+@ multi_035 multi secondary=injury_medical
+S Contractor reports a ladder collapse and a worker hurt.
+U unsafe_condition
++ hazard_description :: The ladder on site collapsed, its locking bar was broken.
++ injury_kind persons_involved :: One of our lads fell with it and hurt his ankle.
+A person_conscious :: Is he conscious?
+U unsafe_condition
++ person_conscious :: Yes, swearing a lot.
++ persons_count :: Just him.
++ building :: Block C.
+A :: First aid is on the way and I've raised the ladder with EHS.
+
+@ multi_036 multi secondary=hvac_issue
+S Manager reports a meeting room with no AV and no air conditioning.
+U conference_room_av
++ av_equipment :: The screen and video system in our meeting room are dead.
++ hvac_condition :: And the room has no air conditioning, it's stifling.
+A meeting_in_progress,affected_scope :: Is a meeting on, and is it just that room that's hot?
+U conference_room_av
++ meeting_in_progress :: Yes, we're in it.
++ affected_scope :: Just the room.
++ building :: The annex.
+A :: Raised with AV and HVAC.
+
+@ multi_037 multi secondary=esd_issue
+S Lab technician reports a reflow oven fault and the ESD mats at the line damaged.
+U lab_equipment_fault
++ equipment_kind :: The reflow oven has an alarm and won't run.
++ esd_issue :: Also the ESD mats along the line are torn.
+A test_in_progress :: Was a build running?
+U lab_equipment_fault
++ test_in_progress :: Yes, mid-batch.
++ building :: Tower B, floor two.
+A :: Logged with the lab team for both.
+
+@ multi_038 multi secondary=pest_sighting
+S Night-shift worker reports a cafeteria fridge broken and rats near the food store.
+U cafeteria_issue
++ cafeteria_issue :: The big fridge in the canteen kitchen isn't cooling.
++ pest_kind :: And I saw a rat by the food store door.
+A food_safety_concern :: Is food at risk?
+U cafeteria_issue
++ food_safety_concern :: Yes, all the dairy is in that fridge.
++ building :: The Harbour building canteen.
+A :: Raised with the cafeteria manager and pest control.
+
+@ multi_039 multi secondary=lost_badge
+S Visitor reports their bag stolen from the lobby with their visitor badge in it.
+U theft_missing_asset
++ asset_kind :: My bag was stolen from the lobby seats.
++ last_seen :: My visitor badge was in it, I last had it ten minutes ago.
+A contains_confidential :: Was there anything confidential in the bag?
+U theft_missing_asset
++ contains_confidential :: My work laptop, but not Qualcomm's.
++ building :: Riverside campus main building.
+A :: Raised with security for the theft and the badge.
+
+@ multi_040 multi secondary=cctv_fault
+S Security guard reports a fence climber and the perimeter camera turned away.
+U suspicious_activity
++ behavior :: Someone climbed over the back fence.
++ camera_location :: The camera on that fence is pointing at the ground, so we didn't see where he went.
+A person_description :: Can you describe him?
+U suspicious_activity
++ person_description :: Black clothes, small backpack.
++ building :: Lakeside annex.
+A :: Officers are on the way and the camera is logged.

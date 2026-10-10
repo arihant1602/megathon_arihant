@@ -1,0 +1,507 @@
+@ structural_damage_001 single
+S Security guard tersely reports a ceiling tile that fell in a corridor on N floor 2.
+U structural_damage
++ damage_kind space_type :: Ceiling tile came down in the corridor.
++ building floor :: N, second floor, outside the print room.
+A falling_or_injury_risk :: Could anything else fall or hurt someone?
+U structural_damage
++ falling_or_injury_risk :: The tiles next to the gap look loose too, so yeah.
++ immediate_actions_taken :: I've put a chair in front of it.
+- :: Nobody was under it, thankfully.
+A :: Thanks, I've logged it with an injury risk so facilities come quickly.
+
+@ structural_damage_002 single
+S Intern hears a cracking sound and later finds a crack running up the wall.
+U undetermined
++ :: I heard a loud crack sound near my desk a minute ago.
+- :: I thought someone dropped something.
+A :: Okay, can you see what caused it?
+U structural_damage
++ damage_kind :: There's a crack running up the wall behind me that wasn't there this morning.
++ :: It's about as long as my arm.
+A falling_or_injury_risk :: Does anything look like it could fall or hurt someone?
+U structural_damage
++ falling_or_injury_risk :: I don't think so, it's just a crack, nothing's loose.
++ building floor space_id :: This is the Oak building, floor four, desk 4-18.
+- :: I've moved my coffee just in case.
+A occurred_at :: Did you notice the crack only after the noise?
+U structural_damage
++ occurred_at :: Yes, right after the crack sound, about a minute ago.
+A :: Thanks, I've logged the new wall crack in Oak building floor four for inspection.
+
+@ structural_damage_003 single
+S Receptionist calmly reports a shattered glass door at the main entrance of QRC.
+U structural_damage
++ damage_kind landmark :: The glass door at the main entrance has shattered.
+- :: Nobody knows how it happened.
+A falling_or_injury_risk :: Is there loose glass that could hurt someone?
+U structural_damage
++ falling_or_injury_risk :: Yes, there are shards still hanging in the frame.
++ building floor space_type :: QRC, ground floor reception.
++ immediate_actions_taken :: I've taped off the door and sent people round the side.
+A :: Thanks, I've flagged it as urgent with facilities and security.
+
+@ structural_damage_004 single
+S Senior engineer annoyed that floor tiles are lifting in their bay.
+U structural_damage
++ damage_kind space_type :: The floor tiles in our bay are lifting up at the edges.
+- :: I've already caught my chair wheel on it twice.
+A falling_or_injury_risk :: Could someone trip on them?
+U structural_damage
++ falling_or_injury_risk :: Definitely, it's right in the walkway.
++ building floor :: N building, floor eight.
++ occurred_at :: They started curling up last week.
+A :: Thanks, I've logged the lifting floor tiles on N floor eight as a trip risk.
+
+@ structural_damage_005 single
+S Manager in a rush gives a complete report of a cracked window pane in a meeting room.
+U structural_damage
++ damage_kind space_type space_id :: There's a big crack across the window in meeting room Juniper.
++ building floor :: Willow building, third floor.
++ falling_or_injury_risk :: The glass isn't loose, it's just cracked.
++ occurred_at :: Noticed it at the start of my 10 o'clock.
+A :: Thanks, I've logged the cracked window in Juniper for facilities.
+
+@ structural_damage_006 single
+S Housekeeping staff greets politely, then reports a dent and hole in the drywall.
+U undetermined
+- :: Hello, good afternoon.
+- :: I hope I'm not disturbing.
+A :: Good afternoon, not at all. What would you like to report?
+U structural_damage
++ damage_kind :: There's a big dent with a hole in the wall by the photocopiers.
++ building floor :: QRC floor two.
+A falling_or_injury_risk :: Is there anything loose that could fall?
+U structural_damage
++ falling_or_injury_risk :: Some bits of plaster are hanging off but they're small.
++ occurred_at :: It was there when I came in at six.
+- :: Looks like someone backed a trolley into it.
+A :: Thanks, I've logged the damaged wall by the QRC floor two photocopiers.
+
+@ structural_damage_007 single
+S Lab technician worried about a sagging ceiling tile over a lab bench.
+U structural_damage
++ damage_kind :: One of the ceiling tiles is sagging right over my bench.
+A falling_or_injury_risk :: Could it fall on someone?
+U structural_damage
++ falling_or_injury_risk :: It looks like it could drop any second.
+- :: I don't want to be under it when it does.
+A building,floor :: Please keep clear of it. Which building and floor are you on?
+U structural_damage
++ building floor space_type :: N, floor five, the RF lab.
+A space_id :: Which bench or room exactly?
+U structural_damage
++ space_id :: Bench 12 in lab 5-03.
++ immediate_actions_taken :: I've moved my equipment off the bench.
+A :: Thanks, I've raised the sagging tile over bench 12 as urgent.
+
+@ structural_damage_008 single
+S Visitor jokes that the washroom door has come off its hinges.
+U structural_damage
++ damage_kind space_type :: The washroom door has come off its hinges.
+- :: Privacy is now optional.
+A falling_or_injury_risk :: Could the door fall on someone?
+U structural_damage
++ falling_or_injury_risk :: It's leaning against the wall, it could tip over.
++ building floor :: The Summit building, floor one, near the cafe.
+A :: Thanks, I've logged the broken washroom door with a fall risk.
+
+@ structural_damage_009 single
+S Contractor starts with location in a stairwell, then reports a broken step edge.
+U undetermined
++ space_type building :: I'm in the back stairwell of the Maple block.
+A :: Okay, what's the issue there?
+U structural_damage
++ damage_kind :: The nosing on one of the steps has broken off.
++ floor :: It's between floors one and two.
+A falling_or_injury_risk :: Is it a trip risk?
+U structural_damage
++ falling_or_injury_risk :: Yes, the edge is jagged and people come down here fast.
+- :: I nearly went flying myself.
+A :: Thanks, I've logged the broken step in Maple block stairwell as a trip risk.
+
+@ structural_damage_010 single
+S Night-shift worker panics after a large chunk of plaster falls from the ceiling.
+U structural_damage
++ damage_kind :: A huge chunk of plaster just fell from the ceiling!
+- :: It made the loudest crash.
+A falling_or_injury_risk :: Is anyone hurt, and could more fall?
+U structural_damage
++ falling_or_injury_risk :: No one's hurt but there's more cracking above it.
++ building floor space_type :: QRC, floor three, the corridor by the labs.
+A occurred_at :: Please stay away from it. When did it fall?
+U structural_damage
++ occurred_at :: Literally thirty seconds ago.
++ immediate_actions_taken :: I've blocked the corridor with a cone.
+A :: Thanks, I've raised it urgently with facilities and the safety team.
+
+@ structural_damage_011 single
+S Senior engineer calmly reports a hairline crack spreading on a column.
+U structural_damage
++ damage_kind landmark :: There's a hairline crack on the concrete column next to the coffee bar.
++ :: It looks longer than it was last week.
+A falling_or_injury_risk :: Is anything flaking or at risk of falling?
+U structural_damage
++ falling_or_injury_risk :: Nothing's loose, it's just the crack.
++ building floor :: N, floor six.
+- :: Probably nothing, but better safe than sorry.
+A :: Thanks, I've logged the column crack on N floor six for inspection.
+
+@ structural_damage_012 single
+S Receptionist annoyed about a cracked glass panel in the revolving door.
+U structural_damage
++ damage_kind landmark :: One of the glass panels in the revolving door is cracked.
+- :: People keep asking me if it's safe.
+A falling_or_injury_risk :: Could the glass fall out?
+U structural_damage
++ falling_or_injury_risk :: It's holding, but it's a long crack.
++ building :: This is the Horizon building entrance.
++ immediate_actions_taken :: I've stopped people using it for now.
+A :: Thanks, I've logged the cracked revolving door panel at Horizon.
+
+@ structural_damage_013 single
+S Intern jokes about a bouncy floorboard after greeting.
+U undetermined
+- :: Hey hey, got a weird one.
+A :: Go for it.
+U structural_damage
++ damage_kind :: There's a spot on the floor that bounces like a trampoline when you step on it.
+- :: I've been testing it way too much.
+A falling_or_injury_risk,building :: Could someone trip or fall through, and which building?
+U structural_damage
++ falling_or_injury_risk :: It feels solid enough, no holes.
++ building floor space_type :: Birch building, floor two, workstation area.
+A :: Thanks, I've logged the soft floor spot in Birch for facilities.
+
+@ structural_damage_014 single
+S Security guard rushes: a glass panel on a balcony railing is smashed.
+U structural_damage
++ damage_kind landmark :: The glass panel on the fourth floor balcony railing is smashed!
+A falling_or_injury_risk :: Is there a risk of someone falling or glass dropping below?
+U structural_damage
++ falling_or_injury_risk :: Yes, there's a gap now and glass bits are on the edge above the courtyard.
++ building floor :: N building, floor four.
+A occurred_at :: Please keep people away. When did it happen?
+U structural_damage
++ occurred_at :: Must have been in the last hour.
++ immediate_actions_taken :: I've locked the balcony door.
+A :: Thanks, I've flagged it as urgent with facilities and safety.
+
+@ structural_damage_015 single
+S Housekeeping staff calmly reports a crack along the skirting and wall in a pantry.
+U structural_damage
++ damage_kind space_type :: There's a crack running along the wall just above the skirting in the pantry.
++ building floor :: QRC floor one.
+A falling_or_injury_risk :: Is anything loose?
+U structural_damage
++ falling_or_injury_risk :: No, it's all solid.
+- :: The fridge is humming loud today too, but that's normal I think.
+A :: Thanks, I've logged the pantry wall crack.
+
+@ structural_damage_016 single
+S Manager tersely reports a split fire door frame; complete.
+U structural_damage
++ damage_kind building floor :: Fire door frame on N floor seven is split down the side, door won't latch, no risk of it falling but it won't hold shut.
++ falling_or_injury_risk :: Nothing's going to fall.
+A :: Logged, I've sent the split fire door frame to facilities as a priority.
+
+@ structural_damage_017 single
+S Lab technician notices things rattling and discovers shifted ceiling tiles.
+U undetermined
++ :: Stuff on the shelves has been rattling all morning.
+- :: I thought it was the trains outside.
+A :: Okay. Have you noticed anything else?
+U structural_damage
++ damage_kind :: A few ceiling tiles above the shelves have shifted out of their grid.
+A falling_or_injury_risk :: Could they fall?
+U structural_damage
++ falling_or_injury_risk :: One is hanging at an angle, so maybe.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor space_type :: QRC, floor five, the materials lab.
++ immediate_actions_taken :: I've moved people away from that corner.
+A :: Thanks, I've raised the shifted ceiling tiles as urgent for facilities.
+
+@ structural_damage_018 single
+S Visitor in the atrium worried about a crack in the glass ceiling.
+U structural_damage
++ landmark :: I'm in the atrium.
++ damage_kind :: One of the glass ceiling panels has a crack in it.
+A falling_or_injury_risk,building :: Could it fall, and which building?
+U structural_damage
++ falling_or_injury_risk :: I can't tell from down here.
++ building :: The Horizon building.
+- :: I'm only here for an interview.
+A :: Thanks, we'll treat it as a possible fall risk. I've logged it urgently.
+
+@ structural_damage_019 single
+S Contractor apologises after drilling into a wall and causing a big crack.
+U structural_damage
+- :: I'm really sorry about this.
++ damage_kind :: I was drilling a bracket into a wall and a big crack opened up.
+A falling_or_injury_risk :: Is anything loose or about to fall?
+U structural_damage
++ falling_or_injury_risk :: A chunk of plaster is loose around the hole.
++ building floor space_id :: Elm building, floor two, meeting room 2B.
+A occurred_at :: When did it happen?
+U structural_damage
++ occurred_at :: About fifteen minutes ago.
++ immediate_actions_taken :: I stopped work straight away.
+A :: Thanks for being upfront, I've logged it for facilities.
+
+@ structural_damage_020 single
+S Night-shift worker tersely reports a hole in the floor near the loading dock.
+U structural_damage
++ damage_kind space_type :: There's a hole in the floor by the loading dock.
+- :: Found it with my foot.
+A falling_or_injury_risk :: Are you hurt, and could someone else fall into it?
+U structural_damage
++ falling_or_injury_risk :: I'm fine, but a forklift wheel would go straight in.
++ building :: Back of the Cedar building.
++ immediate_actions_taken :: Put a pallet over it.
+A :: Thanks, I've logged the hole near the Cedar loading dock as a hazard.
+
+@ structural_damage_021 single
+S Senior engineer jokes that a ceiling tile is missing and wonders if a pigeon took it.
+U structural_damage
++ damage_kind :: One of the ceiling tiles above the kitchenette has just vanished.
+- :: My theory is a very strong pigeon.
+- :: Or the night cleaners have a hobby.
+A falling_or_injury_risk :: Is anything hanging down through the gap?
+U structural_damage
++ falling_or_injury_risk :: A couple of wires are dangling, nothing heavy.
++ building floor space_type :: N, floor nine, the pantry.
+A :: Thanks, I've logged the missing tile and dangling wires in the N floor nine pantry.
+
+@ structural_damage_022 single
+S Receptionist hears creaking and then sees the door frame cracked; four turns.
+U undetermined
++ :: The main door has been creaking really loudly.
+- :: It's driving me up the wall.
+A :: Is something wrong with the door itself?
+U structural_damage
++ damage_kind :: Now I look closer, the wooden frame has split near the top hinge.
+A falling_or_injury_risk :: Could the door come loose or fall?
+U structural_damage
++ falling_or_injury_risk :: It's wobbling a bit when people push it.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor space_type :: Pine building, ground floor reception.
++ immediate_actions_taken :: I've propped it open so nobody pulls on it.
+- :: Bit chilly now but fine.
+A :: Thanks, I've logged the split door frame at Pine reception as a fall risk.
+
+@ structural_damage_023 single
+S Intern calmly reports a window that won't close because its frame is broken.
+U structural_damage
++ damage_kind :: The window by my desk won't close, the frame is bent and the latch snapped off.
++ building floor :: QRC, sixth floor.
+- :: It's fine now but it's going to rain later.
+A falling_or_injury_risk :: Could the window fall out or swing into anyone?
+U structural_damage
++ falling_or_injury_risk :: It swings a bit in the wind, but it's not loose.
+A :: Thanks, I've logged the broken window frame on QRC floor six.
+
+@ structural_damage_024 single
+S Security guard annoyed about a chipped concrete pillar in the car park.
+U structural_damage
++ space_type :: Down in the car park.
++ damage_kind :: A pillar's been clipped by a car and big chunks of concrete are chipped off.
+- :: Nobody left a note, of course.
+A falling_or_injury_risk :: Is any concrete loose or likely to fall?
+U structural_damage
++ falling_or_injury_risk :: There's a loose piece on the corner about the size of a brick.
+A building,floor :: Which building's car park and level?
+U structural_damage
++ building floor :: Under N, level minus one.
++ landmark :: Pillar next to bay 47.
+A :: Thanks, I've logged the damaged pillar by bay 47 under N.
+
+@ structural_damage_025 single
+S Housekeeping staff panics because a washroom mirror has shattered.
+U structural_damage
++ damage_kind space_type :: The big mirror in the ladies' washroom just shattered!
+- :: I was right next to it.
+A falling_or_injury_risk :: Are you hurt, and is there glass that could still fall?
+U structural_damage
++ falling_or_injury_risk :: I'm not hurt, but half the mirror is still hanging in big pieces.
++ building floor :: Birch building, floor three.
++ immediate_actions_taken :: I've closed the washroom.
+A :: Thanks, I've raised it urgently with facilities.
+
+@ structural_damage_026 single
+S Manager starts with location on QRC 5, then reports a buckled floor in the workstation bay.
+U undetermined
++ building floor space_type :: I'm in the QRC fifth floor workstation area.
+- :: Busy day here.
+A :: What would you like to report?
+U structural_damage
++ damage_kind :: The floor has buckled up in a ridge across the walkway.
+A falling_or_injury_risk :: Could someone trip on it?
+U structural_damage
++ falling_or_injury_risk :: Yes, two people already have.
++ occurred_at :: It appeared over the weekend.
+A :: Thanks, I've logged the buckled floor on QRC floor five as a trip risk.
+
+@ structural_damage_027 single
+S Lab technician tersely gives a one-turn report about a cracked raised floor panel.
+U structural_damage
++ damage_kind space_type building floor :: Raised floor panel cracked in the test lab on N floor three.
++ falling_or_injury_risk :: It dips when you stand on it, so someone could go through.
++ immediate_actions_taken :: Coned off.
+A :: Logged, I've sent the cracked floor panel to facilities with a fall risk.
+
+@ structural_damage_028 single
+S Visitor apologises, then reports a loose canopy panel outside an entrance; four turns.
+U undetermined
+- :: Excuse me, I'm just visiting.
+- :: Not sure if staff already know about this.
+A :: Thanks for reaching out. What did you notice?
+U structural_damage
++ damage_kind :: One of the panels on the canopy over the entrance is hanging loose.
+A falling_or_injury_risk :: Does it look like it could fall on someone?
+U structural_damage
++ falling_or_injury_risk :: It's flapping in the wind, so maybe.
+A building :: Which building's entrance is it?
+U structural_damage
++ building landmark :: The Lakeview building, the side entrance by the bike racks.
+- :: Thanks for being quick.
+A :: Thanks, I've logged the loose canopy panel at Lakeview as urgent.
+
+@ structural_damage_029 single
+S Contractor worried that a wall is bulging.
+U structural_damage
++ damage_kind :: The wall in the corridor is bulging outwards.
+- :: That's not something walls should do.
+A falling_or_injury_risk :: Could anything fall?
+U structural_damage
++ falling_or_injury_risk :: Some of the plaster is cracking around the bulge.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor :: Elm building, floor four.
++ landmark :: Between the lifts and the fire exit.
++ occurred_at :: I noticed it this morning.
+A :: Thanks, I've logged the bulging wall on Elm floor four for a structural check.
+
+@ structural_damage_030 single
+S Night-shift worker jokes that a door has split down the side by the handle.
+U structural_damage
++ damage_kind :: The door to the comms room has split right down the side where the handle is.
+- :: The handle is now more of a suggestion.
++ building floor :: QRC, floor one.
+A falling_or_injury_risk :: Is anything about to break off?
+U structural_damage
++ falling_or_injury_risk :: A long splinter is sticking out at hand height.
+A :: Thanks, I've logged the split comms room door on QRC floor one.
+
+@ structural_damage_031 single
+S Senior engineer in a rush reports several ceiling tiles fell after a storm; five turns.
+U structural_damage
++ damage_kind :: Several ceiling tiles came down after last night's storm.
+A falling_or_injury_risk :: Could more fall, or is anyone hurt?
+U structural_damage
++ falling_or_injury_risk :: Nobody hurt, but more look soggy and loose.
+- :: I've got a demo in an hour.
+A building :: Which building?
+U structural_damage
++ building :: N.
+A floor,space_id :: Which floor and area?
+U structural_damage
++ floor :: Twelfth floor.
++ space_id :: Around the corner meeting rooms on the east side.
+A occurred_at :: Thanks. When did they fall?
+U structural_damage
++ occurred_at :: Sometime overnight, we found them first thing.
++ immediate_actions_taken :: We've moved desks away from the area.
+A :: Thanks, I've raised the fallen and loose tiles on N floor twelve as urgent.
+
+@ structural_damage_032 single
+S Intern annoyed about a cracked stair tread.
+U structural_damage
++ damage_kind :: One of the stair treads is cracked straight across.
+- :: I take these stairs every day.
+A falling_or_injury_risk,building :: Could someone fall, and which building?
+U structural_damage
++ falling_or_injury_risk :: It moves when you step on it.
++ building space_type :: Willow building, the main stairwell.
+A :: Thanks, I've logged the cracked stair tread in the Willow stairwell.
+
+@ structural_damage_033 confusable confused=unsafe_condition
+S Manager reports what sounds like a loose cable trip hazard, but it is a broken floor tile.
+U unsafe_condition
++ :: There's a trip hazard in our walkway, people keep catching their feet.
+- :: I assume it's a cable someone left out.
+A :: What exactly are people tripping on?
+U structural_damage
++ damage_kind :: Turns out it's not a cable, a floor tile has cracked and one half is sticking up.
++ falling_or_injury_risk :: It's sharp too, someone could get hurt.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor :: QRC, floor two.
+A :: Thanks, I've logged the broken floor tile on QRC floor two.
+
+@ structural_damage_034 confusable confused=unsafe_condition
+S Lab technician says someone was nearly hit by something falling; it turns out a ceiling tile is loose.
+U unsafe_condition
++ :: Someone nearly got hit by something falling in the lab.
+- :: Scary moment.
+A :: What fell?
+U structural_damage
++ damage_kind :: A corner of a ceiling tile broke off, and the rest of the tile is hanging.
++ falling_or_injury_risk :: It could come down completely.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor space_type :: N, floor four, the hardware lab.
++ immediate_actions_taken :: We've taped off the area underneath.
+A :: Thanks, I've raised the loose ceiling tile as urgent.
+
+@ structural_damage_035 confusable confused=unsafe_condition
+S Security guard reports a blocked exit; the door is jammed because its frame is broken.
+U unsafe_condition
++ :: The fire exit on our floor is blocked.
+A :: What's blocking it?
+U structural_damage
++ damage_kind :: Nothing in front of it, the door's jammed because the frame has cracked and dropped.
++ falling_or_injury_risk :: If there's an evacuation nobody gets out that way.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor :: Maple block, floor three.
+- :: I'm staying here until someone comes.
+A :: Thanks, I've raised the jammed fire exit door as urgent with facilities and safety.
+
+@ structural_damage_036 confusable confused=furniture_fixture
+S Housekeeping staff says a cabinet door is broken, but the whole wall cupboard has ripped out of the wall.
+U furniture_fixture
++ :: The cupboard door in the pantry is broken.
+A :: What's wrong with it?
+U structural_damage
++ damage_kind :: Actually the whole wall cupboard has pulled out of the wall, the plaster's ripped where the screws were.
++ falling_or_injury_risk :: It's tilting forward, it could fall.
++ building floor space_type :: N, floor two, pantry.
+A :: Thanks, please keep clear. I've raised it urgently with facilities.
+
+@ structural_damage_037 confusable confused=furniture_fixture
+S Intern says a shelf fell down; the wall anchors and plaster gave way.
+U furniture_fixture
++ :: A shelf fell off the wall in the meeting room.
+- :: Luckily the plant survived.
+A :: Is the shelf itself broken?
+U structural_damage
++ :: The shelf is fine.
++ damage_kind :: The wall is the problem, there are holes torn out where the anchors were.
+A falling_or_injury_risk,building :: Is anything else at risk of falling, and which building?
+U structural_damage
++ falling_or_injury_risk :: The other shelf next to it is loose in the same way.
++ building floor space_id :: Oak building, floor one, room Cypress.
+A :: Thanks, I've logged the wall damage in Cypress with a fall risk.
+
+@ structural_damage_038 confusable confused=water_leak
+S Receptionist sees a stain on the ceiling and assumes a leak; it's a dry crack in the plaster.
+U water_leak
++ :: There's a dark line on the ceiling above reception, I think water's coming through.
+A building,floor :: Which building and floor?
+U structural_damage
++ building floor :: QRC, ground floor.
++ damage_kind :: Facilities had a look and it's dry, it's a crack in the plaster with dust in it.
++ falling_or_injury_risk :: Nothing's loose.
+A :: Thanks, I've logged the ceiling crack above QRC reception.

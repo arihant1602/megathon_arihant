@@ -1,0 +1,434 @@
+@ lost_badge_001 single
+S Senior engineer realises their badge is gone after lunch, last saw it in the cafeteria.
+U lost_badge
++ :: I think I've lost my badge somewhere between lunch and my desk.
+- :: I'm patting every pocket like a cartoon detective right now.
+A last_seen :: Sorry to hear that. When and where did you last have it?
+U lost_badge
++ last_seen :: I definitely had it in the cafeteria at about one, I used it to pay for lunch.
++ building space_type :: That's the cafeteria in N on the ground floor.
+- :: I retraced my steps and checked the table, but it wasn't there.
+A :: Thanks, I've reported the badge lost so it can be deactivated and a temporary one issued.
+
+@ lost_badge_002 single
+S Intern greets nervously, worried they'll be in trouble for losing a badge on their first week.
+U undetermined
+- :: Hi, um, I'm really hoping I'm not going to get in trouble for this.
+- :: I only started on Monday.
+A :: Don't worry, you're not in trouble. What happened?
+U lost_badge
++ :: I can't find my badge anywhere and I think it fell off my lanyard.
+A last_seen :: When and where do you remember last having it?
+U lost_badge
++ last_seen :: I tapped in at the QRC front door this morning around 8:50, so it was on me then.
+- :: After that I went to orientation and honestly I wasn't paying attention.
+A immediate_actions_taken :: Have you checked anywhere for it already?
+U lost_badge
++ immediate_actions_taken :: I asked at the orientation room and reception, nobody's seen it.
+A :: Thanks, I've reported it lost and security will deactivate it. Reception can give you a temporary pass.
+
+@ lost_badge_003 single
+S Night-shift worker calmly reports a badge left in a cab on the way in.
+U lost_badge
++ :: I'm pretty sure I left my badge in the cab that dropped me off tonight.
++ last_seen :: I had it in my hand at about 9:40 when I was paying the driver.
+- :: I've messaged the cab company, but no reply yet.
+A building :: Thanks. Which building were you dropped at?
+U lost_badge
++ building :: The Lakeview building, at the front gate.
+A :: Thanks, I've reported it lost and asked security to deactivate it.
+
+@ lost_badge_004 single
+S Manager in a hurry gives a full report in one turn.
+U lost_badge
++ :: Lost my badge, need it deactivated please.
++ last_seen :: Last had it at the gym in the Willow building basement around seven this morning.
+- :: I'm running into back to back meetings so I'll grab a temp one at reception.
+A :: Logged, security will deactivate it and reception will have a temporary badge for you.
+
+@ lost_badge_005 single
+S Lab technician worried that a lost badge gives restricted lab access.
+U lost_badge
++ :: My badge is missing and it has access to the restricted labs, so I wanted to report it quickly.
+A last_seen :: Good call. When and where did you last have it?
+U lost_badge
++ last_seen :: I think I took it off when I gowned up for the cleanroom at about eleven.
++ building floor :: That's QRC, floor three.
+- :: I've checked the gowning room bins twice already, which was not fun.
+A :: Thanks, I've reported it so security deactivates it straight away.
+
+@ lost_badge_006 single
+S Visitor lost their visitor badge somewhere in the building.
+U lost_badge
+- :: This is embarrassing, but I've only been here two hours.
++ :: I've lost the visitor badge reception gave me.
+A last_seen :: When did you last have it?
+U lost_badge
++ last_seen :: I had it in the meeting room on the third floor before I went to the coffee machine.
++ building :: The Horizon building.
+A :: Thanks, I've let security know so they can cancel it and reception can print a new one.
+
+@ lost_badge_007 single
+S Contractor starts with location, then says their badge is gone; three turns.
+U undetermined
++ building :: I'm at the Cedar building site entrance.
+- :: Sorry, I can't get back onto the site.
+A :: What's the problem?
+U lost_badge
++ :: My contractor badge is gone.
+- :: I think it fell out of my hi-vis vest pocket when I was carrying boards.
+A last_seen :: When and where did you last have it?
+U lost_badge
++ last_seen :: I had it at the morning sign-in around half seven, after that I'm not sure.
+A :: Thanks, I've reported it lost and asked security to issue a replacement.
+
+@ lost_badge_008 single
+S Receptionist jokes about losing their own badge while handing out badges to visitors all day.
+U lost_badge
++ :: The irony is not lost on me, but I've lost my badge.
+- :: I hand out badges all day and somehow mine has vanished.
+A last_seen :: When did you last have it?
+U lost_badge
++ last_seen :: Yesterday evening when I left the N reception desk at six.
+- :: It might be at home, but I really don't think so.
+A :: Thanks, I've reported it lost so it can be deactivated.
+
+@ lost_badge_009 single
+S Housekeeping staff reports they lost their badge while emptying bins; four turns.
+U lost_badge
++ :: I lost my staff badge while doing the bins.
+A last_seen :: When and where did you last have it?
+U lost_badge
++ last_seen :: Around five, I was on the fourth floor.
+A building :: Which building is that?
+U lost_badge
++ building :: Building N.
+- :: I'm worried it went into one of the bin bags.
+A immediate_actions_taken :: Have you checked anywhere already?
+U lost_badge
++ immediate_actions_taken :: I asked my supervisor and checked the trolley, nothing.
+A :: Thanks, I've reported it lost and security will deactivate it.
+
+@ lost_badge_010 single
+S Security guard tersely reports a colleague's badge lost.
+U lost_badge
++ persons_involved :: Reporting a lost badge for my colleague Ravi on the night team.
++ last_seen :: He last had it on the 2 am patrol near the QRC car park.
+A :: Thanks, I've reported it lost so it can be deactivated.
+
+@ lost_badge_011 single
+S Senior engineer annoyed with themselves, lost badge on a train.
+U lost_badge
+- :: I'm so annoyed at myself right now.
++ :: I think my badge fell out of my bag on the train this morning.
+A last_seen :: When did you last see it?
+U lost_badge
++ last_seen :: I'm fairly sure I had it when I left home at eight.
+- :: I only noticed when I got to the gate at the Pine building.
+A :: Thanks, I've reported it lost and reception can sort out a temporary badge.
+
+@ lost_badge_012 single
+S Intern isn't sure what happened to their badge, unclear at first; three turns.
+U undetermined
++ :: I can't get into the building.
+- :: I'm standing outside in the rain like an idiot.
+A :: Is the door not working, or is it something with your badge?
+U lost_badge
++ :: Oh, my badge isn't on my lanyard, it must have slipped off.
+A last_seen :: When did you last have it?
+U lost_badge
++ last_seen :: At my desk yesterday afternoon, I might have left it in the drawer.
++ building :: This is the QRC building.
+A :: Thanks, I've reported it lost. Security at the front will let you in.
+
+@ lost_badge_013 single
+S Lab technician calmly reports a lost badge in the gym locker room.
+U lost_badge
++ :: I lost my badge at the gym.
++ last_seen :: I put it on the bench in the changing room around 6:30 this evening.
+A building :: Which building's gym?
+U lost_badge
++ building :: Willow building, basement.
+- :: Someone might have handed it in, so I'll check reception tomorrow.
+A :: Thanks, I've reported it lost so it's deactivated.
+
+@ lost_badge_014 single
+S Manager worried a lost badge might be used by someone else.
+U lost_badge
++ :: My badge is missing and I'm worried someone could use it, it has access to the executive floor.
+A last_seen :: When and where did you last have it?
+U lost_badge
++ last_seen :: At the client dinner last night, I had it in my jacket pocket.
+- :: I've checked the jacket and the car twice.
+A :: Thanks, I've reported it so security deactivates it straight away.
+
+@ lost_badge_015 single
+S Visitor jokes they've lost the badge that was literally round their neck.
+U lost_badge
++ :: Somehow I've lost the badge that was literally around my neck.
+- :: I'm impressed with myself honestly.
+A last_seen :: When did you last notice it?
+U lost_badge
++ last_seen :: I think at the coffee bar in the atrium about half an hour ago.
++ building :: This is QRC.
+A :: Thanks, I've told security and reception can give you a new one.
+
+@ lost_badge_016 single
+S Night-shift worker tersely reports a lost badge near the loading dock.
+U lost_badge
++ last_seen :: Dropped my badge somewhere near the loading dock around midnight.
++ building :: N.
+A :: Thanks, logged as lost for deactivation.
+
+@ lost_badge_017 single
+S Contractor apologises, lost badge at another site; four turns.
+U lost_badge
+- :: Sorry, I'm a bit of a mess today.
++ :: I've lost my contractor badge.
+A last_seen :: When and where did you last have it?
+U lost_badge
++ last_seen :: I was working at the other campus yesterday and I think I left it in their site office.
+A building :: Which building do you need access to today?
+U lost_badge
++ building :: The Spruce block here.
+- :: My supervisor is calling the other site.
+A immediate_actions_taken :: Has anyone checked the other site office?
+U lost_badge
++ immediate_actions_taken :: My supervisor is calling them now.
+A :: Thanks, I've reported it lost and asked security for a temporary badge.
+
+@ lost_badge_018 single
+S Receptionist reports a found-and-lost situation: their own badge missing after a busy morning.
+U lost_badge
++ :: I can't find my badge after the morning rush.
++ last_seen :: I'm sure I had it at nine when I logged into the front desk system.
++ building :: Lakeview reception.
+A :: Thanks, I've reported it lost and asked security to deactivate it.
+
+@ lost_badge_019 single
+S Senior engineer greets, then reports lost badge at a conference room.
+U undetermined
+- :: Morning, quick admin thing.
+A :: Morning! What's up?
+U lost_badge
++ :: I misplaced my badge.
++ last_seen :: I think I left it in the meeting room Everest on N floor ten after the 10 am meeting.
+A :: Thanks, I've reported it lost. Someone may have handed it in to reception.
+
+@ lost_badge_020 single
+S Lab technician worried, badge missing after a fire drill.
+U lost_badge
++ :: I lost my badge during the fire drill.
+- :: Everyone was rushing out and it must have come off.
+A last_seen :: Where did you last have it?
+U lost_badge
++ last_seen :: At the assembly point in the car park, around 11.
++ building :: QRC.
+A :: Thanks, I've reported it lost and will ask security to check the assembly point.
+
+@ lost_badge_021 single
+S Intern annoyed after leaving the badge at home.
+U lost_badge
++ :: I don't have my badge today.
+- :: Rookie mistake.
+A last_seen :: Do you know where it is?
+U lost_badge
++ last_seen :: I think it's still on my desk at home, I had it last night.
++ building :: Birch building.
+A :: Thanks, I've logged it. Reception can give you a day pass.
+
+@ lost_badge_022 single
+S Housekeeping staff reports finding no badge after a shift change; five turns.
+U lost_badge
++ :: My badge is missing from my locker.
+A last_seen :: When did you last see it?
+U lost_badge
++ last_seen :: I put it in there at the end of my shift yesterday at four.
+A building :: Which building?
+U lost_badge
++ building :: The Oak building.
+- :: Do the lockers get cleared out on Sundays?
+A space_id :: I'm not sure. Which locker room?
+U lost_badge
++ space_id :: The ground floor staff locker room.
+A immediate_actions_taken :: Did you check with your supervisor?
+U lost_badge
++ immediate_actions_taken :: I did, she hasn't seen it.
+A :: Thanks, I've reported it lost.
+
+@ lost_badge_023 single
+S Manager jokes their dog may have eaten their badge.
+U lost_badge
++ :: There's a real chance my dog ate my badge.
+- :: He's eaten worse.
+A last_seen :: When did you last see it?
+U lost_badge
++ last_seen :: On the kitchen table at home on Sunday night.
+A :: Thanks, I've reported it lost so it can be deactivated.
+
+@ lost_badge_024 single
+S Visitor reports a lost badge in the car park; one turn.
+U lost_badge
++ last_seen space_type :: I think I dropped my visitor badge in the car park just now near the entrance ramp.
++ building :: Summit building.
+A :: Thanks, logged so the badge can be cancelled.
+
+@ lost_badge_025 single
+S Security guard reports a found badge but owner's badge loss; lost badge of a team member.
+U lost_badge
++ persons_involved :: An engineer called Meera told me she lost her badge.
++ last_seen :: She thinks she left it in the shuttle bus this morning around 8:15.
+A building :: Which building does she work in?
+U lost_badge
++ building :: N.
+A :: Thanks, I've reported it lost.
+
+@ lost_badge_026 single
+S Senior engineer starts with location, then reports a lost badge in the cafeteria; three turns.
+U undetermined
++ space_type building :: I'm at the QRC cafeteria.
+A :: What's up?
+U lost_badge
++ :: I left my badge on a table here and now it's gone.
+A last_seen :: When did you leave it?
+U lost_badge
++ last_seen :: About twenty minutes ago at the window table.
+- :: Hopefully someone handed it in.
+A :: Thanks, I've reported it and asked reception to check if it's been handed in.
+
+@ lost_badge_027 single
+S Lab technician tersely reports a lost badge after travel.
+U lost_badge
++ last_seen :: Lost my badge at the airport on Friday coming back from the conference.
+A :: Thanks, logged so it's deactivated.
+
+@ lost_badge_028 single
+S Night-shift worker worried because they need the badge to log their shift.
+U lost_badge
++ :: I lost my badge and I need it to clock in.
+- :: My shift starts in ten minutes.
+A last_seen :: When did you last have it?
+U lost_badge
++ last_seen :: When I locked my bike in the bike store an hour ago.
++ building :: Pine building.
+A :: Thanks, I've reported it lost. Security will help you clock in.
+
+@ lost_badge_029 single
+S Intern asks a question back before reporting a lost badge.
+U undetermined
+- :: Is this where I report something I lost?
+A :: If it's a badge or something work-related, yes. What did you lose?
+U lost_badge
++ :: My badge.
++ last_seen :: I had it at the welcome event in the atrium this afternoon.
++ building :: Horizon building.
+A :: Thanks, I've reported it lost.
+
+@ lost_badge_030 single
+S Manager calmly reports lost badge in another country.
+U lost_badge
++ :: My badge is lost, I'm travelling.
++ last_seen :: I think I left it in the hotel in Singapore last week.
+- :: I'm back in the office tomorrow.
+A :: Thanks, I've reported it so a new one can be ready for you.
+
+@ lost_badge_031 single
+S Contractor jokes about a badge falling into a ceiling void.
+U lost_badge
++ :: My badge fell into the ceiling void while I was working on the cables.
+- :: It's gone to badge heaven.
+A last_seen,building :: When did it fall, and which building?
+U lost_badge
++ last_seen :: Just now, above the corridor on floor three.
++ building :: Elm building.
+A :: Thanks, I've reported it lost and someone can try to retrieve it later.
+
+@ lost_badge_032 single
+S Receptionist reports a visitor who lost their badge; four turns.
+U lost_badge
++ persons_involved :: A visitor here has lost her visitor badge.
+A last_seen :: When did she last have it?
+U lost_badge
++ last_seen :: She thinks in the washroom about fifteen minutes ago.
+A building :: Which building?
+U lost_badge
++ building :: QRC.
+- :: She's very apologetic.
+A floor :: Which floor washroom?
+U lost_badge
++ floor :: Second floor.
+A :: Thanks, I've reported it and reception can reissue one.
+
+@ lost_badge_033 confusable confused=access_control_fault
+S Senior engineer thinks the door reader is broken; it turns out they're holding their gym card, badge is lost.
+U access_control_fault
++ :: The reader on our floor door won't accept my card.
+A :: Does it work for other people?
+U lost_badge
++ :: Others are getting in fine.
++ :: Oh no, this is my gym card, my actual badge isn't in my wallet.
+A last_seen :: When did you last have your badge?
+U lost_badge
++ last_seen :: Yesterday, I think I left it in the meeting room on N floor six.
+A :: Thanks, I've reported the badge lost.
+
+@ lost_badge_034 confusable confused=access_control_fault
+S Night-shift worker says the front door won't open; they realise their badge is missing.
+U access_control_fault
++ :: The front door isn't letting me in.
+A :: Is the reader lit up?
+U lost_badge
++ :: Yes, it's working, I just realised my badge isn't on my lanyard.
++ last_seen :: I had it when I left the gym an hour ago.
++ building :: Willow building.
+A :: Thanks, I've reported it lost and security will let you in.
+
+@ lost_badge_035 confusable confused=access_control_fault
+S Intern says the turnstile rejects them; the badge they're using is an old one and the new badge is lost.
+U access_control_fault
++ :: The turnstile keeps rejecting me.
+A :: Is the turnstile working for others?
+U lost_badge
++ :: Yes, everyone else gets through.
++ :: I'm using my old internship badge because I can't find my new one.
+A last_seen :: When did you last have the new badge?
+U lost_badge
++ last_seen :: On Friday when I collected it from reception.
++ building :: QRC.
+A :: Thanks, I've reported the new badge lost so security can reissue it.
+
+@ lost_badge_036 confusable confused=access_control_fault
+S Lab technician thinks the lab door is faulty; their badge has fallen off.
+U access_control_fault
++ :: The lab door won't open for me.
+A :: Is the reader showing any light?
+U lost_badge
+- :: Hang on.
++ :: The reader is fine, my badge clip is empty, it's fallen off somewhere.
++ last_seen :: I had it at the coffee machine ten minutes ago.
++ building floor :: N, floor five.
+A :: Thanks, I've reported it lost.
+
+@ lost_badge_037 confusable confused=theft_missing_asset
+S Manager thinks their bag was stolen; the bag is found but the badge is missing.
+U theft_missing_asset
++ :: I think someone took my bag from the meeting room.
+A :: What was in it?
+U lost_badge
++ :: Found the bag, a colleague moved it.
++ :: But my badge was clipped to it and that's gone.
++ last_seen :: The badge was on the bag in the meeting room at about two.
++ building :: Willow building.
+A :: Thanks, I've reported the badge lost.
+
+@ lost_badge_038 confusable confused=theft_missing_asset
+S Visitor thinks their wallet was stolen; wallet is found, only the visitor badge is missing.
+U theft_missing_asset
++ :: I think my wallet was stolen from the waiting area.
+A :: Can you tell me more?
+U lost_badge
++ :: Oh, never mind, it was in my coat.
++ :: My visitor badge is missing though, it was next to the wallet.
++ last_seen :: I had it in the waiting area ten minutes ago.
++ building :: Horizon building.
+A :: Thanks, I've reported the visitor badge lost.

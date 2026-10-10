@@ -1,0 +1,43 @@
+@ test_conference_room_av_001 single
+S Event organiser reports the main hall microphones cutting out during a talk.
+U conference_room_av
++ av_equipment :: The lapel microphone in the main hall keeps cutting out.
++ meeting_in_progress :: The keynote is happening right now.
+A building :: Which building?
+U conference_room_av
++ building :: Granite Tower conference centre.
+- :: The speaker is shouting now.
+A :: Raised as urgent for the AV technician.
+
+@ test_conference_room_av_002 single
+S Translator reports the booth's feed into the room speakers is silent.
+U conference_room_av
++ av_equipment :: Our interpretation isn't coming through the room speakers.
++ meeting_in_progress :: The session is live.
++ building :: Cobalt House, floor two.
+A :: Raised as urgent for the AV technician.
+
+@ test_conference_room_av_003 single
+S Auditor vague: can't present; the screen won't take HDMI; three turns.
+U undetermined
++ :: I can't get my slides up.
+A :: What's happening with the screen?
+U conference_room_av
++ av_equipment :: The display says no signal on every input.
++ meeting_in_progress :: The audit closing meeting starts in five minutes.
+A building :: Which building and room?
+U conference_room_av
++ building floor :: Granite Tower, floor nine, the boardroom.
+A :: Thanks, the AV technician is on the way.
+
+@ test_conference_room_av_004 confusable confused=network_outage
+S Clinic nurse thinks the network is down because the telehealth call won't start; it's the room's video unit.
+U network_outage
++ :: Our telehealth call won't connect, I think the network's down.
+A :: Is your computer online?
+U conference_room_av
++ :: The computer is online.
++ av_equipment :: The video conferencing unit in the consult room is frozen.
++ meeting_in_progress :: A patient is waiting on the call.
++ building :: Sapphire Block clinic.
+A :: Raised as urgent for the AV technician.

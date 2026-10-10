@@ -1,0 +1,495 @@
+@ injury_medical_001 single
+S Lab technician's colleague cut their hand badly on a broken beaker; reporter is panicked but answers well.
+U injury_medical
++ injury_kind persons_involved :: My colleague just sliced her hand open on a broken beaker and it's bleeding a lot!
+- :: Oh god, there's blood on the bench.
+A person_conscious :: Help is being alerted. Is she conscious and talking to you?
+U injury_medical
++ person_conscious :: Yes, she's awake and talking, she's just very pale.
++ immediate_actions_taken :: I've wrapped it in a clean towel and I'm pressing on it.
+A building,floor :: You're doing the right thing. Which building and floor are you on?
+U injury_medical
++ building floor space_type :: QRC, floor four, the wet chemistry lab.
++ persons_count :: It's just her who's hurt.
+A occurred_at :: When did it happen?
+U injury_medical
++ occurred_at :: Literally two minutes ago.
+A :: First aid is on the way to the QRC floor four lab. Keep the pressure on.
+
+@ injury_medical_002 single
+S Receptionist sees a visitor faint in the lobby.
+U undetermined
+- :: Sorry, I'm at the front desk and something's just happened.
++ :: Can someone come to reception quickly, a visitor has gone down on the floor?
+A :: Of course. Is the visitor hurt or unwell?
+U injury_medical
++ injury_kind :: A visitor just fainted in the lobby, she went down right in front of the desk.
+A person_conscious :: Is she conscious and breathing?
+U injury_medical
++ person_conscious :: She's breathing, and her eyes are opening now, she's a bit confused.
++ building :: This is the Lakeview building reception.
++ persons_count :: It's only her, nobody else is hurt.
+- :: I've never seen anyone faint before, my hands are shaking.
+A :: First aid is on the way. Keep her lying down and stay with her.
+
+@ injury_medical_003 single
+S Housekeeping staff slipped and fell on stairs, reporting for themselves; three turns.
+U injury_medical
+- :: I'm okay, I think, but I wanted to report it.
++ injury_kind :: I slipped on the stairs and landed hard on my wrist.
+A person_conscious :: I'm sorry. Are you able to move, and is anyone with you?
+U injury_medical
++ person_conscious :: I'm sitting on the step, I'm fine to talk, but my wrist is swelling up.
++ building space_type :: Pine building, the back stairwell between floors one and two.
+A occurred_at :: When did it happen?
+U injury_medical
++ occurred_at :: About five minutes ago.
+- :: My supervisor is going to tease me forever.
+A :: First aid is on the way. Please stay seated until they arrive.
+
+@ injury_medical_004 single
+S Senior engineer reports a colleague complaining of chest pain at their desk; urgent.
+U injury_medical
++ injury_kind persons_involved :: My manager says he has a crushing pain in his chest and his left arm feels numb.
+- :: He's trying to say it's nothing, but he looks awful.
+A person_conscious :: Emergency response is being alerted now. Is he conscious and breathing normally?
+U injury_medical
++ person_conscious :: He's conscious, but he's sweating a lot and breathing fast.
++ building floor :: N, floor ten, near the corner meeting rooms.
+A :: The emergency team is on the way. Keep him seated and calm, and don't let him walk around.
+
+@ injury_medical_005 single
+S Cafeteria worker burned their arm on a fryer; reported by a colleague in one turn.
+U injury_medical
++ injury_kind persons_count :: One of the kitchen staff burned her forearm on the fryer, just her, she's conscious and holding it under cold water.
++ person_conscious immediate_actions_taken :: She's alert, we're keeping it under the tap.
++ building space_type :: Spruce block canteen kitchen.
+- :: The lunch rush starts in twenty minutes, so it's chaos in here.
+A :: First aid is on the way. Keep it under cool running water.
+
+@ injury_medical_006 single
+S Security guard is unsure what happened at first: someone on the floor in the car park; four turns.
+U undetermined
++ :: There's a man lying on the ground in the car park next to his car.
+- :: I'm walking over now.
+A :: Can you tell if he's hurt or unwell?
+U injury_medical
++ injury_kind :: He says he tripped over the kerb and hit his head on the car door.
++ person_conscious :: He's awake, but he's a bit dazed.
+A building :: Help is being alerted. Which building's car park?
+U injury_medical
++ building floor :: Under the Lakeview building, level minus one.
+A persons_count :: Is anyone else hurt?
+U injury_medical
++ persons_count :: Just him.
+- :: He keeps apologising for the fuss.
+A :: First aid is on the way. Keep him still and don't let him stand up yet.
+
+@ injury_medical_007 single
+S Lab technician received an electric shock from bench equipment; colleague reports.
+U injury_medical
++ injury_kind persons_involved :: My colleague got a shock from the power supply on the test bench.
+A person_conscious :: Is he conscious and breathing?
+U injury_medical
++ person_conscious :: He's conscious, but his hand is tingling and he says his heart feels weird.
++ immediate_actions_taken :: We switched off the bench at the wall.
++ persons_count :: Nobody else touched it, so it's just him.
+A building,floor :: Help is being alerted. Which building and floor?
+U injury_medical
++ building floor :: N, floor six, the power electronics lab.
+A :: The emergency team is on the way. Keep him seated and don't touch the equipment.
+
+@ injury_medical_008 single
+S Visitor sprained their ankle on a step in the atrium.
+U injury_medical
++ injury_kind :: I've twisted my ankle on the step in the atrium.
+- :: Very elegant of me.
+A person_conscious :: Are you okay otherwise, and is anyone with you?
+U injury_medical
++ person_conscious :: I'm fine otherwise, my host is with me.
++ building :: The Horizon building.
+- :: I was too busy looking at the art on the walls.
+A :: First aid is on the way to the atrium.
+
+@ injury_medical_009 single
+S Intern greets nervously, then reports a colleague's nosebleed that won't stop.
+U undetermined
+- :: Hi, sorry, I'm not sure if this counts as an emergency.
+A :: That's fine, tell me what's going on.
+U injury_medical
++ injury_kind persons_involved :: My teammate has a nosebleed that won't stop, it's been going for fifteen minutes.
+A person_conscious :: Is she conscious and feeling okay otherwise?
+U injury_medical
++ person_conscious :: She's fine to talk, a bit lightheaded.
++ building floor :: Birch building, floor one.
+A :: First aid is on the way. Have her lean forward and pinch the soft part of her nose.
+
+@ injury_medical_010 single
+S Night-shift worker finds a colleague unresponsive on the floor; very urgent.
+U injury_medical
++ injury_kind :: My colleague is on the floor and he's not responding!
+- :: Please hurry.
+A person_conscious :: Emergency response is being alerted now. Is he breathing?
+U injury_medical
++ person_conscious :: I think so, his chest is moving but he won't wake up.
++ building floor space_type :: QRC, ground floor, the control room.
++ persons_count :: It's only him, I'm the only other person here.
+A :: The emergency team is on the way. Stay with him, keep his airway clear, and tell them if his breathing stops.
+
+@ injury_medical_011 single
+S Contractor cut their leg on sheet metal on site.
+U injury_medical
++ injury_kind :: I've cut my leg on a sheet of metal on site.
++ person_conscious :: I'm fine, it's bleeding but I'm okay.
+- :: Should have worn the proper trousers today.
+A building,floor :: Which building and floor?
+U injury_medical
++ building floor :: Spruce block, floor two.
+- :: My boots are full of sawdust and blood now, lovely.
+A :: First aid is on the way. Keep pressure on the cut.
+
+@ injury_medical_012 single
+S Manager reports two people hurt after a shelf fell in a store room; four turns.
+U injury_medical
++ injury_kind :: A shelf came down in the store room and hit two people.
+A person_conscious :: Are they both conscious?
+U injury_medical
++ person_conscious :: Yes, both are awake, one has a cut on his head and the other hurt her shoulder.
++ persons_count :: Two people hurt.
+A building,floor :: Which building and floor?
+U injury_medical
++ building floor :: Willow building, floor one.
+A occurred_at :: When did it happen?
+U injury_medical
++ occurred_at :: Just now, about two minutes ago.
+- :: Everyone's a bit shaken up.
+A :: First aid is on the way. Keep them still.
+
+@ injury_medical_013 single
+S Receptionist reports a visitor having an asthma attack.
+U undetermined
++ :: A visitor in the waiting area is really struggling to breathe.
+- :: I don't know what to do.
+A :: Help is being alerted. Can you tell what's causing it?
+U injury_medical
++ injury_kind :: A visitor is having an asthma attack and can't find his inhaler.
+A person_conscious :: Is he conscious and able to speak?
+U injury_medical
++ person_conscious :: He's conscious, but he can only say a couple of words at a time.
+- :: His colleague is searching his bag for the inhaler.
++ building :: QRC reception.
++ persons_count :: Just the one person.
+A :: The emergency team is on the way. Keep him sitting upright and calm.
+
+@ injury_medical_014 single
+S Senior engineer jokes about stapling their finger, but it's actually deep.
+U injury_medical
+- :: Okay, this is embarrassing.
++ injury_kind :: I've managed to put a staple right through my finger.
+- :: Ten years in engineering and I'm defeated by a stapler.
+A person_conscious :: Are you okay otherwise?
+U injury_medical
++ person_conscious :: Yeah, I'm fine, it just really hurts.
++ building floor :: N, floor four.
+A :: First aid is on the way. Don't pull it out yourself.
+
+@ injury_medical_015 single
+S Lab technician got a chemical splash in the eye; colleague reports.
+U injury_medical
++ injury_kind persons_involved :: My colleague got a splash of cleaning solution in her eye.
++ immediate_actions_taken :: She's at the eyewash station now.
+A person_conscious :: Is she conscious and okay otherwise?
+U injury_medical
++ person_conscious :: She's fine, just in a lot of pain.
++ building floor :: QRC, floor five.
+- :: She's being really brave about it.
+A :: First aid is on the way. Keep rinsing for at least fifteen minutes.
+
+@ injury_medical_016 single
+S Security guard reports someone fell off a bike at the entrance; three turns.
+U injury_medical
++ injury_kind :: A cyclist came off his bike at the main entrance.
+A person_conscious :: Is he conscious?
+U injury_medical
++ person_conscious :: Yes, he's sitting up.
++ :: His elbow is scraped up and his knee looks swollen.
+A building :: Which building?
+U injury_medical
++ building :: N.
+- :: The kerb there is a nightmare.
+A :: First aid is on the way to the N entrance.
+
+@ injury_medical_017 single
+S Housekeeping staff reports a colleague fainted in the heat of a store room.
+U injury_medical
++ injury_kind persons_involved :: My colleague passed out in the store room, it's really hot in there.
+A person_conscious :: Is she conscious now?
+U injury_medical
++ person_conscious :: She's coming round, she's talking.
++ building floor :: Oak building, basement.
+- :: The fan in there has been broken for weeks.
+A :: First aid is on the way. Move her somewhere cool if you can.
+
+@ injury_medical_018 single
+S Manager reports a colleague with severe allergic reaction after a snack; urgent.
+U injury_medical
++ injury_kind :: Someone on my team is having an allergic reaction, his lips are swelling.
+A person_conscious :: Is he conscious and breathing okay?
+U injury_medical
++ person_conscious :: He's conscious, but his breathing is getting noisy.
++ immediate_actions_taken :: He's used his own EpiPen.
++ building floor :: QRC, floor three.
++ persons_count :: Only him, the rest of us are fine.
+A :: The emergency team is on the way. Stay with him.
+
+@ injury_medical_019 single
+S Visitor bumped their head on a low beam; light.
+U undetermined
+- :: Ouch, okay, that was stupid of me.
++ :: I've just walked straight into something in the corridor.
+A :: Are you hurt?
+U injury_medical
++ injury_kind :: I hit my head on a low beam in the corridor.
+- :: Tall people problems.
+A person_conscious :: Are you feeling dizzy or sick?
+U injury_medical
++ person_conscious :: Not dizzy, just a bump.
++ building :: Summit building.
+A :: First aid will come and check on you.
+
+@ injury_medical_020 single
+S Intern found someone crying and breathing hard in the stairwell: panic attack; three turns.
+U undetermined
++ :: There's someone sitting in the stairwell breathing really fast and crying.
+A :: Can you tell if they're hurt or unwell?
+U injury_medical
++ injury_kind :: She says she's having a panic attack and her chest feels tight.
++ person_conscious :: She's conscious and talking.
+A building,floor :: Help is being alerted. Which building and floor?
+U injury_medical
++ building floor :: Birch building, between floors two and three.
+- :: I'm staying with her.
+A :: First aid is on the way. Thank you for staying with her.
+
+@ injury_medical_021 single
+S Night-shift worker burned their hand on a kettle in the pantry; one turn.
+U injury_medical
++ injury_kind person_conscious :: Burned my hand on the pantry kettle, I'm fine otherwise, running it under cold water.
++ building floor :: N, floor seven.
+- :: Note to self, don't rush tea.
+A :: First aid will come and check it. Keep it under cool water.
+
+@ injury_medical_022 single
+S Contractor fell from a stepladder; reported by coworker; four turns.
+U injury_medical
++ injury_kind persons_involved :: One of our guys fell off a stepladder.
+A person_conscious :: Is he conscious?
+U injury_medical
++ person_conscious :: Yes, but he's holding his back and doesn't want to move.
+A building,floor :: Which building and floor?
+U injury_medical
++ building floor :: Elm building, floor three.
+A persons_count :: Is anyone else hurt?
+U injury_medical
++ persons_count :: Just him.
+- :: The ladder was wobbly, I told them.
+A :: The emergency team is on the way. Don't move him.
+
+@ injury_medical_023 single
+S Lab technician cut their thumb on a scalpel.
+U injury_medical
++ injury_kind :: I cut my thumb on a scalpel in the lab.
++ person_conscious :: I'm fine, it's not deep.
+- :: My lab partner is laughing at me, so it can't be that bad.
+A building :: Which building and floor?
+U injury_medical
++ building floor :: It's Research Hall 2, on the first floor by the window benches.
+A :: First aid will come and dress it.
+
+@ injury_medical_024 single
+S Security guard reports a fight left someone with a bleeding face; urgent.
+U injury_medical
++ injury_kind :: Someone got punched outside the cafeteria and his face is bleeding.
+A person_conscious :: Is he conscious?
+U injury_medical
++ person_conscious :: Yes, he's sitting on the floor.
++ building :: QRC.
++ persons_count :: Just the one guy is hurt.
+- :: The other guy ran off.
+A :: First aid and security are on the way.
+
+@ injury_medical_025 single
+S Receptionist reports an older visitor dizzy and chest pain; urgent; three turns.
+U injury_medical
++ injury_kind :: An older visitor says his chest hurts and he feels dizzy.
+A person_conscious :: Is he conscious and breathing?
+U injury_medical
++ person_conscious :: He's conscious, sitting down, very pale.
+A building :: Which building?
+U injury_medical
++ building :: Willow building reception.
++ occurred_at :: It started a few minutes ago.
+- :: His daughter is here with him and she's very worried.
+A :: The emergency team is on the way. Keep him seated and calm.
+
+@ injury_medical_026 single
+S Senior engineer reports a colleague who fainted in a meeting; five turns.
+U injury_medical
++ injury_kind :: Someone fainted in our meeting.
+A person_conscious :: Are they conscious now?
+U injury_medical
++ person_conscious :: Yes, he woke up after a few seconds.
+A building :: Which building?
+U injury_medical
++ building :: N.
+A floor,space_id :: Which floor and room?
+U injury_medical
++ floor space_id :: Floor eleven, room Fuji.
+- :: He skipped lunch, I think.
+A persons_count :: Is anyone else unwell?
+U injury_medical
++ persons_count :: No, only him.
+A :: First aid is on the way to Fuji.
+
+@ injury_medical_027 single
+S Housekeeping staff got a shock from a vacuum plug.
+U undetermined
++ :: Something just happened with my vacuum cleaner and my arm feels strange.
+- :: I'm a bit scared to touch anything now.
+A :: Can you tell me what happened?
+U injury_medical
++ injury_kind :: I got a shock from the plug of my vacuum cleaner.
+- :: My arm is still buzzing.
+A person_conscious :: Are you okay to talk, and is anyone with you?
+U injury_medical
++ person_conscious :: I'm okay to talk, my colleague is here.
++ building floor :: QRC floor one.
+A :: The emergency team is on the way. Don't touch the vacuum again.
+
+@ injury_medical_028 single
+S Visitor's child fell in the lobby; parent reports.
+U injury_medical
++ injury_kind persons_involved :: My son fell running in the lobby and cut his chin.
+A person_conscious :: Is he conscious and okay?
+U injury_medical
++ person_conscious :: He's crying a lot, but he's fine otherwise.
++ building :: Horizon building.
+- :: I told him not to run, but he's six.
+A :: First aid is on the way.
+
+@ injury_medical_029 single
+S Manager calmly reports a colleague with severe migraine and vomiting.
+U undetermined
+- :: Hi, not sure who to call for this.
++ :: One of my team is really unwell at her desk.
+A :: What's wrong?
+U injury_medical
++ injury_kind :: A colleague has a really bad migraine and has been sick twice.
++ person_conscious :: She's conscious, lying down in the quiet room.
++ building floor :: Birch building, floor two.
+A :: First aid will come and check on her.
+
+@ injury_medical_030 single
+S Night-shift worker tripped over a cable and hurt their knee; three turns.
+U injury_medical
++ injury_kind :: I tripped over a cable and hurt my knee.
+A person_conscious :: Are you okay otherwise?
+U injury_medical
++ person_conscious :: Yeah, I'm fine, just sore.
+A building,floor :: Which building and floor?
+U injury_medical
++ building floor :: N, floor two.
+- :: The cable is still there, someone should move it.
+A :: First aid will check your knee, and I've noted the cable.
+
+@ injury_medical_031 single
+S Lab technician burned by a soldering iron.
+U injury_medical
++ injury_kind :: I burned my finger on the soldering iron.
+- :: Classic.
++ person_conscious :: I'm fine.
+- :: I've done that maybe a hundred times.
+A building,floor :: Which building and floor?
+U injury_medical
++ building floor :: QRC floor six.
+A :: First aid will come and look at it.
+
+@ injury_medical_032 single
+S Security guard reports unknown condition of a person in a car; urgent.
+U injury_medical
++ injury_kind :: There's a woman slumped over the wheel in a car in the car park.
+A person_conscious :: Is she conscious?
+U injury_medical
++ person_conscious :: I don't know, the doors are locked and she's not responding to knocking.
++ building :: Under the N building.
+- :: My heart is pounding.
+A :: The emergency team is on the way. Keep trying to get her attention.
+
+@ injury_medical_033 confusable confused=unsafe_condition
+S Manager reports a near miss with a falling box; then a person was actually hit.
+U unsafe_condition
++ :: A box fell off the top shelf in the store room.
+A :: Did it hit anyone?
+U injury_medical
++ injury_kind :: Actually yes, it hit my colleague on the shoulder.
++ person_conscious :: She's conscious, in pain.
++ building floor :: N, floor three.
+- :: Those shelves are always overloaded.
+A :: First aid is on the way.
+
+@ injury_medical_034 confusable confused=unsafe_condition
+S Housekeeping staff reports a wet floor hazard; someone already slipped and hurt their back.
+U unsafe_condition
++ :: The floor by the entrance is really slippery.
+A :: Has anyone slipped?
+U injury_medical
++ injury_kind :: Yes, a man slipped a minute ago and hurt his back.
++ person_conscious :: He's conscious, sitting on the floor.
++ building :: Lakeview.
+A :: First aid is on the way.
+
+@ injury_medical_035 confusable confused=unsafe_condition
+S Contractor reports a loose railing; a coworker fell against it and hurt their arm.
+U unsafe_condition
++ :: A railing on the mezzanine is loose.
+A :: Has anyone been hurt?
+U injury_medical
++ injury_kind :: My coworker leaned on it and fell sideways, he's hurt his arm.
++ person_conscious :: He's awake and talking.
++ building :: Spruce block.
+A :: First aid is on the way.
+
+@ injury_medical_036 confusable confused=spill_cleanup
+S Visitor reports a spill; a person slipped on it and hit their head.
+U spill_cleanup
++ :: There's coffee spilled across the corridor.
+A :: Is it a slip hazard?
+U injury_medical
++ injury_kind :: Someone just slipped on it and hit their head on the wall.
++ person_conscious :: She's conscious but dizzy.
++ building floor :: QRC floor two.
+- :: Nobody had put a sign out.
+A :: First aid is on the way.
+
+@ injury_medical_037 confusable confused=electrical_hazard
+S Intern reports a sparking socket; a colleague was shocked.
+U electrical_hazard
++ :: A socket under the desk sparked.
+A :: Is there smoke?
+U injury_medical
++ :: No smoke.
++ injury_kind :: But my colleague got a shock when he plugged his laptop in.
++ person_conscious :: He's awake, but his hand is numb.
++ building floor :: N, floor five.
+A :: The emergency team is on the way. Keep everyone away from the socket.
+
+@ injury_medical_038 confusable confused=cafeteria_issue
+S Senior engineer complains about cafeteria food labelling; a colleague is having an allergic reaction.
+U cafeteria_issue
++ :: The cafeteria didn't label the nuts in the curry.
+A :: Has anyone felt unwell?
+U injury_medical
++ injury_kind :: My colleague is having a reaction, her face is swelling up.
++ person_conscious :: She's conscious and breathing, but it's getting worse.
++ building :: QRC.
+A :: The emergency team is on the way.

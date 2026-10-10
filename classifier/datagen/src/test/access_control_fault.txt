@@ -1,0 +1,42 @@
+@ test_access_control_fault_001 single
+S Courier can't get through the delivery gate because the keypad is dead.
+U access_control_fault
++ door_state :: The keypad on the delivery gate is dead.
+A secure_area :: Is it a controlled entry?
+U access_control_fault
++ secure_area :: Yes, deliveries only.
++ building :: Cobalt House.
+- :: I've been waiting twenty minutes.
+A :: Thanks, raised with security systems.
+
+@ test_access_control_fault_002 single
+S Clinic nurse reports the drug store door won't lock; urgent.
+U access_control_fault
++ door_state :: The door to the clinic drug store won't lock.
++ secure_area :: It's restricted, there are medicines in there.
++ building :: Sapphire Block clinic.
+A :: Raised urgently with security.
+
+@ test_access_control_fault_003 single
+S Auditor vague: can't get to their room; the reader is offline; three turns.
+U undetermined
++ :: I can't get into the room I've been given.
+A :: Is the door locked?
+U access_control_fault
++ door_state :: The badge reader is showing offline.
++ secure_area :: It's just a normal office.
+A building :: Which building?
+U access_control_fault
++ building floor :: Granite Tower, floor nine.
+A :: Thanks, logged for security systems.
+
+@ test_access_control_fault_004 confusable confused=lost_badge
+S Translator thinks her visitor pass is lost or faulty; the reader is broken for everyone.
+U lost_badge
++ :: I think I've lost access, my pass doesn't work.
+A :: Does it work on other doors?
+U access_control_fault
++ :: It works elsewhere, and my colleague's doesn't work on this door either.
++ door_state :: The reader just stays red.
++ building :: Cobalt House.
+A :: Thanks, logged as a reader fault.

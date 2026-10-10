@@ -1,0 +1,450 @@
+@ cafeteria_issue_001 single
+S Senior engineer annoyed that the rice at lunch was undercooked and crunchy.
+U cafeteria_issue
++ cafeteria_issue :: The rice at lunch today was basically raw.
+- :: I chipped a tooth on my principles.
+- :: Okay not really, but it was crunchy.
+A food_safety_concern :: Sorry about that. Does anyone feel unwell, or does the food seem unsafe?
+U cafeteria_issue
++ food_safety_concern :: Nobody's sick, it's just badly cooked.
++ building floor space_type :: N, first floor cafeteria.
+A :: Thanks, I've passed the feedback to the cafeteria team.
+
+@ cafeteria_issue_002 single
+S Intern worried that several people felt sick after the chicken at lunch.
+U cafeteria_issue
++ cafeteria_issue food_safety_concern :: Three people on my team felt sick after eating the chicken at lunch.
+- :: I had the paneer, thankfully.
+A building :: That's worrying. Which building's cafeteria was it?
+U cafeteria_issue
++ building space_type :: QRC, the main cafeteria.
++ occurred_at :: Lunch was around half twelve and they started feeling bad an hour later.
+A :: Thanks, I've raised it urgently with the safety team and the cafeteria manager.
+
+@ cafeteria_issue_003 single
+S Housekeeping staff calmly reports the pantry microwave is dead.
+U cafeteria_issue
++ cafeteria_issue space_type :: The microwave in the pantry stopped working.
+- :: There's a queue of people holding cold lunchboxes.
+A food_safety_concern :: Is there any risk to food safety, like fire or burning?
+U cafeteria_issue
++ food_safety_concern :: No, it just doesn't turn on.
++ building floor :: Willow building, floor three.
+A :: Thanks, logged for facilities.
+
+@ cafeteria_issue_004 single
+S Receptionist starts with location, then reports the cafeteria tables are dirty.
+U undetermined
++ space_type building :: I'm in the cafeteria at the Lakeview building.
+- :: On my break.
+A :: What would you like to report?
+U cafeteria_issue
++ cafeteria_issue :: All the tables are sticky and covered in crumbs.
+- :: Nobody wiped them after the lunch rush.
+A food_safety_concern :: Is any food or the serving area affected?
+U cafeteria_issue
++ food_safety_concern :: The serving line looks fine, it's just the tables.
+A occurred_at :: Roughly when did you notice the tables like that?
+U cafeteria_issue
++ occurred_at :: Since the end of the lunch rush, maybe two o'clock.
+A :: Thanks, logged for the cafeteria cleaning crew.
+
+@ cafeteria_issue_005 single
+S Manager in a rush gives a complete report: the coffee machine on QRC floor 5 is broken.
+U cafeteria_issue
++ cafeteria_issue space_type building floor :: Coffee machine in the QRC floor five pantry is broken, error light on, no coffee.
++ food_safety_concern :: Nothing unsafe, just no coffee.
+- :: Productivity is about to fall off a cliff.
+A :: Logged for the vending contractor.
+
+@ cafeteria_issue_006 single
+S Lab technician found the yoghurt in the pantry fridge past its date and smelling sour.
+U cafeteria_issue
++ cafeteria_issue :: The yoghurt cups in the pantry fridge are past their date and smell sour.
+A food_safety_concern :: Has anyone eaten them or felt unwell?
+U cafeteria_issue
++ food_safety_concern :: I don't know if anyone ate one.
++ building floor :: Research Hall 2, floor two.
+- :: I've put a sticky note on the fridge.
+A :: Thanks, I've raised it so the stock is removed and checked.
+
+@ cafeteria_issue_007 single
+S Visitor feels uneasy; unclear at first; it's about a hair in their food.
+U undetermined
+- :: Hmm, not sure how to say this politely.
+A :: That's okay, what happened?
+U cafeteria_issue
++ cafeteria_issue :: I found a long hair in my curry from the cafeteria.
+- :: I've lost my appetite.
+A food_safety_concern,building :: Do you feel unwell, and which building's cafeteria?
+U cafeteria_issue
++ food_safety_concern :: I feel fine.
++ building :: The Summit building.
+A :: Sorry about that. I've passed it to the cafeteria manager.
+
+@ cafeteria_issue_008 single
+S Night-shift worker jokes that the vending machine eats coins.
+U cafeteria_issue
++ cafeteria_issue :: The vending machine has eaten my money again.
+- :: It's very well fed at this point.
+A food_safety_concern :: Is there anything unsafe about it?
+U cafeteria_issue
++ food_safety_concern :: No, just greedy.
++ building floor space_type :: N, floor one, the pantry by reception.
+A :: Thanks, logged for the vending contractor.
+
+@ cafeteria_issue_009 single
+S Contractor tersely reports the water dispenser in the canteen tastes odd.
+U cafeteria_issue
++ cafeteria_issue :: Water from the canteen dispenser tastes like metal.
+A food_safety_concern :: Has anyone felt unwell after drinking it?
+U cafeteria_issue
++ food_safety_concern :: Not that I know of, but I'd not drink it.
++ building :: Cedar building canteen.
+A :: Thanks, I've raised it with the safety team so it's checked.
+
+@ cafeteria_issue_010 single
+S Security guard calmly reports the cafeteria fridge isn't cold; four turns.
+U cafeteria_issue
++ cafeteria_issue :: The display fridge at the cafeteria counter isn't cold.
+A food_safety_concern :: Is food still being served from it?
+U cafeteria_issue
++ food_safety_concern :: Yes, sandwiches and milk are still in there.
+A building :: Which building?
+U cafeteria_issue
++ building space_type :: QRC, main cafeteria.
+A occurred_at :: When did you notice it?
+U cafeteria_issue
++ occurred_at :: About seven, on my morning round.
+- :: The kitchen staff haven't arrived yet.
+A :: Thanks, raised urgently so the food is pulled and the fridge fixed.
+
+@ cafeteria_issue_011 single
+S Intern greets, then reports cold food at the hot counter.
+U undetermined
+- :: Hello! Quick feedback.
+A :: Sure, go ahead.
+U cafeteria_issue
++ cafeteria_issue :: The food at the hot counter was stone cold.
+A food_safety_concern :: Does it seem unsafe, or did anyone feel unwell?
+U cafeteria_issue
++ food_safety_concern :: Nobody's sick, but it's not great.
++ building :: N cafeteria.
+- :: The dessert was good though.
+A :: Thanks, passed to the cafeteria team.
+
+@ cafeteria_issue_012 single
+S Manager worried about the dishwashing area being dirty and smelly.
+U cafeteria_issue
++ cafeteria_issue :: The tray return and dish area smells awful and there's food waste piled up.
+A food_safety_concern :: Is any of it near food being served?
+U cafeteria_issue
++ food_safety_concern :: It's right next to where they stack clean plates.
++ building floor :: The Oak building, ground floor cafeteria.
+A :: Thanks, raised with the cafeteria manager and safety team.
+
+@ cafeteria_issue_013 single
+S Receptionist tersely reports the toaster is smoking; one turn.
+U cafeteria_issue
++ cafeteria_issue space_type building floor :: The pantry toaster on QRC floor one keeps burning everything and smoking.
++ food_safety_concern :: It's a fire risk, so I unplugged it.
++ immediate_actions_taken :: Unplugged.
+A :: Thanks, logged for facilities to replace it.
+
+@ cafeteria_issue_014 single
+S Lab technician reports suspicious chicken that looked pink inside.
+U cafeteria_issue
++ cafeteria_issue :: The chicken in the cafeteria was pink inside.
+- :: I only noticed after a bite.
+A food_safety_concern :: Do you feel unwell?
+U cafeteria_issue
++ food_safety_concern :: Not yet, but I'm worried.
+A building :: Which building's cafeteria?
+U cafeteria_issue
++ building :: N.
++ occurred_at :: Today's lunch, about 1 pm.
+A :: Thanks, raised urgently with the cafeteria and safety team.
+
+@ cafeteria_issue_015 single
+S Housekeeping staff calmly reports the cafeteria floor is greasy around the fryer.
+U cafeteria_issue
++ cafeteria_issue :: The kitchen floor around the fryer is greasy and not cleaned.
+A food_safety_concern :: Is any food affected?
+U cafeteria_issue
++ food_safety_concern :: No food issue.
++ building :: Spruce block canteen.
+A :: Thanks, logged for the kitchen crew.
+
+@ cafeteria_issue_016 single
+S Visitor jokes the coffee tastes like dishwater.
+U cafeteria_issue
++ cafeteria_issue :: The coffee here tastes like dishwater.
+- :: I've had better at a bus station.
+A food_safety_concern,building :: Anything unsafe, and which building?
+U cafeteria_issue
++ food_safety_concern :: Just bad.
++ building space_type :: Horizon building cafe.
+A :: Thanks, feedback passed on.
+
+@ cafeteria_issue_017 single
+S Night-shift worker reports the pantry fridge is leaking and warm; three turns.
+U cafeteria_issue
++ cafeteria_issue space_type :: The pantry fridge feels warm.
+- :: My lunch was sad.
+A food_safety_concern :: Is there food in it that could have gone off?
+U cafeteria_issue
++ food_safety_concern :: Yes, lots of people's lunches and milk.
+A building,floor :: Which building and floor?
+U cafeteria_issue
++ building floor :: QRC, floor four.
++ occurred_at :: It was fine yesterday.
+A :: Thanks, logged so the fridge is fixed and food checked.
+
+@ cafeteria_issue_018 single
+S Senior engineer annoyed that the cafeteria ran out of food early.
+U cafeteria_issue
++ cafeteria_issue :: The cafeteria ran out of food by quarter past one.
+- :: Some of us have meetings until one.
+A food_safety_concern :: Any safety issue?
+U cafeteria_issue
++ food_safety_concern :: No.
++ building :: N.
+A :: Thanks, passed to the cafeteria manager.
+
+@ cafeteria_issue_019 single
+S Contractor worried about flies around uncovered food at the serving line.
+U cafeteria_issue
++ cafeteria_issue :: The food at the serving line is uncovered and flies are landing on it.
+A food_safety_concern :: Is food still being served?
+U cafeteria_issue
++ food_safety_concern :: Yes, people are still taking it.
++ building :: The Cedar building canteen.
+- :: I skipped lunch.
+A :: Thanks, raised urgently with the cafeteria and safety team.
+
+@ cafeteria_issue_020 single
+S Intern starts with location, then reports the pantry kettle is broken.
+U undetermined
++ building floor :: I'm on floor eight of N.
+A :: What's up?
+U cafeteria_issue
++ cafeteria_issue space_type :: The kettle in the pantry is broken, it won't switch on.
++ food_safety_concern :: Nothing dangerous.
+A :: Thanks, logged for facilities.
+
+@ cafeteria_issue_021 single
+S Manager reports a staff member coughing over food without a mask.
+U cafeteria_issue
++ cafeteria_issue :: One of the servers was coughing over the food without covering it.
+A food_safety_concern :: Is that food still being served?
+U cafeteria_issue
++ food_safety_concern :: Yes, the whole tray.
++ building space_type :: QRC cafeteria.
+- :: I don't want to get them in trouble, just the food.
+A :: Thanks, raised with the cafeteria manager.
+
+@ cafeteria_issue_022 single
+S Receptionist reports the ice machine in the cafeteria is dirty inside.
+U cafeteria_issue
++ cafeteria_issue :: The ice machine has black mould inside the chute.
+A food_safety_concern :: Is the ice being used?
+U cafeteria_issue
++ food_safety_concern :: Yes, people are filling cups with it.
++ building :: Lakeview cafeteria.
+A :: Thanks, raised urgently so it's taken out of use.
+
+@ cafeteria_issue_023 single
+S Lab technician tersely reports a broken dishwasher in the pantry.
+U cafeteria_issue
++ cafeteria_issue space_type :: Pantry dishwasher won't drain.
++ building floor :: QRC floor three.
++ food_safety_concern :: No safety issue.
+A :: Logged for facilities.
+
+@ cafeteria_issue_024 single
+S Visitor feels unwell after eating salad; unclear at first; four turns.
+U undetermined
+- :: I'm feeling a bit off.
+A :: Sorry to hear that. Do you need medical help?
+U cafeteria_issue
+- :: No, I'm okay, just queasy.
++ cafeteria_issue food_safety_concern :: I think it was the salad I had at the cafeteria.
+A building :: Which building's cafeteria?
+U cafeteria_issue
++ building :: Summit building.
+A occurred_at :: When did you eat it?
+U cafeteria_issue
++ occurred_at :: Around noon.
+A :: Thanks, I've raised it with the safety team and the cafeteria.
+
+@ cafeteria_issue_025 single
+S Housekeeping staff jokes the cafeteria juice machine sprays everywhere.
+U cafeteria_issue
++ cafeteria_issue :: The juice machine sprays juice in every direction except the cup.
+- :: Modern art.
++ building :: N cafeteria.
+A food_safety_concern :: Anything unsafe?
+U cafeteria_issue
++ food_safety_concern :: No.
+A :: Thanks, logged for the equipment contractor.
+
+@ cafeteria_issue_026 single
+S Night-shift worker reports the night canteen counter is unclean; three turns.
+U cafeteria_issue
++ cafeteria_issue :: The night canteen counter is filthy.
+A food_safety_concern :: Is food being served from it?
+U cafeteria_issue
++ food_safety_concern :: Yes, they serve sandwiches from there.
+A building :: Which building?
+U cafeteria_issue
++ building :: QRC.
+- :: The night shift deserves clean food too.
+A :: Agreed. Raised with the cafeteria manager.
+
+@ cafeteria_issue_027 single
+S Senior engineer calmly says the oven in the pantry doesn't heat; one turn.
+U cafeteria_issue
++ cafeteria_issue space_type building floor :: The oven in the pantry on Willow floor two doesn't heat up, nothing unsafe.
+A :: Logged for facilities.
+
+@ cafeteria_issue_028 single
+S Contractor reports milk in the canteen tastes off; five turns with a question.
+U cafeteria_issue
++ cafeteria_issue :: The milk at the canteen tea station tastes off.
+A food_safety_concern :: Has anyone felt unwell?
+U cafeteria_issue
++ food_safety_concern :: Not sure, I spat it out.
+A building :: Which building?
+U cafeteria_issue
++ building :: Spruce block.
+- :: Do you know if they do vegan milk?
+A occurred_at :: I'm not sure, sorry. When did you notice it?
+U cafeteria_issue
++ occurred_at :: Ten minutes ago.
+A :: Thanks. Anything else?
+U cafeteria_issue
+- :: No, that's it.
+A :: Thanks, I've raised it so the milk is checked and replaced.
+
+@ cafeteria_issue_029 single
+S Intern annoyed the cafeteria payment counter is broken and the queue is huge.
+U cafeteria_issue
++ cafeteria_issue :: The card machine at the cafeteria checkout is broken.
+- :: The queue is going out the door.
+A food_safety_concern :: Any food safety issue?
+U cafeteria_issue
++ food_safety_concern :: No.
++ building :: N.
+A :: Thanks, logged for the cafeteria team.
+
+@ cafeteria_issue_030 single
+S Manager worried that allergen labels are missing on dishes.
+U cafeteria_issue
++ cafeteria_issue :: None of the dishes at lunch had allergen labels.
+- :: I have a nut allergy.
+A food_safety_concern :: Did anyone have a reaction?
+U cafeteria_issue
++ food_safety_concern :: Not that I know, but it's risky.
++ building :: QRC cafeteria.
+A :: Thanks, raised with the cafeteria manager and safety team.
+
+@ cafeteria_issue_031 single
+S Receptionist greets and reports the pantry sink is full of dirty dishes.
+U undetermined
+- :: Hi there!
+A :: Hi, what can I help with?
+U cafeteria_issue
++ cafeteria_issue space_type :: The pantry sink is piled with dirty dishes and smelling.
++ building floor :: Birch building, floor one.
++ food_safety_concern :: Nobody's ill.
+A :: Thanks, logged for housekeeping.
+
+@ cafeteria_issue_032 single
+S Lab technician reports the cafeteria fryer oil looks very old.
+U cafeteria_issue
++ cafeteria_issue :: The fries taste burnt and the fryer oil looks black.
+A food_safety_concern :: Does it seem unsafe?
+U cafeteria_issue
++ food_safety_concern :: Probably, it's been like that all week.
++ building :: Research Hall 2 canteen.
+A :: Thanks, raised with the cafeteria manager.
+
+@ cafeteria_issue_033 confusable confused=pest_sighting
+S Visitor sees a bug near food; it's uncovered food with crumbs everywhere, no pests found.
+U pest_sighting
++ :: I think there are bugs in the cafeteria food.
+A :: What did you see?
+U cafeteria_issue
++ :: Staff checked and there are no bugs.
++ cafeteria_issue :: But the dessert trays are uncovered and crumbs are everywhere.
+A food_safety_concern,building :: Any food safety worry, and which building?
+U cafeteria_issue
++ food_safety_concern :: Only that it's uncovered.
++ building :: Horizon building.
+A :: Thanks, passed to the cafeteria manager.
+
+@ cafeteria_issue_034 confusable confused=pest_sighting
+S Intern thinks something is crawling in their soup; it's pepper flakes, but the soup is cold and stale.
+U pest_sighting
++ :: There's something black floating in my soup.
+- :: I nearly cried.
+A :: Can you tell what it is?
+U cafeteria_issue
++ :: It's just pepper flakes.
++ cafeteria_issue :: But the soup is cold and tastes like yesterday's.
+A food_safety_concern,building :: Do you feel unwell, and which building?
+U cafeteria_issue
++ food_safety_concern :: I'm fine.
++ building :: N.
+A :: Thanks, feedback passed to the cafeteria.
+
+@ cafeteria_issue_035 confusable confused=washroom_hygiene
+S Manager complains dirty sinks; it's the cafeteria handwash station.
+U washroom_hygiene
++ :: The sinks are dirty and there's no soap.
+A :: Which washroom?
+U cafeteria_issue
++ :: Not a washroom, it's the handwash station in the cafeteria.
++ cafeteria_issue :: The basin is grimy and the soap's empty right next to the food counter.
+A food_safety_concern,building :: Could it affect food safety, and which building?
+U cafeteria_issue
++ food_safety_concern :: Yes, people can't wash before eating.
++ building :: QRC.
+A :: Thanks, raised with the cafeteria manager.
+
+@ cafeteria_issue_036 confusable confused=spill_cleanup
+S Housekeeping staff sees a puddle at the counter; the coffee machine is leaking.
+U spill_cleanup
++ :: There's a puddle of coffee by the cafeteria counter.
+A :: Did someone spill it?
+U cafeteria_issue
++ cafeteria_issue :: No, the coffee machine itself is leaking from underneath.
++ building :: Lakeview cafeteria.
+A food_safety_concern :: Is anything unsafe?
+U cafeteria_issue
++ food_safety_concern :: Not unsafe, just leaking.
+A :: Thanks, logged for the equipment contractor.
+
+@ cafeteria_issue_037 confusable confused=injury_medical
+S Senior engineer says a colleague is vomiting; the colleague is okay and they suspect the cafeteria fish.
+U injury_medical
++ :: My colleague is throwing up in the washroom.
+A :: Is she conscious and okay? Does she need medical help?
+U cafeteria_issue
+- :: She's okay, says she just needs to rest.
++ cafeteria_issue food_safety_concern :: She thinks it's the fish from the cafeteria, two others feel sick too.
+A building :: Which building's cafeteria?
+U cafeteria_issue
++ building :: N.
+A :: Thanks, raised urgently with the safety team and cafeteria. Please let first aid know if anyone gets worse.
+
+@ cafeteria_issue_038 confusable confused=device_fault
+S Night-shift worker says a kiosk is broken; it's the pantry vending machine.
+U device_fault
++ :: The machine in the pantry is broken.
+A :: Which machine is it?
+U cafeteria_issue
++ cafeteria_issue :: The snack vending machine, it's stuck and won't drop anything.
++ food_safety_concern :: Nothing unsafe.
++ building floor :: QRC floor two.
+A :: Thanks, logged for the vending contractor.

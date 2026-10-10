@@ -1,0 +1,212 @@
+@ lighting_fault_002 single
+S Housekeeping staff reports several lights out in a corridor of a made-up block.
+U lighting_fault
++ lighting_scope space_type :: Four of the ceiling lights in the long corridor are out.
+- :: It's like a horror film down there in the evening.
+A building,floor :: Which building and floor?
+U lighting_fault
++ building floor :: Block C, floor two.
++ occurred_at :: They went out one after another this week.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_004 single
+S Intern greets, then reports the light above their desk flickering.
+U undetermined
+- :: Hi, quick one, nothing urgent.
+A :: Sure, go ahead.
+U lighting_fault
++ lighting_scope :: The light right above my desk keeps flickering.
+- :: It's giving me a headache.
+A building,floor :: Which building and floor?
+U lighting_fault
++ building floor space_id :: Tower B, floor four, desk 4-63.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_006 single
+S Security guard reports the whole car park level dark.
+U lighting_fault
++ lighting_scope space_type :: The whole lower car park level has no lights.
+- :: People are using their phone torches to find their cars.
+A building :: Which building?
+U lighting_fault
++ building floor :: Willowbrook office, level minus one.
+A :: Thanks, logged as a priority for the electricians.
+
+@ lighting_fault_008 single
+S Receptionist vague: lobby looks gloomy; several lights out; three turns.
+U undetermined
++ :: The lobby looks really gloomy today.
+- :: Visitors keep squinting at the sign-in sheet.
+A :: Are some lights not working?
+U lighting_fault
++ lighting_scope :: Yes, half of the ceiling lights over reception are off.
+A building :: Which building?
+U lighting_fault
++ building :: The Harbour building.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_010 single
+S Lab technician reports a task light on the inspection bench dead.
+U lighting_fault
++ lighting_scope :: The task light on the inspection bench is dead.
++ :: The bulb looks fine, it just doesn't turn on.
+A building,floor :: Which building and floor?
+U lighting_fault
++ building floor :: Hollis research building, the second floor inspection room.
+- :: I'm inspecting solder joints with my phone light.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_012 single
+S Manager tersely reports the meeting room lights won't turn off; one turn.
+U lighting_fault
++ lighting_scope space_id :: Lights in meeting room Juniper won't turn off, the whole room.
++ building floor :: Maple block, floor three.
+- :: The switch does nothing.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_014 single
+S Contractor reports outdoor path lights not working.
+U lighting_fault
++ lighting_scope space_type :: The path lights along the front of the building are all out.
+A building :: Which building?
+U lighting_fault
++ building :: Lakeside annex.
+- :: It gets pitch black out there after six.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_016 single
+S Night-shift worker jokes the stairwell lights work on a timer that's too short.
+U lighting_fault
+- :: The stairwell lights give you about four steps before going dark.
++ lighting_scope space_type :: The motion sensor lights in the stairwell keep switching off while you're still on the stairs.
+A building :: Which building?
+U lighting_fault
++ building :: The Orchard building.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_018 single
+S Senior engineer reports a whole open office with lights dimmed to 20 percent; four turns.
+U lighting_fault
++ lighting_scope :: All the lights on our floor are stuck at about a fifth of normal brightness.
+A building :: Which building?
+U lighting_fault
++ building :: Tower B.
+A floor :: Which floor?
+U lighting_fault
++ floor :: Floor seven.
+- :: We look like we're in a cinema.
+A occurred_at :: When did it start?
+U lighting_fault
++ occurred_at :: This morning when we came in.
+A :: Thanks, logged as a priority.
+
+@ lighting_fault_020 single
+S Visitor apologises and reports a washroom light out.
+U lighting_fault
+- :: Sorry, small thing.
++ lighting_scope space_type :: The light in the washroom by the waiting area is out.
+A building :: Which building?
+U lighting_fault
++ building :: Riverside campus main building.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_022 single
+S Housekeeping greets and reports a buzzing light in a store room; three turns.
+U undetermined
+- :: Evening, cleaning crew here.
+A :: Evening, what's up?
+U lighting_fault
++ lighting_scope :: The single light in the store room buzzes and flickers.
+A building,floor :: Which building and floor?
+U lighting_fault
++ building floor :: Willowbrook office, floor one.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_024 single
+S Lab technician tersely reports several lab lights out; one turn.
+U lighting_fault
++ lighting_scope :: Three of the six lights in our lab are out.
++ building floor :: Hollis research building, the ground floor RF lab.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_026 single
+S Manager reports emergency exit sign light out.
+U lighting_fault
++ lighting_scope :: The emergency exit sign over the fire door isn't lit.
+- :: Seems like something that should be lit.
+A building,floor :: Which building and floor?
+U lighting_fault
++ building floor :: The annex, floor two.
+A :: Thanks, logged as a priority for the electricians.
+
+@ lighting_fault_028 single
+S Night-shift worker vague: hard to see in one area; whole area dark; three turns.
+U undetermined
++ :: I can barely see where I'm walking near the loading area.
+A :: Are the lights out?
+U lighting_fault
++ lighting_scope :: Every light in the loading area is off.
+A building :: Which building?
+U lighting_fault
++ building space_type :: Block C, the loading dock.
+- :: Forklifts and darkness are not a great combo.
+A :: Thanks, logged as a priority.
+
+@ lighting_fault_030 single
+S Receptionist reports a feature wall light fitting flickering wildly; one turn.
+U lighting_fault
++ lighting_scope :: The feature light on the lobby wall is flickering like crazy.
++ building :: The Orchard building.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_032 single
+S Senior engineer reports lights on a timer going off at 5 pm while people still work; five turns.
+U lighting_fault
++ lighting_scope :: All the lights on our floor switch off at five every day.
+A building :: Which building?
+U lighting_fault
++ building :: Maple block.
+A floor :: Which floor?
+U lighting_fault
++ floor :: Floor two.
+- :: Half of us work late.
+A occurred_at :: Since when?
+U lighting_fault
++ occurred_at :: Since the clocks changed.
+A :: Have you tried the override switch?
+U lighting_fault
++ immediate_actions_taken :: It only gives us ten minutes.
+A :: Thanks, logged so the timer can be reset.
+
+@ lighting_fault_034 confusable confused=power_outage
+S Intern thinks the power is out because the room is dark; only the lights failed.
+U power_outage
++ :: The power is out in our room.
+A :: Are the sockets dead too?
+U lighting_fault
++ :: My laptop is charging fine.
++ lighting_scope :: It's just the ceiling lights, the whole room's lights are off.
++ building floor :: Willowbrook office, floor three.
+A :: Thanks, logged as a lighting fault.
+
+@ lighting_fault_036 confusable confused=electrical_hazard
+S Housekeeping smells burning and fears wiring; it's a dying fluorescent tube.
+U electrical_hazard
++ :: Something up near the corridor ceiling smells like it's scorching.
+A :: Is there any smoke or sparking?
+U lighting_fault
++ :: No smoke.
++ lighting_scope :: It's one fluorescent tube, the end is black and it's flickering.
++ building :: Block C.
+A :: Thanks, logged for the electricians.
+
+@ lighting_fault_038 confusable confused=electrical_hazard
+S Security guard hears buzzing and fears a fault; it's a group of LED panels flickering from a bad driver.
+U electrical_hazard
++ :: There's an electrical buzzing above the ceiling in the lobby.
+A :: Any smoke or burning smell?
+U lighting_fault
++ :: None at all.
++ lighting_scope :: It's the group of LED panels over the entrance flickering together.
++ building :: Lakeside annex.
+A :: Thanks, logged for the electricians.

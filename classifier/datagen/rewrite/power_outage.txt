@@ -1,0 +1,233 @@
+@ power_outage_002 single
+S Senior engineer reports the whole floor lost power in a made-up tower; lab racks affected.
+U power_outage
++ outage_scope :: The power has gone off across our whole floor.
+- :: Everyone's laptops are on battery and the room has gone very quiet.
+A critical_equipment_affected :: Is any lab, server or critical equipment affected?
+U power_outage
++ critical_equipment_affected :: Yes, our test racks in the corner just died mid-run.
+A building,floor :: Which building and floor?
+U power_outage
++ building floor :: Tower B, floor eight.
++ occurred_at :: About two minutes ago.
+A :: Thanks, raised as critical with the electricians and lab facilities.
+
+@ power_outage_004 single
+S Intern greets, then says one desk socket is dead.
+U undetermined
+- :: Hey, quick question.
+A :: Sure, what's up?
+U power_outage
++ outage_scope :: The socket at my desk doesn't work, my charger does nothing.
++ :: The socket at the next desk works fine.
+A critical_equipment_affected,building :: Is anything critical plugged into it, and which building?
+U power_outage
++ critical_equipment_affected :: No, just my laptop charger.
++ building floor :: Block C, floor two.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_006 single
+S Housekeeping staff reports a meeting room with no power.
+U power_outage
++ outage_scope space_type :: There's no power at all in one of the meeting rooms.
+- :: The vacuum won't even switch on in there.
+A critical_equipment_affected :: Is any critical equipment in that room?
+U power_outage
++ critical_equipment_affected :: No, just a screen and a phone.
++ building floor :: The Harbour building, floor three.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_008 single
+S Night-shift worker reports the whole building went dark; generator not kicking in.
+U power_outage
++ outage_scope :: The whole building just went dark.
+- :: I can't see my own hands.
+A critical_equipment_affected :: Is any critical equipment affected, like servers or labs?
+U power_outage
++ critical_equipment_affected :: The server room is on the ground floor, I can hear its alarms.
++ :: The backup generator doesn't seem to have started.
+A building :: Which building?
+U power_outage
++ building :: Willowbrook office.
+A :: Thanks, raised as critical with the electricians and data centre team.
+
+@ power_outage_010 single
+S Lab technician vague: everything clicked off; then the lab circuit tripped.
+U undetermined
++ :: Everything on my side of the lab just clicked off.
+A :: Is it the power?
+U power_outage
++ outage_scope :: Yes, half the lab has no power, the other half is fine.
++ critical_equipment_affected :: A freezer with samples is on the dead side.
+A building,floor :: Which building and floor?
+U power_outage
++ building floor :: Hollis research building, ground floor bio lab.
+- :: The freezer will be fine for an hour or so.
+A :: Thanks, raised as critical with the electricians and lab facilities.
+
+@ power_outage_012 single
+S Receptionist tersely reports reception desk has no power; one turn.
+U power_outage
++ outage_scope space_type :: Reception desk has no power, computers and phones dead, nothing critical.
++ critical_equipment_affected :: Nothing critical.
++ building :: The Orchard building.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_014 single
+S Contractor reports they lost power to a whole floor after a breaker trip.
+U power_outage
++ outage_scope :: The whole floor we're working on lost power when the breaker tripped.
+A critical_equipment_affected :: Is any critical equipment affected?
+U power_outage
++ critical_equipment_affected :: No, it's empty, we're fitting it out.
++ building floor :: Maple block, floor six.
+- :: Our drills are useless now.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_016 single
+S Manager reports power outage affecting the kitchen and break room; four turns.
+U power_outage
++ outage_scope :: The kitchen and break room have no power.
+A critical_equipment_affected :: Is anything critical affected?
+U power_outage
++ critical_equipment_affected :: No, just the fridges and microwaves.
+A building :: Which building?
+U power_outage
++ building :: The annex.
+A floor :: Which floor?
+U power_outage
++ floor :: Ground floor.
+- :: Lunch is going to be cold today.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_018 single
+S Security guard reports the security office lost power, cameras on UPS.
+U power_outage
++ outage_scope space_type :: The security office has lost power.
++ critical_equipment_affected :: The camera recorders are on battery backup now.
+- :: The battery says twenty minutes.
+A building :: Which building?
+U power_outage
++ building :: Lakeside annex, ground floor.
+A :: Thanks, raised as critical.
+
+@ power_outage_020 single
+S Visitor notices the lights and screens in the waiting area all went off; vague; three turns.
+U undetermined
++ :: Everything in the waiting area just switched off.
+- :: The TV was in the middle of the news.
+A :: Is it the lights as well, or just the screens?
+U power_outage
++ outage_scope :: Lights, screens and the coffee machine, the whole room.
++ critical_equipment_affected :: Nothing important that I can see.
+A building :: Which building?
+U power_outage
++ building :: Riverside campus main building.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_022 single
+S Senior engineer reports a single power strip dead in their lab.
+U power_outage
++ outage_scope :: One wall socket in our lab is dead.
++ critical_equipment_affected :: Nothing critical is on it.
+- :: We've plugged everything into the next one.
+A building,floor :: Which building and floor?
+U power_outage
++ building floor :: Tower B, floor three.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_024 single
+S Lab manager reports the clean room lost power; critical.
+U power_outage
++ outage_scope space_type :: Our cleanroom has lost power.
++ critical_equipment_affected :: The process tools and air handling are all down.
+A building,floor :: Which building and floor?
+U power_outage
++ building floor :: Hollis research building, the second floor cleanroom.
+- :: The particle counts will be shocking.
+A :: Thanks, raised as critical.
+
+@ power_outage_026 single
+S Housekeeping greets, then reports no power in a corridor of offices; three turns.
+U undetermined
+- :: Morning, quick one.
+A :: Go ahead.
+U power_outage
++ outage_scope :: The offices along the north corridor have no power.
+A critical_equipment_affected,building :: Is anything critical affected, and which building?
+U power_outage
++ critical_equipment_affected :: I don't know, they're private offices.
++ building floor :: Willowbrook office, floor two.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_028 single
+S Night-shift worker jokes about working by phone torch.
+U power_outage
+- :: I'm writing code by phone torch like a medieval monk.
++ outage_scope :: The whole floor lost power about ten minutes ago.
+A critical_equipment_affected,building :: Is anything critical affected, and which building?
+U power_outage
++ critical_equipment_affected :: The comms room on this floor is beeping.
++ building floor :: Block C, floor four.
+A :: Thanks, raised as critical.
+
+@ power_outage_030 single
+S Manager reports intermittent power cuts in the building; five turns.
+U power_outage
++ outage_scope :: The power keeps cutting out across the whole building for a few seconds.
+A critical_equipment_affected :: Is critical equipment affected?
+U power_outage
++ critical_equipment_affected :: Our lab servers rebooted twice.
+A building :: Which building?
+U power_outage
++ building :: The Harbour building.
+- :: It's been happening since lunch.
+A :: How often?
+U power_outage
++ :: Every half hour or so.
+A immediate_actions_taken :: Has anyone done anything yet?
+U power_outage
++ immediate_actions_taken :: We've shut down the most sensitive kit.
+A :: Thanks, raised as critical with the electricians.
+
+@ power_outage_032 single
+S Receptionist tersely reports a floor of offices without power; one turn.
+U power_outage
++ outage_scope building floor :: No power on floor three of the Orchard building, the whole floor, nothing critical up there.
++ critical_equipment_affected :: Nothing critical.
+A :: Thanks, logged for the electricians.
+
+@ power_outage_034 confusable confused=lighting_fault
+S Intern thinks the lights failed; it's a full room power outage.
+U lighting_fault
++ :: The lights in our room have all gone out.
+A :: Is it just the lights, or are sockets dead too?
+U power_outage
++ outage_scope :: Sockets are dead too, the whole room has no power.
++ critical_equipment_affected :: Nothing critical here.
++ building floor :: Maple block, floor one.
+A :: Thanks, logged as a power outage.
+
+@ power_outage_036 confusable confused=electrical_hazard
+S Lab technician hears a pop and fears a hazard; it's a tripped breaker causing a floor outage.
+U electrical_hazard
++ :: I heard a pop from the distribution board.
+A :: Is there smoke or sparks?
+U power_outage
++ :: No smoke, no smell.
++ outage_scope :: But the whole floor is now without power.
++ critical_equipment_affected :: Our environmental chambers are off.
++ building :: Hollis research building.
+A :: Thanks, raised as critical.
+
+@ power_outage_038 confusable confused=electrical_hazard
+S Security guard sees a flicker and thinks something is sparking; it's a building-wide outage.
+U electrical_hazard
++ :: The lights flickered and I thought something was sparking.
+A :: Do you see sparks or smoke?
+U power_outage
++ :: No, nothing like that.
++ outage_scope :: Now the whole building has gone dark.
++ critical_equipment_affected :: The server room alarms are going off.
++ building :: Willowbrook office.
+A :: Thanks, raised as critical.

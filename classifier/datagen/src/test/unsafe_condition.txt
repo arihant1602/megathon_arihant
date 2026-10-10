@@ -1,0 +1,41 @@
+@ test_unsafe_condition_001 single
+S Event organiser reports cables taped badly across a busy aisle.
+U unsafe_condition
++ hazard_description :: The AV cables across the main aisle are only half taped down and people keep catching them.
++ building :: Granite Tower conference centre.
+- :: We've got five hundred people arriving at nine.
+A :: Thanks, raised with EHS.
+
+@ test_unsafe_condition_002 single
+S Gardener reports a missing manhole cover on the lawn path.
+U unsafe_condition
++ hazard_description :: A drain cover is missing on the path across the lawn.
+A building :: Which building?
+U unsafe_condition
++ building :: The West Pavilion.
+- :: I've put a wheelbarrow over it for now.
+A :: Thanks, raised urgently with EHS.
+
+@ test_unsafe_condition_003 single
+S Courier vague: loading bay feels dangerous; forklift reversing without alarm; three turns.
+U undetermined
++ :: The loading bay feels dangerous today.
+A :: What's making it unsafe?
+U unsafe_condition
++ hazard_description :: The forklift's reversing beeper is broken and it nearly backed into me.
++ witnesses :: The driver of the next van saw it.
+A building :: Which building?
+U unsafe_condition
++ building :: Cobalt House.
+A :: Thanks, raised as a near miss with EHS.
+
+@ test_unsafe_condition_004 confusable confused=injury_medical
+S Clinic nurse thinks someone got hurt; it was a near miss with a falling box.
+U injury_medical
++ :: Someone nearly got hurt in the clinic store.
+A :: Are they injured?
+U unsafe_condition
++ :: No, they're fine.
++ hazard_description :: A heavy box fell off the top shelf, the shelves are overloaded.
++ building :: Sapphire Block clinic.
+A :: Thanks, logged as a near miss with EHS.

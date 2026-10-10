@@ -1,0 +1,4 @@
+List of devices attached
+fe7980db               device usb:4-1 product:sun model:Sun_for_arm64 device:sun transport_id:2
+
+Bus 004 Device 002: ID 05c6:901d Qualcomm, Inc. SUNP-HDK_SN:B755977A

@@ -1,0 +1,1019 @@
+import json
+
+data = [
+    # Slot 1: english, complete
+    {
+        "id": "water_leak_01",
+        "incident_type": "water_leak",
+        "slot": 1,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Hi, there is water dripping from a pipe under the sink in Pantry 3A on floor 3 of Building N. It is contained in a bucket away from any electrical sockets, noticed around 10:15 AM today.",
+                "sentences": [
+                    {"text": "Hi, there is water dripping from a pipe under the sink in Pantry 3A on floor 3 of Building N.", "relevant": True},
+                    {"text": "It is contained in a bucket away from any electrical sockets, noticed around 10:15 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I have notified the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 3,
+            "space_type": "pantry",
+            "space_id": "Pantry 3A",
+            "occurred_at": "10:15 AM today",
+            "leak_source": "pipe",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 2: english, complete
+    {
+        "id": "water_leak_02",
+        "incident_type": "water_leak",
+        "slot": 2,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Water is pouring from the ceiling in Conference Room 5B on floor 4 of Building QRC. It is spreading fast and pooling right under power strips, started around 2 PM today.",
+                "sentences": [
+                    {"text": "Water is pouring from the ceiling in Conference Room 5B on floor 4 of Building QRC.", "relevant": True},
+                    {"text": "It is spreading fast and pooling right under power strips, started around 2 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, emergency plumbers and electricians are dispatched.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 4,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 5B",
+            "occurred_at": "2:00 PM today",
+            "leak_source": "ceiling",
+            "water_spread": "spreading",
+            "near_electrical": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 3: english, complete
+    {
+        "id": "water_leak_03",
+        "incident_type": "water_leak",
+        "slot": 3,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "A dishwasher appliance in Cafeteria 1 on floor 1 of Building N has been leaking water since 8 AM today. It is contained with towels and safely away from electrical points.",
+                "sentences": [
+                    {"text": "A dishwasher appliance in Cafeteria 1 on floor 1 of Building N has been leaking water since 8 AM today.", "relevant": True},
+                    {"text": "It is contained with towels and safely away from electrical points.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, the plumbing team is looking into this.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 1,
+            "space_type": "cafeteria",
+            "space_id": "Cafeteria 1",
+            "occurred_at": "8:00 AM today",
+            "leak_source": "appliance",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 4: english, missing
+    {
+        "id": "water_leak_04",
+        "incident_type": "water_leak",
+        "slot": 4,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Hey, there's water leaking near Conference Room 2 on the third floor of Building N.",
+                "sentences": [
+                    {"text": "Hey, there's water leaking near Conference Room 2 on the third floor of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it. Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, it's away from everything. It's coming from the ceiling and it's still spreading.",
+                "sentences": [
+                    {"text": "No, it's away from everything.", "relevant": True},
+                    {"text": "It's coming from the ceiling and it's still spreading.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks. When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around ten this morning.",
+                "sentences": [
+                    {"text": "Around ten this morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, I've sent this to the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 3,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 2",
+            "occurred_at": "10:00 AM today",
+            "leak_source": "ceiling",
+            "water_spread": "spreading",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 5: english, missing (self-correction on floor)
+    {
+        "id": "water_leak_05",
+        "incident_type": "water_leak",
+        "slot": 5,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Water is pooling near Workstation Bay 7B in Building QRC, floor 2.",
+                "sentences": [
+                    {"text": "Water is pooling near Workstation Bay 7B in Building QRC, floor 2.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or electrical equipment?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Wait, actually it's floor 3, not 2. Yes, power strips are right in the puddle.",
+                "sentences": [
+                    {"text": "Wait, actually it's floor 3, not 2.", "relevant": True},
+                    {"text": "Yes, power strips are right in the puddle.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Where is the water coming from?",
+                "asks": ["leak_source", "water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "It is coming from a broken pipe and it is spreading across desks.",
+                "sentences": [
+                    {"text": "It is coming from a broken pipe and it is spreading across desks.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just noticed it around 1:30 PM.",
+                "sentences": [
+                    {"text": "Just noticed it around 1:30 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, the plumbing team has been alerted immediately.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 3,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 7B",
+            "occurred_at": "1:30 PM today",
+            "leak_source": "pipe",
+            "water_spread": "spreading",
+            "near_electrical": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 6: english, missing (unknown answer for water_spread)
+    {
+        "id": "water_leak_06",
+        "incident_type": "water_leak",
+        "slot": 6,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "There is a severe leak in Washroom 6A on floor 6 of Building N.",
+                "sentences": [
+                    {"text": "There is a severe leak in Washroom 6A on floor 6 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, it is well away from all electrical outlets. The tap is completely broken.",
+                "sentences": [
+                    {"text": "No, it is well away from all electrical outlets.", "relevant": True},
+                    {"text": "The tap is completely broken.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water contained, or still spreading?",
+                "asks": ["water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "Not sure, I couldn't tell before leaving the room.",
+                "sentences": [
+                    {"text": "Not sure, I couldn't tell before leaving the room.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 11 AM today.",
+                "sentences": [
+                    {"text": "Around 11 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, our plumbing team is on the way.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 6,
+            "space_type": "washroom",
+            "space_id": "Washroom 6A",
+            "occurred_at": "11:00 AM today",
+            "leak_source": "tap_or_fixture",
+            "water_spread": "unknown",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 7: english, missing
+    {
+        "id": "water_leak_07",
+        "incident_type": "water_leak",
+        "slot": 7,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Water is dripping from the ceiling right in front of Elevator Lobby 2 on floor 2 of Building N.",
+                "sentences": [
+                    {"text": "Water is dripping from the ceiling right in front of Elevator Lobby 2 on floor 2 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, nowhere near any wiring. Security placed a cone and it is contained to one spot.",
+                "sentences": [
+                    {"text": "No, nowhere near any wiring.", "relevant": True},
+                    {"text": "Security placed a cone and it is contained to one spot.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first see this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now, around 3:15 PM.",
+                "sentences": [
+                    {"text": "Just now, around 3:15 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I have informed the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 2,
+            "space_type": "elevator_lobby",
+            "space_id": "Elevator Lobby 2",
+            "occurred_at": "3:15 PM today",
+            "leak_source": "ceiling",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 8: english, missing
+    {
+        "id": "water_leak_08",
+        "incident_type": "water_leak",
+        "slot": 8,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "We have water dripping under a test bench inside RF Lab 3.",
+                "sentences": [
+                    {"text": "We have water dripping under a test bench inside RF Lab 3.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any equipment or sockets?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, it is very close to our lab power supplies.",
+                "sentences": [
+                    {"text": "Yes, it is very close to our lab power supplies.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which building and floor is this lab on?",
+                "asks": ["building", "floor"]
+            },
+            {
+                "role": "user",
+                "text": "Building N, floor 5. The water is leaking from a pipe overhead and spreading.",
+                "sentences": [
+                    {"text": "Building N, floor 5.", "relevant": True},
+                    {"text": "The water is leaking from a pipe overhead and spreading.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 9:45 AM today.",
+                "sentences": [
+                    {"text": "About 9:45 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Alerting the plumbing team and facilities right now.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 5,
+            "space_type": "rnd_lab",
+            "space_id": "RF Lab 3",
+            "occurred_at": "9:45 AM today",
+            "leak_source": "pipe",
+            "water_spread": "spreading",
+            "near_electrical": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 9: english, missing
+    {
+        "id": "water_leak_09",
+        "incident_type": "water_leak",
+        "slot": 9,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Found a puddle of water in Corridor 4C, Building QRC, floor 4.",
+                "sentences": [
+                    {"text": "Found a puddle of water in Corridor 4C, Building QRC, floor 4.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, it's in the middle of the floor. Coming from an unknown overhead spot.",
+                "sentences": [
+                    {"text": "No, it's in the middle of the floor.", "relevant": True},
+                    {"text": "Coming from an unknown overhead spot.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water contained, or still spreading?",
+                "asks": ["water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "It is spreading slowly along the hallway.",
+                "sentences": [
+                    {"text": "It is spreading slowly along the hallway.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:15 PM today.",
+                "sentences": [
+                    {"text": "Around 12:15 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, I've dispatched this to the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 4,
+            "space_type": "corridor",
+            "space_id": "Corridor 4C",
+            "occurred_at": "12:15 PM today",
+            "leak_source": "unknown",
+            "water_spread": "spreading",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 10: english, rambling
+    {
+        "id": "water_leak_10",
+        "incident_type": "water_leak",
+        "slot": 10,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Our team meeting was so chaotic this morning. Anyway, there is water leaking in Pantry 11B on floor 11 of Building N.",
+                "sentences": [
+                    {"text": "Our team meeting was so chaotic this morning.", "relevant": False},
+                    {"text": "Anyway, there is water leaking in Pantry 11B on floor 11 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "I really need a quiet week for once. No, it's far from any electrical points, just dripping from the tap.",
+                "sentences": [
+                    {"text": "I really need a quiet week for once.", "relevant": False},
+                    {"text": "No, it's far from any electrical points, just dripping from the tap.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water contained, or spreading?",
+                "asks": ["water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "It is contained right in the sink basin.",
+                "sentences": [
+                    {"text": "It is contained right in the sink basin.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 9:30 AM today.",
+                "sentences": [
+                    {"text": "Around 9:30 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, the plumbing team has been informed.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 11,
+            "space_type": "pantry",
+            "space_id": "Pantry 11B",
+            "occurred_at": "9:30 AM today",
+            "leak_source": "tap_or_fixture",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 11: english, rambling (self-correction on room)
+    {
+        "id": "water_leak_11",
+        "incident_type": "water_leak",
+        "slot": 11,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The weather outside is terribly humid today. There is a water leak on floor 6 of Building QRC near Conference Room 6A.",
+                "sentences": [
+                    {"text": "The weather outside is terribly humid today.", "relevant": False},
+                    {"text": "There is a water leak on floor 6 of Building QRC near Conference Room 6A.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Actually it is Conference Room 6B, sorry. No, it is not near any electrical outlets.",
+                "sentences": [
+                    {"text": "Actually it is Conference Room 6B, sorry.", "relevant": True},
+                    {"text": "No, it is not near any electrical outlets.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Where is it coming from, and is it spreading?",
+                "asks": ["leak_source", "water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "Coming from the ceiling tile and it is spreading fast on the rug.",
+                "sentences": [
+                    {"text": "Coming from the ceiling tile and it is spreading fast on the rug.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this happening?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 4 PM today.",
+                "sentences": [
+                    {"text": "About 4 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've sent this to the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 6,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 6B",
+            "occurred_at": "4:00 PM today",
+            "leak_source": "ceiling",
+            "water_spread": "spreading",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 12: english, rambling (unknown answer)
+    {
+        "id": "water_leak_12",
+        "incident_type": "water_leak",
+        "slot": 12,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "I had biryani for lunch and feeling quite sleepy. Anyway, water is dripping heavily in Server Room 8A on floor 8 in Building N.",
+                "sentences": [
+                    {"text": "I had biryani for lunch and feeling quite sleepy.", "relevant": False},
+                    {"text": "Anyway, water is dripping heavily in Server Room 8A on floor 8 in Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any equipment or sockets?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, water is right next to server rack cables! Leaking from the ceiling.",
+                "sentences": [
+                    {"text": "Yes, water is right next to server rack cables!", "relevant": True},
+                    {"text": "Leaking from the ceiling.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water contained, or spreading?",
+                "asks": ["water_spread"]
+            },
+            {
+                "role": "user",
+                "text": "I am not sure, I stepped out quickly to report it.",
+                "sentences": [
+                    {"text": "I am not sure, I stepped out quickly to report it.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did you notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now, around 2:40 PM.",
+                "sentences": [
+                    {"text": "Just now, around 2:40 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Immediate alert sent to plumbers and electrical technicians.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 8,
+            "space_type": "server_or_idf_room",
+            "space_id": "Server Room 8A",
+            "occurred_at": "2:40 PM today",
+            "leak_source": "ceiling",
+            "water_spread": "unknown",
+            "near_electrical": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 13: hindi_translated, complete
+    {
+        "id": "water_leak_13",
+        "incident_type": "water_leak",
+        "slot": 13,
+        "lang_style": "hindi_translated",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "From the pipe under the tap in Washroom 1A, floor 1, Building QRC, water is falling. Water is contained in drain, not touching any electricity board, noticed at 10 AM morning.",
+                "sentences": [
+                    {"text": "From the pipe under the tap in Washroom 1A, floor 1, Building QRC, water is falling.", "relevant": True},
+                    {"text": "Water is contained in drain, not touching any electricity board, noticed at 10 AM morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, the plumbing technicians have been notified.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 1,
+            "space_type": "washroom",
+            "space_id": "Washroom 1A",
+            "occurred_at": "10:00 AM today",
+            "leak_source": "pipe",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 14: hindi_translated, missing
+    {
+        "id": "water_leak_14",
+        "incident_type": "water_leak",
+        "slot": 14,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building N on floor 4 near Stairwell 4, water is falling from ceiling.",
+                "sentences": [
+                    {"text": "In Building N on floor 4 near Stairwell 4, water is falling from ceiling.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any wires or sockets?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, no wires are there. But water is spreading down the steps.",
+                "sentences": [
+                    {"text": "No, no wires are there.", "relevant": True},
+                    {"text": "But water is spreading down the steps.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "At what time did you see this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 11:30 AM today morning.",
+                "sentences": [
+                    {"text": "About 11:30 AM today morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, the plumbing team has been informed.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 4,
+            "space_type": "stairwell",
+            "space_id": "Stairwell 4",
+            "occurred_at": "11:30 AM today",
+            "leak_source": "ceiling",
+            "water_spread": "spreading",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 15: hindi_translated, missing
+    {
+        "id": "water_leak_15",
+        "incident_type": "water_leak",
+        "slot": 15,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Water tap is leaking in Pantry 5A on fifth floor of Building QRC.",
+                "sentences": [
+                    {"text": "Water tap is leaking in Pantry 5A on fifth floor of Building QRC.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any electrical plugs?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "No, it is inside sink only, totally contained.",
+                "sentences": [
+                    {"text": "No, it is inside sink only, totally contained.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this happening?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now around 1:15 PM.",
+                "sentences": [
+                    {"text": "Just now around 1:15 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I have told the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 5,
+            "space_type": "pantry",
+            "space_id": "Pantry 5A",
+            "occurred_at": "1:15 PM today",
+            "leak_source": "tap_or_fixture",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 16: hindi_translated, rambling
+    {
+        "id": "water_leak_16",
+        "incident_type": "water_leak",
+        "slot": 16,
+        "lang_style": "hindi_translated",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Today traffic was very bad near Silk Board. In Building N, floor 10, Loading Dock 1, big water pipe is leaking.",
+                "sentences": [
+                    {"text": "Today traffic was very bad near Silk Board.", "relevant": False},
+                    {"text": "In Building N, floor 10, Loading Dock 1, big water pipe is leaking.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any electrical cables or sockets?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, water is touching the main motor switch board, and spreading everywhere.",
+                "sentences": [
+                    {"text": "Yes, water is touching the main motor switch board, and spreading everywhere.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first see this leak?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 8:45 AM today.",
+                "sentences": [
+                    {"text": "Around 8:45 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Emergency plumbers and electricians have been dispatched right away.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 10,
+            "space_type": "loading_dock",
+            "space_id": "Loading Dock 1",
+            "occurred_at": "8:45 AM today",
+            "leak_source": "pipe",
+            "water_spread": "spreading",
+            "near_electrical": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 17: hinglish, missing
+    {
+        "id": "water_leak_17",
+        "incident_type": "water_leak",
+        "slot": 17,
+        "lang_style": "hinglish",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building N ke floor 7 pe Lobby Reception 7 ke paas ceiling se paani tapak raha hai.",
+                "sentences": [
+                    {"text": "Building N ke floor 7 pe Lobby Reception 7 ke paas ceiling se paani tapak raha hai.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is the water near any sockets or cables?",
+                "asks": ["near_electrical"]
+            },
+            {
+                "role": "user",
+                "text": "Nahi, cables se door hai. Lekin carpet pe steadily spread ho raha hai.",
+                "sentences": [
+                    {"text": "Nahi, cables se door hai.", "relevant": True},
+                    {"text": "Lekin carpet pe steadily spread ho raha hai.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did you notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:45 PM dekha maine.",
+                "sentences": [
+                    {"text": "Around 12:45 PM dekha maine.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, I have informed the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 7,
+            "space_type": "lobby_reception",
+            "space_id": "Lobby Reception 7",
+            "occurred_at": "12:45 PM today",
+            "leak_source": "ceiling",
+            "water_spread": "spreading",
+            "near_electrical": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 18: hinglish, complete
+    {
+        "id": "water_leak_18",
+        "incident_type": "water_leak",
+        "slot": 18,
+        "lang_style": "hinglish",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building QRC, floor 2 pe Workstation Bay 2D mein coffee machine appliance se paani leak ho raha hai, completely contained hai bucket mein aur sockets se door hai, 11 AM se notice kiya.",
+                "sentences": [
+                    {"text": "Building QRC, floor 2 pe Workstation Bay 2D mein coffee machine appliance se paani leak ho raha hai, completely contained hai bucket mein aur sockets se door hai, 11 AM se notice kiya.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've assigned this to the plumbing team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 2,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 2D",
+            "occurred_at": "11:00 AM today",
+            "leak_source": "appliance",
+            "water_spread": "contained",
+            "near_electrical": False
+        },
+        "final_priority": "P3"
+    }
+]
+
+with open("data/water_leak.jsonl", "w", encoding="utf-8") as f:
+    for row in data:
+        f.write(json.dumps(row) + "\n")
+
+print("Generated water_leak.jsonl successfully")

@@ -1,0 +1,230 @@
+@ electrical_hazard_002 single
+S Senior engineer sees sparks from a floor box when plugging in a laptop.
+U electrical_hazard
++ hazard_kind :: The floor box under my desk sparked when I plugged my charger in.
+- :: Made me jump out of my chair.
+A smoke_present :: Is there any smoke?
+U electrical_hazard
++ smoke_present :: No smoke, just a black mark around the socket.
++ immediate_actions_taken :: I've unplugged everything and moved desks.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: Tower B, floor five.
+A :: Thanks, raised as urgent with the electricians.
+
+@ electrical_hazard_004 single
+S Intern greets nervously, then reports a cable with exposed copper wires.
+U undetermined
+- :: Hi, I don't know if this is dangerous.
+A :: Let's check. What did you see?
+U electrical_hazard
++ hazard_kind :: There's a cable under the bench where the outer coating has split and you can see copper.
+A smoke_present :: Is there any smoke or burning smell?
+U electrical_hazard
++ smoke_present :: No, nothing like that.
++ building floor :: Block C, floor three, the makerspace.
+- :: I've told people not to touch it.
+A :: Thanks, raised as urgent with the electricians.
+
+@ electrical_hazard_006 single
+S Housekeeping staff gets a tingle from a metal light switch plate.
+U electrical_hazard
++ hazard_kind :: I got a little tingle when I touched the metal light switch in the store room.
+A smoke_present :: Is there any smoke or burning smell?
+U electrical_hazard
++ smoke_present :: No smoke.
++ building floor :: The Harbour building, basement store room.
+- :: My fingers still feel funny.
+A :: Thanks, raised as urgent. Please don't touch the switch again.
+
+@ electrical_hazard_008 single
+S Receptionist smells hot plastic from a power strip under the desk.
+U electrical_hazard
++ hazard_kind :: There's a hot plastic smell coming from the power strip under my desk.
++ smoke_present :: I can't see any smoke.
+A building :: Which building?
+U electrical_hazard
++ building :: The Orchard building reception.
++ immediate_actions_taken :: I flicked the switch on the wall to off straight away.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_010 single
+S Lab technician vague: crackling noise in the wall; then sparking socket; three turns.
+U undetermined
++ :: There's a crackling noise coming from inside the wall by our bench.
+- :: It sounds like rice crispies.
+A :: Can you see anything at the sockets nearby?
+U electrical_hazard
++ hazard_kind :: The socket next to it is sparking every few seconds behind the faceplate.
++ smoke_present :: A tiny bit of smoke now.
+A building,floor :: Please keep away. Which building and floor?
+U electrical_hazard
++ building floor :: It's the first floor bench area in the Hollis research building.
+A :: The emergency team and electricians are on the way.
+
+@ electrical_hazard_012 single
+S Contractor tersely reports a live cable left exposed after works; one turn.
+U electrical_hazard
++ hazard_kind :: Someone left a live cable hanging out of the ceiling with bare ends, no smoke.
++ smoke_present :: No smoke.
++ building floor :: Maple block, floor four corridor.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_014 single
+S Night-shift worker reports a kettle socket scorched black.
+U electrical_hazard
++ hazard_kind :: The socket the pantry kettle uses is scorched black around the pins.
+- :: I'm making tea with the microwave tonight.
+A smoke_present :: Any smoke?
+U electrical_hazard
++ smoke_present :: Not now, but it smells burnt.
++ building floor :: Willowbrook office, floor two pantry.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_016 single
+S Manager reports an extension lead overheating; four turns.
+U electrical_hazard
++ hazard_kind :: The extension lead under the meeting table is too hot to touch.
+A smoke_present :: Is there smoke?
+U electrical_hazard
++ smoke_present :: No.
+A building :: Which building?
+U electrical_hazard
++ building :: The annex.
+A floor :: Which floor?
+U electrical_hazard
++ floor :: First floor, the big meeting room.
++ immediate_actions_taken :: We've unplugged it.
+- :: It had six things plugged in, to be fair.
+A :: Thanks, raised with the electricians.
+
+@ electrical_hazard_018 single
+S Security guard reports sparks from an outdoor light fitting in the rain.
+U electrical_hazard
++ hazard_kind :: The light fitting over the side entrance is sparking in the rain.
++ smoke_present :: No smoke.
+A building :: Which building?
+U electrical_hazard
++ building :: Lakeside annex.
+- :: People are walking right under it.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_020 single
+S Visitor gets a shock from a phone charging station; apologetic.
+U electrical_hazard
+- :: Sorry, this is probably nothing.
++ hazard_kind :: I got a small shock from the phone charging station in the lobby.
+A smoke_present :: Is there any smoke or smell?
+U electrical_hazard
++ smoke_present :: No.
++ building :: Riverside campus main building.
+A :: Thanks, raised as urgent. Please don't use it again.
+
+@ electrical_hazard_022 single
+S Senior engineer reports a server room PDU humming loudly and hot.
+U electrical_hazard
++ hazard_kind :: One of the power distribution units in the server room is hot and humming loudly.
++ smoke_present :: No smoke yet.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: Tower B, floor one.
+- :: The rack next to it is warm too.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_024 single
+S Lab technician reports a water-damaged socket near a sink.
+U electrical_hazard
++ hazard_kind :: The socket next to the lab sink is wet and the cover is cracked.
+A smoke_present :: Any smoke or sparking?
+U electrical_hazard
++ smoke_present :: No.
++ building floor :: Hollis research building, the third floor wet lab.
+- :: Who puts a socket that close to a sink anyway.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_026 single
+S Housekeeping greets and reports a damaged plug on a vacuum cleaner with exposed wires; three turns.
+U undetermined
+- :: Hello, morning team here.
+A :: Morning. What's up?
+U electrical_hazard
++ hazard_kind :: The plug on one of our vacuum cleaners is cracked and the wires are showing.
+A smoke_present :: Any smoke?
+U electrical_hazard
++ smoke_present :: No.
++ building :: Block C.
+A :: Thanks, please take it out of use. Logged for the electricians.
+
+@ electrical_hazard_028 single
+S Night-shift worker jokes about a socket that toasts plugs.
+U electrical_hazard
+- :: The socket by my desk has started toasting plugs.
++ hazard_kind :: My charger plug came out hot and slightly melted.
++ smoke_present :: No smoke.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: The Harbour building, floor five.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_030 single
+S Manager reports a burning smell from a ceiling light transformer; five turns.
+U electrical_hazard
++ hazard_kind :: There's a burning smell in our office.
+A smoke_present :: Is there any smoke?
+U electrical_hazard
++ smoke_present :: A little haze near the ceiling.
+A building :: Please be ready to leave. Which building?
+U electrical_hazard
++ building :: Willowbrook office.
+A floor :: Which floor?
+U electrical_hazard
++ floor :: Third.
+- :: Everyone's sniffing around.
+A :: Can you tell where it's coming from?
+U electrical_hazard
++ :: It's the transformer above one of the downlights.
+A :: Thanks, the emergency team and electricians are on the way.
+
+@ electrical_hazard_032 single
+S Receptionist tersely reports exposed wires from a broken floor socket cover; one turn.
+U electrical_hazard
++ hazard_kind :: Floor socket cover in reception is broken and the wires are exposed, no smoke.
++ smoke_present :: No smoke.
++ building :: The Orchard building.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_034 confusable confused=fire_smoke
+S Intern sees smoke and thinks it's a fire; it's a smoking adapter, no flames.
+U fire_smoke
++ :: There's smoke coming from under a desk!
+A :: If there's fire, leave and call the emergency number. Can you see flames?
+U electrical_hazard
++ :: No flames.
++ hazard_kind :: It's a travel adapter in the socket, it's smoking and smells burnt.
++ smoke_present :: Yes, a little smoke.
++ building floor :: Block C, floor one.
+A :: Thanks, the emergency team and electricians are on the way.
+
+@ electrical_hazard_036 confusable confused=power_outage
+S Lab technician thinks power went out in a room; a burnt socket is the cause and a hazard.
+U power_outage
++ :: The power went off in our lab room.
+A :: Is it the whole room?
+U electrical_hazard
++ :: It's just one socket circuit, and the socket is black and melted.
++ hazard_kind :: It smells strongly of burning.
++ smoke_present :: No smoke now.
++ building :: Hollis research building.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_038 confusable confused=power_outage
+S Senior engineer thinks a power cut; an exposed cable shorted under a desk.
+U power_outage
++ :: Our row lost power suddenly.
+A :: Are other rows affected?
+U electrical_hazard
++ :: Only our row.
++ hazard_kind :: There's an exposed cable under the desk that shorted against the metal leg.
++ smoke_present :: No smoke.
++ building floor :: Tower B, floor six.
+A :: Thanks, raised as urgent.

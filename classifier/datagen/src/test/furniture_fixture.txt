@@ -1,0 +1,39 @@
+@ test_furniture_fixture_001 single
+S Translator reports a broken chair in the interpreting booth.
+U furniture_fixture
++ furniture_item :: The chair in the interpreting booth has a broken back.
+- :: Six hours on that is going to hurt.
+A building :: Which building?
+U furniture_fixture
++ building :: Cobalt House, floor two.
+A :: Thanks, logged for facilities.
+
+@ test_furniture_fixture_002 single
+S Auditor vague: desk keeps moving; a leg is loose; three turns.
+U undetermined
++ :: My desk keeps shifting when I type.
+A :: Is something broken on it?
+U furniture_fixture
++ furniture_item :: One of the desk legs is loose at the bolt.
+A building :: Which building and floor?
+U furniture_fixture
++ building floor :: Granite Tower, floor nine.
+A :: Thanks, logged for facilities.
+
+@ test_furniture_fixture_003 single
+S Clinic nurse reports a broken examination couch lever; one turn.
+U furniture_fixture
++ furniture_item :: The height lever on the clinic examination couch has snapped.
++ building :: Sapphire Block clinic.
+A :: Thanks, logged for facilities.
+
+@ test_furniture_fixture_004 confusable confused=structural_damage
+S Mail room clerk thinks the wall is damaged; it's a shelving unit pulled loose.
+U structural_damage
++ :: The wall in the mail room looks like it's breaking.
+A :: Is it cracked?
+U furniture_fixture
++ :: The wall's fine.
++ furniture_item :: It's the parcel shelving unit, it's pulled away from its brackets.
++ building :: The West Pavilion.
+A :: Thanks, logged for facilities.
