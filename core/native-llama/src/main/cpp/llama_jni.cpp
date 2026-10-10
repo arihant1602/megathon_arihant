@@ -3,6 +3,8 @@
 #include <vector>
 #include <atomic>
 #include <memory>
+#include <algorithm>
+#include <cmath>
 #include "llama.h"
 
 struct Model { llama_model *model; llama_context *ctx; std::atomic<bool> cancelled{false}; };
@@ -37,7 +39,7 @@ Java_org_seedhecode_incidentassistant_engine_NativeLlama_load(JNIEnv *env, jobje
     if (!model) return 0;
     auto item = new Model{model, nullptr};
     auto context = llama_context_default_params();
-    context.n_ctx = 4096; context.n_batch = 512; context.n_threads = 4; context.n_threads_batch = 4;
+    context.n_ctx = 4096; context.n_batch = 512; context.n_threads = 6; context.n_threads_batch = 6;
     context.abort_callback = cancelled; context.abort_callback_data = item;
     item->ctx = llama_init_from_model(model, context);
     if (!item->ctx) { llama_model_free(model); delete item; return 0; }
@@ -91,17 +93,33 @@ string ::= "\"" ([^"\\\x7F\x00-\x1F] | "\\" (["\\bfnrt] | "u" [0-9a-fA-F]{4}))* 
 number ::= "-"? ("0" | [1-9] [0-9]{0,15}) ("." [0-9]+)? ([eE] [-+]? [0-9]{1,16})? ws
 ws ::= | " " | "\n" [ \t]{0,20}
 )gbnf";
-    auto sampler = std::unique_ptr<llama_sampler, decltype(&llama_sampler_free)>(
-        llama_sampler_chain_init(llama_sampler_chain_default_params()), llama_sampler_free);
-    auto constrained = llama_sampler_init_grammar(vocab, custom ? custom : interview ? jsonGrammar : grammar, "root");
+    auto constrained = std::unique_ptr<llama_sampler, decltype(&llama_sampler_free)>(
+        llama_sampler_init_grammar(vocab, custom ? custom : interview ? jsonGrammar : grammar, "root"), llama_sampler_free);
     if (!constrained) { fail(env, "Qwen JSON grammar initialization failed."); return nullptr; }
-    llama_sampler_chain_add(sampler.get(), constrained);
-    llama_sampler_chain_add(sampler.get(), llama_sampler_init_greedy());
+    const int vocabSize = llama_vocab_n_tokens(vocab);
+    std::vector<llama_token_data> candidates(vocabSize);
     std::string output;
     bool ended = false;
     for (int i = 0; i < maximum; ++i) {
         if (item->cancelled.load()) { fail(env, "Qwen job cancelled."); return nullptr; }
-        llama_token token = llama_sampler_sample(sampler.get(), item->ctx, -1);
+        // Greedy with grammar, llama.cpp common_sampler style: check only the argmax token against the grammar and
+        // fall back to masking the whole 151k vocabulary only when it is rejected (grammar over every token at every
+        // step was most of the extraction time).
+        const float *logits = llama_get_logits_ith(item->ctx, -1);
+        llama_token token = (llama_token)(std::max_element(logits, logits + vocabSize) - logits);
+        llama_token_data one{token, logits[token], 0.0f};
+        llama_token_data_array single{&one, 1, -1, false};
+        llama_sampler_apply(constrained.get(), &single);
+        if (!std::isfinite(one.logit)) {
+            for (int t = 0; t < vocabSize; ++t) candidates[t] = llama_token_data{t, logits[t], 0.0f};
+            llama_token_data_array all{candidates.data(), (size_t)vocabSize, -1, false};
+            llama_sampler_apply(constrained.get(), &all);
+            auto best = std::max_element(all.data, all.data + all.size,
+                [](const llama_token_data &a, const llama_token_data &b) { return a.logit < b.logit; });
+            if (!std::isfinite(best->logit)) { fail(env, "Qwen grammar has no valid continuation."); return nullptr; }
+            token = best->id;
+        }
+        llama_sampler_accept(constrained.get(), token);
         if (llama_vocab_is_eog(vocab, token)) { ended = true; break; }
         std::vector<char> piece(256);
         int length = llama_token_to_piece(vocab, token, piece.data(), piece.size(), 0, true);

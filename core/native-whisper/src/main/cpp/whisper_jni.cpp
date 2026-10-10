@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <jni.h>
 #include <string>
 #include <vector>
@@ -45,7 +46,11 @@ Java_org_seedhecode_incidentassistant_engine_NativeWhisper_transcribe(JNIEnv *en
     env->GetFloatArrayRegion(input, 0, samples.size(), samples.data());
     std::string lang = utf8(env, language);
     auto params = whisper_full_default_params(WHISPER_SAMPLING_GREEDY);
-    params.n_threads = 4;
+    params.n_threads = 6;
+    // Encode only the clip (50 frames/s + margin) instead of a padded 30 s window: ~5-10x faster for short turns.
+    params.audio_ctx = std::min(1500, (int)(samples.size() / 16000.0 * 50) + 128);
+    params.single_segment = true;
+    params.no_timestamps = true;
     params.translate = translate;
     params.language = lang == "auto" ? nullptr : lang.c_str();
     params.no_context = true;

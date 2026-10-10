@@ -23,10 +23,24 @@ class ProbeActivity : Activity() {
         val text = TextView(this).apply { textSize = 12f; setPadding(24, 24, 24, 24) }
         setContentView(text)
         val name = intent.getStringExtra("script") ?: "script.txt"
+        val wav = intent.getStringExtra("wav")
         val dir = File(filesDir, "probe")
         Thread {
             val out = JSONObject()
             try {
+                if (wav != null) {   // Whisper timing on a 16 kHz mono 16-bit WAV (44-byte header), 3 runs
+                    val bytes = File(dir, wav).readBytes()
+                    val pcm = FloatArray((bytes.size - 44) / 2) { i ->
+                        ((bytes[44 + 2 * i].toInt() and 0xff) or (bytes[45 + 2 * i].toInt() shl 8)).toShort() / 32768f }
+                    val whisper = org.seedhecode.incidentassistant.engine.WhisperSpeech(File(filesDir, "models/ggml-base.bin").absolutePath)
+                    val runs = JSONArray()
+                    repeat(3) {
+                        val t = System.nanoTime(); val text = whisper.transcribe(pcm, "en", true).text
+                        runs.put(JSONObject().put("ms", (System.nanoTime() - t) / 1_000_000).put("text", text))
+                    }
+                    whisper.close()
+                    out.put("whisper", JSONObject().put("audio_s", pcm.size / 16000.0).put("runs", runs))
+                }
                 val lines = File(dir, name).readLines().map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }
                 var latest: AssistantView? = null
                 var latch = CountDownLatch(1)

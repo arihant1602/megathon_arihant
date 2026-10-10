@@ -111,7 +111,7 @@ class Extractor(private val llm: SmallLlm?) {
             "root ::= \"{\" ws ${lit(key)} ws \":\" ws ${if (type == "integer") "integer" else "string"} \"}\" ws\n" + BASE
 
         private const val BASE = "string ::= \"\\\"\" ([^\"\\\\\\x7F\\x00-\\x1F] | \"\\\\\" ([\"\\\\/bfnrt] | \"u\" [0-9a-fA-F]{4}))* \"\\\"\" ws\n" +
-            "integer ::= \"-\"? [0-9]{1,6} ws\nws ::= | \" \" | \"\\n\" [ \\t]{0,20}\n"
+            "integer ::= \"-\"? [0-9]{1,6} ws\nws ::= | \" \"\n"
 
         private val BUILDING_WORDS = setOf("building", "block", "tower", "hall", "house", "annex", "wing", "campus", "centre",
             "center", "pavilion", "office", "site", "plaza", "park")
