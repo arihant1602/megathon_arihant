@@ -71,12 +71,13 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
             if (generation.get() != id) return@execute
             val chunks = LinkedBlockingQueue<ShortArray>()
             val player = Thread({ play(id, chunks) }, "neural-tts-play").apply { start() }
+            val resampler = Resampler(rate, OUTPUT_RATE)
             var first = true
             try {
                 tts.generateWithCallback(text, voice, speed) { samples ->
                     if (generation.get() != id) 0 else {
                         if (first) { lastFirstAudioMs = (System.nanoTime() - t0) / 1_000_000; first = false }
-                        chunks.put(ShortArray(samples.size) { i -> (samples[i].coerceIn(-1f, 1f) * 32767f).toInt().toShort() })
+                        chunks.put(resampler.process(samples))
                         1
                     }
                 }
@@ -94,13 +95,15 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
         var written = 0
         var out: AudioTrack? = null
         try {
-            val min = AudioTrack.getMinBufferSize(rate, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT)
+            // 48 kHz: the voice's native 22.05 kHz made Android pick a DIRECT output that this kit's HAL may not play;
+            // 48 kHz 16-bit goes through the primary mixer, the path verified on the kit.
+            val min = AudioTrack.getMinBufferSize(OUTPUT_RATE, AudioFormat.CHANNEL_OUT_MONO, AudioFormat.ENCODING_PCM_16BIT)
             out = AudioTrack.Builder()
                 .setAudioAttributes(AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SPEECH).build())
-                .setAudioFormat(AudioFormat.Builder().setEncoding(AudioFormat.ENCODING_PCM_16BIT).setSampleRate(rate)
+                .setAudioFormat(AudioFormat.Builder().setEncoding(AudioFormat.ENCODING_PCM_16BIT).setSampleRate(OUTPUT_RATE)
                     .setChannelMask(AudioFormat.CHANNEL_OUT_MONO).build())
-                .setBufferSizeInBytes(maxOf(min * 4, rate)).setTransferMode(AudioTrack.MODE_STREAM).build()
+                .setBufferSizeInBytes(maxOf(min * 4, OUTPUT_RATE)).setTransferMode(AudioTrack.MODE_STREAM).build()
             track = out
             out.play()
             while (generation.get() == id) {
@@ -143,9 +146,33 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
 
     companion object {
         private const val TAG = "NeuralSpeaker"
+        private const val OUTPUT_RATE = 48000
         // kokoro-en-v0_19 speakers: 0 af, 1 af_bella, 2 af_nicole, 3 af_sarah, 4 af_sky, 5 am_adam, 6 am_michael,
         // 7 bf_emma, 8 bf_isabella, 9 bm_george, 10 bm_lewis.
         const val VOICE_SARAH = 3
         private val END = ShortArray(0)
+    }
+}
+
+/** Streaming linear resampler, float -> 16-bit PCM, continuous across chunks (speech only, no anti-alias needed upward). */
+private class Resampler(inRate: Int, outRate: Int) {
+    private val step = inRate.toDouble() / outRate
+    private var pos = 0.0          // position in the input stream, relative to the current chunk start
+    private var last = 0f          // last sample of the previous chunk (index -1)
+
+    fun process(x: FloatArray): ShortArray {
+        if (x.isEmpty()) return ShortArray(0)
+        val out = ArrayList<Short>((x.size / step).toInt() + 2)
+        while (pos < x.size - 1) {
+            val i = kotlin.math.floor(pos).toInt()
+            val f = (pos - i).toFloat()
+            val a = if (i < 0) last else x[i]
+            val b = x[i + 1]
+            out += ((a + (b - a) * f).coerceIn(-1f, 1f) * 32767f).toInt().toShort()
+            pos += step
+        }
+        pos -= x.size
+        last = x[x.size - 1]
+        return out.toShortArray()
     }
 }

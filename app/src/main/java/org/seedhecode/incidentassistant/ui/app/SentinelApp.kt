@@ -101,7 +101,10 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
             composable(Routes.DESK) { DeskScreen(reports) { nav.navigate(Routes.detail(it)) } }
             composable(Routes.DETAIL, arguments = listOf(navArgument("id") { type = NavType.StringType })) { e ->
                 val id = e.arguments?.getString("id").orEmpty()
-                ReportDetailScreen(reports.firstOrNull { it.id == id }, desk = current == Role.DESK) { vm.setStatus(id, it) }
+                val report = reports.firstOrNull { it.id == id }
+                ReportDetailScreen(report, desk = current == Role.DESK, reading = state.readingReportId == id,
+                    onStatus = { vm.setStatus(id, it) }, onListen = { report?.let(vm::toggleReadAloud) })
+                DisposableEffect(id) { onDispose { if (vm.state.value.readingReportId == id) report?.let(vm::toggleReadAloud) } }
             }
         }
     }

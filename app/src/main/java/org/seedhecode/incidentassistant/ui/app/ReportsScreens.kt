@@ -5,6 +5,9 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Stop
+import androidx.compose.material.icons.filled.VolumeUp
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -66,7 +69,7 @@ fun DeskScreen(reports: List<FiledReport>, onOpen: (String) -> Unit) {
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ReportDetailScreen(report: FiledReport?, desk: Boolean, onStatus: (ReportStatus) -> Unit) {
+fun ReportDetailScreen(report: FiledReport?, desk: Boolean, reading: Boolean, onStatus: (ReportStatus) -> Unit, onListen: () -> Unit) {
     if (report == null) {
         Column(Modifier.padding(20.dp)) { EmptyNote("Report not found", "It may have been filed on another device.") }
         return
@@ -79,6 +82,8 @@ fun ReportDetailScreen(report: FiledReport?, desk: Boolean, onStatus: (ReportSta
         }
         Text(report.typeLabel, style = MaterialTheme.typography.displaySmall)
         Text("Filed ${when_(report.filedAt)}", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        if (desk) OutlinedPill(if (reading) "Stop reading" else "Listen to report", onListen,
+            icon = if (reading) Icons.Default.Stop else Icons.Default.VolumeUp)
         if (desk && report.status != ReportStatus.RESOLVED) Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             if (report.status == ReportStatus.NEW) PillButton("Start work", { onStatus(ReportStatus.IN_PROGRESS) }, Modifier.weight(1f))
             OutlinedPill("Mark resolved", { onStatus(ReportStatus.RESOLVED) }, Modifier.weight(1f))
@@ -87,10 +92,9 @@ fun ReportDetailScreen(report: FiledReport?, desk: Boolean, onStatus: (ReportSta
             KeyValue("Where", report.where().ifEmpty { "Not given" })
             KeyValue("Sent to", report.team)
             KeyValue("People notified", report.notify.joinToString(", "))
-            KeyValue("Response target", "Within ${report.slaMin} minutes of ${when_(report.filedAt)}")
+            KeyValue("Response target", respondBy(report.filedAt, report.slaMin))
             if (report.secondary.isNotEmpty()) KeyValue("Also flagged", report.secondary.joinToString(", ") { humanize(it) })
         }
-        if (report.summary.isNotBlank()) DataCard { KeyValue("Summary", report.summary) }
         val details = report.fields.filter { it.first !in setOf("building", "floor", "space_id") }
         if (details.isNotEmpty()) DataCard {
             Text("Details", style = MaterialTheme.typography.titleMedium)

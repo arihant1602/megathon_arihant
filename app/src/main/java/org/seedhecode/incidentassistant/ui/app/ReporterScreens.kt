@@ -340,7 +340,7 @@ fun ReviewScreen(state: AssistantUiState, onFile: () -> Unit, onEdit: () -> Unit
             DataCard {
                 KeyValue("Sent to", r.team)
                 KeyValue("People notified", r.notify.joinToString(", "))
-                KeyValue("Response target", "Within ${r.slaMin} minutes")
+                KeyValue("Response target", respondBy(System.currentTimeMillis(), r.slaMin) + " if filed now")
                 if (r.secondary.isNotEmpty()) KeyValue("Also flagged", r.secondary.joinToString(", ") { humanize(it) })
             }
         }
@@ -353,7 +353,6 @@ fun ReviewScreen(state: AssistantUiState, onFile: () -> Unit, onEdit: () -> Unit
             val details = (v.requiredFields + v.values.keys).distinct().filter { it !in setOf("building", "floor", "space_id") }
             details.forEach { f -> KeyValue(humanize(f), display(v.values[f]?.value)) }
         }
-        if (v.summary.isNotBlank()) DataCard { KeyValue("Summary", v.summary) }
         val filed = state.filedReportId
         when {
             filed != null -> {

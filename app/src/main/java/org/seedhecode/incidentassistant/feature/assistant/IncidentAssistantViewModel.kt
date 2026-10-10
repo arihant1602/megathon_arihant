@@ -18,6 +18,9 @@ import org.seedhecode.incidentassistant.engine.NeuralSpeaker
 import org.seedhecode.incidentassistant.engine.OfflineSpeaker
 import org.seedhecode.incidentassistant.engine.Speech
 import org.seedhecode.incidentassistant.engine.SystemSpeech
+import org.seedhecode.incidentassistant.ui.app.display
+import org.seedhecode.incidentassistant.ui.app.humanize
+import org.seedhecode.incidentassistant.ui.app.respondBy
 import java.util.concurrent.Executors
 
 enum class Phase { LOADING, IDLE, LISTENING, THINKING, SPEAKING, ERROR }
@@ -34,6 +37,7 @@ data class AssistantUiState(
     val filedReportId: String? = null,     // set once the current conversation's report is saved
     val notice: String? = null,            // one-off message (e.g. a rejected form edit)
     val voice: String = "System voice",
+    val readingReportId: String? = null,   // desk: report being read aloud
 )
 
 /** Drives one incident conversation: mic -> IncidentEngine -> spoken question -> listen again. */
@@ -127,6 +131,18 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
 
     fun clearNotice() = _state.update { it.copy(notice = null) }
 
+    /** Desk: read the basic report aloud (tap again to stop). */
+    fun toggleReadAloud(r: FiledReport) {
+        if (_state.value.readingReportId == r.id) { speaker.stop(); _state.update { it.copy(readingReportId = null) }; return }
+        conversing = false; capture?.stop()
+        val details = r.fields.filter { it.first !in setOf("building", "floor", "space_id") }
+            .joinToString(". ") { (f, v) -> "${humanize(f)}: ${display(v)}" }
+        val text = listOf("${r.typeLabel}, ${r.priorityLabel.lowercase()} priority",
+            r.where().ifEmpty { "location not given" }, "Sent to ${r.team}", "Respond ${respondBy(r.filedAt, r.slaMin).replace("min", "minutes")}",
+            "Status: ${r.status.label}", details).filter { it.isNotBlank() }.joinToString(". ") + "."
+        if (speaker.speak(text)) _state.update { it.copy(readingReportId = r.id) }
+    }
+
     fun setStatus(id: String, status: ReportStatus) {
         store.setStatus(id, status); _reports.value = store.all()
     }
@@ -161,6 +177,7 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     }
 
     private fun afterSpeech() {
+        if (_state.value.readingReportId != null) _state.update { it.copy(readingReportId = null) }
         if (_state.value.phase == Phase.SPEAKING) _state.update { it.copy(phase = Phase.IDLE, status = "Your turn") }
         if (conversing && _state.value.view?.done != true) main.postDelayed({ if (conversing && !capturing) startListening() }, 250)
     }

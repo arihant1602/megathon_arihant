@@ -155,6 +155,10 @@ fun ReportCard(r: FiledReport, onClick: () -> Unit) {
 
 fun when_(millis: Long): String = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT).format(Date(millis))
 
+/** Response deadline from the device clock: filing time + the taxonomy's SLA for the priority (never model-written). */
+fun respondBy(filedAt: Long, slaMin: Int): String =
+    "By ${DateFormat.getTimeInstance(DateFormat.SHORT).format(Date(filedAt + slaMin * 60_000L))} ($slaMin min)"
+
 private val FieldLabels = mapOf("space_id" to "Room or area", "space_type" to "Type of space", "occurred_at" to "When it happened",
     "immediate_actions_taken" to "Action already taken", "persons_involved" to "People involved", "asset_tag" to "Asset tag",
     "landmark" to "Nearby landmark")

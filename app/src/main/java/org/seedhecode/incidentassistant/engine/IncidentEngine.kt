@@ -127,7 +127,7 @@ class IncidentEngine(context: Context,
                 models.whisperEncoder.takeIf { it.isFile }, models.whisperEncoderShort.takeIf { it.isFile }) }
             l = timed("qwen") { LlamaLlm(models.qwen) }
             speech = s; llm = l
-            assistant = Assistant(tax, classifier::classify, llm)
+            assistant = Assistant(tax, classifier::classify, llm, summarise = false)
             classifier.classify(listOf(listOf("warm up")))   // first HTP execution pays one-off setup
         } catch (error: Throwable) {
             s?.close(); l?.close(); r?.close(); audio.shutdownNow(); inference.shutdownNow(); throw error
