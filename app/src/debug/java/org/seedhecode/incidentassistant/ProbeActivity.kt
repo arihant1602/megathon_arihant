@@ -32,14 +32,22 @@ class ProbeActivity : Activity() {
                     val bytes = File(dir, wav).readBytes()
                     val pcm = FloatArray((bytes.size - 44) / 2) { i ->
                         ((bytes[44 + 2 * i].toInt() and 0xff) or (bytes[45 + 2 * i].toInt() shl 8)).toShort() / 32768f }
-                    val whisper = org.seedhecode.incidentassistant.engine.WhisperSpeech(File(filesDir, "models/ggml-base.bin").absolutePath)
-                    val runs = JSONArray()
-                    repeat(3) {
-                        val t = System.nanoTime(); val text = whisper.transcribe(pcm, "en", true).text
-                        runs.put(JSONObject().put("ms", (System.nanoTime() - t) / 1_000_000).put("text", text))
+                    org.seedhecode.incidentassistant.engine.configureDsp(applicationInfo.nativeLibraryDir)
+                    val result = JSONObject().put("audio_s", pcm.size / 16000.0)
+                    val encoder = File(filesDir, "models/whisper_base_encoder_fp16_htp.dlc").takeIf { it.isFile }
+                    val short = File(filesDir, "models/whisper_base_encoder_10s_fp16_htp.dlc").takeIf { it.isFile }
+                    for ((label, enc) in listOf("npu" to encoder, "cpu" to null)) {
+                        if (label == "npu" && enc == null) continue
+                        val whisper = org.seedhecode.incidentassistant.engine.WhisperSpeech(File(filesDir, "models/ggml-base.bin").absolutePath, enc, short)
+                        val runs = JSONArray()
+                        for (clip in listOf(pcm, pcm.copyOf(minOf(pcm.size, 16000 * 4)))) repeat(2) {   // full clip, first 4 s
+                            val t = System.nanoTime(); val text = whisper.transcribe(clip, "en", true).text
+                            runs.put(JSONObject().put("audio_s", clip.size / 16000.0).put("ms", (System.nanoTime() - t) / 1_000_000).put("text", text))
+                        }
+                        whisper.close()
+                        result.put(label, runs)
                     }
-                    whisper.close()
-                    out.put("whisper", JSONObject().put("audio_s", pcm.size / 16000.0).put("runs", runs))
+                    out.put("whisper", result)
                 }
                 val lines = File(dir, name).readLines().map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }
                 var latest: AssistantView? = null

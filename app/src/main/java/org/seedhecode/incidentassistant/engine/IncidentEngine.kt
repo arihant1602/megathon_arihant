@@ -14,18 +14,23 @@ class OnDeviceModels(context: Context) {
     val dir = File(context.filesDir, "models")
     val laya = File(dir, "laya_w8a16_htp.dlc")
     val whisper = File(dir, "ggml-base.bin")
+    /** Optional: Whisper's encoder as an FP16 HTP DLC; present -> encoder on the NPU. */
+    val whisperEncoder = File(dir, "whisper_base_encoder_fp16_htp.dlc")
+    val whisperEncoderShort = File(dir, "whisper_base_encoder_10s_fp16_htp.dlc")
     val qwen = File(dir, "Qwen3-0.6B-Q8_0.gguf")
     fun missing() = listOf(laya, whisper, qwen).filter { !it.isFile || it.length() == 0L }.map { it.name }
 }
+
+/** The DSP loader finds the SNPE HTP skel in the app's native lib dir. Call before any SNPE model loads. */
+fun configureDsp(nativeLibDir: String) = android.system.Os.setenv("ADSP_LIBRARY_PATH",
+    "$nativeLibDir;/vendor/lib/rfsa/adsp;/vendor/dsp/cdsp;/system/lib/rfsa/adsp;/dsp", true)
 
 /** Fine-tuned Laya W8A16 on the Hexagon v79 NPU via SNPE (int32 user buffers), loaded once and kept warm. */
 class SnpeLayaRunner(dlc: File, nativeLibDir: String) : LayaRunner {
     private val handle: Long
     init {
         check(NativeSnpe.available) { "This APK has no SNPE runtime. Build with -PsnpeSdk=<QAIRT SDK>." }
-        // The DSP loader finds the HTP skel in the app's native lib dir.
-        android.system.Os.setenv("ADSP_LIBRARY_PATH",
-            "$nativeLibDir;/vendor/lib/rfsa/adsp;/vendor/dsp/cdsp;/system/lib/rfsa/adsp;/dsp", true)
+        configureDsp(nativeLibDir)
         handle = NativeSnpe.load(dlc.absolutePath)
     }
     override fun run(ids: IntArray, mask: IntArray): FloatArray = NativeSnpe.run(handle, ids, mask)
@@ -113,7 +118,8 @@ class IncidentEngine(context: Context,
             val tokenizer = timed("tokenizer") { LayaTokenizer(asset("laya_tokenizer.json")) }
             r = timed("laya_npu") { SnpeLayaRunner(models.laya, context.applicationInfo.nativeLibraryDir) }
             classifier = LayaClassifier(tokenizer, asset("laya_labels.json"), r)
-            s = timed("whisper") { WhisperSpeech(models.whisper.absolutePath) }
+            s = timed("whisper") { WhisperSpeech(models.whisper.absolutePath,
+                models.whisperEncoder.takeIf { it.isFile }, models.whisperEncoderShort.takeIf { it.isFile }) }
             l = timed("qwen") { LlamaLlm(models.qwen) }
             speech = s; llm = l
             assistant = Assistant(tax, classifier::classify, llm)

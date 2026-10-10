@@ -26,11 +26,21 @@ object NativeSnpe {
     external fun release(handle: Long)
 }
 
-class WhisperSpeech(path: String) : SpeechModel {
+/**
+ * [npuEncoder]: FP16 HTP DLC of Whisper's encoder (30 s window); when given, the encoder runs on the NPU and the
+ * decoder stays on the CPU. [npuEncoderShort]: optional 10 s window graph used for turns up to 9.5 s.
+ */
+class WhisperSpeech(path: String, npuEncoder: java.io.File? = null, npuEncoderShort: java.io.File? = null) : SpeechModel {
     constructor(pack: ModelPack) : this(pack.artifact("asr").absolutePath)
     private val handle: Long
+    val encoderOnNpu = npuEncoder != null
     init {
         check(NativeWhisper.available) { "This APK has no Whisper runtime. Build with -PnativeModels=true." }
+        // whisper.cpp reads ANEFORGE_ENCODER when it creates its state (see core/native-whisper).
+        if (npuEncoder != null) android.system.Os.setenv("ANEFORGE_ENCODER", npuEncoder.absolutePath, true)
+        else android.system.Os.unsetenv("ANEFORGE_ENCODER")
+        if (npuEncoder != null && npuEncoderShort != null) android.system.Os.setenv("WHISPER_NPU_ENCODER_SHORT", npuEncoderShort.absolutePath, true)
+        else android.system.Os.unsetenv("WHISPER_NPU_ENCODER_SHORT")
         handle = NativeWhisper.load(path)
         check(handle != 0L) { "Cannot load multilingual Whisper model." }
     }
