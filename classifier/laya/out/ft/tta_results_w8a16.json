@@ -1,0 +1,104 @@
+{
+ "tta": {
+  "single (original order)": [
+   0.8764478764478765,
+   0.90625
+  ],
+  "5 shuffles, majority vote": [
+   0.8494208494208494,
+   0.8671875
+  ],
+  "5 shuffles, mean probability": [
+   0.8532818532818532,
+   0.8671875
+  ],
+  "original + 4 shuffles, majority vote": [
+   0.8648648648648649,
+   0.8828125
+  ],
+  "shuffled view 1 alone": [
+   0.8455598455598455,
+   0.8515625
+  ]
+ },
+ "strategies": {
+  "top2_acc_all": 0.9536679536679536,
+  "top2_acc_final": 0.9609375,
+  "gate": [
+   {
+    "t": 0.0,
+    "coverage": 1.0,
+    "acc_answered": 0.90625,
+    "acc_with_top2_confirm": 0.90625
+   },
+   {
+    "t": 0.5,
+    "coverage": 0.90625,
+    "acc_answered": 0.9224137931034483,
+    "acc_with_top2_confirm": 0.921875
+   },
+   {
+    "t": 0.6,
+    "coverage": 0.859375,
+    "acc_answered": 0.9454545454545454,
+    "acc_with_top2_confirm": 0.9296875
+   },
+   {
+    "t": 0.7,
+    "coverage": 0.8046875,
+    "acc_answered": 0.941747572815534,
+    "acc_with_top2_confirm": 0.9296875
+   },
+   {
+    "t": 0.8,
+    "coverage": 0.734375,
+    "acc_answered": 0.9680851063829787,
+    "acc_with_top2_confirm": 0.9453125
+   },
+   {
+    "t": 0.9,
+    "coverage": 0.6484375,
+    "acc_answered": 0.963855421686747,
+    "acc_with_top2_confirm": 0.9453125
+   }
+  ],
+  "errors_all": 32,
+  "errors_involving_undetermined": 11,
+  "acc_type_vs_type": 0.9066666666666666,
+  "top_confusions": [
+   [
+    "lab_equipment_fault -> device_fault",
+    2
+   ],
+   [
+    "lighting_fault -> conference_room_av",
+    2
+   ],
+   [
+    "theft_missing_asset -> suspicious_activity",
+    2
+   ],
+   [
+    "access_control_fault -> device_fault",
+    1
+   ],
+   [
+    "washroom_hygiene -> washroom_plumbing",
+    1
+   ],
+   [
+    "cafeteria_issue -> washroom_hygiene",
+    1
+   ],
+   [
+    "electrical_hazard -> injury_medical",
+    1
+   ],
+   [
+    "fire_smoke -> electrical_hazard",
+    1
+   ]
+  ],
+  "sticky_final_acc": 0.7578125
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "flat": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.09266409266409266,
+  "type_acc_final_turn": 0.078125,
+  "type_macro_f1": 0.05723953703346067,
+  "type_acc_known_turns": 0.10087719298245613
+ },
+ "two_stage": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.08494208494208494,
+  "type_acc_final_turn": 0.09375,
+  "type_macro_f1": 0.02545507420399569,
+  "type_acc_known_turns": 0.08333333333333333
+ },
+ "dept_acc_stage1": 0.08494208494208494,
+ "npu_ms_per_turn": 10.767,
+ "npu_init_ms": 107.308,
+ "dlc_MB": 859.3
+}

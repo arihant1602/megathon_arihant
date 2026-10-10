@@ -1,0 +1,17 @@
+{
+ "flat": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.11583011583011583,
+  "type_acc_final_turn": 0.1171875,
+  "type_macro_f1": 0.07683057917467014,
+  "type_acc_known_turns": 0.12719298245614036
+ },
+ "two_stage": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.0888030888030888,
+  "type_acc_final_turn": 0.09375,
+  "type_macro_f1": 0.027057971268497585,
+  "type_acc_known_turns": 0.08333333333333333
+ },
+ "dept_acc_stage1": 0.10038610038610038
+}
