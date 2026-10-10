@@ -9,10 +9,13 @@ android {
 
     defaultConfig {
         applicationId = "org.seedhecode.incidentassistant"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "0.1.0"
+        if (providers.gradleProperty("nativeModels").orNull == "true") {
+            ndk { abiFilters += "arm64-v8a" }
+        }
     }
 
     buildTypes {
@@ -31,4 +34,10 @@ android {
 dependencies {
     implementation(project(":core:audio"))
     implementation(project(":core:inference"))
+    implementation("com.microsoft.onnxruntime:onnxruntime-android:1.22.0")
+    testImplementation("junit:junit:4.13.2")
+    if (providers.gradleProperty("nativeModels").orNull == "true") {
+        implementation(project(":core:native-whisper"))
+        implementation(project(":core:native-llama"))
+    }
 }

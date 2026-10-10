@@ -44,6 +44,9 @@
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/privacy_hint" android:textColor="@color/text_secondary"
             android:textSize="12sp" android:lineSpacingExtra="3dp" android:layout_marginTop="16dp" />
+        <Button android:id="@+id/conversation_button" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="@string/conversation"
+            android:textAllCaps="false" android:layout_marginTop="20dp" />
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/library_heading" android:textColor="@color/text_primary"
             android:textSize="22sp" android:fontFamily="sans-serif-medium" android:layout_marginTop="32dp" />

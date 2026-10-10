@@ -1,5 +1,22 @@
 # Incident Assistant
 
+## Phase 1-2 conversation engine
+
+The Android app now includes a local model-bundle importer, native Whisper/Qwen
+runtime adapters, CfC/Laya ONNX adapters, natural-pause conversation capture,
+revision-safe extraction, logged SQLite fixture tools and diagnostic export.
+Open **Incident conversation** from the main screen. Trained weights must be
+supplied separately; no model predictions are fabricated when weights are absent.
+
+Build the ARM64 native-enabled APK with `./gradlew.bat :app:assembleDebug -PnativeModels=true`
+after running `powershell -File scripts/prepare_native.ps1`.
+Android **7.0 / API 24** is required. All current inference adapters are explicitly
+CPU reference implementations; Hexagon/QNN execution and physical-kit benchmarks
+are pending. Android offline TTS supplies reference speech output.
+
+See [implementation, model ABI and merge instructions](docs/phase1-phase2.md).
+The original recording feature described below is also available.
+
 Kotlin Android starter for SeedheCode's on-device incident reporting app.
 First target: a regular Android phone. Later target: HDK8750 with QAIRT/QNN.
 
@@ -12,8 +29,9 @@ First target: a regular Android phone. Later target: HDK8750 with QAIRT/QNN.
 - An audio-frame interface for future local ASR/LNN/QNN implementations.
 - No Internet permission, cloud API, fabricated transcription or model download.
 
-This is a voice-capture boilerplate, not the completed AI reporting product.
-Transcription, LNN inference, forms, tool calling and submission are next steps.
+The recording screen remains capture-only. The separate conversation screen uses
+supplied local models for transcription, filtering, classification, extraction
+and tool calling. Full forms/review/submission await the Phase 3-4 code merge.
 
 ## Run on your Android through Android Studio
 
@@ -28,7 +46,7 @@ Transcription, LNN inference, forms, tool calling and submission are next steps.
 6. Speak, tap **Stop and save**, and replay the recording. Test with airplane
    mode enabled: capture and playback remain local.
 
-Android 6.0 / API 23 or newer with a microphone is required. This intentionally
+Android 7.0 / API 24 or newer with a microphone is required. This intentionally
 uses native Android views to keep the starter small and dependencies minimal.
 Pinned build stack: AGP 8.5.0, Kotlin 1.9.22, Gradle 8.11.1, JDK 17, SDK 34.
 These are compatibility-oriented baseline versions, not a claim to use the

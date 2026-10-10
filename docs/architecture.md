@@ -1,5 +1,10 @@
 # Starter architecture
 
+The recording architecture below is retained. A separate conversation screen now
+implements local model import and the Phase 1-2 CPU pipeline; see
+[Phase 1-2 implementation and merge handoff](phase1-phase2.md) for its current
+capabilities, export ABI, native build and remaining kit-dependent requirements.
+
 The first milestone proves real microphone capture on a normal Android phone.
 No LNN or ASR weights are included. The production direction retains the LNN.
 
@@ -30,10 +35,15 @@ need its own executor and session/revision cancellation; never do model inferenc
 synchronously inside the microphone callback. `TranscriptUpdate` is a contract
 for that milestone and is not emitted by the recording-only implementation.
 
-## Current limits
+## Recording-screen limits
 
 This starter has no background capture, automatic endpointing, speech recognition,
 form filling, LNN, upload, or account system. WAV captures are plaintext in
 app-private storage; app backup is disabled. Production retention/encryption,
 hardware interruption recovery, audio focus and enterprise access control need
 their own implementation and validation.
+
+Those recording-screen limits do not describe the separate conversation engine.
+Conversation capture has pause endpointing, local Whisper/Qwen execution with
+supplied weights, trained CfC/Laya ONNX adapters and logged fixture tools. Full
+forms/submission, the actual Phase 3-4 merge and Hexagon validation remain pending.

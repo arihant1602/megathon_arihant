@@ -46,6 +46,9 @@ class MainActivity : Activity(), MicrophoneRecorder.Listener {
         level = findViewById(R.id.microphone_level)
         recordButton = findViewById(R.id.record_button)
         library = findViewById(R.id.recording_library)
+        findViewById<Button>(R.id.conversation_button).setOnClickListener {
+            startActivity(Intent(this, ConversationActivity::class.java))
+        }
         try {
             store = RecordingStore(File(filesDir, "recordings"))
             recorder = MicrophoneRecorder(store, CaptureOnlyVoiceEngine()).also { it.listener = this }
