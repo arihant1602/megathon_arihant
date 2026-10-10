@@ -1,0 +1,863 @@
+import json
+
+data = [
+    # Slot 1: english, complete
+    {
+        "id": "furniture_fixture_01",
+        "incident_type": "furniture_fixture",
+        "slot": 1,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The hydraulic height cylinder on my ergonomic chair at Desk 12 in Workstation Bay 3A, floor 3, Building N sank and is broken since 9:30 AM today.",
+                "sentences": [
+                    {"text": "The hydraulic height cylinder on my ergonomic chair at Desk 12 in Workstation Bay 3A, floor 3, Building N sank and is broken since 9:30 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've assigned a carpentry technician to replace your chair.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 3,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 3A",
+            "occurred_at": "9:30 AM today",
+            "furniture_item": "ergonomic chair"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 2: english, complete
+    {
+        "id": "furniture_fixture_02",
+        "incident_type": "furniture_fixture",
+        "slot": 2,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The main conference table leg is completely wobbly in Conference Room 4B on floor 4 of Building QRC, noticed at 1:15 PM today.",
+                "sentences": [
+                    {"text": "The main conference table leg is completely wobbly in Conference Room 4B on floor 4 of Building QRC, noticed at 1:15 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, our carpentry team will repair the table.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 4,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 4B",
+            "occurred_at": "1:15 PM today",
+            "furniture_item": "conference table"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 3: english, complete
+    {
+        "id": "furniture_fixture_03",
+        "incident_type": "furniture_fixture",
+        "slot": 3,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The overhead cabinet door hinge fell off in Pantry 2A on floor 2 of Building N around 11:00 AM today.",
+                "sentences": [
+                    {"text": "The overhead cabinet door hinge fell off in Pantry 2A on floor 2 of Building N around 11:00 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, a carpentry technician will fix the cabinet.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 2,
+            "space_type": "pantry",
+            "space_id": "Pantry 2A",
+            "occurred_at": "11:00 AM today",
+            "furniture_item": "cabinet door"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 4: english, missing
+    {
+        "id": "furniture_fixture_04",
+        "incident_type": "furniture_fixture",
+        "slot": 4,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Hi, there is a broken furniture piece in Workstation Bay 5B on floor 5 of Building N.",
+                "sentences": [
+                    {"text": "Hi, there is a broken furniture piece in Workstation Bay 5B on floor 5 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "It's the standing desk motor mechanism.",
+                "sentences": [
+                    {"text": "It's the standing desk motor mechanism.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 10:20 AM today.",
+                "sentences": [
+                    {"text": "Around 10:20 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've informed the carpentry team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 5,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 5B",
+            "occurred_at": "10:20 AM today",
+            "furniture_item": "standing desk"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 5: english, missing (correction floor)
+    {
+        "id": "furniture_fixture_05",
+        "incident_type": "furniture_fixture",
+        "slot": 5,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The lock on my desk pedestal drawer is stuck, Building QRC, floor 2.",
+                "sentences": [
+                    {"text": "The lock on my desk pedestal drawer is stuck, Building QRC, floor 2.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which room or bay is your desk in?",
+                "asks": ["space_id"]
+            },
+            {
+                "role": "user",
+                "text": "Actually it is floor 3, not 2. It is in Workstation Bay 3C.",
+                "sentences": [
+                    {"text": "Actually it is floor 3, not 2.", "relevant": True},
+                    {"text": "It is in Workstation Bay 3C.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 1:45 PM today.",
+                "sentences": [
+                    {"text": "About 1:45 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, a carpentry technician has been dispatched.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 3,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 3C",
+            "occurred_at": "1:45 PM today",
+            "furniture_item": "pedestal drawer lock"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 6: english, missing (unknown furniture item)
+    {
+        "id": "furniture_fixture_06",
+        "incident_type": "furniture_fixture",
+        "slot": 6,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Something broke on the furniture in Cafeteria 1 on floor 1 of Building N.",
+                "sentences": [
+                    {"text": "Something broke on the furniture in Cafeteria 1 on floor 1 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "I'm not sure what it's called, some partition fitting near the booth.",
+                "sentences": [
+                    {"text": "I'm not sure what it's called, some partition fitting near the booth.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:40 PM today.",
+                "sentences": [
+                    {"text": "Around 12:40 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, carpentry staff will inspect the booth.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 1,
+            "space_type": "cafeteria",
+            "space_id": "Cafeteria 1",
+            "occurred_at": "12:40 PM today",
+            "furniture_item": "unknown"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 7: english, missing
+    {
+        "id": "furniture_fixture_07",
+        "incident_type": "furniture_fixture",
+        "slot": 7,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "A white board on the wall is loose and falling off in Building N, floor 6.",
+                "sentences": [
+                    {"text": "A white board on the wall is loose and falling off in Building N, floor 6.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which room or area is it in?",
+                "asks": ["space_id"]
+            },
+            {
+                "role": "user",
+                "text": "It is in Conference Room 6A.",
+                "sentences": [
+                    {"text": "It is in Conference Room 6A.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 2:30 PM today.",
+                "sentences": [
+                    {"text": "About 2:30 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've informed the carpentry team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 6,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 6A",
+            "occurred_at": "2:30 PM today",
+            "furniture_item": "whiteboard"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 8: english, missing
+    {
+        "id": "furniture_fixture_08",
+        "incident_type": "furniture_fixture",
+        "slot": 8,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The armrest of an office chair has completely snapped off.",
+                "sentences": [
+                    {"text": "The armrest of an office chair has completely snapped off.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which building and floor is this on?",
+                "asks": ["building", "floor"]
+            },
+            {
+                "role": "user",
+                "text": "Building QRC, floor 5, in Workstation Bay 5A.",
+                "sentences": [
+                    {"text": "Building QRC, floor 5, in Workstation Bay 5A.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 11:15 AM today.",
+                "sentences": [
+                    {"text": "Around 11:15 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, a carpentry technician will replace the chair.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 5,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 5A",
+            "occurred_at": "11:15 AM today",
+            "furniture_item": "office chair armrest"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 9: english, missing
+    {
+        "id": "furniture_fixture_09",
+        "incident_type": "furniture_fixture",
+        "slot": 9,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "A storage locker door won't close properly in Corridor 8A on floor 8 of Building N.",
+                "sentences": [
+                    {"text": "A storage locker door won't close properly in Corridor 8A on floor 8 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "It is Locker 42 door latch.",
+                "sentences": [
+                    {"text": "It is Locker 42 door latch.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 9:50 AM today.",
+                "sentences": [
+                    {"text": "Around 9:50 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've assigned this to carpentry.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 8,
+            "space_type": "corridor",
+            "space_id": "Corridor 8A",
+            "occurred_at": "9:50 AM today",
+            "furniture_item": "locker door latch"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 10: english, rambling
+    {
+        "id": "furniture_fixture_10",
+        "incident_type": "furniture_fixture",
+        "slot": 10,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "My phone battery drained so quickly today. The drawer handle came off at Desk 4 in Workstation Bay 11B on floor 11 of Building N.",
+                "sentences": [
+                    {"text": "My phone battery drained so quickly today.", "relevant": False},
+                    {"text": "The drawer handle came off at Desk 4 in Workstation Bay 11B on floor 11 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "I forgot my charger at home too. It is the desk drawer handle.",
+                "sentences": [
+                    {"text": "I forgot my charger at home too.", "relevant": False},
+                    {"text": "It is the desk drawer handle.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 10:45 AM today.",
+                "sentences": [
+                    {"text": "Around 10:45 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, a carpentry technician will reinstall the handle.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 11,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 11B",
+            "occurred_at": "10:45 AM today",
+            "furniture_item": "drawer handle"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 11: english, rambling (correction on space_id)
+    {
+        "id": "furniture_fixture_11",
+        "incident_type": "furniture_fixture",
+        "slot": 11,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The project deadline got moved up again. A visitor chair has a broken caster wheel near Reception 1 on floor 1 of Building QRC.",
+                "sentences": [
+                    {"text": "The project deadline got moved up again.", "relevant": False},
+                    {"text": "A visitor chair has a broken caster wheel near Reception 1 on floor 1 of Building QRC.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which room or area is it in?",
+                "asks": ["space_id"]
+            },
+            {
+                "role": "user",
+                "text": "Actually it is Lobby Reception 1. It is a visitor chair.",
+                "sentences": [
+                    {"text": "Actually it is Lobby Reception 1.", "relevant": True},
+                    {"text": "It is a visitor chair.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 2:10 PM today.",
+                "sentences": [
+                    {"text": "Around 2:10 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, carpentry will repair or replace the chair.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 1,
+            "space_type": "lobby_reception",
+            "space_id": "Lobby Reception 1",
+            "occurred_at": "2:10 PM today",
+            "furniture_item": "visitor chair"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 12: english, rambling (unknown item)
+    {
+        "id": "furniture_fixture_12",
+        "incident_type": "furniture_fixture",
+        "slot": 12,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "I really need a peaceful weekend. Some fixture in Pantry 7A on floor 7 of Building N is loose.",
+                "sentences": [
+                    {"text": "I really need a peaceful weekend.", "relevant": False},
+                    {"text": "Some fixture in Pantry 7A on floor 7 of Building N is loose.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "Not sure what it is called, some wooden bracket on the shelf.",
+                "sentences": [
+                    {"text": "Not sure what it is called, some wooden bracket on the shelf.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 3:30 PM today.",
+                "sentences": [
+                    {"text": "Around 3:30 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, our carpentry team will take a look.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 7,
+            "space_type": "pantry",
+            "space_id": "Pantry 7A",
+            "occurred_at": "3:30 PM today",
+            "furniture_item": "unknown"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 13: hindi_translated, complete
+    {
+        "id": "furniture_fixture_13",
+        "incident_type": "furniture_fixture",
+        "slot": 13,
+        "lang_style": "hindi_translated",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building QRC on floor 4, the computer desk drawer is broken in Workstation Bay 4A since 10:00 AM today morning.",
+                "sentences": [
+                    {"text": "In Building QRC on floor 4, the computer desk drawer is broken in Workstation Bay 4A since 10:00 AM today morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, a carpentry technician will repair the desk drawer.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 4,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 4A",
+            "occurred_at": "10:00 AM today",
+            "furniture_item": "desk drawer"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 14: hindi_translated, missing
+    {
+        "id": "furniture_fixture_14",
+        "incident_type": "furniture_fixture",
+        "slot": 14,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building N, floor 4, Conference Room 4A inside, one furniture item is broken.",
+                "sentences": [
+                    {"text": "In Building N, floor 4, Conference Room 4A inside, one furniture item is broken.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "The backrest of conference chair is detached.",
+                "sentences": [
+                    {"text": "The backrest of conference chair is detached.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "At what time did you see this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 11:40 AM today morning.",
+                "sentences": [
+                    {"text": "Around 11:40 AM today morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, carpentry staff will fix the chair.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 4,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 4A",
+            "occurred_at": "11:40 AM today",
+            "furniture_item": "conference chair backrest"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 15: hindi_translated, missing
+    {
+        "id": "furniture_fixture_15",
+        "incident_type": "furniture_fixture",
+        "slot": 15,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building QRC, floor 2, Pantry 2B dining table leg is broken.",
+                "sentences": [
+                    {"text": "In Building QRC, floor 2, Pantry 2B dining table leg is broken.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now around 1:20 PM.",
+                "sentences": [
+                    {"text": "Just now around 1:20 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, carpentry technicians will fix the table.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 2,
+            "space_type": "pantry",
+            "space_id": "Pantry 2B",
+            "occurred_at": "1:20 PM today",
+            "furniture_item": "dining table leg"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 16: hindi_translated, rambling
+    {
+        "id": "furniture_fixture_16",
+        "incident_type": "furniture_fixture",
+        "slot": 16,
+        "lang_style": "hindi_translated",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Today morning sunlight was very strong. In Building N, floor 12, Workstation Bay 12C desk panel is loose.",
+                "sentences": [
+                    {"text": "Today morning sunlight was very strong.", "relevant": False},
+                    {"text": "In Building N, floor 12, Workstation Bay 12C desk panel is loose.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which item needs fixing?",
+                "asks": ["furniture_item"]
+            },
+            {
+                "role": "user",
+                "text": "It is the modesty privacy panel of the desk.",
+                "sentences": [
+                    {"text": "It is the modesty privacy panel of the desk.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 9:15 AM today morning.",
+                "sentences": [
+                    {"text": "Around 9:15 AM today morning.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, the carpentry team has been informed.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 12,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 12C",
+            "occurred_at": "9:15 AM today",
+            "furniture_item": "desk privacy panel"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 17: hinglish, missing
+    {
+        "id": "furniture_fixture_17",
+        "incident_type": "furniture_fixture",
+        "slot": 17,
+        "lang_style": "hinglish",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building N ke floor 8 pe Workstation Bay 8B mein meri office chair ka wheel nikal gaya hai.",
+                "sentences": [
+                    {"text": "Building N ke floor 8 pe Workstation Bay 8B mein meri office chair ka wheel nikal gaya hai.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:50 PM notice kiya maine.",
+                "sentences": [
+                    {"text": "Around 12:50 PM notice kiya maine.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've sent this to the carpentry team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 8,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 8B",
+            "occurred_at": "12:50 PM today",
+            "furniture_item": "office chair wheel"
+        },
+        "final_priority": "P4"
+    },
+    # Slot 18: hinglish, complete
+    {
+        "id": "furniture_fixture_18",
+        "incident_type": "furniture_fixture",
+        "slot": 18,
+        "lang_style": "hinglish",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building QRC, floor 6 ke Conference Room 6B mein wooden credenza cabinet ka door hinge toot gaya hai, 2:40 PM se latch nahi ho raha.",
+                "sentences": [
+                    {"text": "Building QRC, floor 6 ke Conference Room 6B mein wooden credenza cabinet ka door hinge toot gaya hai, 2:40 PM se latch nahi ho raha.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, carpentry technicians will repair the credenza door.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 6,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 6B",
+            "occurred_at": "2:40 PM today",
+            "furniture_item": "credenza cabinet door"
+        },
+        "final_priority": "P4"
+    }
+]
+
+with open("data/furniture_fixture.jsonl", "w", encoding="utf-8") as f:
+    for row in data:
+        f.write(json.dumps(row) + "\n")
+
+print("Generated furniture_fixture.jsonl successfully")

@@ -1,0 +1,40 @@
+@ test_washroom_plumbing_001 single
+S Event organiser reports all urinals in the conference centre washroom not flushing during an event.
+U washroom_plumbing
++ fixture_type plumbing_issue :: None of the urinals in the conference centre men's room are flushing.
+- :: We've got three hundred delegates on a coffee break right now.
+A building :: Which building?
+U washroom_plumbing
++ building :: Granite Tower conference centre, ground floor.
+A :: Thanks, raised as a priority with plumbing.
+
+@ test_washroom_plumbing_002 single
+S Translator visiting can't get water from the washroom taps; vague start.
+U undetermined
+- :: Excuse me, quick question, I'm a visitor.
++ :: The washroom near the interpreting booths seems broken.
+A :: What's wrong in there?
+U washroom_plumbing
++ fixture_type plumbing_issue :: The taps give no water at all.
++ building :: Cobalt House, floor two.
+A :: Thanks, logged for plumbing.
+
+@ test_washroom_plumbing_003 single
+S Mail room clerk reports a toilet with a cracked cistern dripping constantly.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The toilet in the mail room washroom has a cracked cistern that drips nonstop.
+- :: There's a bucket under it now.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: The West Pavilion, basement.
+A :: Thanks, logged for plumbing.
+
+@ test_washroom_plumbing_004 confusable confused=water_leak
+S Photographer sees water spreading out of a washroom and thinks a pipe burst; it's a shower stuck on.
+U water_leak
++ :: Water is spreading out of the changing room, I think a pipe has burst.
+A :: Can you see where it's coming from?
+U washroom_plumbing
++ fixture_type plumbing_issue :: It's a shower that won't turn off, the handle just spins.
++ building :: Sapphire Block gym.
+A :: Thanks, logged for plumbing.

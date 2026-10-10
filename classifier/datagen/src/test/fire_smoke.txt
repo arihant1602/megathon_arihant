@@ -1,0 +1,44 @@
+@ test_fire_smoke_001 single
+S Cafeteria cashier sees flames in the toaster at the breakfast counter.
+U fire_smoke
++ fire_visible :: The conveyor toaster at breakfast has flames coming out of it.
+A evacuation_status :: Leave the area and call the emergency number. Is everyone moving away?
+U fire_smoke
++ evacuation_status :: The kitchen staff are getting everyone out.
++ building :: Granite Tower cafeteria.
+A :: The response team is on the way.
+
+@ test_fire_smoke_002 single
+S Gardener sees smoke from a bin behind the pavilion.
+U fire_smoke
++ fire_visible :: There's smoke coming out of the big wheelie bin behind the pavilion.
+A evacuation_status :: Keep clear and call the emergency number. Is anyone nearby?
+U fire_smoke
++ evacuation_status :: No one's near it.
++ building :: The West Pavilion.
+- :: Probably a cigarette again.
+A :: The response team is on the way.
+
+@ test_fire_smoke_003 single
+S Clinic nurse vague: alarm in clinic; smoke from a steriliser; three turns.
+U undetermined
++ alarm_triggered :: The alarm in the clinic just went off.
+A :: Can you see smoke or fire?
+U fire_smoke
++ fire_visible :: Smoke is coming from the steriliser, no flames.
+A evacuation_status :: Please leave and call the emergency number. Is the clinic clear?
+U fire_smoke
++ evacuation_status :: We've moved the patients out.
++ building :: Sapphire Block clinic.
+A :: The response team is on the way.
+
+@ test_fire_smoke_004 confusable confused=electrical_hazard
+S Event organiser reports sparks from a stage cable; then the drape catches fire.
+U electrical_hazard
++ :: A stage cable is sparking.
+A :: Is there smoke or fire?
+U fire_smoke
++ fire_visible :: The curtain next to it has caught fire.
++ evacuation_status :: We're clearing the hall.
++ building :: Granite Tower conference centre.
+A :: Leave and call the emergency number. The response team is on the way.

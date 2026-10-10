@@ -1,0 +1,1 @@
+base/w8a8p: 84s, 759 MB, options: --use_per_channel_quantization --act_quantizer_calibration percentile --bias_bitwidth 32

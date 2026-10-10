@@ -1,0 +1,470 @@
+@ furniture_fixture_001 single
+S Senior engineer annoyed that their chair keeps sinking to the floor.
+U furniture_fixture
++ furniture_item :: My chair keeps sinking all the way down while I'm sitting on it.
+- :: I end up typing with my chin on the desk.
+- :: Very ergonomic.
+A building,space_id :: Sorry about that. Which building and desk are you at?
+U furniture_fixture
++ building floor space_id :: N, floor eight, desk 8-203.
++ occurred_at :: It started doing it on Monday.
+- :: The coffee machine on this floor is also broken but that's another story.
+A :: Thanks, I've asked facilities to replace the chair at desk 8-203.
+
+@ furniture_fixture_002 single
+S Intern greets apologetically, then reports a desk drawer stuck shut with their laptop charger inside.
+U undetermined
+- :: Hi, sorry, small thing.
+- :: I don't want to waste anyone's time.
+A :: Not a waste at all. What's up?
+U furniture_fixture
++ furniture_item :: My desk drawer is stuck shut and my laptop charger is inside.
+- :: I've been pulling on it like a cartoon character.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor :: The Birch building, second floor.
++ space_id :: Hot desk B2-14.
+A occurred_at :: When did the drawer get stuck?
+U furniture_fixture
++ occurred_at :: Yesterday afternoon, I locked it and the key won't turn now.
+A :: Thanks, I've asked facilities to free the drawer at B2-14.
+
+@ furniture_fixture_003 single
+S Manager in a rush gives a complete report of a wobbly meeting table leg.
+U furniture_fixture
++ furniture_item space_type space_id :: The meeting table in conference room Lotus has a wobbly leg.
++ building floor :: QRC, floor four.
+- :: Coffee went everywhere in my last call.
++ occurred_at :: Noticed it this morning.
+A :: Logged, facilities will fix the table in Lotus on QRC floor four.
+
+@ furniture_fixture_004 single
+S Housekeeping staff starts with location in the lobby, then reports a torn sofa.
+U undetermined
++ space_type building :: I'm in the main lobby of the Lakeview building.
+- :: Just finishing the morning clean.
+A :: What would you like to report?
+U furniture_fixture
++ furniture_item :: The big grey sofa has a long tear in the seat.
+- :: The stuffing is coming out like popcorn.
+A occurred_at :: When did you notice it?
+U furniture_fixture
++ occurred_at :: It wasn't there yesterday.
+- :: Probably someone's bag buckle.
+A :: Thanks, I've logged the torn lobby sofa in Lakeview.
+
+@ furniture_fixture_005 single
+S Receptionist jokes about a stool that spins and leans to one side.
+U furniture_fixture
++ furniture_item :: The stool at the front desk spins on its own and leans to the left.
+- :: It's like sitting on a ship.
++ building floor space_type :: N building, reception, ground floor.
+A occurred_at :: When did it start?
+U furniture_fixture
++ occurred_at :: A couple of days ago.
+- :: I'm getting seasick.
+A :: Thanks, I've asked facilities to replace the reception stool.
+
+@ furniture_fixture_006 single
+S Lab technician tersely gives a one-turn report of a broken cabinet hinge under a lab bench.
+U furniture_fixture
++ furniture_item :: Cabinet door under bench 6 hanging off its hinge.
++ building floor space_type :: QRC floor two, hardware lab.
+- :: Not urgent.
+A :: Logged, facilities will refit the hinge under bench 6.
+
+@ furniture_fixture_007 single
+S Visitor worried after hearing a crack from their chair; four turns.
+U undetermined
++ :: I heard a crack when I sat down just now.
+- :: I'm a bit embarrassed honestly.
+A :: Are you okay? What cracked?
+U furniture_fixture
+- :: I'm fine.
++ furniture_item :: It was the chair, the back is now split at the joint.
+A building,space_id :: Which building and room are you in?
+U furniture_fixture
++ building :: The Summit building.
++ space_id :: Interview room 3.
+A floor :: Which floor is that?
+U furniture_fixture
++ floor :: First floor.
+- :: Hopefully it doesn't affect my interview.
+A :: Good luck! I've logged the broken chair in interview room 3.
+
+@ furniture_fixture_008 single
+S Night-shift worker calmly reports a locker door that won't shut.
+U furniture_fixture
++ furniture_item :: My locker door won't shut anymore, the catch is bent.
+- :: Long night already.
+A building,space_id :: Which building and locker?
+U furniture_fixture
++ building :: N building.
++ space_id :: Locker 112 in the basement changing room.
+A :: Thanks, I've logged locker 112 for repair.
+
+@ furniture_fixture_009 single
+S Contractor tersely reports a whiteboard hanging crooked off one bracket.
+U furniture_fixture
++ furniture_item :: Whiteboard in room Maple hanging off one bracket.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: Elm building, floor three.
+- :: I'd fix it myself but it's not my contract.
+A :: Thanks, facilities will remount the whiteboard in Maple.
+
+@ furniture_fixture_010 single
+S Security guard annoyed about a broken slat on a bench outside.
+U furniture_fixture
++ furniture_item space_type :: One of the wooden benches outside has a snapped slat.
+- :: People still sit on it.
+A building :: Which building is it next to?
+U furniture_fixture
++ building landmark :: QRC, by the smoking area.
+A occurred_at :: When did you notice?
+U furniture_fixture
++ occurred_at :: On my 7 am patrol.
+- :: The bins out there are overflowing too, but housekeeping knows.
+A :: Thanks, I've logged the broken bench outside QRC.
+
+@ furniture_fixture_011 single
+S Senior engineer jokes that their standing desk is stuck at maximum height.
+U furniture_fixture
++ furniture_item :: My standing desk is stuck at its highest setting.
+- :: I'm now a standing-on-a-chair desk person.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: N, floor five, desk 5-77.
++ occurred_at :: Since yesterday afternoon.
+A :: Thanks, I've logged the stuck standing desk at 5-77.
+
+@ furniture_fixture_012 single
+S Manager worried about a bookshelf leaning away from the wall.
+U furniture_fixture
++ furniture_item :: The tall bookshelf in our team area is leaning forward.
+- :: It's full of old binders.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: Willow building, floor two.
++ immediate_actions_taken :: We've taken the top shelves off to lighten it.
+A occurred_at :: When did you notice it leaning?
+U furniture_fixture
++ occurred_at :: About an hour ago.
+- :: Nobody's sitting near it now.
+A :: Thanks, I've raised the leaning bookshelf so facilities can secure it.
+
+@ furniture_fixture_013 single
+S Intern calmly reports a monitor arm that keeps drooping.
+U furniture_fixture
++ furniture_item :: The monitor arm on my desk keeps drooping down.
+- :: I keep propping it up with a stapler.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: QRC, floor three, desk 3-41.
+A :: Thanks, I've asked facilities to tighten the monitor arm at 3-41.
+
+@ furniture_fixture_014 single
+S Housekeeping staff quickly reports a pantry cupboard door that came off.
+U furniture_fixture
++ furniture_item space_type :: Pantry cupboard door has come right off in my hands.
++ building floor :: N, floor ten.
+- :: I've leaned it against the wall.
+A :: Thanks, logged the pantry cupboard door on N floor ten.
+
+@ furniture_fixture_015 single
+S Receptionist greets, apologises, then reports a broken coat stand; four turns.
+U undetermined
+- :: Good morning!
+- :: Sorry, it's been a hectic start.
+A :: Good morning. How can I help?
+U furniture_fixture
++ furniture_item :: The coat stand in reception broke.
+A :: What happened to it?
+U furniture_fixture
++ :: One of the legs snapped and it toppled over with all the coats.
+- :: Visitors were very confused.
+A building :: Which building is this?
+U furniture_fixture
++ building floor space_type :: Horizon building, ground floor reception.
++ occurred_at :: About ten minutes ago.
+A :: Thanks, I've logged the broken coat stand in Horizon reception.
+
+@ furniture_fixture_016 single
+S Lab technician annoyed that a wheel came off a lab stool.
+U furniture_fixture
++ furniture_item :: A wheel came off one of the lab stools.
+- :: It now rolls in a circle.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor space_type :: N, floor six, the optics lab.
+A :: Thanks, I've logged the lab stool for repair.
+
+@ furniture_fixture_017 single
+S Visitor jokes that the blind in a meeting room is stuck halfway.
+U furniture_fixture
++ furniture_item space_type :: The blind in this meeting room is stuck halfway down.
+- :: The sun is aiming straight at my slides.
+A building,space_id :: Which building and room?
+U furniture_fixture
++ building :: Maple block.
++ space_id :: Room Hazel.
+A floor :: Which floor?
+U furniture_fixture
++ floor :: Second.
+- :: Lovely view though.
+A :: Thanks, I've asked facilities to fix the blind in Hazel.
+
+@ furniture_fixture_018 single
+S Night-shift worker tersely gives a complete report about a broken filing cabinet lock.
+U furniture_fixture
++ furniture_item building floor space_id :: Filing cabinet lock broken in the records room, QRC floor one, cabinet F7.
++ occurred_at :: Found it at 1 am.
+A :: Logged, facilities will replace the lock on cabinet F7.
+
+@ furniture_fixture_019 single
+S Contractor starts with location in a site office, then reports a collapsed folding table.
+U undetermined
++ building :: I'm in the site office at the Cedar building.
+- :: We're setting up for the fit-out.
+A :: What's the issue?
+U furniture_fixture
++ furniture_item :: The folding table here keeps collapsing whenever you lean on it.
+- :: Our drawings ended up on the floor.
+A floor :: Which floor is the site office on?
+U furniture_fixture
++ floor :: Ground floor.
+A :: Thanks, I've logged the collapsing table in the Cedar site office.
+
+@ furniture_fixture_020 single
+S Senior engineer in a rush reports a snapped keyboard tray.
+U furniture_fixture
++ furniture_item :: The keyboard tray under my desk snapped off.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: QRC floor five, desk 5-09.
+- :: I'm typing on my lap for now.
+A :: Thanks, I've logged the keyboard tray at 5-09.
+
+@ furniture_fixture_021 single
+S Security guard hears squeaking at a desk and tracks it to a chair; four turns.
+U undetermined
++ :: Something at the desk in the security office squeaks every time I move.
+- :: It's been driving me nuts for a week.
+A :: Can you tell what's squeaking?
+U furniture_fixture
++ furniture_item :: It's the chair, the backrest spring.
+A building,floor :: Which building and floor is the security office?
+U furniture_fixture
++ building floor :: N, ground floor.
+A occurred_at :: When did it start?
+U furniture_fixture
++ occurred_at :: Last week sometime.
+- :: The night shift guy says it's haunted.
+A :: Thanks, I've logged the squeaky chair in the N security office.
+
+@ furniture_fixture_022 single
+S Manager jokes that the sofa cushions in a breakout area have collapsed.
+U furniture_fixture
++ furniture_item :: The sofa cushions in our breakout area have completely collapsed.
+- :: You sink until your knees are at your ears.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: The Oak building, floor two.
+A :: Thanks, I've logged the sofa for replacement.
+
+@ furniture_fixture_023 single
+S Intern worried after an armrest came off their chair.
+U furniture_fixture
++ furniture_item :: The armrest on my chair just came off.
+- :: I promise I wasn't doing anything weird.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: N, floor three, desk 3-62.
+A :: Thanks, I've logged the chair at 3-62.
+
+@ furniture_fixture_024 single
+S Housekeeping staff tersely reports a wobbly cafeteria table.
+U furniture_fixture
++ furniture_item space_type building :: Cafeteria table near the window in QRC rocks badly, table 14.
+- :: Trays slide off.
+A :: Logged, facilities will level table 14 in the QRC cafeteria.
+
+@ furniture_fixture_025 single
+S Receptionist annoyed that the brochure rack fell apart.
+U furniture_fixture
++ furniture_item :: The brochure rack by the entrance has fallen apart.
+- :: Leaflets everywhere.
+A building :: Which building?
+U furniture_fixture
++ building landmark :: Lakeview, by the visitor sign-in.
+A occurred_at :: When did it happen?
+U furniture_fixture
++ occurred_at :: Just after lunch.
+- :: Someone leaned their umbrella on it, I think.
+A :: Thanks, I've logged the broken brochure rack at Lakeview.
+
+@ furniture_fixture_026 single
+S Lab technician starts with location on QRC 4, then reports jammed lab drawers.
+U undetermined
++ building floor :: QRC, fourth floor.
+A :: What would you like to report there?
+U furniture_fixture
++ furniture_item space_type :: The drawers under the bench in the chemistry prep lab are jammed.
+- :: All our pipette tips are in there.
+A space_id :: Which bench?
+U furniture_fixture
++ space_id :: Bench C, near the sink.
+A :: Thanks, I've logged the jammed drawers at bench C.
+
+@ furniture_fixture_027 single
+S Visitor apologises and reports a missing door stopper so a door slams.
+U furniture_fixture
+- :: Sorry, this is probably silly.
++ furniture_item :: The door stopper in the meeting room is missing so the door keeps slamming.
+A building,space_id :: Which building and room?
+U furniture_fixture
++ building floor space_id :: N, floor two, room Orchid.
+- :: Made everyone jump during the presentation.
+A :: Thanks, I've asked facilities to fit a new door stopper in Orchid.
+
+@ furniture_fixture_028 single
+S Night-shift worker worried about a jammed pedestal drawer lock; meanders over five turns.
+U furniture_fixture
++ furniture_item :: The lock on my pedestal drawer is jammed.
+A building :: Which building?
+U furniture_fixture
++ building :: QRC.
+- :: My badge is in there, which is a problem for getting out later.
+A floor :: Which floor?
+U furniture_fixture
++ floor :: Third.
+A space_id :: Which desk?
+U furniture_fixture
++ space_id :: Desk 3-88.
+- :: Is security around tonight?
+A occurred_at :: Security can help you get out. When did the lock jam?
+U furniture_fixture
++ occurred_at :: Twenty minutes ago.
+A :: Thanks, I've logged the jammed drawer at 3-88 and flagged that your badge is inside.
+
+@ furniture_fixture_029 single
+S Contractor jokes that a bean bag has split open.
+U furniture_fixture
++ furniture_item :: One of the bean bags in the games room has split open.
+- :: It's snowing polystyrene in here.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: Spruce block, floor one.
+A :: Thanks, I've logged the split bean bag.
+
+@ furniture_fixture_030 single
+S Senior engineer tersely reports a loose desk partition screen.
+U furniture_fixture
++ furniture_item :: Desk partition screen is loose and flops over.
+A building,space_id :: Building and desk?
+U furniture_fixture
++ building floor space_id :: N, floor four, desk 4-30.
+- :: Third ticket this quarter.
+A :: Logged, facilities will refit the screen at 4-30.
+
+@ furniture_fixture_031 single
+S Manager says the room feels messy; the cause is a curtain rail that fell.
+U undetermined
+- :: Our project room feels like a mess today.
++ space_type :: Something's off in the conference room we use.
+A :: What's wrong with it?
+U furniture_fixture
++ furniture_item :: The curtain rail has come down on one side.
+- :: The curtains are sort of draped over the chairs.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor space_id :: Willow building, floor three, room Aspen.
+A :: Thanks, I've logged the fallen curtain rail in Aspen.
+
+@ furniture_fixture_032 single
+S Intern rushes to report a broken seat in a phone booth.
+U furniture_fixture
++ furniture_item space_type :: The seat in the phone booth snapped.
+- :: I have a call in two minutes.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: N, floor seven.
+A :: Thanks, I've logged the broken phone booth seat on N floor seven.
+
+@ furniture_fixture_033 confusable confused=structural_damage
+S Lab technician thinks a wall panel has broken off, but it is a loose desk panel.
+U structural_damage
++ :: A panel has come off the wall next to my bench.
+A :: Is it part of the wall itself?
+U furniture_fixture
++ furniture_item :: Oh, no, looking again it's the modesty panel from the desk, it just fell off its clips.
+- :: The wall is totally fine.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: QRC, floor six.
+A :: Thanks, I've logged the loose desk panel for facilities.
+
+@ furniture_fixture_034 confusable confused=structural_damage
+S Receptionist says a door is broken; it turns out only the handle came off.
+U structural_damage
++ :: The door to the store room is broken.
+- :: I can't get in.
+A :: What's broken about it?
+U furniture_fixture
++ furniture_item :: The handle just came off in my hand, the door itself is fine.
++ building floor :: Birch building, ground floor.
+A :: Thanks, I've logged the store room door handle for repair.
+
+@ furniture_fixture_035 confusable confused=unsafe_condition
+S Manager reports a trip hazard; it's a chair with a broken base leg sticking out.
+U unsafe_condition
++ :: There's a trip hazard in the walkway by my team.
+- :: Someone almost faceplanted.
+A :: What is it?
+U furniture_fixture
++ furniture_item :: It's a chair, one of the legs on the base is cracked and sticking out sideways.
+A building,floor :: Which building and floor?
+U furniture_fixture
++ building floor :: N, floor nine.
++ immediate_actions_taken :: I've wheeled it into the corner.
+A :: Thanks, I've logged the broken chair for removal.
+
+@ furniture_fixture_036 confusable confused=unsafe_condition
+S Night-shift worker says someone fell; it was a chair collapsing under them, and they're fine.
+U unsafe_condition
++ :: Someone just fell over at their desk.
+A :: Are they hurt?
+U furniture_fixture
+- :: No, they're laughing about it.
++ furniture_item :: The chair collapsed under him, the seat came off the base.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: QRC, floor two, desk 2-15.
+A :: Glad he's okay. I've logged the collapsed chair at 2-15.
+
+@ furniture_fixture_037 confusable confused=device_fault
+S Visitor says the check-in kiosk is broken; it's the stand it sits on that is wobbling.
+U device_fault
++ :: The check-in kiosk in the lobby is broken.
+A :: What's wrong with it?
+U furniture_fixture
++ :: The screen works fine.
++ furniture_item :: It's the stand, one leg is loose and the whole thing wobbles when you tap it.
+A building :: Which building?
+U furniture_fixture
++ building :: The Horizon building.
+- :: I managed to check in anyway.
+A :: Thanks, I've logged the kiosk stand for facilities.
+
+@ furniture_fixture_038 confusable confused=lighting_fault
+S Intern says their desk light is out; the lamp's clamp has broken and it won't stay up.
+U lighting_fault
++ :: My desk light isn't working.
+A :: Is it the bulb, or something else?
+U furniture_fixture
++ :: The light turns on fine.
++ furniture_item :: The clamp on the desk lamp broke so it just flops down onto the desk.
+A building,space_id :: Which building and desk?
+U furniture_fixture
++ building floor space_id :: N, floor three, desk 3-12.
+A :: Thanks, I've logged the broken desk lamp clamp.

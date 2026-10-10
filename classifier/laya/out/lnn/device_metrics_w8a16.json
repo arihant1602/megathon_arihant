@@ -1,0 +1,23 @@
+{
+ "flat": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.5752895752895753,
+  "type_acc_final_turn": 0.5390625,
+  "type_macro_f1": 0.5169257712681434,
+  "type_acc_known_turns": 0.5614035087719298,
+  "relevance_acc": 0.7450076804915514,
+  "filler_f1": 0.484472049689441,
+  "fields_micro_f1": 0.04721030042918455
+ },
+ "two_stage": {
+  "n_samples": 259,
+  "type_acc_all_turns": 0.5714285714285714,
+  "type_acc_final_turn": 0.53125,
+  "type_macro_f1": 0.5118659298965508,
+  "type_acc_known_turns": 0.5570175438596491
+ },
+ "dept_acc_stage1": 0.6988416988416989,
+ "npu_ms_per_turn": 1.638,
+ "npu_init_ms": 28.522,
+ "dlc_MB": 11.7
+}

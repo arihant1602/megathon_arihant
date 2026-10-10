@@ -1,0 +1,481 @@
+@ spill_cleanup_001 single
+S Intern apologises after knocking a large coffee over in a corridor.
+U spill_cleanup
+- :: Oh no, I'm so sorry.
++ spill_substance space_type :: I just knocked a whole coffee over in the corridor.
+- :: First week and already causing chaos.
+A slip_hazard,building :: No worries. Is it somewhere people walk, and which building are you in?
+U spill_cleanup
++ slip_hazard :: Yeah, it's right in the middle of the walkway.
++ building floor :: The Oak building, second floor, outside the kitchen.
++ immediate_actions_taken :: I put my jacket down so nobody steps in it.
+A :: Thanks, I've sent housekeeping over to clean the coffee spill.
+
+@ spill_cleanup_002 single
+S Housekeeping staff starts with location at the loading dock, then reports an oil patch.
+U undetermined
++ space_type building :: I'm at the loading dock behind N.
+- :: Deliveries are early today.
+A :: What's the issue at the loading dock?
+U spill_cleanup
++ spill_substance :: There's a big patch of oil on the ground near the shutter.
+A slip_hazard :: Is it where people walk or drive?
+U spill_cleanup
++ slip_hazard :: Right where the drivers walk to the doors.
++ occurred_at :: It was there when I came out at seven.
+- :: One of the vans must be leaking.
+A :: Thanks, I've logged the oil spill as a slip hazard for cleanup.
+
+@ spill_cleanup_003 single
+S Senior engineer annoyed that someone dropped soup all over the stairs.
+U spill_cleanup
++ spill_substance space_type :: Someone dropped their soup all over the stairs.
+- :: Lentil, judging by the colour.
+- :: And they just walked off.
+A slip_hazard :: Could someone slip on it?
+U spill_cleanup
++ slip_hazard :: Definitely, it's on three steps.
++ building floor :: Maple block, between floors two and three.
+A :: Thanks, housekeeping is on the way to the Maple block stairs.
+
+@ spill_cleanup_004 single
+S Receptionist in a rush gives a complete report of a smoothie spilled in the lobby.
+U spill_cleanup
++ spill_substance space_type building :: A smoothie got spilled across the lobby floor in QRC.
++ slip_hazard :: It's right by the turnstiles so people are walking through it.
++ occurred_at :: Two minutes ago.
+- :: It's bright pink, so at least it's easy to spot.
+A :: Logged, housekeeping is coming to the QRC lobby now.
+
+@ spill_cleanup_005 single
+S Security guard tersely reports a crate of water bottles that burst.
+U spill_cleanup
++ spill_substance :: A crate of water bottles burst in the delivery corridor.
++ slip_hazard :: Floor's soaked where people walk.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: Spruce block, ground floor.
+- :: The courier is apologising a lot.
+A :: Thanks, I've sent housekeeping to mop it up.
+
+@ spill_cleanup_006 single
+S Visitor notices the floor is sticky and slippery but doesn't know why at first.
+U undetermined
++ :: The floor here is sticky and kind of slippery.
+- :: I nearly lost my shoe.
+A slip_hazard :: Is it on a walkway, and can you see what it is?
+U spill_cleanup
++ slip_hazard :: It's right outside the meeting rooms where everyone walks.
++ spill_substance :: There's a paper cup on its side, I think it's spilled lemonade.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: The Horizon building, third floor.
+- :: Thanks, everyone here is very friendly.
+A occurred_at :: Do you know when it was spilled?
+U spill_cleanup
++ occurred_at :: No idea, it was already sticky when I arrived.
+A :: Thanks, I've sent housekeeping to clean the lemonade spill on Horizon floor three.
+
+@ spill_cleanup_007 single
+S Manager jokes about birthday cake smeared into the carpet.
+U spill_cleanup
++ spill_substance :: Someone's birthday cake ended up face down on the carpet.
+- :: The celebration went well until it didn't.
++ building floor space_type :: N, floor eleven, the open plan area.
+A slip_hazard :: Could anyone slip on it?
+U spill_cleanup
++ slip_hazard :: Not really, it's next to the desks, not the walkway.
+A :: Thanks, I've logged it for housekeeping.
+
+@ spill_cleanup_008 single
+S Lab technician calmly reports spilled tap water near a bench and confirms it's not a chemical.
+U spill_cleanup
++ spill_substance space_type :: I spilled a beaker of tap water on the lab floor.
++ :: Just water, no chemicals in it.
+A slip_hazard :: Is it in a walkway?
+U spill_cleanup
++ slip_hazard :: It's in front of the main bench where people walk through.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: QRC, floor five.
++ immediate_actions_taken :: I've put paper towels down.
+- :: Clumsy afternoon.
+A :: Thanks, housekeeping will dry the floor properly.
+
+@ spill_cleanup_009 single
+S Night-shift worker tersely gives a complete report of cooking oil spilled in a pantry.
+U spill_cleanup
++ spill_substance space_type :: Cooking oil spilled all over the pantry floor in the Willow building, second floor.
++ slip_hazard :: Very slippery, right by the door.
+- :: Someone's late-night fry-up gone wrong.
+A :: Logged as a slip hazard, housekeeping will clean it.
+
+@ spill_cleanup_010 single
+S Contractor worried about hydraulic oil dripping from a pallet jack.
+U spill_cleanup
++ spill_substance :: Our pallet jack has been leaking oil along the corridor.
+- :: I didn't notice until I turned around.
+A slip_hazard :: Is it on a walkway?
+U spill_cleanup
++ slip_hazard :: Yes, there's a trail about twenty metres long.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: N, ground floor, from the goods lift to the store room.
++ immediate_actions_taken :: I've parked the jack on a drip tray.
+A :: Thanks, I've raised the oil trail as a slip hazard.
+
+@ spill_cleanup_011 single
+S Intern jokes after dropping a tray of drinks; greeting first, four turns.
+U undetermined
+- :: Hey, so, funny story.
+A :: Go on.
+U spill_cleanup
++ spill_substance :: I dropped a whole tray of drinks for the team meeting.
+- :: Six lattes, gone.
+A slip_hazard :: Is it on a walkway?
+U spill_cleanup
++ slip_hazard :: It's at the top of the stairs, so yeah.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: Birch building, floor one.
+- :: My manager hasn't found out yet.
+A :: Thanks, housekeeping is on the way to the top of the Birch stairs.
+
+@ spill_cleanup_012 single
+S Receptionist annoyed about rainwater tracked in at the entrance.
+U spill_cleanup
++ spill_substance landmark :: Everyone's tracking rainwater in through the main entrance.
+- :: Nobody uses the mat.
+A slip_hazard,building :: Is it slippery, and which building?
+U spill_cleanup
++ slip_hazard :: Very, the tiles there are like ice when wet.
++ building :: QRC.
+A :: Thanks, I've asked housekeeping to mop and put out a wet floor sign.
+
+@ spill_cleanup_013 single
+S Housekeeping staff rushes: a milk carton burst in the fridge and dripped onto the floor.
+U spill_cleanup
++ spill_substance :: A carton of milk burst in the pantry fridge and it's all over the floor.
+- :: It's going to smell by tomorrow.
+A slip_hazard,building :: Is it a slip risk, and which building and floor?
+U spill_cleanup
++ slip_hazard :: Yes, it's spread out to the doorway.
++ building floor space_type :: N, floor six, pantry.
+A :: Thanks, logged for cleanup.
+
+@ spill_cleanup_014 single
+S Senior engineer calmly reports an energy drink spilled under their desk in one turn.
+U spill_cleanup
++ spill_substance :: I've spilled an energy drink under my desk.
++ slip_hazard :: It's under the desk, so not really a slip risk.
++ building floor space_id :: Pine building, floor two, desk P2-31.
+A :: Thanks, housekeeping will clean under desk P2-31.
+
+@ spill_cleanup_015 single
+S Security guard finds something slick on a ramp, unsure what; four turns.
+U undetermined
++ :: There's something slick on the ramp down to the car park.
+- :: Almost went for a skate.
+A :: Can you tell what it is?
+U spill_cleanup
++ spill_substance :: Looks like engine oil from a car.
+A slip_hazard :: Is it in the path where people walk?
+U spill_cleanup
++ slip_hazard :: The pedestrian lane runs right through it.
+A building :: Which building's car park?
+U spill_cleanup
++ building space_type :: The Lakeview building parking.
++ immediate_actions_taken :: I've put two cones round it.
+A :: Thanks, I've logged the oil on the Lakeview ramp as a slip hazard.
+
+@ spill_cleanup_016 single
+S Visitor apologises after dropping ice cream in the elevator lobby.
+U spill_cleanup
+- :: This is a bit embarrassing.
++ spill_substance space_type :: I dropped my ice cream in the elevator lobby.
+A slip_hazard,building :: Could someone slip, and which building?
+U spill_cleanup
++ slip_hazard :: It's right in front of the lift doors.
++ building floor :: N, floor one.
+- :: It was a really good ice cream too.
+A :: Thanks for telling us, housekeeping will clean it.
+
+@ spill_cleanup_017 single
+S Manager tersely reports a tipped tea urn in a meeting room.
+U spill_cleanup
++ spill_substance space_type :: Tea urn tipped over in the meeting room.
+A slip_hazard :: Is it on the floor where people walk?
+U spill_cleanup
++ slip_hazard :: It's on the floor by the door.
+A building,space_id :: Which building and room?
+U spill_cleanup
++ building floor space_id :: QRC, floor four, room Neptune.
+- :: We'll move our meeting.
+A :: Thanks, housekeeping will clean Neptune.
+
+@ spill_cleanup_018 single
+S Lab technician starts with location in a break room, then reports curry spilled on the floor.
+U undetermined
++ space_type building :: I'm in the break room in the Elm building.
+A :: What's happened?
+U spill_cleanup
++ spill_substance :: Someone's curry went all over the floor.
+- :: The microwave queue was brutal so tempers were high.
+A slip_hazard :: Is it in the walkway?
+U spill_cleanup
++ slip_hazard :: Right in front of the microwaves.
++ floor :: This is floor three, sorry.
+A :: Thanks, housekeeping is on the way.
+
+@ spill_cleanup_019 single
+S Night-shift worker jokes about popcorn scattered across a corridor.
+U spill_cleanup
++ spill_substance :: There's popcorn everywhere in the corridor.
+- :: Someone's movie night got away from them.
+A slip_hazard :: Is it a slip risk?
+U spill_cleanup
++ slip_hazard :: Not really, it's just crunchy.
++ building floor :: N, floor four.
+A :: Thanks, logged for housekeeping.
+
+@ spill_cleanup_020 single
+S Contractor calmly reports a tipped mop bucket of water.
+U spill_cleanup
++ spill_substance :: Knocked over a mop bucket, water's across the hallway.
+- :: Ironic, I know.
+A slip_hazard,building :: Is it slippery, and which building?
+U spill_cleanup
++ slip_hazard :: Yes.
++ building floor :: The Cedar building, floor two.
+A :: Thanks, housekeeping will dry it.
+
+@ spill_cleanup_021 single
+S Intern worried about juice spilled on a staircase.
+U spill_cleanup
++ spill_substance space_type :: There's orange juice spilled down the staircase.
+A slip_hazard :: Is it on the steps people use?
+U spill_cleanup
++ slip_hazard :: It's on the middle of the steps.
+- :: I don't want anyone to fall.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: Willow building, between one and two.
++ occurred_at :: I saw it just now.
+A :: Thanks, housekeeping is heading to the Willow stairs.
+
+@ spill_cleanup_022 single
+S Receptionist greets, then reports a knocked-over flower vase.
+U undetermined
+- :: Hi there, hope your day's going well.
+A :: Thanks! What can I help with?
+U spill_cleanup
++ spill_substance :: The flower vase on the front counter got knocked over.
++ :: Water and petals all over the floor.
+A slip_hazard,building :: Is it slippery, and which building?
+U spill_cleanup
++ slip_hazard :: It's right where visitors stand.
++ building space_type :: Summit building, reception.
+- :: The flowers survived at least.
+A :: Thanks, housekeeping will clean up at Summit reception.
+
+@ spill_cleanup_023 single
+S Housekeeping staff tersely reports oil drips in a car park bay.
+U spill_cleanup
++ spill_substance space_type :: Oil drips in the car park.
++ landmark :: Bay 12.
+A slip_hazard,building :: Is it where people walk, and which building?
+U spill_cleanup
++ slip_hazard :: No, it's inside the parking bay.
++ building :: Under QRC.
+A :: Thanks, logged for cleanup.
+
+@ spill_cleanup_024 single
+S Senior engineer rushes: a water cooler jug was dropped.
+U spill_cleanup
++ spill_substance :: Someone dropped a full water cooler jug and it split.
+A slip_hazard :: Is it on a walkway?
+U spill_cleanup
++ slip_hazard :: The whole corridor near the kitchen is wet.
++ building floor :: N, floor five.
+- :: Gotta run to a meeting, sorry.
+A :: Thanks, housekeeping is on the way.
+
+@ spill_cleanup_025 single
+S Security guard annoyed about food spilled inside a lift; four turns.
+U spill_cleanup
++ spill_substance :: Someone spilled noodles all over the floor of the lift.
+- :: Some people.
+A slip_hazard :: Could someone slip?
+U spill_cleanup
++ slip_hazard :: Yeah, it's greasy.
+A building :: Which building and lift?
+U spill_cleanup
++ building landmark :: The Oak building, the left lift.
+A occurred_at :: When did you see it?
+U spill_cleanup
++ occurred_at :: About ten minutes ago on my round.
+A :: Thanks, housekeeping will clean the lift.
+
+@ spill_cleanup_026 single
+S Visitor jokes that the soda fountain sprayed the floor.
+U spill_cleanup
++ spill_substance :: The soda machine just sprayed cola all over the floor.
+- :: And on my trousers.
+A slip_hazard,building :: Is it slippery, and which building?
+U spill_cleanup
++ slip_hazard :: Very sticky and slippery.
++ building space_type :: Spruce block cafeteria.
+A :: Thanks, housekeeping is on the way.
+
+@ spill_cleanup_027 single
+S Manager is worried after someone nearly slipped; unclear cause at first; five turns.
+U undetermined
++ :: One of my team nearly slipped just now.
+- :: She's fine but it gave us a scare.
+A :: Glad she's okay. What did she slip on?
+U spill_cleanup
++ spill_substance :: There's a wet patch on the floor, someone spilled their water.
+A slip_hazard :: Is it in the walkway?
+U spill_cleanup
++ slip_hazard :: Yes, right outside the lifts.
+A building :: Which building?
+U spill_cleanup
++ building :: N.
+A floor :: And which floor?
+U spill_cleanup
++ floor :: Ninth.
+- :: Thank you.
+A :: Thanks, housekeeping will dry it and put a sign out.
+
+@ spill_cleanup_028 single
+S Lab technician tersely gives a complete report of water from an ice bucket spilled in a corridor.
+U spill_cleanup
++ spill_substance space_type :: Ice bucket tipped in the lab corridor on QRC floor three, just melted water.
++ slip_hazard :: Slippery in the walkway.
+A :: Logged, housekeeping will clear it.
+
+@ spill_cleanup_029 single
+S Night-shift worker starts in the cafeteria and reports rice spilled everywhere.
+U spill_cleanup
++ space_type building :: In the Lakeview cafeteria.
++ spill_substance :: A whole tray of rice is all over the floor by the counter.
+A slip_hazard :: Could someone slip?
+U spill_cleanup
++ slip_hazard :: Probably, it's right by the serving line.
+- :: The night crew is eating late.
+A :: Thanks, housekeeping will sweep it up.
+
+@ spill_cleanup_030 single
+S Contractor apologises for dropping lunch in a stairwell.
+U spill_cleanup
+- :: Sorry, I've made a mess.
++ spill_substance space_type :: Dropped my lunch in the stairwell, gravy and all.
+A slip_hazard,building :: Is it a slip risk, and which building?
+U spill_cleanup
++ slip_hazard :: It's on the landing, so yes.
++ building :: The Pine building.
+A :: Thanks for flagging it, housekeeping will clean the landing.
+
+@ spill_cleanup_031 single
+S Intern rushes: a coffee pot smashed in the pantry.
+U spill_cleanup
++ spill_substance space_type :: The coffee pot fell and smashed in the pantry!
+- :: The noise was huge.
+A slip_hazard :: Is the floor slippery?
+U spill_cleanup
++ slip_hazard :: Yes, coffee and glass everywhere.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: N, floor ten.
++ immediate_actions_taken :: I've told everyone to stay out.
+A :: Thanks, housekeeping is on the way to clean the coffee and glass.
+
+@ spill_cleanup_032 single
+S Housekeeping staff calmly reports dropped yoghurt cups.
+U spill_cleanup
++ spill_substance :: Someone dropped a pack of yoghurt cups outside the pantry.
+- :: Strawberry everywhere.
+A slip_hazard,building :: Is it slippery, and which building and floor?
+U spill_cleanup
++ slip_hazard :: A little.
++ building floor :: Birch building, floor three.
+A :: Thanks, logged for cleanup.
+
+@ spill_cleanup_033 confusable confused=chemical_spill
+S Lab office worker fears a chemical spill, but it's spilled tea.
+U chemical_spill
++ :: There's a brown liquid spill on the floor of the lab office.
+- :: I'm worried it's something from the lab.
+A :: Do you know what it is? Has anyone touched it?
+U spill_cleanup
++ spill_substance :: Oh wait, my colleague says it's his tea, he knocked his mug over.
++ slip_hazard :: It's by the door, people walk through there.
+A building,floor :: Which building and floor?
+U spill_cleanup
++ building floor :: QRC, floor four.
+A :: Thanks, that's a normal spill then. Housekeeping will clean it.
+
+@ spill_cleanup_034 confusable confused=chemical_spill
+S Housekeeping staff sees a strange liquid and suspects a chemical; it's cooking oil.
+U chemical_spill
++ :: There's a strange yellow liquid on the floor near the back door.
+A :: Do you know what it is? Is anyone exposed to it?
+U spill_cleanup
++ spill_substance :: I smelled it and it's cooking oil from the canteen bins.
++ slip_hazard :: It's very slippery.
+A building :: Which building?
+U spill_cleanup
++ building :: Elm building, ground floor.
+- :: Mystery solved.
+A :: Thanks, I've logged the oil spill for cleanup.
+
+@ spill_cleanup_035 confusable confused=chemical_spill
+S Security guard sees a bright blue fluid and fears it's chemical; it's a sports drink.
+U chemical_spill
++ :: There's a bright blue fluid pooled in the corridor by the labs.
+A :: Do you know what it is? Has anyone touched it?
+U spill_cleanup
++ spill_substance :: A guy just came back and said it's his sports drink.
++ slip_hazard :: It's in the corridor, so slippery.
++ building floor :: N, floor seven.
+A :: Thanks, logged as a normal spill for housekeeping.
+
+@ spill_cleanup_036 confusable confused=water_leak
+S Receptionist sees a puddle and thinks the ceiling is leaking; a water bottle was spilled.
+U water_leak
++ :: There's a puddle on the floor near the waiting area, I think the ceiling's leaking.
+A :: Can you see water dripping from above?
+U spill_cleanup
++ :: No, the ceiling is dry.
++ spill_substance :: There's an empty water bottle on its side, someone must have knocked it.
+A slip_hazard,building :: Is it a slip risk, and which building?
+U spill_cleanup
++ slip_hazard :: Yes, it's by the seats.
++ building space_type :: QRC reception.
+A :: Thanks, housekeeping will clean the spill.
+
+@ spill_cleanup_037 confusable confused=water_leak
+S Contractor sees water near pipes and thinks it's a leak; a mop bucket tipped.
+U water_leak
++ :: There's water all around the pipes in the utility corridor.
+A :: Is any pipe dripping?
+U spill_cleanup
++ :: The pipes are all dry.
++ spill_substance :: The cleaner's bucket got kicked over, that's where it came from.
+A slip_hazard,building :: Is it slippery, and which building?
+U spill_cleanup
++ slip_hazard :: Yes.
++ building :: Spruce block.
+A :: Thanks, logged as a spill for housekeeping.
+
+@ spill_cleanup_038 confusable confused=cafeteria_issue
+S Visitor complains about a cafeteria mess; it's a dropped food tray on the walkway.
+U cafeteria_issue
++ :: The cafeteria is a mess.
+- :: Not a great first impression.
+A :: What's wrong?
+U spill_cleanup
++ spill_substance :: Someone dropped a tray of pasta right in the middle of the walkway.
++ slip_hazard :: People are stepping over it.
++ building :: Horizon building.
+A :: Thanks, housekeeping will clean the spilled tray.

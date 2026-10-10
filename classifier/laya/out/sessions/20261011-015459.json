@@ -1,0 +1,758 @@
+{
+ "log": [
+  {
+   "turn": 1,
+   "user": "The lights in our meeting room just went out.",
+   "probs": {
+    "water_leak": 0.0005361857474781573,
+    "washroom_plumbing": 5.730908378609456e-05,
+    "power_outage": 0.003490658011287451,
+    "electrical_hazard": 0.000430984451668337,
+    "lighting_fault": 0.9910115003585815,
+    "hvac_issue": 0.0005397581262513995,
+    "elevator_fault": 0.0001250094355782494,
+    "structural_damage": 0.00036216829903423786,
+    "furniture_fixture": 0.00018198117322754115,
+    "spill_cleanup": 1.4796086361457128e-05,
+    "washroom_hygiene": 7.748314965283498e-05,
+    "pest_sighting": 3.33110147039406e-05,
+    "cafeteria_issue": 4.083055682713166e-05,
+    "access_control_fault": 0.00014270712563302368,
+    "lost_badge": 3.123626811429858e-05,
+    "suspicious_activity": 4.388126762933098e-05,
+    "theft_missing_asset": 2.903704262280371e-05,
+    "cctv_fault": 0.0009933585533872247,
+    "injury_medical": 9.391175990458578e-05,
+    "fire_smoke": 0.00015162625641096383,
+    "chemical_spill": 4.962701495969668e-05,
+    "unsafe_condition": 4.7777750296518207e-05,
+    "network_outage": 4.0582646761322394e-05,
+    "conference_room_av": 0.0006333499914035201,
+    "device_fault": 4.1241233702749014e-05,
+    "lab_equipment_fault": 3.5566645237850025e-05,
+    "esd_issue": 0.0001365827047266066,
+    "lab_utility_failure": 0.00014194674440659583,
+    "undetermined": 0.0004748487554024905,
+    "none": 1.0829849088622723e-05
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "The lights in our meeting room just went out.",
+     "relevant": 0.9980241060256958,
+     "fields": []
+    }
+   ],
+   "classifier_ms": 564.63623046875,
+   "note": "type settled: lighting_fault (0.99 >= 0.8)",
+   "extracted": {},
+   "llm": {
+    "ms": 205,
+    "prompt_tokens": 129,
+    "output_tokens": 43,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "building",
+     "floor"
+    ],
+    "reason": "location missing",
+    "text": "Which building are you in? And which floor?"
+   },
+   "form": {
+    "type": "lighting_fault",
+    "type_source": "classifier",
+    "type_conf": 0.9910115003585815,
+    "values": {
+     "critical_equipment_affected": {
+      "value": false,
+      "evidence": "No, nothing critical is in there.",
+      "turn": 3
+     },
+     "building": {
+      "value": "QRC",
+      "evidence": "QRC, third floor, meeting room Saturn.",
+      "turn": 4
+     }
+    },
+    "followups": 1,
+    "asked": [
+     [
+      1,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      2,
+      [
+       "critical_equipment_affected",
+       "building"
+      ]
+     ],
+     [
+      3,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      4,
+      [
+       "floor",
+       "space_id"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P4",
+    "priority_label": "Low",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Electrical Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 1440
+   }
+  },
+  {
+   "turn": 2,
+   "user": "Actually the sockets are dead too, the whole room has no power.",
+   "probs": {
+    "water_leak": 0.0012142697814852,
+    "washroom_plumbing": 8.716476440895349e-05,
+    "power_outage": 0.9790520668029785,
+    "electrical_hazard": 0.004632929340004921,
+    "lighting_fault": 0.007840326055884361,
+    "hvac_issue": 0.0009942199103534222,
+    "elevator_fault": 0.00021231445134617388,
+    "structural_damage": 0.00047704967437312007,
+    "furniture_fixture": 0.0002996484690811485,
+    "spill_cleanup": 3.0880510166753083e-05,
+    "washroom_hygiene": 0.00017164209566544741,
+    "pest_sighting": 3.2194755476666614e-05,
+    "cafeteria_issue": 0.00039661474875174463,
+    "access_control_fault": 9.714681073091924e-05,
+    "lost_badge": 3.995030783698894e-05,
+    "suspicious_activity": 4.2774550820467994e-05,
+    "theft_missing_asset": 0.0001289298088522628,
+    "cctv_fault": 0.00015768964658491313,
+    "injury_medical": 0.0005105267628096044,
+    "fire_smoke": 0.00013389598461799324,
+    "chemical_spill": 3.771041156142019e-05,
+    "unsafe_condition": 0.0001430102565791458,
+    "network_outage": 0.00047538543003611267,
+    "conference_room_av": 0.00044093423639424145,
+    "device_fault": 0.00044151535257697105,
+    "lab_equipment_fault": 0.00011010191519744694,
+    "esd_issue": 0.0004660888225771487,
+    "lab_utility_failure": 0.0010341259185224771,
+    "undetermined": 0.0002075265656458214,
+    "none": 9.136443259194493e-05
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "The lights in our meeting room just went out.",
+     "relevant": 0.9981645941734314,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "Actually the sockets are dead too, the whole room has no power.",
+     "relevant": 0.9948933124542236,
+     "fields": [
+      "outage_scope"
+     ]
+    }
+   ],
+   "classifier_ms": 524.0273475646973,
+   "note": "type changed lighting_fault -> power_outage (0.98)",
+   "extracted": {},
+   "llm": {
+    "ms": 191,
+    "prompt_tokens": 156,
+    "output_tokens": 43,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "critical_equipment_affected",
+     "building"
+    ],
+    "reason": "safety field missing",
+    "text": "Is any lab, server or critical equipment affected? And which building are you in?"
+   },
+   "form": {
+    "type": "power_outage",
+    "type_source": "classifier",
+    "type_conf": 0.9790520668029785,
+    "values": {
+     "critical_equipment_affected": {
+      "value": false,
+      "evidence": "No, nothing critical is in there.",
+      "turn": 3
+     },
+     "building": {
+      "value": "QRC",
+      "evidence": "QRC, third floor, meeting room Saturn.",
+      "turn": 4
+     }
+    },
+    "followups": 2,
+    "asked": [
+     [
+      1,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      2,
+      [
+       "critical_equipment_affected",
+       "building"
+      ]
+     ],
+     [
+      3,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      4,
+      [
+       "floor",
+       "space_id"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P3",
+    "priority_label": "Medium",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Electrical Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 240
+   }
+  },
+  {
+   "turn": 3,
+   "user": "No, nothing critical is in there.",
+   "probs": {
+    "water_leak": 0.0007816252182237804,
+    "washroom_plumbing": 8.773519948590547e-05,
+    "power_outage": 0.9841989278793335,
+    "electrical_hazard": 0.0034103686921298504,
+    "lighting_fault": 0.0035542144905775785,
+    "hvac_issue": 0.0010842797346413136,
+    "elevator_fault": 0.0002224478084826842,
+    "structural_damage": 0.0006088328664191067,
+    "furniture_fixture": 0.0004826129006687552,
+    "spill_cleanup": 3.7087404052726924e-05,
+    "washroom_hygiene": 0.00017788766126614064,
+    "pest_sighting": 3.493951226118952e-05,
+    "cafeteria_issue": 0.0005590327200479805,
+    "access_control_fault": 0.000116563263873104,
+    "lost_badge": 3.621721771196462e-05,
+    "suspicious_activity": 3.1444466003449634e-05,
+    "theft_missing_asset": 0.00013812902034260333,
+    "cctv_fault": 0.00012270343722775578,
+    "injury_medical": 0.0006658666534349322,
+    "fire_smoke": 0.00014693860430270433,
+    "chemical_spill": 2.422075704089366e-05,
+    "unsafe_condition": 0.0001392550184391439,
+    "network_outage": 0.0005037077353335917,
+    "conference_room_av": 0.0005027526640333235,
+    "device_fault": 0.0005959576228633523,
+    "lab_equipment_fault": 9.43410923355259e-05,
+    "esd_issue": 0.0003353482752572745,
+    "lab_utility_failure": 0.0009185630478896201,
+    "undetermined": 0.00015453806554432958,
+    "none": 0.00023358286125585437
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "The lights in our meeting room just went out.",
+     "relevant": 0.9996374845504761,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "Actually the sockets are dead too, the whole room has no power.",
+     "relevant": 0.9979631900787354,
+     "fields": [
+      "outage_scope"
+     ]
+    },
+    {
+     "turn": 2,
+     "text": "No, nothing critical is in there.",
+     "relevant": 0.44910815358161926,
+     "fields": []
+    }
+   ],
+   "classifier_ms": 558.4380626678467,
+   "note": "type holds: power_outage (0.98)",
+   "extracted": {
+    "critical_equipment_affected": false
+   },
+   "llm": {
+    "ms": 112,
+    "prompt_tokens": 123,
+    "output_tokens": 21,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "building",
+     "floor"
+    ],
+    "reason": "location missing",
+    "text": "Which building are you in? And which floor?"
+   },
+   "form": {
+    "type": "power_outage",
+    "type_source": "classifier",
+    "type_conf": 0.9841989278793335,
+    "values": {
+     "critical_equipment_affected": {
+      "value": false,
+      "evidence": "No, nothing critical is in there.",
+      "turn": 3
+     },
+     "building": {
+      "value": "QRC",
+      "evidence": "QRC, third floor, meeting room Saturn.",
+      "turn": 4
+     }
+    },
+    "followups": 3,
+    "asked": [
+     [
+      1,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      2,
+      [
+       "critical_equipment_affected",
+       "building"
+      ]
+     ],
+     [
+      3,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      4,
+      [
+       "floor",
+       "space_id"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P3",
+    "priority_label": "Medium",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Electrical Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 240
+   }
+  },
+  {
+   "turn": 4,
+   "user": "QRC, third floor, meeting room Saturn.",
+   "probs": {
+    "water_leak": 0.0006810458144173026,
+    "washroom_plumbing": 8.466182771371678e-05,
+    "power_outage": 0.9857991933822632,
+    "electrical_hazard": 0.00313256261870265,
+    "lighting_fault": 0.002896948019042611,
+    "hvac_issue": 0.001437457511201501,
+    "elevator_fault": 0.0001776451535988599,
+    "structural_damage": 0.00048354282625950873,
+    "furniture_fixture": 0.0005437846994027495,
+    "spill_cleanup": 3.449106588959694e-05,
+    "washroom_hygiene": 0.0001438375620637089,
+    "pest_sighting": 4.048409027745947e-05,
+    "cafeteria_issue": 0.00046650704462081194,
+    "access_control_fault": 9.245124238077551e-05,
+    "lost_badge": 3.054529952351004e-05,
+    "suspicious_activity": 2.9038877983111888e-05,
+    "theft_missing_asset": 0.00014045975694898516,
+    "cctv_fault": 0.0001024874291033484,
+    "injury_medical": 0.0005381559021770954,
+    "fire_smoke": 9.48906599660404e-05,
+    "chemical_spill": 2.0104958821320906e-05,
+    "unsafe_condition": 0.0001395818981109187,
+    "network_outage": 0.000518336717505008,
+    "conference_room_av": 0.0003947227669414133,
+    "device_fault": 0.0005282143247313797,
+    "lab_equipment_fault": 9.851092181634158e-05,
+    "esd_issue": 0.000318879378028214,
+    "lab_utility_failure": 0.0007714313105680048,
+    "undetermined": 0.00011369853018550202,
+    "none": 0.0001465536915929988
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "The lights in our meeting room just went out.",
+     "relevant": 0.9991869330406189,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "Actually the sockets are dead too, the whole room has no power.",
+     "relevant": 0.9974047541618347,
+     "fields": [
+      "outage_scope"
+     ]
+    },
+    {
+     "turn": 2,
+     "text": "No, nothing critical is in there.",
+     "relevant": 0.8238586783409119,
+     "fields": []
+    },
+    {
+     "turn": 3,
+     "text": "QRC, third floor, meeting room Saturn.",
+     "relevant": 0.9999849796295166,
+     "fields": [
+      "building",
+      "floor"
+     ]
+    }
+   ],
+   "classifier_ms": 432.5988292694092,
+   "note": "type holds: power_outage (0.99)",
+   "extracted": {
+    "building": "QRC"
+   },
+   "llm": {
+    "ms": 98,
+    "prompt_tokens": 112,
+    "output_tokens": 20,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "floor",
+     "space_id"
+    ],
+    "reason": "location missing",
+    "text": "Which floor? And which room or area exactly, for example Conference Room 2 or the pantry?"
+   },
+   "form": {
+    "type": "power_outage",
+    "type_source": "classifier",
+    "type_conf": 0.9857991933822632,
+    "values": {
+     "critical_equipment_affected": {
+      "value": false,
+      "evidence": "No, nothing critical is in there.",
+      "turn": 3
+     },
+     "building": {
+      "value": "QRC",
+      "evidence": "QRC, third floor, meeting room Saturn.",
+      "turn": 4
+     }
+    },
+    "followups": 4,
+    "asked": [
+     [
+      1,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      2,
+      [
+       "critical_equipment_affected",
+       "building"
+      ]
+     ],
+     [
+      3,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      4,
+      [
+       "floor",
+       "space_id"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P3",
+    "priority_label": "Medium",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Electrical Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 240
+   }
+  },
+  {
+   "turn": 5,
+   "user": "Ten minutes ago.",
+   "probs": {
+    "water_leak": 0.0005345370154827833,
+    "washroom_plumbing": 8.123516454361379e-05,
+    "power_outage": 0.9873491525650024,
+    "electrical_hazard": 0.0027971086092293262,
+    "lighting_fault": 0.0027264843229204416,
+    "hvac_issue": 0.0012382413260638714,
+    "elevator_fault": 0.00014560962154064327,
+    "structural_damage": 0.00040128393447957933,
+    "furniture_fixture": 0.0004691160283982754,
+    "spill_cleanup": 3.211199145880528e-05,
+    "washroom_hygiene": 0.000137245180667378,
+    "pest_sighting": 3.450453368714079e-05,
+    "cafeteria_issue": 0.0004802877374459058,
+    "access_control_fault": 7.911902503110468e-05,
+    "lost_badge": 2.599328217911534e-05,
+    "suspicious_activity": 2.3958056772244163e-05,
+    "theft_missing_asset": 0.00012465797772165388,
+    "cctv_fault": 9.100961324293166e-05,
+    "injury_medical": 0.0005106572061777115,
+    "fire_smoke": 8.623144094599411e-05,
+    "chemical_spill": 1.6812655303510837e-05,
+    "unsafe_condition": 0.0001249133492819965,
+    "network_outage": 0.00038595646037720144,
+    "conference_room_av": 0.00033292584703303874,
+    "device_fault": 0.0004880154156126082,
+    "lab_equipment_fault": 8.202016033465043e-05,
+    "esd_issue": 0.0002596794511191547,
+    "lab_utility_failure": 0.0007159597589634359,
+    "undetermined": 0.00010111258598044515,
+    "none": 0.00012412697833497077
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "The lights in our meeting room just went out.",
+     "relevant": 0.9993650317192078,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "Actually the sockets are dead too, the whole room has no power.",
+     "relevant": 0.9974405765533447,
+     "fields": [
+      "outage_scope"
+     ]
+    },
+    {
+     "turn": 2,
+     "text": "No, nothing critical is in there.",
+     "relevant": 0.8431354761123657,
+     "fields": []
+    },
+    {
+     "turn": 3,
+     "text": "QRC, third floor, meeting room Saturn.",
+     "relevant": 0.99998939037323,
+     "fields": [
+      "building",
+      "floor"
+     ]
+    },
+    {
+     "turn": 4,
+     "text": "Ten minutes ago.",
+     "relevant": 0.9998756647109985,
+     "fields": [
+      "occurred_at"
+     ]
+    }
+   ],
+   "classifier_ms": 451.0200023651123,
+   "note": "type holds: power_outage (0.99)",
+   "extracted": {},
+   "llm": {
+    "ms": 128,
+    "prompt_tokens": 113,
+    "output_tokens": 27,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "submit",
+    "fields": [],
+    "reason": "4 follow-up questions used; filing with missing fields",
+    "text": "Thanks, I'll file this now with what we have. Report submitted."
+   },
+   "form": {
+    "type": "power_outage",
+    "type_source": "classifier",
+    "type_conf": 0.9873491525650024,
+    "values": {
+     "critical_equipment_affected": {
+      "value": false,
+      "evidence": "No, nothing critical is in there.",
+      "turn": 3
+     },
+     "building": {
+      "value": "QRC",
+      "evidence": "QRC, third floor, meeting room Saturn.",
+      "turn": 4
+     }
+    },
+    "followups": 4,
+    "asked": [
+     [
+      1,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      2,
+      [
+       "critical_equipment_affected",
+       "building"
+      ]
+     ],
+     [
+      3,
+      [
+       "building",
+       "floor"
+      ]
+     ],
+     [
+      4,
+      [
+       "floor",
+       "space_id"
+      ]
+     ]
+    ],
+    "outcome": "submitted"
+   },
+   "routing": {
+    "priority": "P3",
+    "priority_label": "Medium",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Electrical Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 240
+   }
+  }
+ ],
+ "final": {
+  "type": "power_outage",
+  "type_source": "classifier",
+  "type_conf": 0.9873491525650024,
+  "values": {
+   "critical_equipment_affected": {
+    "value": false,
+    "evidence": "No, nothing critical is in there.",
+    "turn": 3
+   },
+   "building": {
+    "value": "QRC",
+    "evidence": "QRC, third floor, meeting room Saturn.",
+    "turn": 4
+   }
+  },
+  "followups": 4,
+  "asked": [
+   [
+    1,
+    [
+     "building",
+     "floor"
+    ]
+   ],
+   [
+    2,
+    [
+     "critical_equipment_affected",
+     "building"
+    ]
+   ],
+   [
+    3,
+    [
+     "building",
+     "floor"
+    ]
+   ],
+   [
+    4,
+    [
+     "floor",
+     "space_id"
+    ]
+   ]
+  ],
+  "outcome": "submitted"
+ },
+ "routing": {
+  "priority": "P3",
+  "priority_label": "Medium",
+  "team": "Facilities Engineering",
+  "notify": [
+   "Electrical Technician"
+  ],
+  "rules_fired": [],
+  "reroute_to": null,
+  "secondary": [],
+  "sla_min": 240
+ },
+ "summary": "The meeting room's power went out, with sockets failing and no power available, affecting critical elements."
+}

@@ -1,0 +1,58 @@
+08-13 21:34:06.407  1568 14838 D AGM: metadata: metadata_print: 100 0x1 
+08-13 21:34:06.407  1568 14838 D AGM: metadata: metadata_print: 100 0x2 
+08-13 21:34:06.407  1568 14838 D AGM: metadata: metadata_print: 100 0x5 
+08-13 21:34:06.407  1568 14838 D AGM: metadata: metadata_print: 102 
+08-13 21:34:06.407  1568 14838 D AGM: metadata: metadata_print: 103 ****************Metadata Done***************************
+08-13 21:34:06.407  1568 14838 D AGM: metadata: 
+08-13 21:34:06.407  1568 14838 D AGM: graph: print_graph_alias: 2334 GKV Alias 25 | DeviceTX_Speaker_Mic_StreamTX_RAW_Record
+08-13 21:34:06.407  1568 14838 D AGM: graph: graph_open: 677 miid 43ad mid 7001024 tag c0000005
+08-13 21:34:06.407  1568 14838 D AGM: graph: graph_open: 629 miid 4545 mid 7001004 tag c000000f
+08-13 21:34:06.407  1568 14838 D AGM: graph: graph_open: 629 miid 4544 mid 7001003 tag c0000010
+08-13 21:34:06.407  1568 14838 I GPR:    : vendor/qcom/proprietary/args/gpr/core/src/gpr_drv.c:__gpr_cmd_register_v2:931 GPR Register: Source Port is 8209 heap_index: 0
+08-13 21:34:06.409 14838 14838 I adsp_sleepmon: Audio: num_sessions=1,num_lpi_sessions=0,timer_pending=0
+08-13 21:34:06.409  1568 14838 E ACDB    : vendor/qcom/proprietary/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8255 Error[19]: No calibration found
+08-13 21:34:06.409  1568 14838 E ACDB    : vendor/qcom/proprietary/args/acdb/src/acdb_command.c:AcdbCmdGetProcSubgraphCalDataPersist:8255 Error[19]: No calibration found
+08-13 21:34:06.409  1568 14838 D AGM: graph: graph_open: 709 graph_handle 0x147534c
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_open: 745 exit, ret 0
+08-13 21:34:06.410  1568 14838 I AgmIpc::Server: addSessionHandle sessionId 115 handle b400007643e4e610 
+08-13 21:34:06.410  1568 14838 D PLUGIN: pcm: agm_pcm_hw_params: 500 agm_pcm_hw_params: mode: 268435456
+08-13 21:34:06.410  1568 14838 E PAL: SessionAlsaPcm: start: 1287: miid : 4549 id = 115, data CODEC_DMA-LPAIF_RXTX-TX-3
+08-13 21:34:06.410  1568 14838 I PAL: Session: updateCustomPayload: 617: customPayloadSize = 32
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_set_config: 1111 entry graph_handle 0x147534c
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_set_config: 1119 exit, graph handle 0x147534c, ret 0
+08-13 21:34:06.410  1568 14838 I PAL: SessionAlsaPcm: start: 1648: Registering For Silence Detection Events 
+08-13 21:34:06.410  1568 14838 I PAL: SessionAlsaPcm: start: 1665: Registered for Silence Detection Event
+08-13 21:34:06.410  1568 14838 I PAL: SessionAlsaPcm: start: 1672: Registered CB for Silence Detection
+08-13 21:34:06.410  1568 14838 I PAL: SessionAlsaPcm: start: 1701: Sending Silence Detection Custom Payload
+08-13 21:34:06.410  1568 14838 I PAL: Session: updateCustomPayload: 617: customPayloadSize = 24
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_set_config: 1111 entry graph_handle 0x147534c
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_set_config: 1119 exit, graph handle 0x147534c, ret 0
+08-13 21:34:06.410  1568 14838 D AGM: graph: graph_prepare: 807 entry graph_handle 0x147534c
+08-13 21:34:06.410  1568 14838 D AGM: graph_module: configure_hw_ep_media_config: 636 entry mod tag c0000005 miid 43ad mid 7001024
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_hw_ep_media_config: 666 rate 48000 bw 16 ch 1, data_fmt 1
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_hw_ep_media_config: 676 exit, ret 0
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_codec_dma_ep: 253 cdc_dma intf cfg lpaif 1 indx 4 ch_msk 9
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_codec_dma_ep: 268 exit, ret 0
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_output_media_format: 759 entry mod tag c000000f miid 4545 mid 7001004
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_output_media_format: 890 exit, ret 0
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_output_media_format: 759 entry mod tag c0000010 miid 4544 mid 7001003
+08-13 21:34:06.411  1568 14838 D AGM: graph_module: configure_output_media_format: 890 exit, ret 0
+08-13 21:34:06.411  1568 14838 D AGM: graph: configure_buffer_params: 200 Enter
+08-13 21:34:06.411  1568 14838 D AGM: graph: configure_buffer_params: 263 Capture sess buf_sz 1920 num_bufs 4
+08-13 21:34:06.411  1568 14838 E AGM: graph: configure_buffer_params: 296 Unsupported buffer mode : 0, Default to Blocking
+08-13 21:34:06.411  1568 14838 D AGM: graph: configure_buffer_params: 316 exit, ret 0
+08-13 21:34:06.412  1568 14838 D AGM: graph: graph_prepare: 885 exit, ret 0
+08-13 21:34:06.412  1568 14838 D AGM: graph: graph_start: 899 entry graph_handle 0x147534c
+08-13 21:34:06.413  1568 14838 E gsl     : vendor/qcom/proprietary/args/gsl/src/gsl_graph.c:gsl_graph_start:3807 Graph start failed:1
+08-13 21:34:06.413  1568 14838 E gsl     : vendor/qcom/proprietary/args/gsl/src/gsl_main.c:gsl_ioctl:1717 graph start ioctl failed 1
+08-13 21:34:06.413  1568 14838 E AGM: graph: graph_start: 904 graph_start failed -131
+08-13 21:34:06.413  1568 14838 D AGM: graph: graph_start: 912 exit, ret -131
+08-13 21:34:06.413  1568 14838 E AGM: session: session_start: 1170 Error:-131 starting graph
+08-13 21:34:06.413  1568 14838 E PAL: SessionAlsaPcm: start: 1735: pcm_start failed -131
+08-13 21:34:06.413  1568 14838 I PAL: ResourceManager: voteSleepMonitor: 2167: Unvoting done for nlpi use case, lpi votes 0, nlpi votes : 0
+08-13 21:34:06.413  1568 14838 E PAL: StreamPCM: start: 549: Tx session start is failed with status -131
+08-13 21:34:06.413  1568 14838 E PAL: API: pal_stream_start: 364: stream start failed. status -131
+08-13 21:34:06.413  1568 14838 I PAL: API: pal_stream_start: 369: Exit. status -131
+08-13 21:34:06.413  1568 14838 E AHAL_StreamIn_QTI: configure : usecase: PCM_RECORD IoHandle:198 pal_stream_start failed!! ret:-131
+08-13 21:34:06.413  1568 14838 I PAL: API: pal_stream_close: 264: Enter. Stream handle :0xb400007643e6a610K
+08-13 21:34:06.413  1568 14838 I AGM: API: agm_session_aif_connect: 623 disconnecting aifid:40 with session id=115

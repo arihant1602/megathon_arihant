@@ -1,0 +1,443 @@
+@ pest_sighting_001 single
+S Housekeeping staff calmly reports a mouse running behind the fridge in a pantry.
+U pest_sighting
++ pest_kind space_type :: I just saw a mouse run behind the fridge in the pantry.
+- :: Fast little thing.
+- :: I've been here eleven years and that's a first.
+A building,floor :: Thanks for flagging it. Which building and floor?
+U pest_sighting
++ building floor :: N, floor seven.
++ occurred_at :: About five minutes ago.
+A :: Thanks, I've raised it with pest control and the safety team since it's a food area.
+
+@ pest_sighting_002 single
+S Intern panics after seeing a snake near the entrance path.
+U pest_sighting
++ pest_kind :: There's a snake on the path by the entrance!
+- :: I'm not going anywhere near it.
+A building :: Please keep your distance. Which building's entrance?
+U pest_sighting
++ building space_type landmark :: QRC, outside, the path from the bike shed.
++ :: It's lying in the sun next to the planter.
+A occurred_at :: When did you see it?
+U pest_sighting
++ occurred_at :: Literally right now.
++ immediate_actions_taken :: I'm telling people to use the other door.
+A :: Thank you, security and the wildlife handler are being sent now. Keep people away.
+
+@ pest_sighting_003 single
+S Senior engineer annoyed about cockroaches in the kitchenette, starts with location only.
+U undetermined
++ building floor :: I'm on the fifth floor of the Oak building.
+A :: What would you like to report?
+U pest_sighting
++ pest_kind space_type :: Cockroaches in the kitchenette again.
+- :: I counted three this time.
+- :: Nobody's cleaning the toaster crumbs, that's my theory.
+A occurred_at :: When did you see them?
+U pest_sighting
++ occurred_at :: This morning around nine.
+A :: Thanks, I've logged it for pest control and flagged it as a food area.
+
+@ pest_sighting_004 single
+S Receptionist reports a pigeon flying around inside the lobby.
+U pest_sighting
++ pest_kind space_type :: A pigeon got into the lobby and it's flying around.
+- :: Visitors are ducking.
+A building :: Which building?
+U pest_sighting
++ building floor :: N, ground floor.
++ immediate_actions_taken :: I've opened the side door to give it a way out.
+A :: Thanks, I've logged it for the facilities team to help it out.
+
+@ pest_sighting_005 single
+S Lab technician tersely gives a complete report about ants in a lab sample fridge area.
+U pest_sighting
++ pest_kind space_type building floor :: Ants all along the bench by the sample fridge, materials lab, QRC floor four.
++ occurred_at :: Noticed at 2 pm.
+- :: Someone left a sugary drink out.
+A :: Logged for pest control.
+
+@ pest_sighting_006 single
+S Security guard reports monkeys raiding a rooftop terrace.
+U pest_sighting
++ pest_kind :: A group of monkeys is on the rooftop terrace going through the bins.
+- :: They're quite organised.
+A building :: Which building?
+U pest_sighting
++ building floor space_type :: The Willow building, the terrace on floor six.
++ immediate_actions_taken :: I've closed the terrace doors so they can't come in.
+A :: Thanks, I've raised it with security and pest control. Keep the doors shut.
+
+@ pest_sighting_007 single
+S Visitor is unsure what they saw; vague start, then a rat in the cafeteria; four turns.
+U undetermined
++ :: Something just ran under the tables near me.
+- :: It made me jump out of my seat.
+A :: Could you see what it was?
+U pest_sighting
++ pest_kind :: It was a rat, quite a big one.
+A building,floor :: Which building and floor are you on?
+U pest_sighting
++ space_type building :: In the cafeteria of the Lakeview building.
+A floor :: Which floor is the cafeteria on?
+U pest_sighting
++ floor :: First floor.
+- :: I've lost my appetite now.
+A :: Sorry about that. I've raised it urgently with pest control and the safety team.
+
+@ pest_sighting_008 single
+S Night-shift worker jokes about a gecko on the wall above their desk.
+U pest_sighting
++ pest_kind :: There's a little lizard on the wall above my monitor.
+- :: He's been watching me code for an hour.
+- :: Honestly better company than my team.
+A building,space_id :: Which building and desk?
+U pest_sighting
++ building floor space_id :: N, floor three, desk 3-90.
+A :: Thanks, I've logged it so pest control can move him out.
+
+@ pest_sighting_009 single
+S Manager worried about mosquitoes swarming a meeting room.
+U pest_sighting
++ pest_kind :: Our meeting room is full of mosquitoes.
+- :: My whole team is getting eaten alive.
+A building,space_id :: Which building and room?
+U pest_sighting
++ building floor space_id :: QRC, floor two, room Mercury.
++ :: There's a window that doesn't shut properly, I think that's how they get in.
+A :: Thanks, I've logged it for pest control.
+
+@ pest_sighting_010 single
+S Contractor tersely reports rat droppings in a storage room.
+U pest_sighting
++ pest_kind space_type :: Rat droppings all over the storage room by the loading dock.
+A building :: Which building?
+U pest_sighting
++ building :: Cedar building.
+- :: Found them moving boxes this morning.
+A :: Logged for pest control.
+
+@ pest_sighting_011 single
+S Housekeeping staff greets politely, then reports cockroaches in the cafeteria kitchen.
+U undetermined
+- :: Good evening, sorry to bother.
+A :: Good evening, what's up?
+U pest_sighting
++ pest_kind space_type :: I found cockroaches behind the dishwasher in the cafeteria kitchen.
+A building :: Which building?
+U pest_sighting
++ building floor :: Spruce block, ground floor.
+- :: I've told the kitchen manager too.
+A occurred_at :: When did you see them?
+U pest_sighting
++ occurred_at :: About ten minutes ago when I moved the dishwasher.
+A :: Thanks, I've raised it urgently because it's a food area.
+
+@ pest_sighting_012 single
+S Senior engineer jokes about a bird nesting in the server room ceiling.
+U pest_sighting
++ pest_kind space_type :: I'm pretty sure a bird is living in the server room ceiling.
+- :: I can hear chirping over the fans.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: N, floor two.
++ :: There are twigs falling out of a gap near the cable tray.
+A :: Thanks, I've logged it for facilities and pest control.
+
+@ pest_sighting_013 single
+S Lab technician worried about small flying insects in a lab.
+U pest_sighting
++ pest_kind :: There are lots of tiny flies in our lab.
+- :: They're everywhere around the sink.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor space_type :: Research Hall 2, floor three, the bio lab.
+A occurred_at :: When did they appear?
+U pest_sighting
++ occurred_at :: They showed up maybe two days back.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_014 single
+S Security guard rushes a report of a snake in the car park.
+U pest_sighting
++ pest_kind space_type :: Snake in the car park, by bay 22!
+A building :: Please keep clear. Which building's car park?
+U pest_sighting
++ building :: Under the Lakeview building.
++ immediate_actions_taken :: I've coned off that row.
+A :: Thanks, security and the wildlife handler are on the way.
+
+@ pest_sighting_015 single
+S Receptionist apologises and reports a stray dog in reception.
+U pest_sighting
+- :: Sorry, this is a strange one.
++ pest_kind space_type :: A stray dog wandered into reception.
+- :: He's very friendly, but still.
+A building :: Which building?
+U pest_sighting
++ building :: QRC.
+A :: Thanks, I've logged it so security can help him back outside.
+
+@ pest_sighting_016 single
+S Intern finds a mouse in a desk drawer; four turns.
+U pest_sighting
++ pest_kind :: There was a mouse in my desk drawer!
+- :: It ate my granola bar.
+A building :: Which building?
+U pest_sighting
++ building :: N.
+A floor,space_id :: Which floor and desk?
+U pest_sighting
++ floor space_id :: Floor six, desk 6-14.
+A occurred_at :: When did you find it?
+U pest_sighting
++ occurred_at :: Just now when I opened the drawer.
+- :: I may never recover.
+A :: Thanks, I've logged it for pest control.
+
+@ pest_sighting_017 single
+S Night-shift worker starts with location only, then reports bats in a stairwell.
+U undetermined
++ building space_type :: I'm in the back stairwell of the Pine building.
+A :: What would you like to report?
+U pest_sighting
++ pest_kind :: There are bats hanging from the ceiling at the top landing.
+- :: Very gothic.
+A occurred_at :: When did you notice them?
+U pest_sighting
++ occurred_at :: Just after midnight.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_018 single
+S Manager annoyed about cockroaches in the pantry; one turn.
+U pest_sighting
++ pest_kind space_type building floor :: Cockroaches in the pantry on N floor ten, saw two by the sink this morning.
+- :: Disgusting.
+A :: Logged as a food-area pest issue for pest control.
+
+@ pest_sighting_019 single
+S Contractor reports birds nesting in the loading dock shutter.
+U pest_sighting
++ pest_kind space_type :: Birds are nesting inside the loading dock shutter box.
+- :: The shutter gets jammed with twigs.
+A building :: Which building?
+U pest_sighting
++ building :: Spruce block.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_020 single
+S Visitor is unsure what's crawling on the wall; it's a cockroach; three turns.
+U undetermined
++ :: There's something crawling on the wall by my chair.
+A :: Can you tell what it is?
+U pest_sighting
++ pest_kind :: It's a cockroach, a big one.
+- :: I'm standing on the chair now.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: The Summit building, floor two, the waiting area.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_021 single
+S Lab technician calmly reports wasps building a nest near a window.
+U pest_sighting
++ pest_kind :: Wasps are building a nest on the outside of our lab window.
++ :: A few are getting inside when we open it.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: QRC, floor five.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_022 single
+S Housekeeping staff jokes about a cat living in the basement.
+U pest_sighting
++ pest_kind :: A cat seems to be living in the basement store room.
+- :: She glares at me every morning.
+A building :: Which building?
+U pest_sighting
++ building space_type :: The Oak building, basement store.
+A :: Thanks, I've logged it so she can be safely moved.
+
+@ pest_sighting_023 single
+S Senior engineer tersely reports mouse droppings in a meeting room.
+U pest_sighting
++ pest_kind space_type :: Mouse droppings in meeting room Juno.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: N, floor four.
+A :: Logged for pest control.
+
+@ pest_sighting_024 single
+S Receptionist worried about bees coming in near the entrance.
+U pest_sighting
++ pest_kind :: A lot of bees are coming in through the main entrance.
+- :: A visitor is allergic.
+A building :: Which building?
+U pest_sighting
++ building landmark :: Horizon building, the main revolving door.
++ immediate_actions_taken :: We've asked people to use the side door.
+A :: Thanks, logged urgently for pest control.
+
+@ pest_sighting_025 single
+S Security guard greets, then reports a snake in a garden bed; three turns.
+U undetermined
+- :: Hello, security desk here.
+A :: Hello, what's happening?
+U pest_sighting
++ pest_kind space_type :: There's a snake in the garden bed outside the cafeteria.
+A building :: Please keep clear. Which building?
+U pest_sighting
++ building :: N.
++ occurred_at :: Spotted two minutes ago.
+A :: Thanks, the wildlife handler and security are being sent.
+
+@ pest_sighting_026 single
+S Intern annoyed by ants on their desk.
+U pest_sighting
++ pest_kind :: There's a trail of ants on my desk.
+- :: They're heading for my biscuits.
+A building,space_id :: Which building and desk?
+U pest_sighting
++ building floor space_id :: Birch building, floor one, desk B1-07.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_027 single
+S Manager rushes to report a rat in the server room.
+U pest_sighting
++ pest_kind space_type :: Rat in the server room!
+- :: If it chews a cable we're done.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: QRC, floor one.
++ occurred_at :: It ran under the raised floor a minute ago.
+A :: Thanks, raised urgently with pest control.
+
+@ pest_sighting_028 single
+S Contractor reports pigeons in the car park; five turns with a question in between.
+U pest_sighting
++ pest_kind space_type :: Pigeons are roosting all over the car park beams.
+A building :: Which building?
+U pest_sighting
++ building :: Lakeview.
+- :: Does this app also do parking permits?
+A floor :: This is just for incidents, sorry. Which level of the car park?
+U pest_sighting
++ floor :: Level minus two.
+A landmark :: Any particular spot?
+U pest_sighting
++ landmark :: Above the motorbike bays.
+A occurred_at :: Since when?
+U pest_sighting
++ occurred_at :: Couple of weeks.
+- :: My bike is covered in droppings.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_029 single
+S Night-shift worker calmly reports moths around the lights in a corridor.
+U pest_sighting
++ pest_kind :: There are hundreds of moths in the corridor tonight.
+- :: Like a nature documentary.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: N, floor one.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_030 single
+S Housekeeping staff reports a dead rat in a stairwell, one turn.
+U pest_sighting
++ pest_kind space_type building :: Dead rat in the main stairwell of the Elm building, ground floor.
+- :: I'm not touching it.
+A :: Logged, pest control will remove it.
+
+@ pest_sighting_031 single
+S Lab technician worried about termites in a wooden cabinet.
+U pest_sighting
++ pest_kind :: There are termites in the wooden storage cabinet in our lab.
++ :: Little piles of sawdust at the bottom.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: QRC, floor three.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_032 single
+S Visitor jokes about a monkey stealing a sandwich at the outdoor seating.
+U pest_sighting
++ pest_kind space_type :: A monkey just stole my sandwich at the outdoor seating.
+- :: Very rude.
+A building :: Which building?
+U pest_sighting
++ building :: The Summit building.
+A :: Thanks, logged for security and pest control.
+
+@ pest_sighting_033 confusable confused=cafeteria_issue
+S Manager complains about food quality in the cafeteria; then mentions finding droppings.
+U cafeteria_issue
++ :: The cafeteria salad bar is gross today.
+- :: I usually love it.
+A :: What's wrong with the food?
+U pest_sighting
++ pest_kind :: There are mouse droppings in the corner of the salad bar tray.
+A building :: Which building?
+U pest_sighting
++ building space_type :: N, cafeteria.
++ immediate_actions_taken :: I told the kitchen staff and they took it away.
+A :: Thanks, raised urgently with pest control and the safety team.
+
+@ pest_sighting_034 confusable confused=cafeteria_issue
+S Visitor complains about the pantry; the real issue is cockroaches in the coffee station.
+U cafeteria_issue
++ :: The coffee station in the pantry isn't clean.
+A :: What's the problem?
+U pest_sighting
++ pest_kind :: There are cockroaches running around inside the coffee cups stack.
++ building floor :: QRC, floor two.
+A :: Thanks, raised with pest control.
+
+@ pest_sighting_035 confusable confused=washroom_hygiene
+S Intern says the washroom is dirty; there are cockroaches by the drains.
+U washroom_hygiene
++ :: The washroom is really dirty.
+A :: What's the issue?
+U pest_sighting
++ pest_kind :: There are cockroaches coming out of the floor drain.
+- :: I ran out.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: Birch building, floor two.
+A :: Thanks, logged for pest control.
+
+@ pest_sighting_036 confusable confused=washroom_hygiene
+S Housekeeping staff thinks the washroom has an odour issue; it's a dead rat in the ceiling.
+U washroom_hygiene
++ :: The washroom smells terrible even after cleaning.
+A :: Is it the bins or drains?
+U pest_sighting
++ :: Bins are empty and drains are fine.
++ pest_kind :: We opened the ceiling tile and there's a dead rat up there.
++ building floor :: N, floor eight.
+A :: Thanks, logged for pest control to remove it.
+
+@ pest_sighting_037 confusable confused=suspicious_activity
+S Security guard hears someone rustling in a store; it's a monkey.
+U suspicious_activity
++ :: Someone's rummaging in the store room and the door is open.
+A :: Can you see the person?
+U pest_sighting
++ pest_kind :: It's not a person, it's a monkey going through the boxes.
+- :: Gave me a fright.
++ building :: The Willow building.
+A :: Thanks, logged for security and pest control.
+
+@ pest_sighting_038 confusable confused=hvac_issue
+S Senior engineer hears scratching in the vent and thinks it's an HVAC problem; pigeons are nesting there.
+U hvac_issue
++ :: There's scratching and fluttering in the AC vent above me.
+A :: Is the air still coming through?
+U pest_sighting
++ :: The air is fine.
++ pest_kind :: Facilities looked and there's a pigeon nest inside the vent.
+A building,floor :: Which building and floor?
+U pest_sighting
++ building floor :: QRC, floor six.
+A :: Thanks, logged for pest control.

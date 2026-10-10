@@ -1,0 +1,387 @@
+[INFO] InitializeStderr: DebugLog initialized.
+[INFO] Processed command-line arguments
+IrQuantizer: Param Quantizer should be set to symmetric for 32 bit biases. Will ignore param quantizer option: tf for biases
+     0.1ms [  INFO ] Inferences will run in sync mode
+Processing inference input(s):
+input_ids -> calib/ids_000.raw
+attention_mask -> calib/mask_000.raw
+input_ids -> calib/ids_001.raw
+attention_mask -> calib/mask_001.raw
+input_ids -> calib/ids_002.raw
+attention_mask -> calib/mask_002.raw
+input_ids -> calib/ids_003.raw
+attention_mask -> calib/mask_003.raw
+input_ids -> calib/ids_004.raw
+attention_mask -> calib/mask_004.raw
+input_ids -> calib/ids_005.raw
+attention_mask -> calib/mask_005.raw
+input_ids -> calib/ids_006.raw
+attention_mask -> calib/mask_006.raw
+input_ids -> calib/ids_007.raw
+attention_mask -> calib/mask_007.raw
+input_ids -> calib/ids_008.raw
+attention_mask -> calib/mask_008.raw
+input_ids -> calib/ids_009.raw
+attention_mask -> calib/mask_009.raw
+input_ids -> calib/ids_010.raw
+attention_mask -> calib/mask_010.raw
+input_ids -> calib/ids_011.raw
+attention_mask -> calib/mask_011.raw
+input_ids -> calib/ids_012.raw
+attention_mask -> calib/mask_012.raw
+input_ids -> calib/ids_013.raw
+attention_mask -> calib/mask_013.raw
+input_ids -> calib/ids_014.raw
+attention_mask -> calib/mask_014.raw
+input_ids -> calib/ids_015.raw
+attention_mask -> calib/mask_015.raw
+input_ids -> calib/ids_016.raw
+attention_mask -> calib/mask_016.raw
+input_ids -> calib/ids_017.raw
+attention_mask -> calib/mask_017.raw
+input_ids -> calib/ids_018.raw
+attention_mask -> calib/mask_018.raw
+input_ids -> calib/ids_019.raw
+attention_mask -> calib/mask_019.raw
+input_ids -> calib/ids_020.raw
+attention_mask -> calib/mask_020.raw
+input_ids -> calib/ids_021.raw
+attention_mask -> calib/mask_021.raw
+input_ids -> calib/ids_022.raw
+attention_mask -> calib/mask_022.raw
+input_ids -> calib/ids_023.raw
+attention_mask -> calib/mask_023.raw
+input_ids -> calib/ids_024.raw
+attention_mask -> calib/mask_024.raw
+input_ids -> calib/ids_025.raw
+attention_mask -> calib/mask_025.raw
+input_ids -> calib/ids_026.raw
+attention_mask -> calib/mask_026.raw
+input_ids -> calib/ids_027.raw
+attention_mask -> calib/mask_027.raw
+input_ids -> calib/ids_028.raw
+attention_mask -> calib/mask_028.raw
+input_ids -> calib/ids_029.raw
+attention_mask -> calib/mask_029.raw
+input_ids -> calib/ids_030.raw
+attention_mask -> calib/mask_030.raw
+input_ids -> calib/ids_031.raw
+attention_mask -> calib/mask_031.raw
+input_ids -> calib/ids_032.raw
+attention_mask -> calib/mask_032.raw
+input_ids -> calib/ids_033.raw
+attention_mask -> calib/mask_033.raw
+input_ids -> calib/ids_034.raw
+attention_mask -> calib/mask_034.raw
+input_ids -> calib/ids_035.raw
+attention_mask -> calib/mask_035.raw
+input_ids -> calib/ids_036.raw
+attention_mask -> calib/mask_036.raw
+input_ids -> calib/ids_037.raw
+attention_mask -> calib/mask_037.raw
+input_ids -> calib/ids_038.raw
+attention_mask -> calib/mask_038.raw
+input_ids -> calib/ids_039.raw
+attention_mask -> calib/mask_039.raw
+input_ids -> calib/ids_040.raw
+attention_mask -> calib/mask_040.raw
+input_ids -> calib/ids_041.raw
+attention_mask -> calib/mask_041.raw
+input_ids -> calib/ids_042.raw
+attention_mask -> calib/mask_042.raw
+input_ids -> calib/ids_043.raw
+attention_mask -> calib/mask_043.raw
+input_ids -> calib/ids_044.raw
+attention_mask -> calib/mask_044.raw
+input_ids -> calib/ids_045.raw
+attention_mask -> calib/mask_045.raw
+input_ids -> calib/ids_046.raw
+attention_mask -> calib/mask_046.raw
+input_ids -> calib/ids_047.raw
+attention_mask -> calib/mask_047.raw
+input_ids -> calib/ids_048.raw
+attention_mask -> calib/mask_048.raw
+input_ids -> calib/ids_049.raw
+attention_mask -> calib/mask_049.raw
+[INFO] Quantized parameters
+     0.3ms [  INFO ] No BackendExtensions lib provided;initializing NetRunBackend Interface
+     0.3ms [  INFO ] No platform-specific callback implementation available
+     0.2ms [  INFO ] [QNN_CPU] CpuBackend creation start
+     0.2ms [  INFO ] [QNN_CPU] CpuBackend creation end
+     0.5ms [WARNING] Unable to find a device with NetRunDeviceKeyDefault in Library NetRunBackendLibKeyDefault
+     0.5ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+     0.2ms [  INFO ] [QNN_CPU] QnnContext create start
+     0.2ms [  INFO ] [QNN_CPU] QnnContext create end
+     0.7ms [  INFO ] Entering QuantizeRuntimeApp flow
+     0.7ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+     0.7ms [  INFO ] [QNN_CPU] CpuGraph creation start
+     0.7ms [  INFO ] [QNN_CPU] CpuGraph creation end
+     0.7ms [  INFO ] [QNN_CPU] QnnGraph create end
+   310.1ms [  INFO ] [QNN_CPU] QnnGraph finalize start
+   312.6ms [  INFO ] [QNN_CPU] QnnGraph finalize end
+   313.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1002.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1001.9ms [  INFO ] cleaning up resources for input tensors
+  1001.9ms [  INFO ] cleaning up resources for output tensors
+  1002.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1622.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1621.6ms [  INFO ] cleaning up resources for input tensors
+  1621.6ms [  INFO ] cleaning up resources for output tensors
+  1622.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2235.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2235.2ms [  INFO ] cleaning up resources for input tensors
+  2235.2ms [  INFO ] cleaning up resources for output tensors
+  2235.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2880.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2880.0ms [  INFO ] cleaning up resources for input tensors
+  2880.0ms [  INFO ] cleaning up resources for output tensors
+  2880.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3514.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3513.6ms [  INFO ] cleaning up resources for input tensors
+  3513.6ms [  INFO ] cleaning up resources for output tensors
+  3514.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4133.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4133.1ms [  INFO ] cleaning up resources for input tensors
+  4133.1ms [  INFO ] cleaning up resources for output tensors
+  4133.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4734.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4734.3ms [  INFO ] cleaning up resources for input tensors
+  4734.3ms [  INFO ] cleaning up resources for output tensors
+  4734.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5423.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5422.6ms [  INFO ] cleaning up resources for input tensors
+  5422.6ms [  INFO ] cleaning up resources for output tensors
+  5423.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6153.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6153.3ms [  INFO ] cleaning up resources for input tensors
+  6153.3ms [  INFO ] cleaning up resources for output tensors
+  6153.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6802.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6802.1ms [  INFO ] cleaning up resources for input tensors
+  6802.1ms [  INFO ] cleaning up resources for output tensors
+  6802.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7413.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7413.2ms [  INFO ] cleaning up resources for input tensors
+  7413.2ms [  INFO ] cleaning up resources for output tensors
+  7413.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8013.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8013.2ms [  INFO ] cleaning up resources for input tensors
+  8013.2ms [  INFO ] cleaning up resources for output tensors
+  8013.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8666.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8666.4ms [  INFO ] cleaning up resources for input tensors
+  8666.4ms [  INFO ] cleaning up resources for output tensors
+  8666.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9271.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9270.7ms [  INFO ] cleaning up resources for input tensors
+  9270.7ms [  INFO ] cleaning up resources for output tensors
+  9271.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9870.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9870.4ms [  INFO ] cleaning up resources for input tensors
+  9870.4ms [  INFO ] cleaning up resources for output tensors
+  9870.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10500.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10499.7ms [  INFO ] cleaning up resources for input tensors
+ 10499.7ms [  INFO ] cleaning up resources for output tensors
+ 10500.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11185.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11184.8ms [  INFO ] cleaning up resources for input tensors
+ 11184.9ms [  INFO ] cleaning up resources for output tensors
+ 11185.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11807.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11807.1ms [  INFO ] cleaning up resources for input tensors
+ 11807.1ms [  INFO ] cleaning up resources for output tensors
+ 11807.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12409.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12409.4ms [  INFO ] cleaning up resources for input tensors
+ 12409.4ms [  INFO ] cleaning up resources for output tensors
+ 12410.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13047.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13047.0ms [  INFO ] cleaning up resources for input tensors
+ 13047.0ms [  INFO ] cleaning up resources for output tensors
+ 13047.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13727.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13727.3ms [  INFO ] cleaning up resources for input tensors
+ 13727.3ms [  INFO ] cleaning up resources for output tensors
+ 13727.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14410.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14410.0ms [  INFO ] cleaning up resources for input tensors
+ 14410.0ms [  INFO ] cleaning up resources for output tensors
+ 14410.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15099.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15099.2ms [  INFO ] cleaning up resources for input tensors
+ 15099.2ms [  INFO ] cleaning up resources for output tensors
+ 15099.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15779.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15779.4ms [  INFO ] cleaning up resources for input tensors
+ 15779.4ms [  INFO ] cleaning up resources for output tensors
+ 15779.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 16461.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 16461.3ms [  INFO ] cleaning up resources for input tensors
+ 16461.3ms [  INFO ] cleaning up resources for output tensors
+ 16461.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 17160.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 17160.4ms [  INFO ] cleaning up resources for input tensors
+ 17160.4ms [  INFO ] cleaning up resources for output tensors
+ 17161.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 17827.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 17826.8ms [  INFO ] cleaning up resources for input tensors
+ 17826.8ms [  INFO ] cleaning up resources for output tensors
+ 17827.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 18439.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 18439.0ms [  INFO ] cleaning up resources for input tensors
+ 18439.0ms [  INFO ] cleaning up resources for output tensors
+ 18439.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 19097.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 19097.2ms [  INFO ] cleaning up resources for input tensors
+ 19097.2ms [  INFO ] cleaning up resources for output tensors
+ 19097.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 19765.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 19765.0ms [  INFO ] cleaning up resources for input tensors
+ 19765.0ms [  INFO ] cleaning up resources for output tensors
+ 19765.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 20450.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 20449.6ms [  INFO ] cleaning up resources for input tensors
+ 20449.6ms [  INFO ] cleaning up resources for output tensors
+ 20450.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 21127.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 21126.9ms [  INFO ] cleaning up resources for input tensors
+ 21126.9ms [  INFO ] cleaning up resources for output tensors
+ 21127.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 21807.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 21807.2ms [  INFO ] cleaning up resources for input tensors
+ 21807.2ms [  INFO ] cleaning up resources for output tensors
+ 21807.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 22508.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 22507.7ms [  INFO ] cleaning up resources for input tensors
+ 22507.7ms [  INFO ] cleaning up resources for output tensors
+ 22508.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 23109.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 23109.3ms [  INFO ] cleaning up resources for input tensors
+ 23109.3ms [  INFO ] cleaning up resources for output tensors
+ 23109.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 23771.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 23770.9ms [  INFO ] cleaning up resources for input tensors
+ 23770.9ms [  INFO ] cleaning up resources for output tensors
+ 23771.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 24469.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 24469.5ms [  INFO ] cleaning up resources for input tensors
+ 24469.5ms [  INFO ] cleaning up resources for output tensors
+ 24470.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 25156.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 25156.5ms [  INFO ] cleaning up resources for input tensors
+ 25156.5ms [  INFO ] cleaning up resources for output tensors
+ 25157.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 25841.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 25840.6ms [  INFO ] cleaning up resources for input tensors
+ 25840.6ms [  INFO ] cleaning up resources for output tensors
+ 25841.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 26524.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 26523.8ms [  INFO ] cleaning up resources for input tensors
+ 26523.8ms [  INFO ] cleaning up resources for output tensors
+ 26524.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 27210.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 27210.3ms [  INFO ] cleaning up resources for input tensors
+ 27210.3ms [  INFO ] cleaning up resources for output tensors
+ 27210.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 27836.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 27836.4ms [  INFO ] cleaning up resources for input tensors
+ 27836.4ms [  INFO ] cleaning up resources for output tensors
+ 27836.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 28447.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 28446.9ms [  INFO ] cleaning up resources for input tensors
+ 28446.9ms [  INFO ] cleaning up resources for output tensors
+ 28447.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 29051.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 29051.1ms [  INFO ] cleaning up resources for input tensors
+ 29051.1ms [  INFO ] cleaning up resources for output tensors
+ 29051.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 29674.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 29673.8ms [  INFO ] cleaning up resources for input tensors
+ 29673.8ms [  INFO ] cleaning up resources for output tensors
+ 29674.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 30276.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 30276.1ms [  INFO ] cleaning up resources for input tensors
+ 30276.1ms [  INFO ] cleaning up resources for output tensors
+ 30276.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 30886.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 30886.3ms [  INFO ] cleaning up resources for input tensors
+ 30886.3ms [  INFO ] cleaning up resources for output tensors
+ 30886.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 31569.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 31568.7ms [  INFO ] cleaning up resources for input tensors
+ 31568.7ms [  INFO ] cleaning up resources for output tensors
+ 31569.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 32252.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 32251.8ms [  INFO ] cleaning up resources for input tensors
+ 32251.8ms [  INFO ] cleaning up resources for output tensors
+ 32252.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 32932.8m[INFO] Generated activations
+s [  INFO ] [QNN_CPU] QnnGraph execute end
+ 32932.4ms [  INFO ] cleaning up resources for input tensors
+ 32932.4ms [  INFO ] cleaning up resources for output tensors
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.0/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.0/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.1/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.1/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.2/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.2/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.3/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.3/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.4/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.4/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.5/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.5/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.6/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.6/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.7/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.7/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.8/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.8/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.9/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.9/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.10/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.10/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.11/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.11/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.12/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.12/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.13/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.13/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.14/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.14/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.15/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.15/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.16/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.16/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.17/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.17/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.18/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.18/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.19/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.19/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.20/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.20/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.21/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.21/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.22/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.22/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.23/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.23/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.24/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.24/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.25/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.25/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.26/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.26/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.27/attn/Transpose_1_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+mixedPrecisionForWeights: The override provided for the following weight: /enc/layers.27/attn/Squeeze_2_output_0 would not be honoured. Since 16 bit dynamic weights arenot supported by default. Kindly use the flag --use_dynamic_16_bit weights to honour the override.
+[USER_INFO] Successfully saved DLC to /home/arihant/Projects/megathon/laya/out/base/model_w8a16.dlc
+[INFO] Saved quantized dlc to: model_w8a16.dlc
+ 35041.0ms [  INFO ] Freeing graphsInfo
+ 35041.0ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+ 35041.5ms [  INFO ] [QNN_CPU] QnnContext Free start
+ 35068.3ms [  INFO ] [QNN_CPU] QnnContext Free end
+ 35068.0ms [WARNING] Profile Logger with name = defaultKey doesn't exist!
+ 35068.5ms [  INFO ] [QNN_CPU] QnnBackend Free start
+ 35068.5ms [  INFO ] [QNN_CPU] QnnBackend Free end

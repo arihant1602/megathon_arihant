@@ -1,0 +1,139 @@
+{
+ "log": [
+  {
+   "turn": 1,
+   "user": "there is a water leakage in the washroom pipe",
+   "probs": {
+    "water_leak": 0.8229232430458069,
+    "washroom_plumbing": 0.08207608014345169,
+    "power_outage": 0.0006872443482279778,
+    "electrical_hazard": 0.00031703602871857584,
+    "lighting_fault": 0.00041029939893633127,
+    "hvac_issue": 0.0009476598352193832,
+    "elevator_fault": 0.0001978628570213914,
+    "structural_damage": 0.00021096105047035962,
+    "furniture_fixture": 9.451936057303101e-05,
+    "spill_cleanup": 0.009437551721930504,
+    "washroom_hygiene": 0.0006366693996824324,
+    "pest_sighting": 0.0008844182593747973,
+    "cafeteria_issue": 0.0009680960210971534,
+    "access_control_fault": 0.00032871984876692295,
+    "lost_badge": 0.00013014768774155527,
+    "suspicious_activity": 0.00013140181545168161,
+    "theft_missing_asset": 0.00026576395612210035,
+    "cctv_fault": 0.005076002795249224,
+    "injury_medical": 0.00018475625256542116,
+    "fire_smoke": 0.0009602535283192992,
+    "chemical_spill": 0.0018537777941673994,
+    "unsafe_condition": 0.00065930763958022,
+    "network_outage": 0.0002505350857973099,
+    "conference_room_av": 0.00023410435824189335,
+    "device_fault": 0.0002522752620279789,
+    "lab_equipment_fault": 0.0003486167697701603,
+    "esd_issue": 0.00023329778923653066,
+    "lab_utility_failure": 0.03058074228465557,
+    "undetermined": 0.03794119134545326,
+    "none": 0.0007773690158501267
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "there is a water leakage in the washroom pipe",
+     "relevant": 0.9857134819030762,
+     "fields": []
+    }
+   ],
+   "classifier_ms": 329.6792507171631,
+   "note": "type settled: water_leak (0.82 >= 0.8)",
+   "extracted": {
+    "leak_source": "pipe"
+   },
+   "llm": {
+    "ms": 253,
+    "prompt_tokens": 132,
+    "output_tokens": 43,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "water_spread",
+     "near_electrical"
+    ],
+    "reason": "safety field missing",
+    "text": "Is the water contained, or still spreading? And is the water near any sockets, cables or equipment?"
+   },
+   "form": {
+    "type": "water_leak",
+    "type_source": "classifier",
+    "type_conf": 0.8229232430458069,
+    "values": {
+     "leak_source": {
+      "value": "pipe",
+      "evidence": "there is a water leakage in the washroom pipe",
+      "turn": 1
+     }
+    },
+    "followups": 1,
+    "asked": [
+     [
+      1,
+      [
+       "water_spread",
+       "near_electrical"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P3",
+    "priority_label": "Medium",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Plumbing Technician"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 240
+   }
+  }
+ ],
+ "final": {
+  "type": "water_leak",
+  "type_source": "classifier",
+  "type_conf": 0.8229232430458069,
+  "values": {
+   "leak_source": {
+    "value": "pipe",
+    "evidence": "there is a water leakage in the washroom pipe",
+    "turn": 1
+   }
+  },
+  "followups": 1,
+  "asked": [
+   [
+    1,
+    [
+     "water_spread",
+     "near_electrical"
+    ]
+   ]
+  ],
+  "outcome": null
+ },
+ "routing": {
+  "priority": "P3",
+  "priority_label": "Medium",
+  "team": "Facilities Engineering",
+  "notify": [
+   "Plumbing Technician"
+  ],
+  "rules_fired": [],
+  "reroute_to": null,
+  "secondary": [],
+  "sla_min": 240
+ },
+ "summary": ""
+}

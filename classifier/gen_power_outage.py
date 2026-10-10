@@ -1,0 +1,1062 @@
+import json
+
+data = [
+    # Slot 1: english, complete
+    {
+        "id": "power_outage_01",
+        "incident_type": "power_outage",
+        "slot": 1,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The entire 5th floor in Building N lost power around 10:00 AM today, but no critical lab or server equipment is affected.",
+                "sentences": [
+                    {"text": "The entire 5th floor in Building N lost power around 10:00 AM today, but no critical lab or server equipment is affected.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've dispatched the electrical team to investigate.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 5,
+            "space_type": "corridor",
+            "space_id": "Floor 5 Main Bay",
+            "occurred_at": "10:00 AM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 2: english, complete
+    {
+        "id": "power_outage_02",
+        "incident_type": "power_outage",
+        "slot": 2,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Power went down in Server Room 2A on floor 2 of Building QRC at 1:15 PM today, and critical server racks have shut down.",
+                "sentences": [
+                    {"text": "Power went down in Server Room 2A on floor 2 of Building QRC at 1:15 PM today, and critical server racks have shut down.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Alerting electricians and lab facilities engineers immediately.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 2,
+            "space_type": "server_or_idf_room",
+            "space_id": "Server Room 2A",
+            "occurred_at": "1:15 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 3: english, complete
+    {
+        "id": "power_outage_03",
+        "incident_type": "power_outage",
+        "slot": 3,
+        "lang_style": "english",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "A single electrical outlet on bench 4 in Workstation Bay 3C, floor 3, Building N is completely dead since 11 AM today, no critical equipment impacted.",
+                "sentences": [
+                    {"text": "A single electrical outlet on bench 4 in Workstation Bay 3C, floor 3, Building N is completely dead since 11 AM today, no critical equipment impacted.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, an electrician has been assigned to check the socket.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 3,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 3C",
+            "occurred_at": "11:00 AM today",
+            "outage_scope": "single_outlet",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 4: english, missing
+    {
+        "id": "power_outage_04",
+        "incident_type": "power_outage",
+        "slot": 4,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Hi, all lights and power went out in Conference Room 4A on floor 4 of Building N.",
+                "sentences": [
+                    {"text": "Hi, all lights and power went out in Conference Room 4A on floor 4 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No, it is just standard conference room displays and laptops.",
+                "sentences": [
+                    {"text": "No, it is just standard conference room displays and laptops.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "How much has lost power: the room or more?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Only this single meeting room lost power.",
+                "sentences": [
+                    {"text": "Only this single meeting room lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 2:30 PM today.",
+                "sentences": [
+                    {"text": "About 2:30 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've informed the electrical team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 4,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 4A",
+            "occurred_at": "2:30 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 5: english, missing (correction floor)
+    {
+        "id": "power_outage_05",
+        "incident_type": "power_outage",
+        "slot": 5,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "We lost power across the entire wing in Building QRC, floor 3.",
+                "sentences": [
+                    {"text": "We lost power across the entire wing in Building QRC, floor 3.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "Actually it's floor 4, not 3. Yes, our RF test stations are down!",
+                "sentences": [
+                    {"text": "Actually it's floor 4, not 3.", "relevant": True},
+                    {"text": "Yes, our RF test stations are down!", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Did the whole floor lose power?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, the whole floor is dark in R&D Lab 4.",
+                "sentences": [
+                    {"text": "Yes, the whole floor is dark in R&D Lab 4.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now, around 3:10 PM.",
+                "sentences": [
+                    {"text": "Just now, around 3:10 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Urgent notification sent to electricians and lab facilities engineers.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 4,
+            "space_type": "rnd_lab",
+            "space_id": "R&D Lab 4",
+            "occurred_at": "3:10 PM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 6: english, missing (unknown critical equipment)
+    {
+        "id": "power_outage_06",
+        "incident_type": "power_outage",
+        "slot": 6,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "There is a blackout across floor 7 in Building N.",
+                "sentences": [
+                    {"text": "There is a blackout across floor 7 in Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "Not sure, I cannot see inside the server closet.",
+                "sentences": [
+                    {"text": "Not sure, I cannot see inside the server closet.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which room or area are you in?",
+                "asks": ["space_id"]
+            },
+            {
+                "role": "user",
+                "text": "Workstation Bay 7A. The whole floor has lost power.",
+                "sentences": [
+                    {"text": "Workstation Bay 7A.", "relevant": True},
+                    {"text": "The whole floor has lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 9:15 AM today.",
+                "sentences": [
+                    {"text": "Around 9:15 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Priority alert sent to the electrical engineering team.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 7,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 7A",
+            "occurred_at": "9:15 AM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": "unknown"
+        },
+        "final_priority": "P1"
+    },
+    # Slot 7: english, missing
+    {
+        "id": "power_outage_07",
+        "incident_type": "power_outage",
+        "slot": 7,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The microwave and all appliances in Pantry 2B lost power, Building N, floor 2.",
+                "sentences": [
+                    {"text": "The microwave and all appliances in Pantry 2B lost power, Building N, floor 2.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No, just the pantry room outlets.",
+                "sentences": [
+                    {"text": "No, just the pantry room outlets.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Has power tripped in the whole room or single socket?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "The entire pantry room is without power.",
+                "sentences": [
+                    {"text": "The entire pantry room is without power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:45 PM today.",
+                "sentences": [
+                    {"text": "Around 12:45 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Thanks, electricians have been notified.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 2,
+            "space_type": "pantry",
+            "space_id": "Pantry 2B",
+            "occurred_at": "12:45 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 8: english, missing
+    {
+        "id": "power_outage_08",
+        "incident_type": "power_outage",
+        "slot": 8,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "The power has completely failed across the entire building.",
+                "sentences": [
+                    {"text": "The power has completely failed across the entire building.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No critical lab gear running right now, just building lighting and plugs.",
+                "sentences": [
+                    {"text": "No critical lab gear running right now, just building lighting and plugs.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which building and floor are you reporting from?",
+                "asks": ["building", "floor"]
+            },
+            {
+                "role": "user",
+                "text": "Building QRC, floor 1, Main Lobby.",
+                "sentences": [
+                    {"text": "Building QRC, floor 1, Main Lobby.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did the outage occur?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 8:50 AM today.",
+                "sentences": [
+                    {"text": "Around 8:50 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, electrical engineering is escalating this immediately.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 1,
+            "space_type": "lobby_reception",
+            "space_id": "Main Lobby",
+            "occurred_at": "8:50 AM today",
+            "outage_scope": "building",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 9: english, missing
+    {
+        "id": "power_outage_09",
+        "incident_type": "power_outage",
+        "slot": 9,
+        "lang_style": "english",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Desk 12 in Workstation Bay 10C, Building N, floor 10 has a dead power plug.",
+                "sentences": [
+                    {"text": "Desk 12 in Workstation Bay 10C, Building N, floor 10 has a dead power plug.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No, just one monitor plugged in.",
+                "sentences": [
+                    {"text": "No, just one monitor plugged in.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is it just a single outlet?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, only this single outlet has lost power.",
+                "sentences": [
+                    {"text": "Yes, only this single outlet has lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice it?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 11:30 AM today.",
+                "sentences": [
+                    {"text": "Around 11:30 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, I've assigned an electrician.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 10,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 10C",
+            "occurred_at": "11:30 AM today",
+            "outage_scope": "single_outlet",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 10: english, rambling
+    {
+        "id": "power_outage_10",
+        "incident_type": "power_outage",
+        "slot": 10,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "I was in the middle of writing a very long email. Power suddenly tripped in Cafeteria 2 on floor 1 of Building QRC.",
+                "sentences": [
+                    {"text": "I was in the middle of writing a very long email.", "relevant": False},
+                    {"text": "Power suddenly tripped in Cafeteria 2 on floor 1 of Building QRC.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "My laptop battery is almost dead too. No, no critical equipment is affected.",
+                "sentences": [
+                    {"text": "My laptop battery is almost dead too.", "relevant": False},
+                    {"text": "No, no critical equipment is affected.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Did the whole room lose power?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, the whole cafeteria room lost power.",
+                "sentences": [
+                    {"text": "Yes, the whole cafeteria room lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did it happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "About 1:45 PM today.",
+                "sentences": [
+                    {"text": "About 1:45 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, the electrical maintenance team has been informed.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 1,
+            "space_type": "cafeteria",
+            "space_id": "Cafeteria 2",
+            "occurred_at": "1:45 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 11: english, rambling (correction on space_id)
+    {
+        "id": "power_outage_11",
+        "incident_type": "power_outage",
+        "slot": 11,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Traffic on Outer Ring Road made me an hour late. Power went out on floor 6 of Building N near RF Lab 6A.",
+                "sentences": [
+                    {"text": "Traffic on Outer Ring Road made me an hour late.", "relevant": False},
+                    {"text": "Power went out on floor 6 of Building N near RF Lab 6A.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "Actually it's RF Lab 6B. Yes, our high-frequency test bench is shut off!",
+                "sentences": [
+                    {"text": "Actually it's RF Lab 6B.", "relevant": True},
+                    {"text": "Yes, our high-frequency test bench is shut off!", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "What is the scope: the room or whole floor?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Just this lab room lost power.",
+                "sentences": [
+                    {"text": "Just this lab room lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 10:20 AM today.",
+                "sentences": [
+                    {"text": "Around 10:20 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Urgent alert sent to electricians and lab facilities.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 6,
+            "space_type": "rnd_lab",
+            "space_id": "RF Lab 6B",
+            "occurred_at": "10:20 AM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 12: english, rambling (unknown answer)
+    {
+        "id": "power_outage_12",
+        "incident_type": "power_outage",
+        "slot": 12,
+        "lang_style": "english",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "I really need a chai break soon. The whole 3rd floor in Building QRC has lost power.",
+                "sentences": [
+                    {"text": "I really need a chai break soon.", "relevant": False},
+                    {"text": "The whole 3rd floor in Building QRC has lost power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "I'm not sure, people are still checking their equipment.",
+                "sentences": [
+                    {"text": "I'm not sure, people are still checking their equipment.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Which room or bay are you located in?",
+                "asks": ["space_id"]
+            },
+            {
+                "role": "user",
+                "text": "Workstation Bay 3A.",
+                "sentences": [
+                    {"text": "Workstation Bay 3A.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did the power cut out?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 3:40 PM today.",
+                "sentences": [
+                    {"text": "Around 3:40 PM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Dispatched emergency electrical staff to restore floor power.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 3,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 3A",
+            "occurred_at": "3:40 PM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": "unknown"
+        },
+        "final_priority": "P1"
+    },
+    # Slot 13: hindi_translated, complete
+    {
+        "id": "power_outage_13",
+        "incident_type": "power_outage",
+        "slot": 13,
+        "lang_style": "hindi_translated",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building N on floor 8, the entire floor light and power has gone at 10:15 AM today morning, and no critical server or lab is affected.",
+                "sentences": [
+                    {"text": "In Building N on floor 8, the entire floor light and power has gone at 10:15 AM today morning, and no critical server or lab is affected.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Understood, electrical technicians are dispatched to check the floor.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 8,
+            "space_type": "corridor",
+            "space_id": "Floor 8 Main Hall",
+            "occurred_at": "10:15 AM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 14: hindi_translated, missing
+    {
+        "id": "power_outage_14",
+        "incident_type": "power_outage",
+        "slot": 14,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "In Building QRC, floor 5, Conference Room 5A, all power has stopped.",
+                "sentences": [
+                    {"text": "In Building QRC, floor 5, Conference Room 5A, all power has stopped.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No, only meeting room television and sockets.",
+                "sentences": [
+                    {"text": "No, only meeting room television and sockets.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Did the whole room lose power?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, the full room power went away.",
+                "sentences": [
+                    {"text": "Yes, the full room power went away.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did this power failure happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 11:50 AM today.",
+                "sentences": [
+                    {"text": "Around 11:50 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, electricians have been assigned.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 5,
+            "space_type": "conference_room",
+            "space_id": "Conference Room 5A",
+            "occurred_at": "11:50 AM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 15: hindi_translated, missing
+    {
+        "id": "power_outage_15",
+        "incident_type": "power_outage",
+        "slot": 15,
+        "lang_style": "hindi_translated",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Power is gone in Server Room 1B on floor 1 of Building N.",
+                "sentences": [
+                    {"text": "Power is gone in Server Room 1B on floor 1 of Building N.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any critical lab or server equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, critical network server switches have shut down!",
+                "sentences": [
+                    {"text": "Yes, critical network server switches have shut down!", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "What is the scope: the room or floor?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "The entire server room is without electricity.",
+                "sentences": [
+                    {"text": "The entire server room is without electricity.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "At what time did this occur?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Just now around 2:05 PM.",
+                "sentences": [
+                    {"text": "Just now around 2:05 PM.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Emergency electricians and lab engineers have been alerted immediately.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 1,
+            "space_type": "server_or_idf_room",
+            "space_id": "Server Room 1B",
+            "occurred_at": "2:05 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": True
+        },
+        "final_priority": "P1"
+    },
+    # Slot 16: hindi_translated, rambling
+    {
+        "id": "power_outage_16",
+        "incident_type": "power_outage",
+        "slot": 16,
+        "lang_style": "hindi_translated",
+        "opening": "rambling",
+        "turns": [
+            {
+                "role": "user",
+                "text": "AC was cooling too much in morning. In Building QRC, floor 2, one switch socket in Pantry 2A has no current.",
+                "sentences": [
+                    {"text": "AC was cooling too much in morning.", "relevant": False},
+                    {"text": "In Building QRC, floor 2, one switch socket in Pantry 2A has no current.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "No, only the kettle plug is not getting power.",
+                "sentences": [
+                    {"text": "No, only the kettle plug is not getting power.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is it only that single outlet?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Yes, single outlet only.",
+                "sentences": [
+                    {"text": "Yes, single outlet only.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "When did you first notice this?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 9:40 AM today.",
+                "sentences": [
+                    {"text": "Around 9:40 AM today.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Okay, the electrical technician has been informed.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 2,
+            "space_type": "pantry",
+            "space_id": "Pantry 2A",
+            "occurred_at": "9:40 AM today",
+            "outage_scope": "single_outlet",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P3"
+    },
+    # Slot 17: hinglish, missing
+    {
+        "id": "power_outage_17",
+        "incident_type": "power_outage",
+        "slot": 17,
+        "lang_style": "hinglish",
+        "opening": "missing",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building N ke floor 11 pe pura floor ka light chala gaya hai, Workstation Bay 11A mein.",
+                "sentences": [
+                    {"text": "Building N ke floor 11 pe pura floor ka light chala gaya hai, Workstation Bay 11A mein.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Is any lab, server or critical equipment affected?",
+                "asks": ["critical_equipment_affected"]
+            },
+            {
+                "role": "user",
+                "text": "Nahi, koi critical lab equipment affect nahi hua.",
+                "sentences": [
+                    {"text": "Nahi, koi critical lab equipment affect nahi hua.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Has the whole floor lost power?",
+                "asks": ["outage_scope"]
+            },
+            {
+                "role": "user",
+                "text": "Haan, pure floor pe power chali gayi hai.",
+                "sentences": [
+                    {"text": "Haan, pure floor pe power chali gayi hai.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Roughly when did this happen?",
+                "asks": ["occurred_at"]
+            },
+            {
+                "role": "user",
+                "text": "Around 12:30 PM power gaya tha.",
+                "sentences": [
+                    {"text": "Around 12:30 PM power gaya tha.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Got it, electricians have been notified for floor restoration.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "N",
+            "floor": 11,
+            "space_type": "workstation_bay",
+            "space_id": "Workstation Bay 11A",
+            "occurred_at": "12:30 PM today",
+            "outage_scope": "floor",
+            "critical_equipment_affected": False
+        },
+        "final_priority": "P2"
+    },
+    # Slot 18: hinglish, complete
+    {
+        "id": "power_outage_18",
+        "incident_type": "power_outage",
+        "slot": 18,
+        "lang_style": "hinglish",
+        "opening": "complete",
+        "turns": [
+            {
+                "role": "user",
+                "text": "Building QRC floor 6 ke R&D Lab 6 mein pura room power cut ho gaya hai 3:00 PM pe, aur critical testing equipment band ho gaya.",
+                "sentences": [
+                    {"text": "Building QRC floor 6 ke R&D Lab 6 mein pura room power cut ho gaya hai 3:00 PM pe, aur critical testing equipment band ho gaya.", "relevant": True}
+                ]
+            },
+            {
+                "role": "assistant",
+                "text": "Emergency electricians and lab facilities have been dispatched immediately.",
+                "asks": []
+            }
+        ],
+        "final_fields": {
+            "building": "QRC",
+            "floor": 6,
+            "space_type": "rnd_lab",
+            "space_id": "R&D Lab 6",
+            "occurred_at": "3:00 PM today",
+            "outage_scope": "room",
+            "critical_equipment_affected": True
+        },
+        "final_priority": "P1"
+    }
+]
+
+with open("data/power_outage.jsonl", "w", encoding="utf-8") as f:
+    for row in data:
+        f.write(json.dumps(row) + "\n")
+
+print("Generated power_outage.jsonl successfully")

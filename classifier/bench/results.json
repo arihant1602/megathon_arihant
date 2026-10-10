@@ -1,0 +1,478 @@
+[
+ {
+  "model": "L1h128",
+  "L": 128,
+  "params_M": 2.35,
+  "onnx_nodes": 5648,
+  "ort_diff": 3.8743019104003906e-07,
+  "convert": [
+   "OK",
+   72.7
+  ],
+  "quant": [
+   "OK",
+   8.2
+  ],
+  "dlc_MB": 11.8,
+  "dlc_q_MB": 5.3,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 346.922,
+    "init_ms": 1022.266
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 21.512,
+    "init_ms": 2685.288
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.859,
+    "init_ms": 1829.096
+   }
+  }
+ },
+ {
+  "model": "L1h128",
+  "L": 256,
+  "params_M": 2.35,
+  "onnx_nodes": 11280,
+  "ort_diff": 4.172325134277344e-07,
+  "convert": [
+   "OK",
+   146.2
+  ],
+  "quant": [
+   "OK",
+   32.4
+  ],
+  "dlc_MB": 14.7,
+  "dlc_q_MB": 8.2,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 1450.755,
+    "init_ms": 4355.981
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 41.59,
+    "init_ms": 6589.293
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.493,
+    "init_ms": 5934.281
+   }
+  }
+ },
+ {
+  "model": "L1h192",
+  "L": 128,
+  "params_M": 2.6,
+  "onnx_nodes": 5648,
+  "ort_diff": 2.384185791015625e-07,
+  "convert": [
+   "OK",
+   72.3
+  ],
+  "quant": [
+   "OK",
+   8.7
+  ],
+  "dlc_MB": 12.8,
+  "dlc_q_MB": 5.5,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 353.256,
+    "init_ms": 1042.287
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 22.009,
+    "init_ms": 2715.579
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.88,
+    "init_ms": 1679.927
+   }
+  }
+ },
+ {
+  "model": "L1h192",
+  "L": 256,
+  "params_M": 2.6,
+  "onnx_nodes": 11280,
+  "ort_diff": 2.4586915969848633e-07,
+  "convert": [
+   "OK",
+   145.6
+  ],
+  "quant": [
+   "OK",
+   34.0
+  ],
+  "dlc_MB": 15.7,
+  "dlc_q_MB": 8.5,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 1466.835,
+    "init_ms": 4395.803
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 43.838,
+    "init_ms": 6647.078
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.741,
+    "init_ms": 5914.636
+   }
+  }
+ },
+ {
+  "model": "L1h64",
+  "L": 128,
+  "params_M": 2.18,
+  "onnx_nodes": 5648,
+  "ort_diff": 2.086162567138672e-07,
+  "convert": [
+   "OK",
+   72.1
+  ],
+  "quant": [
+   "OK",
+   7.9
+  ],
+  "dlc_MB": 11.2,
+  "dlc_q_MB": 5.1,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 334.394,
+    "init_ms": 1003.998
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 19.333,
+    "init_ms": 2511.361
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.725,
+    "init_ms": 1840.218
+   }
+  }
+ },
+ {
+  "model": "L1h64",
+  "L": 256,
+  "params_M": 2.18,
+  "onnx_nodes": 11280,
+  "ort_diff": 2.086162567138672e-07,
+  "convert": [
+   "OK",
+   145.4
+  ],
+  "quant": [
+   "OK",
+   32.0
+  ],
+  "dlc_MB": 14.1,
+  "dlc_q_MB": 8.1,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 1446.185,
+    "init_ms": 4336.337
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 37.175,
+    "init_ms": 6366.446
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.173,
+    "init_ms": 6000.353
+   }
+  }
+ },
+ {
+  "model": "L2h192",
+  "L": 128,
+  "params_M": 13.4,
+  "onnx_nodes": 5648,
+  "ort_diff": 2.2351741790771484e-07,
+  "convert": [
+   "OK",
+   75.8
+  ],
+  "quant": [
+   "OK",
+   8.8
+  ],
+  "dlc_MB": 54.0,
+  "dlc_q_MB": 15.8,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 353.333,
+    "init_ms": 1055.868
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 21.992,
+    "init_ms": 2743.847
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.884,
+    "init_ms": 1685.305
+   }
+  }
+ },
+ {
+  "model": "L2h192",
+  "L": 256,
+  "params_M": 13.4,
+  "onnx_nodes": 11280,
+  "ort_diff": 2.5331974029541016e-07,
+  "convert": [
+   "OK",
+   144.9
+  ],
+  "quant": [
+   "OK",
+   34.3
+  ],
+  "dlc_MB": 56.9,
+  "dlc_q_MB": 18.8,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 1466.7,
+    "init_ms": 4437.297
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 43.477,
+    "init_ms": 6676.695
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.775,
+    "init_ms": 5906.276
+   }
+  }
+ },
+ {
+  "model": "T1",
+  "L": 128,
+  "params_M": 16.82,
+  "onnx_nodes": 325,
+  "ort_diff": 1.5497207641601562e-06,
+  "convert": [
+   "OK",
+   9.3
+  ],
+  "quant": [
+   "OK",
+   1.4
+  ],
+  "dlc_MB": 64.4,
+  "dlc_q_MB": 16.3,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 8.326,
+    "init_ms": 61.938
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 5.738,
+    "init_ms": 1543.011
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.711,
+    "init_ms": 480.763
+   }
+  }
+ },
+ {
+  "model": "T1",
+  "L": 256,
+  "params_M": 16.82,
+  "onnx_nodes": 325,
+  "ort_diff": 1.7881393432617188e-06,
+  "convert": [
+   "OK",
+   9.2
+  ],
+  "quant": [
+   "OK",
+   2.4
+  ],
+  "dlc_MB": 64.6,
+  "dlc_q_MB": 16.4,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 14.851,
+    "init_ms": 63.7
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 8.24,
+    "init_ms": 1570.402
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.412,
+    "init_ms": 515.95
+   }
+  }
+ },
+ {
+  "model": "T1t",
+  "L": 128,
+  "params_M": 6.02,
+  "onnx_nodes": 325,
+  "ort_diff": 1.430511474609375e-06,
+  "convert": [
+   "OK",
+   8.6
+  ],
+  "quant": [
+   "OK",
+   1.2
+  ],
+  "dlc_MB": 23.3,
+  "dlc_q_MB": 6.0,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 8.479,
+    "init_ms": 31.463
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 5.607,
+    "init_ms": 1519.375
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 0.723,
+    "init_ms": 320.757
+   }
+  }
+ },
+ {
+  "model": "T1t",
+  "L": 256,
+  "params_M": 6.02,
+  "onnx_nodes": 325,
+  "ort_diff": 1.430511474609375e-06,
+  "convert": [
+   "OK",
+   8.6
+  ],
+  "quant": [
+   "OK",
+   2.4
+  ],
+  "dlc_MB": 23.4,
+  "dlc_q_MB": 6.1,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 14.708,
+    "init_ms": 58.886
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 7.922,
+    "init_ms": 1519.844
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.44,
+    "init_ms": 346.226
+   }
+  }
+ },
+ {
+  "model": "T2",
+  "L": 128,
+  "params_M": 31.92,
+  "onnx_nodes": 457,
+  "ort_diff": 1.0728836059570312e-06,
+  "convert": [
+   "OK",
+   12.6
+  ],
+  "quant": [
+   "OK",
+   2.8
+  ],
+  "dlc_MB": 122.1,
+  "dlc_q_MB": 30.8,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 20.595,
+    "init_ms": 62.855
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 9.434,
+    "init_ms": 1643.45
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 1.323,
+    "init_ms": 780.145
+   }
+  }
+ },
+ {
+  "model": "T2",
+  "L": 256,
+  "params_M": 31.92,
+  "onnx_nodes": 457,
+  "ort_diff": 1.3113021850585938e-06,
+  "convert": [
+   "OK",
+   12.5
+  ],
+  "quant": [
+   "OK",
+   5.4
+  ],
+  "dlc_MB": 122.2,
+  "dlc_q_MB": 30.8,
+  "SM8750P": {
+   "cpu": {
+    "status": "OK",
+    "infer_ms": 40.121,
+    "init_ms": 85.944
+   },
+   "gpu": {
+    "status": "OK",
+    "infer_ms": 13.426,
+    "init_ms": 1661.963
+   },
+   "dsp": {
+    "status": "OK",
+    "infer_ms": 2.502,
+    "init_ms": 836.91
+   }
+  }
+ }
+]

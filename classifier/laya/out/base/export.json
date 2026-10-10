@@ -1,0 +1,9 @@
+{
+ "mode": "base",
+ "onnx_MB": 1506.7,
+ "nodes": 2511,
+ "export_s": 7.5,
+ "ort_vs_torch_maxdiff": 1.7881393432617188e-07,
+ "n_test_inputs": 289,
+ "n_test_samples": 259
+}

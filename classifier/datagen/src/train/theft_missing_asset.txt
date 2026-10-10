@@ -1,0 +1,459 @@
+@ theft_missing_asset_001 single
+S Senior engineer's work laptop disappeared from their desk during lunch.
+U theft_missing_asset
++ asset_kind :: My work laptop is gone from my desk, I only left it for lunch.
+- :: I'm trying not to panic, but I've already checked every meeting room twice.
+- :: My whole week of work is on that thing.
+A contains_confidential :: I'm sorry. Does it hold confidential data or unreleased designs?
+U theft_missing_asset
++ contains_confidential :: Yes, it has the schematics for an unannounced chipset on it.
++ asset_tag :: The asset tag is QC-LT-48213.
+A building,floor :: Which building and floor is your desk on?
+U theft_missing_asset
++ building floor space_id :: N, floor seven, desk 7-112.
++ occurred_at :: I left at about 12:30 and came back at 1:15.
+A :: Thanks, I've raised it as critical with security and IT so the laptop can be locked remotely.
+
+@ theft_missing_asset_002 single
+S Lab technician reports a prototype device missing from a locked cabinet.
+U theft_missing_asset
++ asset_kind :: One of our prototype handsets is missing from the lab cabinet.
+- :: We count them every evening, so it's definitely not just misplaced.
+A contains_confidential :: Is it unreleased hardware?
+U theft_missing_asset
++ contains_confidential :: Yes, it's an unreleased prototype.
++ building floor space_type :: QRC, floor four, the device test lab.
++ occurred_at :: It was there at last night's count at six.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_003 single
+S Receptionist tersely reports a visitor's phone stolen from the waiting area.
+U theft_missing_asset
++ asset_kind persons_involved :: A visitor's phone was taken from the waiting area table while she was signing in.
++ contains_confidential :: It's her personal phone, nothing of ours on it.
++ building :: Lakeview reception.
+- :: She's quite upset and keeps checking her pockets again.
+A :: Thanks, I've raised it with security to check the cameras.
+
+@ theft_missing_asset_004 single
+S Intern greets nervously, then reports their dev board missing from the shared bench.
+U undetermined
+- :: Hi, sorry, I don't know if this is a big deal or not.
+A :: Go ahead, what happened?
+U theft_missing_asset
++ asset_kind :: The dev board I was using is missing from the shared bench.
+- :: I left it there overnight with a sticky note on it like everyone does.
+A contains_confidential :: Does it run anything confidential?
+U theft_missing_asset
++ contains_confidential :: I'm not sure, it has our team's test firmware.
++ building floor :: N, floor three, the hardware bay.
+A occurred_at :: When did you last see the board?
+U theft_missing_asset
++ occurred_at :: Yesterday evening around six, when I left it on the bench.
+A :: Thanks, we'll treat it as confidential to be safe. I've raised it with security.
+
+@ theft_missing_asset_005 single
+S Manager in a rush gives a complete report about printed board documents missing.
+U theft_missing_asset
++ asset_kind :: A folder of printed board meeting documents is missing from my office.
++ contains_confidential :: They're strictly confidential, financial forecasts.
++ building floor :: Willow building, floor three, my office is 3-02.
++ occurred_at :: I last saw it at 9 this morning.
+- :: I have a call with the auditors in an hour, which makes this so much worse.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_006 single
+S Night-shift worker reports their wallet gone from a jacket in the break room.
+U theft_missing_asset
++ asset_kind :: My wallet's gone from my jacket in the break room.
+- :: I hung my jacket up at the start of the shift like always.
+A contains_confidential :: Was there anything work-related in it, like a badge?
+U theft_missing_asset
++ contains_confidential :: No, just cards and some cash.
++ building space_type :: N, the ground floor break room.
+A occurred_at :: Roughly when could it have been taken?
+U theft_missing_asset
++ occurred_at :: Between ten and midnight.
+A :: Thanks, I've raised it with security to check the footage.
+
+@ theft_missing_asset_007 single
+S Contractor jokes that their whole toolbox vanished; three turns.
+U theft_missing_asset
++ asset_kind :: My entire toolbox has vanished.
+- :: It's not exactly small, it's on wheels.
+A contains_confidential :: Was there anything confidential in it?
+U theft_missing_asset
++ contains_confidential :: No, just tools.
+A building :: Which building?
+U theft_missing_asset
++ building floor :: Spruce block, floor two.
++ occurred_at :: I left it by the lifts at lunch.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_008 single
+S Housekeeping staff finds a desk drawer forced and items missing; unclear at first.
+U undetermined
++ :: One of the desk drawers on this floor has been forced open.
+- :: The lock's bent and there are scratches all over it.
+A :: Is anything missing from it?
+U theft_missing_asset
++ asset_kind :: The owner says her tablet and some papers are gone.
++ contains_confidential :: The papers had customer names on them.
+A building,floor :: Which building and floor?
+U theft_missing_asset
++ building floor :: QRC, floor five.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_009 single
+S Senior engineer reports their phone gone from a meeting room.
+U theft_missing_asset
++ asset_kind space_type :: I left my phone in the meeting room for ten minutes and now it's gone.
+A contains_confidential :: Is it a work phone with company data?
+U theft_missing_asset
++ contains_confidential :: Yes, it's my work phone, email and everything.
++ building floor space_id :: N, floor nine, room Annapurna.
+- :: I've rung it and it goes straight to voicemail.
+A :: Thanks, raised with security and IT to lock it remotely.
+
+@ theft_missing_asset_010 single
+S Lab technician tersely reports an expensive probe set missing; one turn.
+U theft_missing_asset
++ asset_kind asset_tag :: Differential probe set missing from the bench, tag LAB-PR-0077, Research Hall 2 floor one.
++ contains_confidential :: Nothing confidential, just expensive.
+- :: That's the third thing to walk out of this lab this month.
+A :: Logged with security.
+
+@ theft_missing_asset_011 single
+S Visitor reports their bag was taken from the cafe.
+U theft_missing_asset
++ asset_kind space_type :: My bag was taken from the chair in the cafe.
+- :: I turned around for literally a minute.
+A contains_confidential :: Was there anything sensitive in it?
+U theft_missing_asset
++ contains_confidential :: My laptop with my company's files, but not Qualcomm's.
++ building :: The Summit building.
+A :: Thanks, raised with security to check the cameras.
+
+@ theft_missing_asset_012 single
+S Manager worried a team's prototype dev boards are missing after an office move; four turns.
+U theft_missing_asset
++ asset_kind :: Five dev boards didn't arrive after our team moved floors.
+A contains_confidential :: Do they contain unreleased hardware?
+U theft_missing_asset
++ contains_confidential :: Yes, they're pre-production boards.
+A building :: Which building?
+U theft_missing_asset
++ building floor :: N, moving from floor four to floor eight.
+- :: The movers say they delivered everything.
+A occurred_at :: When was the move?
+U theft_missing_asset
++ occurred_at :: Last Friday afternoon.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_013 single
+S Night-shift worker jokes their lunch keeps getting stolen from the fridge, but this time it's their personal headphones.
+U theft_missing_asset
+- :: My lunch gets stolen weekly, but this is new.
++ asset_kind :: My noise-cancelling headphones are gone from my desk.
+A contains_confidential :: Anything confidential?
+U theft_missing_asset
++ contains_confidential :: No, just my music.
++ building floor :: QRC, floor two.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_014 single
+S Receptionist calmly reports a delivery parcel missing from the mail room.
+U theft_missing_asset
++ asset_kind space_type :: A delivered parcel is missing from the mail room.
+A contains_confidential :: Do you know what was in it?
+U theft_missing_asset
++ contains_confidential :: The label says engineering samples, so I'd guess it's sensitive.
++ building :: Willow building.
+- :: It was signed in at ten.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_015 single
+S Contractor reports copper cable stolen from the site.
+U theft_missing_asset
++ asset_kind :: Someone's taken a full drum of copper cable from our site storage.
++ contains_confidential :: Nothing confidential.
+A building :: Which building?
+U theft_missing_asset
++ building :: The Cedar building, ground floor site store.
++ occurred_at :: Sometime overnight.
+- :: With copper prices what they are, I can't say I'm surprised.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_016 single
+S Intern worried their laptop bag was taken from the gym locker room.
+U theft_missing_asset
++ asset_kind :: My laptop bag got taken from the gym changing room.
+- :: I didn't lock it because I was only going to be twenty minutes.
+A contains_confidential :: Was it your work laptop?
+U theft_missing_asset
++ contains_confidential :: Yes, it's my work laptop.
++ building :: Willow building basement.
+A :: Thanks, raised with security and IT.
+
+@ theft_missing_asset_017 single
+S Lab technician starts with location, then reports oscilloscope missing.
+U undetermined
++ building floor :: I'm in the QRC floor six lab.
+A :: What's up?
+U theft_missing_asset
++ asset_kind :: The portable oscilloscope is gone from its shelf.
++ asset_tag :: Tag QC-EQ-11902.
+A contains_confidential :: Any confidential data on it?
+U theft_missing_asset
++ contains_confidential :: Maybe some captured waveforms, not sure.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_018 single
+S Security guard reports a laptop seen leaving with someone; five turns.
+U theft_missing_asset
++ asset_kind :: A staff member says her laptop is missing.
+A contains_confidential :: Does it hold confidential data?
+U theft_missing_asset
++ contains_confidential :: Yes, she's in legal.
+A building :: Which building?
+U theft_missing_asset
++ building :: N.
+- :: She's very upset.
+A floor :: Which floor?
+U theft_missing_asset
++ floor :: Floor ten.
+A occurred_at :: When did she last see it?
+U theft_missing_asset
++ occurred_at :: At about four, before a meeting.
+A :: Thanks, raised as critical with security and IT.
+
+@ theft_missing_asset_019 single
+S Senior engineer notices something odd at their desk, then realises a monitor was taken.
+U undetermined
++ :: Something's not right at my desk this morning, there are cables just hanging loose.
+- :: I thought the cleaners had moved stuff around again.
+A :: What do you notice is different?
+U theft_missing_asset
++ asset_kind :: Someone has walked off with my second monitor.
+- :: Probably someone "borrowing" it for a demo, but still.
+A contains_confidential :: Anything confidential?
+U theft_missing_asset
++ contains_confidential :: No, it's just a screen.
++ building floor space_id :: N, floor five, desk 5-60.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_020 single
+S Housekeeping staff reports a purse left in a washroom then gone.
+U theft_missing_asset
++ persons_involved :: A lady from finance left her purse in the washroom and when she went back it was gone.
++ asset_kind :: It's a personal purse.
++ contains_confidential :: Her badge was in it.
++ building floor :: QRC floor three.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_021 single
+S Manager tersely reports a stolen projector from a meeting room.
+U theft_missing_asset
++ asset_kind space_type :: Portable projector stolen from meeting room Delta.
++ building floor :: Birch building, floor two.
++ contains_confidential :: No data on it.
+- :: We only bought that thing in the spring.
+A :: Logged with security.
+
+@ theft_missing_asset_022 single
+S Visitor apologises, reports their umbrella and coat taken; three turns.
+U theft_missing_asset
+- :: Sorry, this is minor.
++ asset_kind :: My coat was taken from the coat rack in the lobby.
+A contains_confidential :: Anything important in it?
+U theft_missing_asset
++ contains_confidential :: My car keys were in the pocket, nothing confidential.
+A building :: Which building?
+U theft_missing_asset
++ building :: Horizon building.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_023 single
+S Lab technician worried that test chips are missing from a tray.
+U theft_missing_asset
++ asset_kind :: Ten engineering sample chips are missing from the tray.
+A contains_confidential :: Are they unreleased?
+U theft_missing_asset
++ contains_confidential :: Yes, completely unreleased silicon.
++ building floor :: QRC, floor three.
+- :: We've searched the whole bench.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_024 single
+S Night-shift worker calmly reports a bike stolen from the bike store.
+U theft_missing_asset
++ asset_kind :: My bike has been stolen from the bike store.
++ contains_confidential :: Nothing confidential, just a bike.
+A building :: Which building's bike store?
+U theft_missing_asset
++ building :: Pine building.
++ occurred_at :: Between 8 pm and now.
+- :: Looks like I'm walking home tonight.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_025 single
+S Senior engineer greets, then reports a dev kit missing from a locker; three turns.
+U undetermined
+- :: Hey, morning.
+A :: Morning, what's up?
+U theft_missing_asset
++ asset_kind :: The reference dev kit I keep in my locker isn't there.
+A contains_confidential :: Is it confidential hardware?
+U theft_missing_asset
++ contains_confidential :: It's a customer evaluation kit under NDA.
++ building :: N.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_026 single
+S Contractor reports a ladder missing from the site.
+U theft_missing_asset
++ asset_kind :: Our big ladder is missing.
+- :: Hard to hide a ladder.
+A contains_confidential,building :: Anything confidential, and which building?
+U theft_missing_asset
++ contains_confidential :: No.
++ building :: Elm building.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_027 single
+S Manager can't find their phone at first, then realises it was taken from a cafeteria table.
+U undetermined
+- :: Ugh, what a day.
++ space_type :: I was sitting in the cafeteria and now my stuff is not where I left it.
+A :: What's missing?
+U theft_missing_asset
++ asset_kind space_type :: My phone was taken off the cafeteria table while I got water.
+A contains_confidential :: Is it a work phone?
+U theft_missing_asset
++ contains_confidential :: Personal, but it has work email.
++ building :: QRC.
+A :: Thanks, raised with security and IT.
+
+@ theft_missing_asset_028 single
+S Intern tersely reports their tablet missing; one turn.
+U theft_missing_asset
++ asset_kind contains_confidential :: Work tablet missing from my desk, has project notes on it, Birch building floor one.
+- :: I really hope I just left it in a meeting room somewhere.
+A :: Thanks, raised with security and IT.
+
+@ theft_missing_asset_029 single
+S Lab technician reports a missing hard drive with test data; four turns.
+U theft_missing_asset
++ asset_kind :: An external hard drive is missing from the lab.
+A contains_confidential :: What's on it?
+U theft_missing_asset
++ contains_confidential :: Months of characterisation data, confidential.
+A building :: Which building and floor?
+U theft_missing_asset
++ building floor :: QRC floor five.
+A occurred_at :: When did you last see it?
+U theft_missing_asset
++ occurred_at :: Yesterday evening.
+- :: I hope someone just borrowed it.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_030 single
+S Receptionist jokes about the stolen coffee machine pods, but it's the reception iPad.
+U theft_missing_asset
+- :: Someone keeps stealing the good coffee pods, but that's not why I'm calling.
++ asset_kind :: The reception iPad we use for visitor sign-in is missing.
+A contains_confidential :: Does it hold visitor data?
+U theft_missing_asset
++ contains_confidential :: Yes, visitor names and phone numbers.
++ building :: Lakeview.
+A :: Thanks, raised with security and IT.
+
+@ theft_missing_asset_031 single
+S Security guard reports a broken car window and missing laptop.
+U theft_missing_asset
++ asset_kind space_type :: A car in the staff car park had its window smashed and a laptop taken.
+A contains_confidential :: Was it a work laptop?
+U theft_missing_asset
++ contains_confidential :: The owner says yes.
++ building :: Under N.
+- :: There's glass all over the next parking bay too.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_032 single
+S Housekeeping staff reports cleaning supplies stolen.
+U theft_missing_asset
++ asset_kind :: Boxes of cleaning supplies keep going missing from our store.
++ contains_confidential :: Nothing confidential.
++ building :: Oak building.
+- :: Honestly it feels like it happens every other week.
+A :: Thanks, logged with security.
+
+@ theft_missing_asset_033 confusable confused=suspicious_activity
+S Senior engineer reports someone suspicious; it turns out a laptop really was taken.
+U suspicious_activity
++ :: I saw someone in a hoodie walking out fast from our area.
+A :: What were they doing?
+U theft_missing_asset
++ asset_kind :: I just checked and my colleague's laptop is gone from her desk.
++ contains_confidential :: It's her work laptop with design files.
++ building floor :: N, floor six.
+- :: I feel awful that I didn't stop him on the way out.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_034 confusable confused=suspicious_activity
+S Lab technician saw a stranger in the lab; then finds a dev board missing.
+U suspicious_activity
++ :: A stranger was in the lab earlier.
+A :: Can you describe what they did?
+U theft_missing_asset
++ asset_kind :: Now our dev board is missing from bench 4.
++ contains_confidential :: It's running unreleased firmware.
++ building :: QRC.
+A :: Thanks, raised as critical with security.
+
+@ theft_missing_asset_035 confusable confused=suspicious_activity
+S Receptionist saw someone loitering at the parcel shelf; a parcel is now gone.
+U suspicious_activity
++ :: A man was hanging around the parcel shelf for a while.
+A :: Is he still there?
+U theft_missing_asset
++ :: He's gone.
++ asset_kind :: And a parcel addressed to the lab is missing.
++ contains_confidential :: The label says prototype samples.
++ building :: Willow building.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_036 confusable confused=lost_badge
+S Intern says their badge is missing; the whole wallet was stolen.
+U lost_badge
++ :: I can't find my badge anywhere in my bag.
+A :: When did you last have it?
+U theft_missing_asset
++ :: It was in my wallet, and my wallet is gone from my bag.
++ asset_kind :: The bag was zipped open, someone took the wallet.
++ contains_confidential :: Just my badge and cards.
++ building :: N.
+A :: Thanks, raised with security.
+
+@ theft_missing_asset_037 confusable confused=lost_badge
+S Manager thinks they lost their badge; the backpack with laptop and badge was taken.
+U lost_badge
++ :: I think I've lost my badge.
+A :: Where did you last have it?
+U theft_missing_asset
++ :: Clipped to my backpack, and the whole backpack is gone from under my desk.
++ asset_kind contains_confidential :: My laptop was in it too, with confidential project files.
++ building floor :: QRC, floor four.
+A :: Thanks, raised as critical with security and IT.
+
+@ theft_missing_asset_038 confusable confused=lab_equipment_fault
+S Lab technician thinks the spectrum analyser is broken; its calibration kit was stolen.
+U lab_equipment_fault
++ :: The spectrum analyser setup isn't working.
+A :: What's happening with it?
+U theft_missing_asset
++ :: The analyser is fine.
++ asset_kind :: The calibration kit that goes with it is missing from the case.
++ contains_confidential :: Nothing confidential.
++ asset_tag :: Kit tag LAB-CK-2201.
+A :: Thanks, logged with security.

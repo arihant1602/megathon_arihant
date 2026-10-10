@@ -1,0 +1,316 @@
+{
+ "log": [
+  {
+   "turn": 1,
+   "user": "There is a fire in building N floor 5",
+   "probs": {
+    "water_leak": 0.0006164134247228503,
+    "washroom_plumbing": 8.66808659338858e-06,
+    "power_outage": 7.704025483690202e-05,
+    "electrical_hazard": 0.0008790938882157207,
+    "lighting_fault": 0.00021537700376939029,
+    "hvac_issue": 0.00018339640519116074,
+    "elevator_fault": 8.430126763414592e-05,
+    "structural_damage": 0.001487523433752358,
+    "furniture_fixture": 1.0158703844354022e-05,
+    "spill_cleanup": 0.0001417644089087844,
+    "washroom_hygiene": 2.2112919396022335e-05,
+    "pest_sighting": 7.97303146100603e-05,
+    "cafeteria_issue": 0.00011174911924172193,
+    "access_control_fault": 2.3445743863703683e-05,
+    "lost_badge": 2.0754769138875417e-05,
+    "suspicious_activity": 0.0002171436499338597,
+    "theft_missing_asset": 6.974212737986818e-05,
+    "cctv_fault": 0.0001293243985855952,
+    "injury_medical": 0.0002796594926621765,
+    "fire_smoke": 0.9941694736480713,
+    "chemical_spill": 3.43773681379389e-05,
+    "unsafe_condition": 0.0005307429819367826,
+    "network_outage": 4.463610821403563e-05,
+    "conference_room_av": 4.0027807699516416e-05,
+    "device_fault": 0.00010062835644930601,
+    "lab_equipment_fault": 2.809298712236341e-05,
+    "esd_issue": 5.128907105245162e-06,
+    "lab_utility_failure": 2.048050009761937e-05,
+    "undetermined": 0.0003648822894319892,
+    "none": 4.231726052239537e-06
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "There is a fire in building N floor 5",
+     "relevant": 0.999968409538269,
+     "fields": [
+      "fire_visible"
+     ]
+    }
+   ],
+   "classifier_ms": 334.55371856689453,
+   "note": "type settled: fire_smoke (0.99 >= 0.8)",
+   "extracted": {
+    "floor": 5,
+    "building": "N",
+    "fire_visible": true
+   },
+   "llm": {
+    "ms": 176,
+    "prompt_tokens": 99,
+    "output_tokens": 30,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "space_id",
+     "evacuation_status"
+    ],
+    "reason": "location missing",
+    "text": "If there is fire, leave the area and use the emergency number now. I am alerting the response team. Which room or area exactly, for example Conference Room 2 or the pantry? And has the area been evacuated?"
+   },
+   "form": {
+    "type": "fire_smoke",
+    "type_source": "classifier",
+    "type_conf": 0.9941694736480713,
+    "values": {
+     "floor": {
+      "value": 5,
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "building": {
+      "value": "N",
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "fire_visible": {
+      "value": true,
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "evacuation_status": {
+      "value": "complete",
+      "evidence": "everyone is running out",
+      "turn": 2
+     }
+    },
+    "followups": 1,
+    "asked": [
+     [
+      1,
+      [
+       "space_id",
+       "evacuation_status"
+      ]
+     ],
+     [
+      2,
+      [
+       "space_id",
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P1",
+    "priority_label": "Critical",
+    "team": "Environment, Health & Safety",
+    "notify": [
+     "Emergency Response Team / First Aid"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 15
+   }
+  },
+  {
+   "turn": 2,
+   "user": "everyone is running out",
+   "probs": {
+    "water_leak": 0.0011227632639929652,
+    "washroom_plumbing": 1.125911239796551e-05,
+    "power_outage": 0.00018457074475008994,
+    "electrical_hazard": 0.0005970182828605175,
+    "lighting_fault": 0.00018157843442168087,
+    "hvac_issue": 0.00030395996873266995,
+    "elevator_fault": 0.00015902149607427418,
+    "structural_damage": 0.0036824033595621586,
+    "furniture_fixture": 8.819118193059694e-06,
+    "spill_cleanup": 0.00026413085288368165,
+    "washroom_hygiene": 2.8878192097181454e-05,
+    "pest_sighting": 0.00011982834985246882,
+    "cafeteria_issue": 7.487962284358218e-05,
+    "access_control_fault": 3.401138019398786e-05,
+    "lost_badge": 2.6057989089167677e-05,
+    "suspicious_activity": 0.00038817335735075176,
+    "theft_missing_asset": 0.00010655254300218076,
+    "cctv_fault": 0.00014721747720614076,
+    "injury_medical": 0.0005919436225667596,
+    "fire_smoke": 0.9899497032165527,
+    "chemical_spill": 4.432744754012674e-05,
+    "unsafe_condition": 0.0012466750340536237,
+    "network_outage": 5.9496440371731296e-05,
+    "conference_room_av": 5.22755944984965e-05,
+    "device_fault": 7.579609518870711e-05,
+    "lab_equipment_fault": 1.9087738110101782e-05,
+    "esd_issue": 5.0673306759563275e-06,
+    "lab_utility_failure": 1.8422966604703106e-05,
+    "undetermined": 0.0004863145877607167,
+    "none": 9.880542165774386e-06
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "There is a fire in building N floor 5",
+     "relevant": 0.9999850988388062,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "everyone is running out",
+     "relevant": 0.9725855588912964,
+     "fields": [
+      "evacuation_status"
+     ]
+    }
+   ],
+   "classifier_ms": 395.7400321960449,
+   "note": "type holds: fire_smoke (0.99)",
+   "extracted": {
+    "evacuation_status": "complete"
+   },
+   "llm": {
+    "ms": 145,
+    "prompt_tokens": 141,
+    "output_tokens": 21,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "ask",
+    "fields": [
+     "space_id",
+     "occurred_at"
+    ],
+    "reason": "location missing",
+    "text": "Which room or area exactly, for example Conference Room 2 or the pantry? And roughly when did this happen or when did you notice it?"
+   },
+   "form": {
+    "type": "fire_smoke",
+    "type_source": "classifier",
+    "type_conf": 0.9899497032165527,
+    "values": {
+     "floor": {
+      "value": 5,
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "building": {
+      "value": "N",
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "fire_visible": {
+      "value": true,
+      "evidence": "There is a fire in building N floor 5",
+      "turn": 1
+     },
+     "evacuation_status": {
+      "value": "complete",
+      "evidence": "everyone is running out",
+      "turn": 2
+     }
+    },
+    "followups": 2,
+    "asked": [
+     [
+      1,
+      [
+       "space_id",
+       "evacuation_status"
+      ]
+     ],
+     [
+      2,
+      [
+       "space_id",
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": null
+   },
+   "routing": {
+    "priority": "P1",
+    "priority_label": "Critical",
+    "team": "Environment, Health & Safety",
+    "notify": [
+     "Emergency Response Team / First Aid"
+    ],
+    "rules_fired": [],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 15
+   }
+  }
+ ],
+ "final": {
+  "type": "fire_smoke",
+  "type_source": "classifier",
+  "type_conf": 0.9899497032165527,
+  "values": {
+   "floor": {
+    "value": 5,
+    "evidence": "There is a fire in building N floor 5",
+    "turn": 1
+   },
+   "building": {
+    "value": "N",
+    "evidence": "There is a fire in building N floor 5",
+    "turn": 1
+   },
+   "fire_visible": {
+    "value": true,
+    "evidence": "There is a fire in building N floor 5",
+    "turn": 1
+   },
+   "evacuation_status": {
+    "value": "complete",
+    "evidence": "everyone is running out",
+    "turn": 2
+   }
+  },
+  "followups": 2,
+  "asked": [
+   [
+    1,
+    [
+     "space_id",
+     "evacuation_status"
+    ]
+   ],
+   [
+    2,
+    [
+     "space_id",
+     "occurred_at"
+    ]
+   ]
+  ],
+  "outcome": null
+ },
+ "routing": {
+  "priority": "P1",
+  "priority_label": "Critical",
+  "team": "Environment, Health & Safety",
+  "notify": [
+   "Emergency Response Team / First Aid"
+  ],
+  "rules_fired": [],
+  "reroute_to": null,
+  "secondary": [],
+  "sla_min": 15
+ },
+ "summary": ""
+}
