@@ -14,7 +14,10 @@ import org.seedhecode.incidentassistant.data.ReportStatus
 import org.seedhecode.incidentassistant.data.ReportStore
 import org.seedhecode.incidentassistant.engine.AssistantView
 import org.seedhecode.incidentassistant.engine.IncidentEngine
+import org.seedhecode.incidentassistant.engine.NeuralSpeaker
 import org.seedhecode.incidentassistant.engine.OfflineSpeaker
+import org.seedhecode.incidentassistant.engine.Speech
+import org.seedhecode.incidentassistant.engine.SystemSpeech
 import java.util.concurrent.Executors
 
 enum class Phase { LOADING, IDLE, LISTENING, THINKING, SPEAKING, ERROR }
@@ -30,6 +33,7 @@ data class AssistantUiState(
     val speakQuestions: Boolean = true,
     val filedReportId: String? = null,     // set once the current conversation's report is saved
     val notice: String? = null,            // one-off message (e.g. a rejected form edit)
+    val voice: String = "System voice",
 )
 
 /** Drives one incident conversation: mic -> IncidentEngine -> spoken question -> listen again. */
@@ -45,8 +49,9 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     private val store = ReportStore(application.filesDir)
     private val _reports = MutableStateFlow(store.all())
     val reports: StateFlow<List<FiledReport>> = _reports.asStateFlow()
-    private val speaker = OfflineSpeaker(application, { msg -> ui { _state.update { it.copy(status = msg) } } },
-        { _, _ -> }, { _ -> ui { afterSpeech() } })
+    // System TTS until the neural voice (files/models/voice) has loaded.
+    private var speaker: Speech = SystemSpeech(OfflineSpeaker(application, { msg -> ui { _state.update { it.copy(status = msg) } } },
+        { _, _ -> }, { _ -> ui { afterSpeech() } }))
 
     init { load() }
 
@@ -76,6 +81,10 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
                     })
                     _state.update { it.copy(phase = Phase.IDLE, status = "Ready. Tap the mic or type.", view = e.view(), loadMs = e.loadMs) }
                 }
+                val voiceDir = java.io.File(getApplication<Application>().filesDir, "models/voice")
+                if (voiceDir.isDirectory) runCatching { NeuralSpeaker(voiceDir, { afterSpeech() }) }
+                    .onSuccess { neural -> ui { val old = speaker; speaker = neural; old.close(); _state.update { it.copy(voice = neural.name) } } }
+                    .onFailure { error -> ui { _state.update { it.copy(notice = "Natural voice unavailable: ${error.message}") } } }
             } catch (error: Throwable) {
                 ui { _state.update { it.copy(phase = Phase.ERROR, status = "Models not ready", error = error.message ?: error.toString()) } }
             }

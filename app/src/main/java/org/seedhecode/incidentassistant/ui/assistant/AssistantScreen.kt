@@ -201,8 +201,15 @@ private fun Controls(state: AssistantUiState, onMic: () -> Unit, onSend: (String
             Button(onClick = onNewReport, Modifier.fillMaxWidth().heightIn(min = 52.dp), shape = RoundedCornerShape(26.dp)) {
                 Icon(Icons.Default.Add, null); Spacer(Modifier.width(8.dp)); Text("New report")
             }
-            return@Column
-        }
+        } else ControlsBody(state, onMic, onSend, onDone)
+    }
+}
+
+@Composable
+private fun ControlsBody(state: AssistantUiState, onMic: () -> Unit, onSend: (String) -> Unit, onDone: () -> Unit) {
+    val view = state.view
+    var text by remember { mutableStateOf("") }
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
         val capture = when (state.phase) {
             Phase.LISTENING -> CaptureState.RECORDING
             Phase.THINKING -> CaptureState.SAVING

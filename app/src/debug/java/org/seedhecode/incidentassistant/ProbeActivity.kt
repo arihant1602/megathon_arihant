@@ -49,6 +49,37 @@ class ProbeActivity : Activity() {
                     }
                     out.put("whisper", result)
                 }
+                // TTS speed for files/models/voice and every model dir in files/tts_bench/*: synthesis time vs audio length.
+                val ttsDirs = listOf(File(filesDir, "models/voice")) + (File(filesDir, "tts_bench").listFiles()?.sortedBy { it.name } ?: emptyList())
+                val ttsOut = JSONObject()
+                for (d in ttsDirs.filter { it.isDirectory }) for (threads in listOf(4, 8)) {
+                    val onnx = d.listFiles()!!.first { it.name.endsWith(".onnx") }.path
+                    val data = File(d, "espeak-ng-data").path; val tokens = File(d, "tokens.txt").path
+                    val voices = File(d, "voices.bin")
+                    val model = when {
+                        voices.isFile && "kitten" in d.name -> com.k2fsa.sherpa.onnx.OfflineTtsModelConfig(numThreads = threads,
+                            kitten = com.k2fsa.sherpa.onnx.OfflineTtsKittenModelConfig(model = onnx, voices = voices.path, tokens = tokens, dataDir = data))
+                        voices.isFile -> com.k2fsa.sherpa.onnx.OfflineTtsModelConfig(numThreads = threads,
+                            kokoro = com.k2fsa.sherpa.onnx.OfflineTtsKokoroModelConfig(model = onnx, voices = voices.path, tokens = tokens, dataDir = data))
+                        else -> com.k2fsa.sherpa.onnx.OfflineTtsModelConfig(numThreads = threads,
+                            vits = com.k2fsa.sherpa.onnx.OfflineTtsVitsModelConfig(model = onnx, tokens = tokens, dataDir = data))
+                    }
+                    val t0 = System.nanoTime()
+                    val tts = com.k2fsa.sherpa.onnx.OfflineTts(config = com.k2fsa.sherpa.onnx.OfflineTtsConfig(model = model))
+                    val loadMs = (System.nanoTime() - t0) / 1_000_000
+                    val runs = JSONArray()
+                    for (text in listOf("Which building are you in? And which floor?",
+                        "Got it, your report is ready and Facilities Engineering will handle it. Is the water spreading?")) repeat(2) {
+                        val t = System.nanoTime(); var first = -1L
+                        val audio = tts.generateWithCallback(text, if (voices.isFile) 3.coerceAtMost(tts.numSpeakers() - 1) else 0, 1.2f) {
+                            if (first < 0) first = (System.nanoTime() - t) / 1_000_000; 1 }
+                        if (it == 1) runs.put(JSONObject().put("first_audio_ms", first).put("total_ms", (System.nanoTime() - t) / 1_000_000)
+                            .put("audio_s", audio.samples.size.toDouble() / audio.sampleRate))
+                    }
+                    tts.release()
+                    ttsOut.put("${d.name}@$threads", JSONObject().put("load_ms", loadMs).put("runs", runs))
+                }
+                out.put("tts", ttsOut)
                 val lines = File(dir, name).readLines().map { it.trim() }.filter { it.isNotEmpty() && !it.startsWith("#") }
                 var latest: AssistantView? = null
                 var latch = CountDownLatch(1)

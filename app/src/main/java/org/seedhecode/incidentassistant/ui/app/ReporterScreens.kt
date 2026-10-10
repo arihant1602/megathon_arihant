@@ -69,6 +69,7 @@ private fun ModelStatus(state: AssistantUiState) {
                 Badge("Runs offline on this device", SuccessContainer, Success)
                 Badge("Incident type on NPU")
                 Badge(if (state.view?.whisperOnNpu == true) "Speech on NPU" else "Speech on CPU")
+                Badge(if (state.voice == "System voice") "System voice" else "Natural voice")
             }
         }
     }
@@ -172,26 +173,29 @@ private fun Controls(state: AssistantUiState, onMic: () -> Unit, onSend: (String
     Surface(color = MaterialTheme.colorScheme.surface, shadowElevation = 0.dp) {
         Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            if (v?.done == true) { PillButton("Start a new report", onNewReport, icon = Icons.Default.Add); return@Column }
-            if (v?.ready == true) PillButton("File report now", onFile, enabled = !busy, icon = Icons.Default.Send)
-            Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                val listening = state.phase == Phase.LISTENING
-                Button(onMic, Modifier.heightIn(min = 56.dp), enabled = !busy, shape = RoundedCornerShape(28.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (listening) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)) {
-                    Icon(if (listening) Icons.Default.Stop else Icons.Default.Mic, null)
-                    Spacer(Modifier.width(6.dp))
-                    Text(if (listening) "Stop" else "Talk", style = MaterialTheme.typography.titleMedium)
+            // No early return here: returning out of an inline composable lambda corrupts the composer (crash on filing).
+            if (v?.done == true) PillButton("Start a new report", onNewReport, icon = Icons.Default.Add)
+            else {
+                if (v?.ready == true) PillButton("File report now", onFile, enabled = !busy, icon = Icons.Default.Send)
+                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    val listening = state.phase == Phase.LISTENING
+                    Button(onMic, Modifier.heightIn(min = 56.dp), enabled = !busy, shape = RoundedCornerShape(28.dp),
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (listening) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)) {
+                        Icon(if (listening) Icons.Default.Stop else Icons.Default.Mic, null)
+                        Spacer(Modifier.width(6.dp))
+                        Text(if (listening) "Stop" else "Talk", style = MaterialTheme.typography.titleMedium)
+                    }
+                    OutlinedTextField(text, { text = it }, Modifier.weight(1f), placeholder = { Text("Or type") }, singleLine = true,
+                        enabled = !busy, shape = RoundedCornerShape(14.dp),
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
+                        keyboardActions = KeyboardActions(onSend = { if (text.isNotBlank()) { onSend(text); text = "" } }),
+                        trailingIcon = {
+                            IconButton({ onSend(text); text = "" }, enabled = text.isNotBlank() && !busy) {
+                                Icon(Icons.AutoMirrored.Filled.Send, "Send")
+                            }
+                        })
                 }
-                OutlinedTextField(text, { text = it }, Modifier.weight(1f), placeholder = { Text("Or type") }, singleLine = true,
-                    enabled = !busy, shape = RoundedCornerShape(14.dp),
-                    keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
-                    keyboardActions = KeyboardActions(onSend = { if (text.isNotBlank()) { onSend(text); text = "" } }),
-                    trailingIcon = {
-                        IconButton({ onSend(text); text = "" }, enabled = text.isNotBlank() && !busy) {
-                            Icon(Icons.AutoMirrored.Filled.Send, "Send")
-                        }
-                    })
             }
         }
     }

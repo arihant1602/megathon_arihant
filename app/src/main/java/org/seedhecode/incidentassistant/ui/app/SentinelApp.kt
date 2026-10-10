@@ -56,11 +56,15 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
                 title = { Text(title, style = MaterialTheme.typography.titleLarge) },
                 navigationIcon = { if (!topLevel) IconButton({ nav.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") } },
                 actions = {
-                    if (route == Routes.REPORT) IconButton(vm::toggleSpeech) {
-                        Icon(if (state.speakQuestions) Icons.Default.VolumeUp else Icons.Default.VolumeOff,
-                            if (state.speakQuestions) "Stop reading questions aloud" else "Read questions aloud")
+                    // Labeled actions: icon-only buttons here read as decoration.
+                    if (route == Routes.REPORT) TextButton(vm::toggleSpeech, Modifier.heightIn(min = 48.dp)) {
+                        Icon(if (state.speakQuestions) Icons.Default.VolumeUp else Icons.Default.VolumeOff, null, Modifier.size(20.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text(if (state.speakQuestions) "Voice on" else "Voice off", style = MaterialTheme.typography.labelLarge)
                     }
-                    if (topLevel) IconButton({ vm.pause(); role = null }) { Icon(Icons.Default.SwitchAccount, "Switch role") }
+                    if (topLevel) TextButton({ vm.pause(); role = null }, Modifier.heightIn(min = 48.dp)) {
+                        Text("Switch role", style = MaterialTheme.typography.labelLarge)
+                    }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer))

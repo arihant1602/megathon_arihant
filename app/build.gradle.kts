@@ -61,6 +61,8 @@ android {
     kotlinOptions { jvmTarget = "17" }
     if (bundleModels.get()) sourceSets.getByName("main").assets.srcDir(bundledAssets)
     androidResources { noCompress += "zip" }
+    // Neural TTS runtime (scripts/fetch_sherpa_onnx.sh); without it the app speaks with the system TTS voice.
+    rootProject.file("third_party/sherpa-onnx/jniLibs").takeIf { it.isDirectory }?.let { sourceSets.getByName("main").jniLibs.srcDir(it) }
     // The Hexagon skel must exist as a real file in nativeLibraryDir for the DSP loader (ADSP_LIBRARY_PATH).
     packaging { jniLibs.useLegacyPackaging = true }
     buildFeatures {
