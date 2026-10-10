@@ -23,7 +23,18 @@ data class TurnResult(val key: TurnKey, val transcript: Transcript,
     val classification: Classification, val extraction: Extraction,
     val functionCalls: List<ToolResult>, val relevance: List<Relevance>,
     val elapsedMs: Long, val modelVersions: Map<String, String>,
-    val stageTimingsMs: Map<String, Double> = emptyMap())
+    val stageTimingsMs: Map<String, Double> = emptyMap(),
+    val stageStatus: Map<String, String> = emptyMap())
+
+/** Missing roles are allowed only through an explicitly selected pipeline. */
+enum class PipelineMode(val manifestName: String, val roles: Set<String>) {
+    FULL("full", setOf("asr", "llm", "cfc", "laya")),
+    ASR_LLM("asr_llm", setOf("asr", "llm"));
+    companion object {
+        fun parse(name: String): PipelineMode = entries.firstOrNull { it.manifestName == name }
+            ?: throw IllegalArgumentException("Unsupported pipeline: $name")
+    }
+}
 
 interface SpeechModel : AutoCloseable {
     fun transcribe(audio16k: FloatArray, language: String, final: Boolean): Transcript
@@ -50,8 +61,8 @@ class RevisionGate {
 
 /** Sentence filtering and semantic processing have separate bounded workers. */
 class ConversationPipeline(
-    private val filter: RelevanceModel,
-    private val classifier: IncidentModel,
+    private val filter: RelevanceModel?,
+    private val classifier: IncidentModel?,
     private val extractor: ExtractionModel,
     private val tools: LocalTools,
     val gate: RevisionGate,
@@ -64,6 +75,15 @@ class ConversationPipeline(
     private val epoch = AtomicLong()
     private val previewSequence = AtomicLong()
     private val closed = AtomicBoolean()
+    private val stages get() = mapOf("cfc_filter" to if (filter == null) "disabled" else "enabled",
+        "laya_classifier" to if (classifier == null) "disabled" else "enabled", "llm" to "enabled")
+
+    private fun decisions(text: String, question: String?): List<Relevance> =
+        filter?.let { model -> text.split(Regex("(?<=[.!?])\\s+|\\n+"))
+            .filter { it.isNotBlank() }.map { model.evaluate(it, question) } } ?: emptyList()
+
+    private fun accepted(text: String, decisions: List<Relevance>) =
+        if (filter == null) text else decisions.filter { it.relevant }.joinToString(" ") { it.sentence }
 
     /** Tentative inference is useful for streaming, but cannot call tools or commit fields. */
     fun observe(key: TurnKey, transcript: Transcript, question: String?,
@@ -73,9 +93,8 @@ class ConversationPipeline(
         val sequence = previewSequence.incrementAndGet()
         submit(filterWorker, key) filterTask@ {
             if (!gate.valid(key) || previewSequence.get() != sequence) return@filterTask
-            val decisions = transcript.text.split(Regex("(?<=[.!?])\\s+|\\n+"))
-                .filter { it.isNotBlank() }.map { filter.evaluate(it, question) }
-            val relevant = decisions.filter { it.relevant }.joinToString(" ") { it.sentence }
+            val decisions = decisions(transcript.text, question)
+            val relevant = accepted(transcript.text, decisions)
             gate.ifCurrent(key) { if (previewSequence.get() == sequence) onPreview(decisions, null) }
             if (relevant.isNotBlank()) submit(semanticWorker, key) semanticTask@ {
                 if (!gate.valid(key) || previewSequence.get() != sequence) return@semanticTask
@@ -94,26 +113,30 @@ class ConversationPipeline(
         val started = System.nanoTime()
         submit(filterWorker, key) filterTask@ {
             if (!gate.valid(key)) return@filterTask
-            filter.reset()
+            filter?.reset()
             val filterStart = System.nanoTime()
-            val decisions = transcript.text.split(Regex("(?<=[.!?])\\s+|\\n+"))
-                .filter { it.isNotBlank() }.map { filter.evaluate(it, question) }
-            val relevantText = decisions.filter { it.relevant }.joinToString(" ") { it.sentence }
+            val decisions = decisions(transcript.text, question)
+            val relevantText = accepted(transcript.text, decisions)
             val filterMs = (System.nanoTime() - filterStart) / 1_000_000.0
+            val timings = mutableMapOf<String, Double>()
+            if (filter != null) timings["cfc_filter"] = filterMs
             submit(semanticWorker, key) semanticTask@ {
                 if (!gate.valid(key)) return@semanticTask
                 if (relevantText.isBlank()) {
                     gate.ifCurrent(key) { onResult(TurnResult(key, transcript,
                         // No Laya pass occurred: do not invent a non-incident classification.
-                        Classification("undetermined", emptyList(), emptyMap(), false),
+                        Classification(if (classifier == null) "not_run" else "undetermined", emptyList(), emptyMap(), false),
                         Extraction(emptyList(), null, emptyList()), emptyList(), decisions,
                         (System.nanoTime() - started) / 1_000_000, versions,
-                        mapOf("cfc_filter" to filterMs))) }
+                        timings, stages + ("llm" to "not_run") + ("laya_classifier" to
+                            if (classifier == null) "disabled" else "not_run"))) }
                     return@semanticTask
                 }
                 val classifyStart = System.nanoTime()
-                val classification = classifier.classify(relevantText)
+                val classification = classifier?.classify(relevantText)
+                    ?: Classification("not_run", emptyList(), emptyMap(), false)
                 val classifyMs = (System.nanoTime() - classifyStart) / 1_000_000.0
+                if (classifier != null) timings["laya_classifier"] = classifyMs
                 if (!gate.valid(key)) return@semanticTask
                 val extractStart = System.nanoTime()
                 val results = mutableListOf<ToolResult>()
@@ -124,6 +147,9 @@ class ConversationPipeline(
                         "Model exceeded the local tool-call budget."
                     }
                     for (call in extraction.calls) {
+                        require(classifier != null || call.name != "get_form_fields") {
+                            "Form lookup requires an incident classification or app-confirmed incident type."
+                        }
                         val result = gate.ifCurrent(key) { tools.execute(key, call) } ?: return@semanticTask
                         results.add(result)
                     }
@@ -144,6 +170,7 @@ class ConversationPipeline(
                 }
                 // Export offsets into the full English transcript, not the filtered string.
                 val offsets = mutableListOf<Int>()
+                if (filter == null) offsets.addAll(transcript.text.indices)
                 var cursor = 0
                 for (decision in decisions) {
                     val start = transcript.text.indexOf(decision.sentence, cursor)
@@ -164,8 +191,7 @@ class ConversationPipeline(
                 })
                 gate.ifCurrent(key) { onResult(TurnResult(key, transcript, classification,
                     extraction, results.toList(), decisions, (System.nanoTime() - started) / 1_000_000, versions,
-                    mapOf("cfc_filter" to filterMs, "laya_classifier" to classifyMs,
-                        "llm_and_tools" to (System.nanoTime() - extractStart) / 1_000_000.0))) }
+                    timings + ("llm_and_tools" to (System.nanoTime() - extractStart) / 1_000_000.0), stages)) }
             }
         }
     }
@@ -202,7 +228,7 @@ class ConversationPipeline(
         Thread {
             filterWorker.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS)
             semanticWorker.awaitTermination(Long.MAX_VALUE, TimeUnit.DAYS)
-            filter.close(); classifier.close(); extractor.close()
+            filter?.close(); classifier?.close(); extractor.close()
         }.apply { isDaemon = true; start() }
     }
 

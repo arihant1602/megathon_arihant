@@ -10,6 +10,7 @@
 # Android / Gradle / workstation state.
 .gradle/
 .kotlin/
+__pycache__/
 .idea/
 **/build/
 local.properties

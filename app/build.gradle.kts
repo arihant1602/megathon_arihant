@@ -36,6 +36,7 @@ dependencies {
     implementation(project(":core:inference"))
     implementation("com.microsoft.onnxruntime:onnxruntime-android:1.22.0")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20240303")
     if (providers.gradleProperty("nativeModels").orNull == "true") {
         implementation(project(":core:native-whisper"))
         implementation(project(":core:native-llama"))

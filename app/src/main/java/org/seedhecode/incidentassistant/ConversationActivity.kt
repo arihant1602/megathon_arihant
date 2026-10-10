@@ -123,8 +123,9 @@ class ConversationActivity : Activity() {
         background {
             val pack = models.load()
             ui {
-                modelStatus.text = if (pack == null) "No trained model bundle installed. Import CfC, Laya, Whisper and Qwen before processing."
-                    else "Bundle verified: ${pack.versions().entries.joinToString { "${it.key}: ${it.value}" }}"
+                modelStatus.text = if (pack == null) "Import the Whisper + Qwen bundle to process speech and text."
+                    else "Bundle verified (${pack.mode.manifestName}): ${pack.versions().entries.joinToString { "${it.key}: ${it.value}" }}" +
+                        if (pack.mode.manifestName == "asr_llm") "\nCfC filtering and Laya classification disabled; incident type remains unclassified." else ""
                 status.text = "Local setup checked."
             }
         }
@@ -177,7 +178,8 @@ class ConversationActivity : Activity() {
                     override fun onError(message: String) = ui { status.text = message }
                 }, draftSessionId)
                 busy = false; controls()
-                modelStatus.text = "Models ready: CPU reference backend. Hexagon and kit performance are not validated."
+                modelStatus.text = "Models ready (${pack.mode.manifestName}): CPU reference backend." +
+                    if (pack.mode.manifestName == "asr_llm") " CfC and Laya disabled; incident type unclassified." else ""
                 status.text = "Ready for a local conversation."
             }
         }

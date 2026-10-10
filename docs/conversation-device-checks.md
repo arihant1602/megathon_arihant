@@ -1,5 +1,9 @@
 # Conversation app checks
 
+For the current two-model mode, use [the Whisper + Qwen live test plan](reference-model-integration.md).
+The four-model checks below apply once CfC/Laya artifacts are available. A phone
+is now attached, but no physical model run has been performed for this update.
+
 Run these on a real Android 7.0+ ARM64 phone with the native-enabled APK and
 reviewed model pack. No physical phone or kit was connected during implementation;
 this is a checklist, not a report of completed physical tests. An isolated API 33

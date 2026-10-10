@@ -1,5 +1,10 @@
 # Phase 1-2 implementation and device handoff
 
+For the current Whisper + Qwen mode with CfC/Laya deferred, follow
+[the model integration and live test plan](reference-model-integration.md).
+An explicitly declared `asr_llm` pack needs only those two pretrained artifacts;
+the full four-model pack described below remains supported.
+
 The app now contains a local conversation engine in addition to the WAV recorder.
 Open **Incident conversation** from the main screen. Import a ZIP containing your
 trained/versioned model pack, load it, then speak or submit English text. Pause to
@@ -50,12 +55,12 @@ Android 7.0/API 24 or newer is now required by the ONNX Runtime dependency. Java
 17, SDK 34 and the existing Gradle/AGP versions remain the build baseline.
 
 For Android Studio, open the repository root and use Java 17 for the Gradle JDK.
-Run `scripts/prepare_native.ps1` once from the terminal, then add
-`nativeModels=true` to the root `gradle.properties` before syncing and running
-the app. Install NDK 27.2.12479018 and CMake 3.22.1 through SDK Manager. Use an
-ARM64 device for the native model pipeline. Android builds and device testing
-are handed over to you in Android Studio; no further Android checks are being
-run here.
+Run `scripts/prepare_native.ps1` once from the terminal. The root
+`gradle.properties` now enables `nativeModels=true` for normal Studio runs.
+Install NDK 27.2.12479018 and CMake 3.22.1 through SDK Manager. Use an
+ARM64 device for the native model pipeline. Native builds and automated tests
+have been rerun for the two-model mode; live model/device testing is handed over
+to you in Android Studio.
 
 ```powershell
 powershell -File scripts/prepare_native.ps1
@@ -70,7 +75,7 @@ under `third_party/`; the preparation script pins the tested upstream revisions.
 Each engine links its own static GGML with hidden library symbols to avoid
 cross-engine symbol conflicts.
 
-Without `-PnativeModels=true`, the app still builds its recording/model-import
+With `-PnativeModels=false`, the app still builds its recording/model-import
 screen and ONNX adapters, but will explicitly reject loading the full pipeline
 because the Whisper/Qwen native runtimes are absent. Such an APK is not the model
 demo. The native-enabled debug output is `app/build/outputs/apk/debug/app-debug.apk`.

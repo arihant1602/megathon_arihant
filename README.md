@@ -8,6 +8,13 @@ revision-safe extraction, logged SQLite fixture tools and diagnostic export.
 Open **Incident conversation** from the main screen. Trained weights must be
 supplied separately; no model predictions are fabricated when weights are absent.
 
+The current `asr_llm` mode runs pretrained **Whisper Base + Qwen3 0.6B**, with
+CfC/Laya deferred. Run `python scripts/fetch_reference_models.py` to prepare the
+pinned, verified bundle, then import `tmp/reference-models/incident-asr-llm.zip`
+in the app. Native models are enabled by default for Android Studio Run.
+See [integration and live phone testing](docs/reference-model-integration.md) and
+[automated check results](docs/reference-model-validation.md).
+
 Build the ARM64 native-enabled APK with `./gradlew.bat :app:assembleDebug -PnativeModels=true`
 after running `powershell -File scripts/prepare_native.ps1`.
 Android **7.0 / API 24** is required. All current inference adapters are explicitly
@@ -38,8 +45,9 @@ and tool calling. Full forms/review/submission await the Phase 3-4 code merge.
 1. Open the repository root (the folder containing `settings.gradle.kts`).
 2. Set the Gradle JDK to **17** in Settings > Build Tools > Gradle. Android
    Studio's embedded compatible JDK can also be used.
-3. Install **Android SDK Platform 34** and the SDK Build Tools requested by
-   Gradle using Tools > SDK Manager, then sync the project.
+3. Install **Android SDK Platform 34**, **NDK 27.2.12479018**, **CMake 3.22.1** and
+   the SDK Build Tools using Tools > SDK Manager. Run
+   `powershell -File scripts/prepare_native.ps1`, then sync the project.
 4. Enable Developer options and USB debugging on your phone. Connect it by
    USB, approve the debugging prompt, and select the device in Android Studio.
 5. Run the `app` configuration, grant microphone access, and tap **Record incident**.
