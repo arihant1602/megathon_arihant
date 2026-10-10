@@ -1,0 +1,421 @@
+@ device_fault_001 single
+S Senior engineer annoyed that the floor printer jams on every page.
+U device_fault
++ device_kind :: The printer on our floor jams on literally every page.
+- :: I've pulled out so much crumpled paper I could make a nest.
+- :: And of course I need to print a contract before four.
+A building,floor :: Sorry about that. Which building and floor?
+U device_fault
++ building floor landmark :: N, floor eight, the big printer by the kitchen.
++ asset_tag :: The sticker on it says PR-N08-02.
+A :: Thanks, logged for the IT support technician.
+
+@ device_fault_002 single
+S Intern doesn't know what's wrong; the scanner sends nothing; vague start.
+U undetermined
++ :: I scanned a document three times and it never arrived in my inbox.
+- :: I'm starting to think it's me.
+A :: Which device were you scanning on?
+U device_fault
++ device_kind :: The scanner next to the print room, the one with the big touch screen.
++ :: It says sent, but nothing ever comes through.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: QRC, floor three.
+A occurred_at :: When did the scans stop arriving?
+U device_fault
++ occurred_at :: Since this morning, my first one at nine never came.
+- :: My manager thinks I just forgot to scan it.
+A :: Thanks, logged for IT support.
+
+@ device_fault_003 single
+S Receptionist reports the visitor sign-in kiosk frozen; visitors queueing.
+U device_fault
++ device_kind :: The visitor sign-in kiosk at reception is frozen on the welcome screen.
+- :: There's a queue of six people looking at me expectantly.
+A building :: Which building?
+U device_fault
++ building :: Lakeview reception.
++ immediate_actions_taken :: I've started signing people in by hand.
+A :: Thanks, logged as a priority for IT support.
+
+@ device_fault_004 single
+S Lab technician tersely reports a label printer printing blank labels.
+U device_fault
++ device_kind :: Shared label printer prints blank labels, QRC floor five.
+- :: New ribbon didn't help.
+A :: Thanks, logged for IT support.
+
+@ device_fault_005 single
+S Manager reports printer streaking black lines; one detailed turn.
+U device_fault
++ device_kind building floor :: The colour printer on Willow floor two is putting thick black streaks down every page.
++ asset_tag :: Asset tag WL-PRT-117.
+- :: Our board pack looks like a barcode.
+A :: Thanks, logged for IT support.
+
+@ device_fault_006 single
+S Night-shift worker reports a shredder jammed and smelling hot; four turns.
+U device_fault
++ device_kind :: The shredder in the copy room is jammed and smells hot.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: N, floor one.
+- :: I was only shredding a few old printouts.
+A :: Is it still running?
+U device_fault
++ immediate_actions_taken :: I've switched it off at the wall.
+A occurred_at :: When did it jam?
+U device_fault
++ occurred_at :: Just now, about five minutes ago.
+A :: Thanks, logged for IT support.
+
+@ device_fault_007 single
+S Visitor reports the wayfinding kiosk shows an error page.
+U device_fault
++ device_kind :: The building map kiosk in the atrium is showing an error page.
+- :: I'm hopelessly lost, so I really wanted it to work.
+A building :: Which building?
+U device_fault
++ building :: The Horizon building.
+A :: Thanks, logged for IT support. Reception can give you directions.
+
+@ device_fault_008 single
+S Housekeeping staff greets, then reports printer leaking toner powder.
+U undetermined
+- :: Hello, morning round here.
+A :: Morning. What's up?
+U device_fault
++ device_kind :: The printer on this floor is leaking toner powder all over the floor underneath it.
++ building floor :: Birch building, floor one.
+- :: I've hoovered it twice and it keeps coming.
+A :: Thanks, logged for IT support.
+
+@ device_fault_009 single
+S Contractor reports the plotter jams on large drawings.
+U device_fault
++ device_kind :: The plotter keeps jamming on our A0 drawings.
++ building :: Spruce block site office.
+- :: We have a client review at two.
+A :: Thanks, logged for IT support.
+
+@ device_fault_010 single
+S Senior engineer jokes the printer only prints in pink.
+U device_fault
++ device_kind :: The printer near my desk has decided everything should be pink.
+- :: My architecture diagrams have never looked so cheerful.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: QRC, floor six.
++ asset_tag :: Label says QRC-6-PRN-1.
+A :: Thanks, logged for IT support.
+
+@ device_fault_011 single
+S Cafeteria cashier reports the payment kiosk card reader is dead.
+U device_fault
++ device_kind :: The self-checkout kiosk in the cafeteria won't take cards.
+A building :: Which building?
+U device_fault
++ building :: N cafeteria.
+- :: The lunch line has backed up all the way to the salad bar.
+A :: Thanks, raised for IT support.
+
+@ device_fault_012 single
+S Manager reports the scanner produces skewed scans; three turns.
+U device_fault
++ device_kind :: The scanner in our print room makes every page come out crooked.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: Willow building, floor three.
+A occurred_at :: When did it start?
+U device_fault
++ occurred_at :: Since Monday.
+- :: Finance are not impressed.
+A :: Thanks, logged for IT support.
+
+@ device_fault_013 single
+S Intern reports locker kiosk not opening lockers.
+U device_fault
++ device_kind :: The smart locker kiosk won't open my locker.
+- :: My laptop charger is trapped in there.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: N, floor four.
+A :: Thanks, logged for IT support.
+
+@ device_fault_014 single
+S Lab technician reports printer showing a fuser error code; terse; one turn.
+U device_fault
++ device_kind building floor :: Printer showing fuser error E-302, Research Hall 2 ground floor.
++ asset_tag :: Tag RH2-PRN-04.
+A :: Thanks, logged for IT support.
+
+@ device_fault_015 single
+S Receptionist vague: something beeping in the copy room; it's the printer; three turns.
+U undetermined
++ :: Something in the copy room has been beeping all morning.
+- :: It's driving the front desk mad.
+A :: Can you see what's beeping?
+U device_fault
++ device_kind :: It's the printer, it says paper jam but there's nothing in it.
+A building :: Which building?
+U device_fault
++ building floor :: QRC, ground floor.
+A :: Thanks, logged for IT support.
+
+@ device_fault_016 single
+S Security guard reports the visitor badge printer not printing.
+U device_fault
++ device_kind :: The badge printer at the security desk isn't printing visitor badges.
++ building :: Willow building.
+- :: We're writing names on stickers.
+A :: Thanks, raised as a priority for IT support.
+
+@ device_fault_017 single
+S Senior engineer reports printer prints double-sided wrongly; four turns.
+U device_fault
++ device_kind :: The printer flips the back pages upside down every time.
+A building :: Which building?
+U device_fault
++ building :: N.
+A floor :: Which floor?
+U device_fault
++ floor :: Floor nine.
+- :: Everyone's printouts read like a puzzle.
+A asset_tag :: Do you have the printer's tag?
+U device_fault
++ asset_tag :: It's N9-PR-03.
+A :: Thanks, logged for IT support.
+
+@ device_fault_018 single
+S Housekeeping reports a laminator overheating and smoking slightly.
+U device_fault
++ device_kind :: The laminator in the admin room is overheating and smells burnt.
++ immediate_actions_taken :: I've unplugged it.
+A building :: Which building?
+U device_fault
++ building floor :: Oak building, floor one.
+- :: No flames, just a bad smell.
+A :: Thanks, logged for IT support.
+
+@ device_fault_019 single
+S Manager reports kiosk touch screen not responding in the lobby.
+U undetermined
++ :: Visitors keep coming to my desk because something in the lobby isn't working.
+A :: What isn't working?
+U device_fault
++ device_kind :: The touch screen on the lobby kiosk doesn't respond.
+A building :: Which building?
+U device_fault
++ building :: The Summit building.
+- :: Visitors keep jabbing at it.
+A :: Thanks, logged for IT support.
+
+@ device_fault_020 single
+S Intern jokes the printer prints only half a page.
+U device_fault
+- :: The printer is on a diet, apparently.
++ device_kind :: It only prints the top half of every page.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: Birch building, floor two.
+A :: Thanks, logged for IT support.
+
+@ device_fault_021 single
+S Lab technician reports scanner glass cracked; three turns.
+U device_fault
++ device_kind :: The glass on the shared scanner is cracked.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: QRC, floor four.
+A :: Is it still usable?
+U device_fault
++ :: It works, but there's a line across every scan.
+- :: Someone must have put something heavy on it.
+A :: Thanks, logged for IT support.
+
+@ device_fault_022 single
+S Night-shift worker reports the printer grinding noise; one turn.
+U device_fault
++ device_kind building floor :: Printer on N floor two is making a horrible grinding noise when it pulls paper.
+- :: Sounds like it's eating itself.
+A :: Thanks, logged for IT support.
+
+@ device_fault_023 single
+S Receptionist reports the parcel locker kiosk screen blank.
+U device_fault
++ device_kind :: The parcel locker kiosk screen is blank.
+A building :: Which building?
+U device_fault
++ building :: Lakeview.
+- :: People are waiting for their deliveries.
+A :: Thanks, logged for IT support.
+
+@ device_fault_024 single
+S Senior engineer vague: can't get documents out; printer queue stuck; three turns.
+U undetermined
++ :: Nothing I send is coming out.
+- :: I've sent the same file five times.
+A :: Are you printing?
+U device_fault
++ device_kind :: Yes, the printer shows my jobs stuck in the queue.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: N, floor five.
+A :: Thanks, logged for IT support.
+
+@ device_fault_025 single
+S Contractor reports the site scanner won't power on.
+U device_fault
++ device_kind :: The scanner in our site office won't switch on.
++ building :: Elm building.
+- :: Other things on the same socket work.
+A :: Thanks, logged for IT support.
+
+@ device_fault_026 single
+S Manager reports printer printing ghost images; five turns.
+U device_fault
++ device_kind :: Our printer is printing faint copies of the previous page on each new one.
+A building :: Which building?
+U device_fault
++ building :: QRC.
+A floor :: Which floor?
+U device_fault
++ floor :: Floor three.
+- :: It's a bit spooky, honestly.
+A asset_tag :: Do you know the printer's tag?
+U device_fault
++ asset_tag :: Q3-PRN-05.
+A occurred_at :: When did it start?
+U device_fault
++ occurred_at :: Yesterday afternoon.
+A :: Thanks, logged for IT support.
+
+@ device_fault_027 single
+S Visitor reports the cafe ordering kiosk crashed.
+U device_fault
++ device_kind :: The ordering kiosk in the cafe crashed in the middle of my order.
+A building :: Which building?
+U device_fault
++ building :: The Horizon building.
+- :: I just wanted a latte.
+A :: Thanks, logged for IT support.
+
+@ device_fault_028 single
+S Lab technician reports the shared monitor station flickers; one turn.
+U device_fault
++ device_kind building floor :: The shared monitor station by the lab entrance keeps flickering, Research Hall 2 floor two.
+A :: Thanks, logged for IT support.
+
+@ device_fault_029 single
+S Housekeeping greets and reports the printer out of order sign gone but still broken.
+U undetermined
+- :: Hi there, quick one.
+A :: Go ahead.
+U device_fault
++ device_kind :: The printer by the lifts is broken again, someone took the out of order sign off.
++ building floor :: N, floor seven.
+A :: Thanks, logged for IT support.
+
+@ device_fault_030 single
+S Senior engineer reports the scanner emails scans to the wrong person.
+U undetermined
+- :: I've got a slightly awkward one.
++ :: My colleague in another team just got my signed documents.
+A :: How did they get them?
+U device_fault
++ device_kind :: The scanner keeps sending my scans to someone in another team.
+- :: Slightly worrying with contracts.
+A building,floor :: Which building and floor?
+U device_fault
++ building floor :: Willow building, floor two.
+A :: Thanks, logged for IT support.
+
+@ device_fault_031 single
+S Receptionist reports the badge photo kiosk camera broken.
+U device_fault
++ device_kind :: The kiosk that takes badge photos has a broken camera.
++ building :: QRC.
+- :: New starters are waiting.
+A :: Thanks, logged for IT support.
+
+@ device_fault_032 single
+S Intern reports the printer stuck on warming up; four turns.
+U device_fault
++ device_kind :: The printer has been warming up for an hour.
+A building :: Which building?
+U device_fault
++ building :: N.
+A floor :: Which floor?
+U device_fault
++ floor :: Floor three.
+- :: I think it's given up on life.
+A :: Have you tried turning it off and on?
+U device_fault
++ immediate_actions_taken :: Twice, it goes straight back to warming up.
+A :: Thanks, logged for IT support.
+
+@ device_fault_033 confusable confused=network_outage
+S Manager thinks the network is down because the printer is unreachable; only the printer's network card failed.
+U network_outage
++ :: I think the network is down, I can't reach the printer.
+A :: Can you reach other things, like email?
+U device_fault
++ :: Email and everything else work.
++ device_kind :: It's just the printer, its screen says no network connection.
++ building floor :: QRC, floor five.
+A :: Thanks, logged as a printer fault for IT support.
+
+@ device_fault_034 confusable confused=network_outage
+S Intern thinks wifi is broken because the scanner won't send; only the scanner is broken.
+U network_outage
++ :: Is the wifi down? The scanner can't send anything.
+A :: Is your own laptop online?
+U device_fault
++ :: My laptop is fine.
++ device_kind :: The scanner shows an error code when I hit send.
++ building :: N, floor two.
+A :: Thanks, logged as a scanner fault.
+
+@ device_fault_035 confusable confused=conference_room_av
+S Senior engineer thinks a meeting room screen is broken; it's a shared display station at a hot desk.
+U conference_room_av
++ :: The screen in the room isn't working.
+A :: Which meeting room is it?
+U device_fault
++ :: Not a meeting room, it's the shared monitor station at the hot desks.
++ device_kind :: The dock won't drive the monitors.
++ building floor :: Birch building, floor one.
+A :: Thanks, logged for IT support.
+
+@ device_fault_036 confusable confused=conference_room_av
+S Manager thinks the projector is broken; it's the big-format plotter.
+U conference_room_av
++ :: The projector won't print our drawings.
+A :: Do you mean the projector in a meeting room?
+U device_fault
++ device_kind :: Sorry, I mean the big plotter in the print room, it's jammed.
++ building :: QRC.
+A :: Thanks, logged for IT support.
+
+@ device_fault_037 confusable confused=lab_equipment_fault
+S Lab technician thinks a lab instrument broke; it's the shared label printer.
+U lab_equipment_fault
++ :: Our lab equipment isn't printing sample labels.
+A :: Which instrument is it?
+U device_fault
++ device_kind :: It's not an instrument, it's the shared label printer on the bench.
++ building floor :: QRC, floor three.
+- :: It just flashes red.
+A :: Thanks, logged for IT support.
+
+@ device_fault_038 confusable confused=power_outage
+S Housekeeping thinks there's no power in the copy room; only the printer is dead.
+U power_outage
++ :: There's no power in the copy room.
+A :: Are the lights and sockets working?
+U device_fault
++ :: The lights work and the shredder works.
++ device_kind :: It's only the printer, it won't switch on at all.
++ building :: Oak building.
+A :: Thanks, logged for IT support.

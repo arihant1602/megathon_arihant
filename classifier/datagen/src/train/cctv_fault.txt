@@ -1,0 +1,430 @@
+@ cctv_fault_001 single
+S Security guard in the control room notices one car park camera feed has gone completely black.
+U cctv_fault
++ camera_location :: The level two car park camera has gone completely black on our monitors.
+- :: The other forty feeds are fine, so it really sticks out.
+- :: I've already tried switching the tile off and on again.
+A building :: Thanks. Which building's car park is that camera in?
+U cctv_fault
++ building floor :: It's the car park under N, level minus two by the ramp.
++ occurred_at :: The recording just stops at about 21:10.
+A :: Thanks, I've logged it for the security systems technician to check the camera.
+
+@ cctv_fault_002 single
+S GSOC analyst can't see anything on the loading dock camera because the lens is covered in grime.
+U cctv_fault
++ camera_location :: The loading dock camera at the Cedar building is filthy.
++ :: I can barely make out the trucks.
+- :: It looks like someone smeared butter on it, honestly.
+A :: Is the camera working otherwise, just blurry?
+U cctv_fault
++ :: Yeah, it's recording, it's just useless because the image is a grey blur.
++ occurred_at :: It's been getting worse for about a week.
+- :: There's dust everywhere from the roadworks outside.
+- :: I'd clean it myself but it's about six metres up.
+A :: Thanks, logged for cleaning and inspection.
+
+@ cctv_fault_003 single
+S Receptionist starts with a greeting and then says the lobby screen shows a camera offline symbol.
+U undetermined
+- :: Hello, I'm at the front desk.
+- :: I'm not sure who looks after this kind of thing.
++ :: A little red symbol has come up on the security screen by my desk.
+A :: Thanks for flagging it. What does the symbol say?
+U cctv_fault
++ camera_location :: It says camera offline for the one pointing at the main entrance doors.
++ building :: This is the QRC lobby on the ground floor.
+- :: I can still see the other two lobby cameras, so it's just that one.
+A :: Thanks, I've raised it with the security systems team.
+
+@ cctv_fault_004 single
+S Night-shift guard notices the perimeter camera's night vision isn't working.
+U cctv_fault
++ camera_location :: Out on the east perimeter fence, the camera's view is pitch black now that it's dark.
++ :: In the daytime it was fine, so I think the infrared isn't switching on.
+- :: Bit of a problem for a night-time fence camera.
+A building :: Which site or building is that fence by?
+U cctv_fault
++ building landmark :: The Lakeview building, the stretch of fence next to the bike shed.
++ occurred_at :: I noticed once it got dark around seven.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_005 single
+S Manager calmly gives a complete report: the lab corridor camera is pointing at the ceiling.
+U cctv_fault
++ camera_location building floor :: The lab corridor camera on QRC floor three is pointing at the ceiling.
++ occurred_at :: It must have happened after the ceiling contractors were in yesterday.
+- :: I only noticed because I was looking at the feed for something else.
+A :: Thanks, logged for security systems to re-aim it.
+
+@ cctv_fault_006 single
+S Lab technician isn't sure what they're looking at; a camera is hanging loose from its bracket.
+U undetermined
++ :: There's something dangling from the ceiling outside our lab and it's swinging slightly.
+- :: My first thought was a loose cable, then I got a bit worried.
+A :: Can you tell what it is?
+U cctv_fault
++ camera_location :: It's the security camera, it's come off its bracket and it's hanging by its cable.
+A building,floor :: Which building and floor?
+U cctv_fault
++ building floor :: Research Hall 2, first floor, right outside the optics lab.
++ immediate_actions_taken :: I've put a sign under it so nobody walks into it.
+- :: It's at about head height for anyone tall.
+A occurred_at :: Do you know when it came loose?
+U cctv_fault
++ occurred_at :: It was fine when I came in at nine.
+A :: Thanks, logged urgently for the security systems technician.
+
+@ cctv_fault_007 single
+S Security guard tersely reports several stairwell cameras frozen on one frame.
+U cctv_fault
++ camera_location :: All three cameras in the north stairwell of N are frozen on the same frame.
++ :: The timestamp on each of them is stuck at 14:02.
+- :: Looks like someone hit pause on the whole stairwell.
+A :: Thanks, logged for the security systems team.
+
+@ cctv_fault_008 single
+S Senior engineer notices the server room camera's light has gone off and asks if that matters.
+U cctv_fault
+- :: This might be totally normal, so sorry if it's a waste of time.
++ camera_location :: The camera above the server room door usually has a small green light.
++ :: It's been off since this morning.
+A building,floor :: Not a waste at all. Which building and floor?
+U cctv_fault
++ building floor :: QRC, ground floor, at the data hall entrance.
+- :: I only noticed because I badge in right under it every day.
+A :: Thanks, I've logged it so security systems can check if it's still recording.
+
+@ cctv_fault_009 single
+S GSOC analyst reports the bike shed camera's timestamp is wrong by several hours, making footage useless.
+U cctv_fault
++ camera_location :: The bike shed camera at the Pine building is recording.
++ :: But its clock is about six hours behind.
+- :: I was pulling footage for a stolen bike report and nothing lined up.
++ :: Every other camera shows the right time.
+A occurred_at :: When did you notice the clock problem?
+U cctv_fault
++ occurred_at :: Today, but the footage suggests it's been off since the power cut last week.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_010 single
+S Night-shift worker starts with location, then reports a camera with a cracked dome cover; three turns.
+U undetermined
++ building space_type :: I'm walking through the main lobby of the Willow building.
+- :: Doing my usual last lap before heading home.
+A :: What did you notice?
+U cctv_fault
++ camera_location :: The dome camera over the visitor desk has a big crack across its cover.
++ :: It looks like something hit it.
+A occurred_at :: Do you know when it happened?
+U cctv_fault
++ occurred_at :: It was fine yesterday, so sometime today.
+- :: Maybe a ball from the lunchtime football in the atrium, who knows.
+A :: Thanks, logged for repair.
+
+@ cctv_fault_011 single
+S Security guard jokes that a camera is now filming a spider web.
+U cctv_fault
++ camera_location :: The camera at the back gate is now mostly filming a giant spider web.
+- :: The spider has excellent coverage of the gate, we don't.
+A building :: Which building's back gate?
+U cctv_fault
++ building :: The Spruce block.
++ occurred_at :: It's been building up for a few days, but tonight it covers the whole lens.
+A :: Thanks, logged for cleaning.
+
+@ cctv_fault_012 single
+S Contractor apologises; their work may have knocked a camera out of position in a corridor.
+U cctv_fault
+- :: I think I might have caused a problem, sorry.
++ :: We were moving a ladder down the corridor on floor four.
++ camera_location :: We bumped a camera and now it's facing the wall.
++ building :: This is the Elm building.
+- :: I didn't want to touch it again in case I made it worse.
+A :: Thanks for being upfront. I've logged it so security systems can re-aim it.
+
+@ cctv_fault_013 single
+S GSOC analyst reports a flickering lift lobby camera feed over several turns.
+U cctv_fault
++ camera_location :: The lift lobby camera on N floor eight keeps flickering.
++ :: It switches between the picture and a blue screen.
+A occurred_at :: When did the flicker start?
+U cctv_fault
++ occurred_at :: About an hour ago, around half past two.
+- :: It's giving me a headache just watching it.
+A :: Is it recording when it shows the image?
+U cctv_fault
++ :: It records in short bursts, so there are gaps every few seconds.
++ :: The camera next to it on the same floor is fine.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_014 single
+S Receptionist worried that the visitor entrance camera is showing a frozen picture from the morning.
+U cctv_fault
++ camera_location :: The visitor entrance camera seems frozen.
++ :: It still shows the cleaner's trolley from this morning.
+- :: I know because that trolley left hours ago.
+A building :: Which building?
+U cctv_fault
++ building :: The Horizon building.
+A :: Thanks, logged for security systems.
+
+@ cctv_fault_015 single
+S Security guard reports a rooftop camera knocked sideways by wind after a storm; four turns.
+U cctv_fault
++ camera_location :: After last night's storm, the rooftop camera on QRC is pointing at the sky.
+A :: Is it still recording?
+U cctv_fault
++ :: Yes, but all we can see is clouds.
+- :: Very peaceful footage, completely useless though.
+A occurred_at :: When did it move?
+U cctv_fault
++ occurred_at :: The footage changes at about 2 am, when the wind was strongest.
+A :: Is the camera physically damaged?
+U cctv_fault
++ :: I can't tell from here, the mount might be bent.
+A :: Thanks, logged for the security systems technician to inspect.
+
+@ cctv_fault_016 single
+S Manager tersely reports a missing camera in a car park.
+U cctv_fault
++ camera_location :: The camera by the motorbike bays in the Lakeview car park is just gone.
++ :: There are only the bracket and two cut wires left.
+- :: I have no idea how long it's been missing.
+A :: Thanks, logged urgently for security.
+
+@ cctv_fault_017 single
+S Intern greets and asks a question before reporting a camera covered by a plastic bag.
+U undetermined
+- :: Hey, quick question, who do I tell if something looks off with a camera?
+A :: You can tell me. What's wrong with it?
+U cctv_fault
++ camera_location :: Someone has put a plastic bag over the camera in the pantry corridor.
+- :: Maybe it's a joke.
+- :: Seemed like something security would want to know.
+A building,floor :: Which building and floor?
+U cctv_fault
++ building floor :: N, floor five.
+A :: Thanks, logged for security to remove it and check the footage.
+
+@ cctv_fault_018 single
+S GSOC analyst reports image too bright, washed out by the sun every afternoon.
+U cctv_fault
++ camera_location :: The camera facing the west entrance of QRC is completely washed out every afternoon.
++ :: The sun hits it directly from about three until five.
+- :: We can't see faces at all during that window.
+A :: Thanks, logged so security systems can adjust or shade it.
+
+@ cctv_fault_019 single
+S Housekeeping staff notices water inside a camera dome; four turns.
+U cctv_fault
++ camera_location :: There's water sitting inside the camera dome by the outdoor smoking area.
+A building :: Which building?
+U cctv_fault
++ building :: The Oak building.
+- :: It rained a lot last night.
+A occurred_at :: When did you notice it?
+U cctv_fault
++ occurred_at :: This morning when I was clearing the ashtrays.
+A :: Is the camera still working?
+U cctv_fault
++ :: I don't know, there's a little light on, but the inside is fogged up.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_020 single
+S Senior engineer jokes about the camera in their bay being zoomed into a plant.
+U cctv_fault
++ camera_location :: The camera in our workstation bay is zoomed all the way in on a pot plant.
+- :: The plant is very secure now.
++ building floor :: Birch building, floor two.
+A :: Thanks, logged for security systems to reset it.
+
+@ cctv_fault_021 single
+S Security guard reports multiple car park cameras offline in one zone; one turn.
+U cctv_fault
++ camera_location building :: Cameras four, five and six in the N car park, zone C, all show offline.
++ occurred_at :: They dropped at 06:15 together.
+- :: The rest of the car park is fine.
+A :: Thanks, logged urgently for the security systems team.
+
+@ cctv_fault_022 single
+S Visitor notices a camera dangling at the entrance and points it out.
+U cctv_fault
+- :: I don't work here, I just noticed this on the way in.
++ camera_location :: The camera above the front entrance is hanging at a weird angle.
+- :: Looks like it's about to fall.
+A building :: Which building?
+U cctv_fault
++ building :: The Summit building.
+A :: Thanks for telling us, logged for security.
+
+@ cctv_fault_023 single
+S Lab technician vague at first: odd clicking from the ceiling turns out to be a camera motor; three turns.
+U undetermined
++ :: There's a constant clicking noise from the ceiling in our corridor.
+- :: It's been going for hours and the whole team is losing their minds.
+A :: Can you see where it's coming from?
+U cctv_fault
++ camera_location :: It's the pan-tilt camera, it keeps trying to turn and gets stuck.
+A building,floor :: Which building and floor?
+U cctv_fault
++ building floor :: QRC, floor six.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_024 single
+S GSOC analyst reports a camera showing the wrong name on the display wall.
+U cctv_fault
++ camera_location :: The camera labelled server room on our display is actually showing the cafeteria.
+- :: I nearly sent an officer to the wrong place earlier.
++ building :: It's in the N building system.
+A :: Thanks, logged for security systems to fix the labelling.
+
+@ cctv_fault_025 single
+S Night-shift worker calmly reports the gate camera covered in bird droppings.
+U cctv_fault
++ camera_location :: Bird droppings have completely covered the camera on the main vehicle gate.
+- :: The pigeons have chosen violence.
+A building :: Which site?
+U cctv_fault
++ building :: The Lakeview building.
+A :: Thanks, logged for cleaning.
+
+@ cctv_fault_026 single
+S Security guard reports a camera that keeps rebooting; five turns.
+U cctv_fault
++ camera_location :: The camera at the staff entrance keeps rebooting every few minutes.
+A building :: Which building?
+U cctv_fault
++ building :: QRC.
+A :: How long has it been doing that?
+U cctv_fault
++ occurred_at :: Since about lunchtime.
+- :: It shows the startup logo more than the entrance.
+A :: Are other cameras affected?
+U cctv_fault
++ :: No, only that one.
+A :: Anything else to add?
+U cctv_fault
+- :: No, that's all, thank you.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_027 single
+S Manager notices fuzzy, low-resolution images from a lobby camera after an update.
+U cctv_fault
++ camera_location :: The Birch building lobby camera has gone really low resolution.
++ occurred_at :: It started after the system update.
++ :: It looks like footage from the nineties.
+A occurred_at :: When was the update?
+U cctv_fault
++ occurred_at :: Over the weekend.
+A :: Thanks, logged for security systems.
+
+@ cctv_fault_028 single
+S Receptionist tersely reports a camera blocked by a new sign.
+U cctv_fault
++ camera_location :: The new welcome banner in reception is hanging right in front of the camera.
++ building :: Willow building.
+- :: Marketing put it up this morning.
+A :: Thanks, logged so the banner can be moved.
+
+@ cctv_fault_029 single
+S Security guard reports a stairwell camera with a broken cable after building work.
+U cctv_fault
++ camera_location :: The camera in the south stairwell of the Elm building has no signal.
++ :: The builders were drilling there yesterday and the cable looks cut.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_030 single
+S Intern jokes the camera outside their meeting room follows them.
+U cctv_fault
+- :: I swear the camera outside our meeting room is following me.
++ camera_location :: It keeps panning back and forth on its own nonstop, which it never used to do.
+A building,floor :: Which building and floor?
+U cctv_fault
++ building floor :: N, floor three.
+A :: Thanks, logged for security systems to check it.
+
+@ cctv_fault_031 single
+S GSOC analyst starts with location only, then reports a feed with heavy noise lines.
+U undetermined
++ building :: I'm looking at the feeds for the Spruce block.
+A :: What's the problem?
+U cctv_fault
++ camera_location :: The camera at the delivery bay has thick horizontal lines across the picture.
+- :: It's like watching through blinds.
+A :: Thanks, logged for the security systems technician.
+
+@ cctv_fault_032 single
+S Housekeeping staff reports a camera knocked by a cleaning pole.
+U cctv_fault
+- :: Oops, I think I knocked something.
++ camera_location :: I hit the camera in the washroom corridor with my mop pole.
++ :: Now it's pointing at the floor.
++ building floor :: QRC floor two.
+A :: Thanks for telling us, logged for security systems.
+
+@ cctv_fault_033 confusable confused=access_control_fault
+S Security guard thinks a door alarm panel fault; the warning is a camera offline at that door.
+U access_control_fault
++ :: The door panel for the lab entrance is showing a fault.
+A :: Is the door locking and the reader working?
+U cctv_fault
++ :: The door and reader are fine.
++ camera_location :: The fault is for the camera above that door, it's gone offline.
++ building :: QRC.
+A :: Thanks, logged as a camera fault for security systems.
+
+@ cctv_fault_034 confusable confused=access_control_fault
+S Receptionist thinks the turnstile is broken because the screen shows an error; it's the turnstile camera.
+U access_control_fault
++ :: The turnstile screen is showing an error.
+A :: Are people able to get through?
+U cctv_fault
++ :: Yes, everyone is getting through fine.
++ camera_location :: The error is for the little camera that watches the turnstiles, the feed is black.
++ building :: Lakeview.
+A :: Thanks, logged as a camera fault.
+
+@ cctv_fault_035 confusable confused=access_control_fault
+S Lab technician thinks the door intercom is broken; it's the intercom camera image.
+U access_control_fault
++ :: The door intercom at the lab isn't working right.
+A :: Can people still buzz in?
+U cctv_fault
++ :: The buzzer and the lock are fine.
++ camera_location :: But the camera on the intercom shows nothing, so we can't see who's outside.
++ building floor :: N, floor seven.
+A :: Thanks, logged as a camera fault.
+
+@ cctv_fault_036 confusable confused=suspicious_activity
+S GSOC analyst thinks someone moved a camera; footage shows its bracket slipped by itself.
+U suspicious_activity
++ :: Someone may have tampered with the camera at the side entrance, it's facing the wrong way.
+A :: Did the footage show anyone?
+U cctv_fault
++ :: No one went near it, it slowly droops over the afternoon.
++ camera_location :: The bracket on the side entrance camera must be loose.
++ building :: Willow building.
+A :: Thanks, logged as a camera fault.
+
+@ cctv_fault_037 confusable confused=lighting_fault
+S Security guard thinks car park lights are out because the footage is black; the camera IR is dead.
+U lighting_fault
++ :: The lights in car park zone B must be off, the footage is completely black.
+A :: Are the lights actually off when you look?
+U cctv_fault
++ :: I went down and checked, the lights are on.
++ camera_location :: It's the camera on the zone B pillar, its night mode isn't working.
++ building :: N.
+A :: Thanks, logged as a camera fault.
+
+@ cctv_fault_038 confusable confused=network_outage
+S Senior engineer thinks the network is down because a camera feed is lost; only that camera's port is dead.
+U network_outage
++ :: I think the network dropped, one of the security feeds went offline.
+A :: Is your own connection working?
+U cctv_fault
++ :: My connection and everyone else's is fine.
++ camera_location :: It's just the camera in the lift lobby on floor nine.
++ building :: QRC.
+A :: Thanks, logged as a camera fault for security systems.

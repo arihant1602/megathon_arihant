@@ -1,0 +1,466 @@
+@ electrical_hazard_001 single
+S Senior engineer spots blue sparks and buzzing from wall socket in N floor 4 pod 4A.
+U electrical_hazard
++ hazard_kind space_type :: Help, the wall socket next to my desk is spitting bright blue sparks!
+- :: There is a sharp buzzing noise every few seconds.
+A smoke_present,building :: Is there any smoke, and which building and floor are you on?
+U electrical_hazard
++ smoke_present hazard_kind :: No smoke yet, but it smells like burnt ozone.
++ building floor space_id :: I am in building N on floor 4, workstation pod 4A.
+A  :: Stay clear of the outlet, emergency electrical technician dispatched immediately.
+
+@ electrical_hazard_002 single
+S Senior engineer sees sparks from a floor box when plugging in a laptop.
+U electrical_hazard
++ hazard_kind :: The floor box under my desk sparked when I plugged my charger in.
+- :: Made me jump out of my chair.
+A smoke_present :: Is there any smoke?
+U electrical_hazard
++ smoke_present :: No smoke, just a black mark around the socket.
++ immediate_actions_taken :: I've unplugged everything and moved desks.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: Tower B, floor five.
+A occurred_at :: When did it happen?
+U electrical_hazard
++ occurred_at :: About five minutes ago.
+A :: Thanks, raised as urgent with the electricians.
+
+@ electrical_hazard_003 single
+S Office manager smells burning plastic from smoking copy center outlet in N floor 2.
+U electrical_hazard
+- :: Good morning facilities.
++ hazard_kind space_type :: There is an overpowering burning plastic smell coming from behind the copy center printer wall plug.
+A smoke_present,building :: Is there any visible smoke, and which building and floor is this on?
+U electrical_hazard
++ smoke_present :: Yes, faint wisps of white smoke are curling out of the receptacle.
++ floor building space_id :: This is on floor 2 of building N by room 210.
+A  :: Unplugging the printer is not advised, emergency electrical response alerted.
+
+@ electrical_hazard_004 single
+S Intern greets nervously, then reports a cable with exposed copper wires.
+U undetermined
+- :: Hi, I don't know if this is dangerous.
+A :: Let's check. What did you see?
+U electrical_hazard
++ hazard_kind :: There's a cable under the bench where the outer coating has split and you can see copper.
+A smoke_present :: Is there any smoke or burning smell?
+U electrical_hazard
++ smoke_present :: No, nothing like that.
++ building floor :: Block C, floor three, the makerspace.
+- :: I've told people not to touch it.
+A :: Thanks, raised as urgent with the electricians.
+
+@ electrical_hazard_005 single
+S Intern receives electrical shock from chiller conduit in QRC basement mechanical room 02.
+U electrical_hazard
++ building floor space_type space_id hazard_kind occurred_at smoke_present immediate_actions_taken :: Facilities intern reporting from building QRC basement mechanical room 02, I received a sharp electrical shock when touching the chiller conduit at 11 AM, no smoke is present, and I shut off the sub-panel main switch.
+A  :: Immediate P1 response dispatched to test conduit grounding and voltage leakage.
+
+@ electrical_hazard_006 single
+S Housekeeping staff gets a tingle from a metal light switch plate.
+U electrical_hazard
++ hazard_kind :: I got a little tingle when I touched the metal light switch in the store room.
+A smoke_present :: Is there any smoke or burning smell?
+U electrical_hazard
++ smoke_present :: No smoke.
++ building floor :: The Harbour building, basement store room.
+- :: My fingers still feel funny.
+A :: Thanks, raised as urgent. Please don't touch the switch again.
+
+@ electrical_hazard_007 single
+S Receptionist spots sparks and smoke from desk footwell socket in QRC floor 1.
+U electrical_hazard
++ hazard_kind space_type :: Huge sparks just flew out from under the reception desk!
+- :: Something blew inside the knee-well power module with a loud flash.
+A smoke_present,building :: Is there smoke present, and which building lobby is this in?
+U electrical_hazard
++ smoke_present :: Yes, gray smoke is actively drifting up from behind the modesty panel.
++ building floor :: This is building QRC on floor 1.
+A occurred_at :: When did this flash happen?
+U electrical_hazard
++ occurred_at :: Just three minutes ago at 9:02 AM.
++ immediate_actions_taken :: I switched off the master surge button with a wooden ruler.
+A  :: P1 alert routed to facilities electrical and EHS response.
+
+@ electrical_hazard_008 single
+S Receptionist smells hot plastic from a power strip under the desk.
+U electrical_hazard
++ hazard_kind :: There's a hot plastic smell coming from the power strip under my desk.
++ smoke_present :: I can't see any smoke.
+A building :: Which building?
+U electrical_hazard
++ building :: The Orchard building reception.
++ immediate_actions_taken :: I flicked the switch on the wall to off straight away.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_009 single
+S Scientist unplugs crackling power strip smelling of burning in N floor 7 optics lab.
+U electrical_hazard
++ hazard_kind :: Our benchtop multi-plug power strip is producing loud crackling noises and an intense burning smell whenever we plug in a scope.
+A smoke_present,building :: Is there smoke present, and which building and lab is this located in?
+U electrical_hazard
++ smoke_present :: No smoke is visible yet.
++ building floor space_id space_type immediate_actions_taken :: This is in building N, level 7 optics lab 704, and I unplugged the entire strip from the wall.
+A  :: Thanks for safely unplugging it, lab electrician dispatched to test circuit integrity.
+
+@ electrical_hazard_010 single
+S Lab technician vague: crackling noise in the wall; then sparking socket; three turns.
+U undetermined
++ :: There's a crackling noise coming from inside the wall by our bench.
+- :: It sounds like rice crispies.
+A :: Can you see anything at the sockets nearby?
+U electrical_hazard
++ hazard_kind :: The socket next to it is sparking every few seconds behind the faceplate.
++ smoke_present :: A tiny bit of smoke now.
+A building,floor :: Please keep away. Which building and floor?
+U electrical_hazard
++ building floor :: It's the first floor bench area in the Hollis research building.
+A :: The emergency team and electricians are on the way.
+
+@ electrical_hazard_011 single
+S HR specialist reports smoking melting phone charger in N floor 8 pod 4.
+U electrical_hazard
+- :: Hi facilities, hope you are having a decent day.
++ hazard_kind smoke_present space_id :: A phone charger block plugged into the wall in pod 4 is visibly smoking and melting.
+A building,floor :: Which building and floor is pod 4 on?
+U electrical_hazard
++ building floor :: Building N on the eighth floor.
++ hazard_kind :: The smell of burning plastic is filling our aisle.
++ immediate_actions_taken :: I pulled the master power strip switch.
+A  :: Emergency electrician dispatched to inspect the melted receptacle.
+
+@ electrical_hazard_012 single
+S Contractor tersely reports a live cable left exposed after works; one turn.
+U electrical_hazard
++ hazard_kind :: Someone left a live cable hanging out of the ceiling with bare ends, no smoke.
++ smoke_present :: No smoke.
++ building floor :: Maple block, floor four corridor.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_013 single
+S Safety warden disconnects sparking extension cord wrapped on handrail in N floor 3.
+U electrical_hazard
++ hazard_kind space_type floor building occurred_at smoke_present immediate_actions_taken :: Safety warden urgent report, a commercial extension cord is sparking intermittently against a metal stairwell handrail on floor 3 of building N at 15:45, no smoke present, and I kicked the wall plug loose from a safe distance.
+A  :: Electrician dispatched to remove damaged cord and inspect stairwell circuit.
+
+@ electrical_hazard_014 single
+S Night-shift worker reports a kettle socket scorched black.
+U electrical_hazard
++ hazard_kind :: The socket the pantry kettle uses is scorched black around the pins.
+- :: I'm making tea with the microwave tonight.
+A smoke_present :: Any smoke?
+U electrical_hazard
++ smoke_present :: Not now, but it smells burnt.
++ building floor :: Willowbrook office, floor two pantry.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_015 single
+S Catering staff shuts down smoking sizzling coffee grinder cord in QRC ground floor.
+U electrical_hazard
+- :: Emergency in the catering prep kitchen!
++ hazard_kind smoke_present space_type :: The thick rubber cord on the commercial espresso grinder is smoking and sizzling.
+A building,floor :: Which building and floor is this kitchen on?
+U electrical_hazard
++ building floor space_type :: Building QRC, ground floor kitchen pantry.
++ hazard_kind :: It smells strongly like burned rubber.
++ immediate_actions_taken :: We hit the red emergency shutoff switch.
+A  :: Great response hitting the emergency shutoff, facilities electrical is dispatched.
+
+@ electrical_hazard_016 single
+S Manager reports an extension lead overheating; four turns.
+U electrical_hazard
++ hazard_kind :: The extension lead under the meeting table is too hot to touch.
+A smoke_present :: Is there smoke?
+U electrical_hazard
++ smoke_present :: No.
+A building :: Which building?
+U electrical_hazard
++ building :: The annex.
+A floor :: Which floor?
+U electrical_hazard
++ floor :: First floor, the big meeting room.
++ immediate_actions_taken :: We've unplugged it.
+- :: It had six things plugged in, to be fair.
+A :: Thanks, raised with the electricians.
+
+@ electrical_hazard_017 single
+S Test operator hits E-stop as drone battery charger sparks and smokes in N lab 208.
+U electrical_hazard
++ hazard_kind space_type :: Sparks are flying out of the high-rate drone battery charger station!
+- :: It sounds like small firecrackers going off.
+A smoke_present,building :: Is there any smoke, and which building and lab is this occurring in?
+U electrical_hazard
++ smoke_present :: Yes, thick white smoke is pouring from the charger case.
++ building floor space_id space_type :: This is in building N, level 2 robotics lab 208.
+A immediate_actions_taken :: Did you isolate the main bench power?
+U electrical_hazard
++ immediate_actions_taken :: We slapped the red wall E-stop button to kill power to the whole bench.
++ occurred_at :: It happened five minutes ago.
+A  :: P1 response triggered, EHS emergency response and electricians dispatched.
+
+@ electrical_hazard_018 single
+S Security guard reports sparks from an outdoor light fitting in the rain.
+U electrical_hazard
++ hazard_kind :: The light fitting over the side entrance is sparking in the rain.
++ smoke_present :: No smoke.
+A building :: Which building?
+U electrical_hazard
++ building :: Lakeside annex.
+- :: People are walking right under it.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_019 single
+S Night security locks doors after severed 480V cable found in N basement tunnel T-2.
+U electrical_hazard
++ space_type floor :: Night patrol report from the sub-basement infrastructure tunnel.
++ hazard_kind :: An overhead 480V cable has been struck and severed, leaving exposed live conductors hanging.
+A building,smoke_present :: Which building is this tunnel underneath, and is there smoke present?
+U electrical_hazard
++ building space_id :: Underneath building N, tunnel corridor T-2.
++ smoke_present :: No smoke is present, but the bare wire ends are hanging three feet above the wet concrete.
+A immediate_actions_taken :: Have you sealed off the tunnel access doors?
+U electrical_hazard
++ immediate_actions_taken :: Yes, I padlocked both security fire doors leading into tunnel T-2.
++ occurred_at :: Discovered it twenty minutes ago.
+A  :: P1 high voltage electrical team dispatched immediately with lockout gear.
+
+@ electrical_hazard_020 single
+S Visitor gets a shock from a phone charging station; apologetic.
+U electrical_hazard
+- :: Sorry, this is probably nothing.
++ hazard_kind :: I got a small shock from the phone charging station in the lobby.
+A smoke_present :: Is there any smoke or smell?
+U electrical_hazard
++ smoke_present :: No.
++ building :: Riverside campus main building.
+A :: Thanks, raised as urgent. Please don't use it again.
+
+@ electrical_hazard_021 single
+S Lab manager locks out hood panel after switch sparks in N floor 3 lab 315.
+U electrical_hazard
++ hazard_kind space_id :: The heavy blower switch on chemical fume hood 3 gave off bright orange sparks when toggled.
+- :: The plastic toggle is charred black.
+A smoke_present,building :: Is there smoke present, and which building and lab is this in?
+U electrical_hazard
++ smoke_present :: There is no smoke present.
++ building floor space_id space_type :: This is in building N, third floor synthesis lab 315.
++ immediate_actions_taken :: I locked out the hood panel.
+A  :: Electrician dispatched to replace the high-current toggle switch.
+
+@ electrical_hazard_022 single
+S Senior engineer reports a server room PDU humming loudly and hot.
+U electrical_hazard
++ hazard_kind :: One of the power distribution units in the server room is hot and humming loudly.
++ smoke_present :: No smoke yet.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: Tower B, floor one.
+- :: The rack next to it is warm too.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_023 single
+S Executive assistant reports popping sparking surge protector in QRC floor 6 office 602.
+U electrical_hazard
+- :: Hello, sorry to bother you so early.
++ hazard_kind space_type :: The surge protector beneath the vice president's desk is making loud popping sounds and throwing sparks.
+A smoke_present,building :: Is smoke present, and which building and floor is this executive office on?
+U electrical_hazard
++ smoke_present hazard_kind :: No smoke yet, but it smells strongly of scorched circuitry.
++ building floor space_id :: This is in building QRC on the sixth floor, office 602.
+A  :: Electrician dispatched immediately to swap out the surge unit.
+
+@ electrical_hazard_024 single
+S Lab technician reports a water-damaged socket near a sink.
+U electrical_hazard
++ hazard_kind :: The socket next to the lab sink is wet and the cover is cracked.
+A smoke_present :: Any smoke or sparking?
+U electrical_hazard
++ smoke_present :: No.
++ building floor :: Hollis research building, the third floor wet lab.
+- :: Who puts a socket that close to a sink anyway.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_025 single
+S Cleaner notices hot bubbling socket plate in N floor 4 nursing room 418.
+U undetermined
++ space_id :: I unlocked the mother's nursing room to restock supplies and immediately noticed a suffocating smell.
++ hazard_kind :: Something smells terribly overheated.
+A building,floor :: Which building and floor is this nursing room on?
+U electrical_hazard
++ building floor space_id :: Building N, fourth floor room 418.
++ hazard_kind :: The mini-fridge wall socket has a hot outlet condition and the plastic plate is bubbling.
+A smoke_present :: Is there any smoke visible from the socket?
+U electrical_hazard
++ smoke_present :: I do not see any active smoke around the plate.
++ immediate_actions_taken :: I locked the room door and taped an out-of-order notice on the handle.
+A  :: Electrician dispatched to de-energize and inspect the receptacle.
+
+@ electrical_hazard_026 single
+S Housekeeping greets and reports a damaged plug on a vacuum cleaner with exposed wires; three turns.
+U undetermined
+- :: Hello, morning team here.
+A :: Morning. What's up?
+U electrical_hazard
++ hazard_kind :: The plug on one of our vacuum cleaners is cracked and the wires are showing.
+A smoke_present :: Any smoke?
+U electrical_hazard
++ smoke_present :: No.
++ building :: Block C.
+A :: Thanks, please take it out of use. Logged for the electricians.
+
+@ electrical_hazard_027 single
+S Warehouse clerk blocks aisle after crane power wire snaps in N warehouse bay.
+U electrical_hazard
++ floor space_type :: Reporting from the ground floor warehouse storage zone.
++ hazard_kind :: An overhead jib crane power conductor has snapped and exposed wire ends are dangling over the aisle.
+A building,smoke_present :: Which building is this warehouse in, and is there smoke present?
+U electrical_hazard
++ building space_id :: Building N, main warehouse bay.
++ smoke_present :: There is zero smoke, but the cable is hanging five feet off the ground.
+A occurred_at :: When was this damage discovered?
+U electrical_hazard
++ occurred_at :: About twenty minutes ago.
++ immediate_actions_taken :: We parked forklifts across the lane to block traffic.
+A  :: Industrial electrician dispatched to isolate the crane busbar.
+
+@ electrical_hazard_028 single
+S Night-shift worker jokes about a socket that toasts plugs.
+U electrical_hazard
+- :: The socket by my desk has started toasting plugs.
++ hazard_kind :: My charger plug came out hot and slightly melted.
++ smoke_present :: No smoke.
+A building,floor :: Which building and floor?
+U electrical_hazard
++ building floor :: The Harbour building, floor five.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_029 single
+S Guest phone charger socket overheats in QRC floor 2 visitor lounge.
+U electrical_hazard
+- :: Good afternoon.
++ space_type hazard_kind :: A guest visiting our floor plugged their phone into the visitor lounge socket and the receptacle started buzzing and turned red-hot.
+A building,smoke_present :: Which building and floor is this visitor lounge on, and is smoke present?
+U electrical_hazard
++ building floor space_type :: Building QRC, second floor lounge.
++ smoke_present hazard_kind :: There is no smoke yet, but the hot outlet condition caused the charger casing to soften.
+A  :: Electrician dispatched to check the circuit and replace the outlet.
+
+@ electrical_hazard_030 single
+S Manager reports a burning smell from a ceiling light transformer; five turns.
+U electrical_hazard
++ hazard_kind :: There's a burning smell in our office.
+A smoke_present :: Is there any smoke?
+U electrical_hazard
++ smoke_present :: A little haze near the ceiling.
+A building :: Please be ready to leave. Which building?
+U electrical_hazard
++ building :: Willowbrook office.
+A floor :: Which floor?
+U electrical_hazard
++ floor :: Third.
+- :: Everyone's sniffing around.
+A :: Can you tell where it's coming from?
+U electrical_hazard
++ :: It's the transformer above one of the downlights.
+A :: Thanks, the emergency team and electricians are on the way.
+
+@ electrical_hazard_031 single
+S Network engineer spots arcing sparks and blue smoke in busway junction in N floor 2 data hall.
+U undetermined
++ landmark :: There is this intense metallic ozone tang hanging in the air down aisle 4.
+- :: It feels like static electricity in the air.
+A building,floor :: Which building and server room is aisle 4 in?
+U electrical_hazard
++ building floor space_type :: Building N, level 2 data hall.
++ hazard_kind :: We traced it to an overhead busway junction where arcing sparks are visible inside the inspection slot.
+A smoke_present,immediate_actions_taken :: Is there any smoke, and did you isolate the busway?
+U electrical_hazard
++ smoke_present :: Faint blue smoke is curling out.
++ immediate_actions_taken occurred_at :: We switched redundant feeds and shed IT load from that busway fifteen minutes ago.
+A  :: Emergency response alerted, high-voltage team responding.
+
+@ electrical_hazard_032 single
+S Receptionist tersely reports exposed wires from a broken floor socket cover; one turn.
+U electrical_hazard
++ hazard_kind :: Floor socket cover in reception is broken and the wires are exposed, no smoke.
++ smoke_present :: No smoke.
++ building :: The Orchard building.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_033 confusable confused=fire_smoke
+S Heavy smoke assumed structural building fire turns out to be shorted power strip in N floor 2.
+U undetermined
++ smoke_present space_type :: Smoke is rolling across the second floor lobby corridor!
+- :: I am terrified there is an active building structure fire!
+A building,floor :: Which building are you in, and can you see open flames?
+U electrical_hazard
++ building floor :: Building N on floor 2.
++ hazard_kind :: We looked closer and there is no structure fire, it is a desk power strip that caught an internal electrical short and charred.
+A hazard_kind,immediate_actions_taken :: Are there sparks present, and did you remove the strip?
+U electrical_hazard
++ hazard_kind immediate_actions_taken :: Yellow sparks died down once we flipped the wall switch.
++ occurred_at :: The short occurred barely three minutes back.
+A  :: Electrician and ventilation dispatched to clear smoke.
+
+@ electrical_hazard_034 confusable confused=fire_smoke
+S Intern sees smoke and thinks it's a fire; it's a smoking adapter, no flames.
+U fire_smoke
++ :: There's smoke coming from under a desk!
+A :: If there's fire, leave and call the emergency number. Can you see flames?
+U electrical_hazard
++ :: No flames.
++ hazard_kind :: It's a travel adapter in the socket, it's smoking and smells burnt.
++ smoke_present :: Yes, a little smoke.
++ building floor :: Block C, floor one.
+A :: Thanks, the emergency team and electricians are on the way.
+
+@ electrical_hazard_035 confusable confused=fire_smoke
+S Smoke odor in pod 7 suspected as fire is sparking wall socket with hot condition in N.
+U undetermined
++ smoke_present space_id :: There is a choking chemical smoke smell in pod 7.
+- :: I am really worried something in the ceiling plenum is burning.
+A building,floor :: Which building and floor is pod 7 on?
+U electrical_hazard
++ building floor space_id :: Building N, seventh floor pod 7.
++ hazard_kind smoke_present :: We found the source, a wall socket was sparking with a hot outlet condition and scorched prongs, but no open flames.
+A  :: Electrician dispatched to isolate the circuit breaker immediately.
+
+@ electrical_hazard_036 confusable confused=power_outage
+S Lab technician thinks power went out in a room; a burnt socket is the cause and a hazard.
+U power_outage
++ :: The power went off in our lab room.
+A :: Is it the whole room?
+U electrical_hazard
++ :: It's just one socket circuit, and the socket is black and melted.
++ hazard_kind :: It smells strongly of burning.
++ smoke_present :: No smoke now.
++ building :: Hollis research building.
+A :: Thanks, raised as urgent.
+
+@ electrical_hazard_037 confusable confused=power_outage
+S Assumed pod blackout revealed as soot-covered sparking wall plug in N floor 8 pod 8C.
+U power_outage
+- :: Greetings, I was trying to charge my work laptop and noticed my desk power strip had no electricity.
+- :: I thought we had an outage.
+A building,floor :: Where is your desk, and did you inspect the wall outlet?
+U electrical_hazard
++ building floor space_id :: Building N, level 8 pod 8C.
++ hazard_kind :: I bent down to look and the wall plug is covered in black soot and spitting tiny sparks whenever moved.
+A smoke_present :: Is there smoke present from the socket?
+U electrical_hazard
++ smoke_present immediate_actions_taken :: No smoke is present, but I stepped well back.
++ occurred_at :: It happened about ten minutes ago.
+A  :: Technician dispatched to replace the sparking socket.
+
+@ electrical_hazard_038 confusable confused=power_outage
+S Senior engineer thinks a power cut; an exposed cable shorted under a desk.
+U power_outage
++ :: Our row lost power suddenly.
+A :: Are other rows affected?
+U electrical_hazard
++ :: Only our row.
++ hazard_kind :: There's an exposed cable under the desk that shorted against the metal leg.
++ smoke_present :: No smoke.
++ building floor :: Tower B, floor six.
+A :: Thanks, raised as urgent.

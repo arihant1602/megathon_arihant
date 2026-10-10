@@ -1,0 +1,6 @@
+qairt/
+.venv-qairt/
+models/**/out/
+*.raw
+.env
+bench/out/

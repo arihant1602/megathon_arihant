@@ -1,0 +1,68 @@
+================================================================================
+WHAT SETS US APART
+AI Incident Report Assistant — Qualcomm On-Device AI Challenge
+================================================================================
+
+MOST TEAMS WILL BUILD: a voice-to-text box that fills one generic form and
+calls a cloud LLM to do it.
+
+WE BUILT: a fully on-device reasoning pipeline that understands *which*
+incident it's hearing before it decides what to ask next — and never once
+leaves the chip to do it.
+
+1. A TWO-TIER NEURAL ARCHITECTURE, NOT ONE MODEL DOING EVERYTHING
+   A lightweight neural network runs continuously, on-device, classifying
+   intent and extracting fields in real time — the heavier semantic model
+   is only woken up when the fast path genuinely can't resolve something.
+   This isn't a demo shortcut; it's the actual efficiency argument the
+   on-device track is scoring for: cheap inference by default, expensive
+   inference only on demand.
+
+2. REAL FUNCTION CALLING, NOT A SCRIPTED DEMO
+   The model itself decides when to query zone history, resolve a room
+   name, or classify severity — against a live local database, fully
+   offline. Every call is logged. Nothing is faked for the stage.
+
+3. DEPARTMENT-AWARE, INCIDENT-SPECIFIC FORMS
+   Not one generic slot set — the system identifies the incident type and
+   loads THAT type's own form from local config, routes it to the right
+   department, and never asks a question the conversation already
+   answered. One answer fills every field it touches, automatically.
+
+4. BILINGUAL BY DESIGN
+   English, Hindi, and natural code-mixed speech — all understood
+   on-device, normalized to a single clean English record every admin can
+   read.
+
+5. A SYSTEM THAT KNOWS WHAT IT DOESN'T KNOW
+   Every field carries its own evidence, its own confidence, and an
+   explicit state — known, unknown, or ambiguous. Nothing is ever
+   silently invented. A correction doesn't just overwrite data — it
+   invalidates every downstream prediction that depended on it, so the
+   final report is always internally consistent.
+
+6. A LIVE, SPATIAL VIEW OF THE BUILDING — NOT A TICKET LIST
+   A unique admin portal layout: an indoor floor-plan map where every
+   incident highlights its real zone and every reporter appears as a
+   location pin. One click on a pin opens the full structured dossier
+   instantly. This turns a wall of tickets into a living map of the
+   building's actual state.
+
+7. RELATIONSHIP AND TREND INTELLIGENCE, NOT JUST A LOG
+   Beyond single-incident capture, a graph-based reasoning layer flags
+   when separate reports are likely the same underlying problem, and a
+   DynoTears-style causal discovery process mines the incident history in
+   the background to surface which recurring factors tend to precede
+   which failures — intelligence most teams' systems won't even attempt,
+   running as a bounded background job that never slows the live
+   conversation down.
+
+8. ZERO CLOUD, PROVEN LIVE
+   Every piece above — speech, understanding, extraction, reasoning,
+   the map, the dossier — runs on the Snapdragon kit itself. We can
+   disconnect the network mid-demo and nothing changes. That's not a
+   claim; it's something you can watch us do.
+
+THE BOTTOM LINE: everyone else is shipping a transcription box. We're
+shipping a reasoning system that understands incidents, not just words.
+================================================================================

@@ -1,0 +1,44 @@
+@ test_chemical_spill_001 single
+S Clinic nurse reports a spilled disinfectant concentrate.
+U chemical_spill
++ substance_name spill_quantity :: A litre of disinfectant concentrate has spilled in the clinic store.
+A persons_exposed :: Has anyone been exposed?
+U chemical_spill
++ persons_exposed :: No, but the fumes are strong.
++ building :: Sapphire Block clinic.
+A :: Thanks, EHS is on the way.
+
+@ test_chemical_spill_002 single
+S Gardener spilled weedkiller concentrate in the garden store.
+U chemical_spill
++ substance_name :: I've knocked over a can of weedkiller concentrate in the garden store.
++ spill_quantity :: About two litres.
++ persons_exposed :: Some splashed on my boots.
++ building :: The West Pavilion.
+A :: Thanks, EHS is on the way. Change your boots and wash.
+
+@ test_chemical_spill_003 single
+S Courier vague: parcel leaking a smelly liquid; it's a solvent; three turns.
+U undetermined
++ :: One of the parcels I'm carrying is leaking and it stinks.
+A :: Do you know what's in it?
+U chemical_spill
++ substance_name :: The label says lab solvent.
++ spill_quantity :: It's dripped a small patch.
+A persons_exposed :: Has it got on you?
+U chemical_spill
++ persons_exposed :: A bit on my gloves.
++ building :: Cobalt House.
+A :: Thanks, EHS is on the way. Take the gloves off carefully.
+
+@ test_chemical_spill_004 confusable confused=spill_cleanup
+S Photographer thinks it's spilled water; it's photo developer.
+U spill_cleanup
++ :: Someone spilled water in the media room darkroom.
+A :: Is it a slip hazard?
+U chemical_spill
++ substance_name :: Actually it's developer fluid, it smells chemical.
++ spill_quantity :: A small tray's worth.
++ persons_exposed :: Nobody has handled it, I kept everyone back.
++ building :: Sapphire Block.
+A :: Thanks, EHS will handle it.

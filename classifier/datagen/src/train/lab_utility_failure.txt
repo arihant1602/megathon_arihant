@@ -1,0 +1,465 @@
+@ lab_utility_failure_001 single
+S Lab technician reports the bench power strip circuit tripped on a whole row during a test.
+U lab_utility_failure
++ lab_utility :: The bench power on our whole row just cut out.
++ test_in_progress :: I had a thirty hour soak test running on bench 5, and it's dead now.
+- :: I could actually cry.
+A building,floor :: Sorry about that. Which building and floor?
+U lab_utility_failure
++ building floor space_type :: QRC, the fourth floor reliability lab.
++ :: The ceiling lights and the wall sockets are still on, it's only the bench feeds.
+A :: Thanks, raised as a priority for the lab facilities engineer.
+
+@ lab_utility_failure_002 single
+S Senior engineer vague: everything on one bench rebooted at once; UPS failed; three turns.
+U undetermined
++ :: All the equipment on our critical bench rebooted at the same moment.
+- :: Nobody touched anything, we were in a meeting.
+A :: Is that bench on a UPS?
+U lab_utility_failure
++ lab_utility :: Yes, and the UPS is now beeping with a battery fault light.
++ test_in_progress :: There was a firmware stress test running overnight.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: N, the seventh floor server validation lab.
+A occurred_at :: Do you know when the UPS failed?
+U lab_utility_failure
++ occurred_at :: The logs show everything dropped at 3:12 this morning.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_003 single
+S Lab manager tersely reports compressed air down in the assembly lab; one turn.
+U lab_utility_failure
++ lab_utility :: No compressed air at any of the drops in the assembly lab.
++ test_in_progress :: Pick-and-place is stopped mid-build.
+- :: The operators are standing around chatting.
++ building floor :: N, the SMT assembly lab on the second floor.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_004 single
+S Lab technician reports the fume hood airflow alarm going off.
+U lab_utility_failure
++ lab_utility :: The fume hood airflow alarm is going off and the flow meter reads zero.
+- :: I've closed the sash and stepped back.
+A test_in_progress :: Was anything in progress in the hood?
+U lab_utility_failure
++ test_in_progress :: An etch was running, I've stopped it.
++ building floor :: Research Hall 2, the wet chemistry room on the ground floor.
+A :: Thanks, raised urgently with lab facilities and EHS.
+
+@ lab_utility_failure_005 single
+S Night-shift worker reports the chiller for the lasers has tripped.
+U lab_utility_failure
++ lab_utility :: The chiller for the laser benches has tripped and shows a high temperature alarm.
++ test_in_progress :: There's an overnight alignment run.
+A building :: Which building?
+U lab_utility_failure
++ building floor :: QRC, the optics lab on the third floor.
+- :: The lasers have shut themselves down, at least.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_006 single
+S Manager reports DI water system offline; four turns.
+U lab_utility_failure
++ lab_utility :: The deionised water supply in our lab has stopped.
+A test_in_progress :: Is any test or process waiting on it?
+U lab_utility_failure
++ test_in_progress :: The wafer cleaning step is on hold.
+A building :: Which building?
+U lab_utility_failure
++ building :: Research Hall 2.
+- :: The display on the water unit says low pressure.
+A floor :: Which floor?
+U lab_utility_failure
++ floor space_type :: Second floor, the cleanroom support area.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_007 single
+S Intern greets and reports no air coming from the bench air line.
+U undetermined
+- :: Hi, I might be doing this wrong.
+A :: No problem, what's up?
+U lab_utility_failure
++ lab_utility :: When I open the air valve on my bench nothing comes out.
++ test_in_progress :: I'm not running anything, I just wanted to blow dust off a board.
++ building floor :: N, the third floor hardware lab.
+- :: I didn't want to break anything by fiddling.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_008 single
+S Senior engineer reports the nitrogen line pressure dropping; worried about reflow.
+U lab_utility_failure
++ lab_utility :: The nitrogen line pressure keeps dropping on the reflow side.
++ test_in_progress :: We're mid-way through a reflow profile run.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: QRC, the reflow end of the SMT line up on floor two.
+- :: The oven is complaining loudly.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_009 single
+S Lab technician jokes the fume hood sounds like a jet engine.
+U lab_utility_failure
+- :: The fume hood is auditioning to be a jet engine.
++ lab_utility :: The extraction fan is roaring and rattling and the airflow keeps dropping.
++ test_in_progress :: Nothing's in the hood right now.
+A building :: Which building?
+U lab_utility_failure
++ building floor :: Research Hall 2, the first floor chemistry lab.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_010 single
+S Contractor apologises; they switched off the lab bench power breaker by mistake.
+U lab_utility_failure
+- :: I think I flipped the wrong breaker, sorry.
++ lab_utility :: The bench power in the lab next to us has gone off since I touched the panel.
++ test_in_progress :: I don't know if they had anything running.
+A building :: Which building?
+U lab_utility_failure
++ building floor :: Elm building, the ground floor test lab.
+A :: Thanks for telling us, raised as a priority.
+
+@ lab_utility_failure_011 single
+S Lab technician vague: lab getting hot and equipment alarms; process cooling water failed; four turns.
+U undetermined
++ :: Several instruments in our lab are throwing temperature alarms at once.
+A :: Is a cooling system feeding them?
+U lab_utility_failure
++ lab_utility :: Yes, the process cooling water loop, and the flow gauge is at zero.
+A test_in_progress :: Are tests running?
+U lab_utility_failure
++ test_in_progress :: Two long burn-in tests.
+- :: They'll shut down on their own soon.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: N, the burn-in lab on the fourth floor.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_012 single
+S Manager reports the UPS in the server-like lab rack is in bypass mode.
+U lab_utility_failure
++ lab_utility :: The UPS for our lab rack has gone into bypass mode.
++ test_in_progress :: Nothing critical running, but we start tests at nine.
+A building :: Which building?
+U lab_utility_failure
++ building floor :: QRC, the first floor test rack room.
+- :: The fans are louder than usual.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_013 single
+S Night-shift worker reports vacuum line not pulling vacuum; one turn.
+U lab_utility_failure
++ lab_utility test_in_progress :: House vacuum line isn't pulling any vacuum, the wafer chuck lost hold mid-test.
++ building floor :: Research Hall 2, the probe room on floor one.
+- :: That wafer was the last one from the lot.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_014 single
+S Lab technician reports the bench power output fluctuating.
+U lab_utility_failure
++ lab_utility :: The bench power on my station keeps dipping every few seconds.
+- :: My monitor flickers each time.
+A test_in_progress :: Is a test running?
+U lab_utility_failure
++ test_in_progress :: I've paused it.
++ building floor :: N, the sixth floor power lab.
+A :: Thanks, raised for lab facilities.
+
+@ lab_utility_failure_015 single
+S Senior engineer reports chiller leaking and low on coolant; three turns.
+U lab_utility_failure
++ lab_utility :: The recirculating chiller is low on coolant and there's a leak underneath.
+A test_in_progress :: Is it cooling a test?
+U lab_utility_failure
++ test_in_progress :: Yes, the thermal stage on the probe station.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: QRC, the fifth floor characterisation lab.
+- :: I've put a tray under it.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_016 single
+S Housekeeping notices fume hood sash stuck open with alarm off; vague; three turns.
+U undetermined
++ :: One of the glass cabinets in the lab has its window stuck wide open.
+A :: Is it a fume hood?
+U lab_utility_failure
++ lab_utility :: Yes, the fume hood, and the fan isn't running either.
++ test_in_progress :: Nobody is using it.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: QRC, the sixth floor chemistry prep room.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_017 single
+S Lab manager reports compressed air full of water; damaging tools.
+U lab_utility_failure
++ lab_utility :: The compressed air in the lab is spitting water.
+- :: Our pneumatic tools are not happy.
+A test_in_progress,building :: Test running, and which building?
+U lab_utility_failure
++ test_in_progress :: Assembly run in progress.
++ building floor :: N, the second floor prototype workshop.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_018 single
+S Intern reports UPS beeping in the lab; four turns.
+U lab_utility_failure
++ lab_utility :: The UPS under the lab bench keeps beeping.
+A test_in_progress :: Is anything running on it?
+U lab_utility_failure
++ test_in_progress :: My board is running a long test.
+A building :: Which building?
+U lab_utility_failure
++ building :: Birch building.
+- :: I've covered my ears.
+A floor :: Which floor?
+U lab_utility_failure
++ floor :: First floor, the maker lab.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_019 single
+S Senior engineer reports exhaust fan for a solder fume extractor dead.
+U lab_utility_failure
++ lab_utility :: The fume extraction for the soldering benches has stopped.
++ test_in_progress :: People are soldering right now.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: QRC, the fourth floor rework room.
+- :: I've told everyone to stop until it's fixed.
+A :: Thanks, raised urgently.
+
+@ lab_utility_failure_020 single
+S Night-shift worker reports chiller alarm for the cleanroom tools.
+U lab_utility_failure
++ lab_utility :: The chiller for the cleanroom etch tool is alarming.
++ test_in_progress :: A lot is in process.
+A building :: Which building?
+U lab_utility_failure
++ building floor :: Research Hall 2, the second floor cleanroom.
+- :: The process engineer is on her way in.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_021 single
+S Manager greets, then reports bench power dead in a lab after maintenance.
+U undetermined
+- :: Morning, we had maintenance over the weekend.
+A :: Morning. What's the problem?
+U lab_utility_failure
++ lab_utility :: The bench power in our lab hasn't come back since the maintenance.
++ test_in_progress :: Nothing was running over the weekend.
++ building floor :: N, the fifth floor antenna lab.
+- :: The maintenance crew said everything went fine.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_022 single
+S Lab technician reports nitrogen dewar fill line frozen and leaking; four turns.
+U lab_utility_failure
++ lab_utility :: The liquid nitrogen fill line is frozen solid and leaking.
+A test_in_progress :: Is a test depending on it?
+U lab_utility_failure
++ test_in_progress :: The cryo probe station is mid-run.
+A building :: Which building?
+U lab_utility_failure
++ building :: QRC.
+- :: There's fog rolling across the floor.
+A floor :: Which floor?
+U lab_utility_failure
++ floor space_type :: Ground floor, the cryogenics lab.
+A :: Thanks, raised urgently with lab facilities and EHS.
+
+@ lab_utility_failure_023 single
+S Senior engineer reports bench power breaker tripping repeatedly; one turn.
+U lab_utility_failure
++ lab_utility test_in_progress :: Bench power breaker keeps tripping every time we start our load test, N sixth floor power lab.
+- :: Fourth time today.
+A :: Thanks, raised for lab facilities.
+
+@ lab_utility_failure_024 single
+S Lab technician jokes about the DI water tasting fine; it's not deionised anymore.
+U lab_utility_failure
+- :: Don't worry, I didn't drink it.
++ lab_utility :: The DI water conductivity meter shows the water isn't pure anymore.
++ test_in_progress :: We've paused rinsing.
++ building floor :: Research Hall 2, the second floor wet bench.
+- :: The filter cartridge was due a change, I think.
+A :: Thanks, raised for lab facilities.
+
+@ lab_utility_failure_025 single
+S Contractor reports compressed air line cut during works; three turns.
+U lab_utility_failure
++ lab_utility :: We nicked the compressed air pipe above the lab ceiling and it's hissing.
+A test_in_progress :: Is the lab running tests?
+U lab_utility_failure
++ test_in_progress :: I'm not sure.
+A building :: Which building and floor?
+U lab_utility_failure
++ building floor :: Spruce block, the first floor lab ceiling.
+- :: We've stopped work.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_026 single
+S Manager reports UPS failed and lab rack went dark; urgent.
+U lab_utility_failure
++ lab_utility :: The UPS failed and our whole test rack went dark.
++ test_in_progress :: Three regression runs were going.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: QRC, the third floor automation lab.
+- :: Weeks of setup just rebooted.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_027 single
+S Night-shift worker reports fume hood light and fan both off; three turns.
+U lab_utility_failure
++ lab_utility :: The fume hood light and fan are both off.
+A test_in_progress :: Was anything inside running?
+U lab_utility_failure
++ test_in_progress :: A solvent dry-down.
+A building,floor :: Which building and floor?
+U lab_utility_failure
++ building floor :: N, the third floor sample prep lab.
++ immediate_actions_taken :: I've closed the sash.
+A :: Thanks, raised urgently with lab facilities and EHS.
+
+@ lab_utility_failure_028 single
+S Intern vague: weird hiss in the lab; compressed air leak at a bench; three turns.
+U undetermined
++ :: There's a loud hiss coming from under one of the benches.
+- :: It's been going all morning.
+A :: Can you see where?
+U lab_utility_failure
++ lab_utility :: It's the compressed air connection, the fitting has come loose.
++ test_in_progress :: Nobody's using that bench.
+A building :: Which building and floor?
+U lab_utility_failure
++ building floor :: Birch building, the hardware lab on floor two.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_029 single
+S Lab technician reports chiller pump noise and low flow; five turns.
+U lab_utility_failure
++ lab_utility :: The chiller pump is making a grinding noise.
+A test_in_progress :: Is it cooling a running test?
+U lab_utility_failure
++ test_in_progress :: Yes.
+A building :: Which building?
+U lab_utility_failure
++ building :: Research Hall 2.
+A floor :: Which floor?
+U lab_utility_failure
++ floor :: Ground floor.
+- :: You can hear it from the corridor.
+A :: Is the flow still okay?
+U lab_utility_failure
++ :: The flow has dropped by half.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_030 single
+S Senior engineer reports vacuum pump for the lab house vacuum is overheating.
+U lab_utility_failure
++ lab_utility :: The house vacuum pump is overheating and the vacuum keeps dropping.
++ test_in_progress :: Not testing right now.
++ building floor :: QRC, the plant room behind the fourth floor labs.
+- :: It smells like hot oil back there.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_031 single
+S Lab manager reports bench power has the wrong voltage after rewiring.
+U lab_utility_failure
++ lab_utility :: The bench power on the new row is reading 250 volts instead of 230.
++ test_in_progress :: We haven't connected anything yet.
+A building :: Which building and floor?
+U lab_utility_failure
++ building floor :: N, the newly fitted lab on floor eight.
+- :: Glad we checked first.
+A :: Thanks, raised as a priority.
+
+@ lab_utility_failure_032 single
+S Housekeeping reports a puddle under the DI water unit; vague; three turns.
+U undetermined
++ :: There's water pooling under a white machine in the lab.
+A :: Do you know what the machine is?
+U lab_utility_failure
++ lab_utility :: The label says deionised water system, and it's leaking from the side.
++ test_in_progress :: There's no one in the lab.
+A building :: Which building and floor?
+U lab_utility_failure
++ building floor :: Research Hall 2, the second floor wet lab.
+A :: Thanks, logged for lab facilities.
+
+@ lab_utility_failure_033 confusable confused=lab_equipment_fault
+S Lab technician thinks the laser is broken; the chiller feeding it stopped.
+U lab_equipment_fault
++ :: The laser on our optical bench won't fire.
+A :: Is it showing an error?
+U lab_utility_failure
++ :: It says cooling fault.
++ lab_utility :: The chiller that feeds it is switched off with a pump error.
++ test_in_progress :: An alignment run was going.
++ building :: QRC.
+- :: I spent twenty minutes debugging the laser first.
+A :: Thanks, raised as a lab utility failure.
+
+@ lab_utility_failure_034 confusable confused=lab_equipment_fault
+S Senior engineer thinks the reflow oven is faulty; the nitrogen supply is empty.
+U lab_equipment_fault
++ :: The reflow oven is failing its oxygen check.
+A :: Is the oven itself faulty?
+U lab_utility_failure
++ :: The oven is fine.
++ lab_utility :: The nitrogen supply to it has run out, the tank gauge is at zero.
++ test_in_progress :: We're mid-build.
++ building :: N.
+- :: Nobody told us the tank was low.
+A :: Thanks, raised as a lab utility failure.
+
+@ lab_utility_failure_035 confusable confused=esd_issue
+S Lab technician thinks the ionizer is broken; the compressed air feeding it is off.
+U esd_issue
++ :: The ionizing air nozzle isn't working.
+A :: Is its light on?
+U lab_utility_failure
++ :: The light is green.
++ lab_utility :: There's just no compressed air reaching it, the whole bench air line is dead.
++ test_in_progress :: Not testing.
++ building :: Research Hall 2.
+A :: Thanks, raised as a lab utility failure.
+
+@ lab_utility_failure_036 confusable confused=power_outage
+S Manager thinks the lab lost power; only the bench power circuit tripped.
+U power_outage
++ :: Our lab has lost power.
+A :: Are the lights and wall sockets working?
+U lab_utility_failure
++ :: Lights and wall sockets are fine.
++ lab_utility :: It's the bench power along the lab benches that's off.
++ test_in_progress :: Two tests were running.
++ building floor :: QRC, sixth floor, the big validation lab by the stairs.
+A :: Thanks, raised as a lab utility failure.
+
+@ lab_utility_failure_037 confusable confused=power_outage
+S Night-shift worker thinks a power cut hit the test rack; only the UPS tripped.
+U power_outage
++ :: I think there was a power cut, our test rack is dead.
+A :: Is the rest of the floor powered?
+U lab_utility_failure
++ :: Everything else is on.
++ lab_utility :: The rack's UPS has tripped and is showing an overload.
++ test_in_progress :: An overnight test was running.
++ building :: N.
+- :: I thought the whole building had gone.
+A :: Thanks, raised as a lab utility failure.
+
+@ lab_utility_failure_038 confusable confused=hvac_issue
+S Senior engineer says the lab is too hot; the process chiller for the tools failed, not the room HVAC.
+U hvac_issue
++ :: Our lab is getting really hot.
+A :: Is the room air conditioning working?
+U lab_utility_failure
++ :: The room AC is fine.
++ lab_utility :: The heat is coming off the tools because their process chiller has failed.
++ test_in_progress :: The tools are running.
++ building :: QRC.
+- :: We've opened the doors to let some heat out.
+A :: Thanks, raised as a lab utility failure.

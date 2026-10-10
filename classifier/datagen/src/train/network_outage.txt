@@ -1,0 +1,441 @@
+@ network_outage_001 single
+S Senior engineer annoyed the whole floor lost wifi in the middle of a release.
+U network_outage
++ connection_type :: The wifi on our floor has just died completely.
+- :: We're halfway through pushing a release, so the timing is perfect.
+A network_scope :: Is it just you, the room, or the whole floor?
+U network_outage
++ network_scope :: The whole floor, everyone around me is standing up and looking confused.
++ building floor :: Building N, floor nine.
++ :: The people plugged in with cables seem fine, it's only wireless.
+A occurred_at :: When did it drop?
+U network_outage
++ occurred_at :: About five minutes ago, around 3:20.
+A :: Thanks, I've raised a floor-wide wifi outage with the network team.
+
+@ network_outage_002 single
+S Intern isn't sure if it's their laptop or the network; vague opening.
+U undetermined
++ :: My laptop says connected, but nothing loads.
+- :: I've restarted it twice already and I'm running out of ideas.
+A :: Is anyone near you having the same problem?
+U network_outage
++ network_scope :: The two people next to me have the same issue, but the rest of the room is fine.
++ connection_type :: We're all on wifi.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: QRC, floor two, the corner by the printers.
+- :: Maybe our corner is cursed.
+A occurred_at :: When did the connection drop?
+U network_outage
++ occurred_at :: Right after lunch, about half one.
+A :: Thanks, logged with the network team to check the access point in that corner.
+
+@ network_outage_003 single
+S Manager tersely reports the whole building has no network, both wired and wifi.
+U network_outage
++ network_scope connection_type :: Entire Willow building has no network, wired and wifi both down.
++ occurred_at :: Since 8:40 this morning.
+- :: Two hundred people are drinking coffee and staring at the ceiling.
+A :: Thanks, raised as high priority with the network team.
+
+@ network_outage_004 single
+S Lab technician's ethernet port at a bench is dead.
+U network_outage
++ connection_type :: The ethernet port at my lab bench isn't working.
++ network_scope :: It's just my bench, the others are fine.
+- :: I've tried three different cables.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor space_type :: Research Hall 2, ground floor, the RF lab bench 5.
+A :: Thanks, logged so the port can be checked.
+
+@ network_outage_005 single
+S Receptionist reports guest wifi down for visitors in the lobby.
+U network_outage
++ connection_type :: The guest wifi isn't working in reception.
+- :: Visitors keep coming to my desk asking for the password, which isn't the problem.
+A network_scope :: Is it only guest wifi, and only in reception?
+U network_outage
++ network_scope :: Only guest wifi, and I think the whole building, a visitor upstairs said the same.
++ building :: The Lakeview building.
+A :: Thanks, logged with the network team.
+
+@ network_outage_006 single
+S Night-shift worker calmly reports VPN keeps dropping on the office wifi; four turns.
+U network_outage
++ :: My connection keeps dropping every few minutes tonight.
+A connection_type :: Is it wifi or wired?
+U network_outage
++ connection_type :: Wifi, I don't have a cable at this desk.
+- :: It's making the night go very slowly.
+A network_scope :: Is anyone else affected?
+U network_outage
++ network_scope :: I'm the only one on the floor, so I can't tell.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: N, floor four.
++ occurred_at :: Started around ten.
+A :: Thanks, logged with the network team.
+
+@ network_outage_007 single
+S Contractor reports site office has no internet, wired; terse.
+U network_outage
++ connection_type network_scope :: The wired internet in our site office is down, just this room.
++ building :: Spruce block site office.
+- :: We need it to send drawings.
+A :: Thanks, logged with IT.
+
+@ network_outage_008 single
+S Senior engineer jokes that the internet is slower than dial-up in their meeting room.
+U network_outage
++ :: The internet in this meeting room is slower than dial-up.
+- :: I could post the files faster.
+A connection_type,network_scope :: Wifi or wired, and is it only this room?
+U network_outage
++ connection_type :: Wifi.
++ network_scope :: Seems to be just this room, the corridor is fine.
++ building floor space_id :: QRC, floor five, room Jupiter.
+A :: Thanks, logged with the network team.
+
+@ network_outage_009 single
+S Housekeeping staff notices the floor's network cabinet lights are off; vague first.
+U undetermined
++ :: The little cupboard with all the blinking lights is completely dark today.
+- :: It's usually like a disco in there.
+A :: Is anyone on the floor having trouble with the internet?
+U network_outage
++ network_scope :: Yes, people are saying the whole floor is offline.
++ connection_type :: Both the wifi and the desk cables.
++ building floor :: Oak building, floor two.
+A :: Thanks, raised with the network team.
+
+@ network_outage_010 single
+S Manager reports intermittent outages across the floor for a week; three turns.
+U network_outage
++ network_scope :: Our whole floor has been dropping off the network every afternoon this week.
+A connection_type :: Wifi, wired, or both?
+U network_outage
++ connection_type :: Both, the docks lose connection too.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: N, floor eleven.
++ occurred_at :: Usually around two or three in the afternoon.
+- :: We've started scheduling meetings around it.
+A :: Thanks, logged with the network team.
+
+@ network_outage_011 single
+S Visitor can't connect to guest wifi in a meeting room; apologetic.
+U network_outage
+- :: Sorry to be a pain.
++ connection_type :: I can't connect to the guest wifi in this meeting room.
++ network_scope :: My colleague can't either.
+A building :: Which building?
+U network_outage
++ building :: The Summit building, first floor meeting room.
+A :: Thanks, logged with IT.
+
+@ network_outage_012 single
+S Lab technician reports the lab network VLAN is down, test rigs can't upload results.
+U network_outage
++ :: Our test rigs can't upload results to the server.
+A connection_type,network_scope :: Is it wired or wifi, and is it the whole lab?
+U network_outage
++ connection_type :: Wired.
++ network_scope :: The whole lab, every rig is offline.
++ building floor :: QRC, floor three.
+- :: Results are piling up on local disks.
+A :: Thanks, raised with the network team.
+
+@ network_outage_013 single
+S Receptionist reports a captive portal loop on wifi; one turn.
+U network_outage
++ connection_type network_scope :: Wifi in the N lobby keeps sending everyone back to the login page, all of reception is affected.
+- :: It's been going round in circles since nine.
+A :: Thanks, logged with the network team.
+
+@ network_outage_014 single
+S Intern greets, then reports a desk port with no link.
+U undetermined
+- :: Hi, quick tech question.
+A :: Sure, what's up?
+U network_outage
++ connection_type :: The cable port at my desk doesn't give any connection.
++ network_scope :: Just my desk.
++ building floor :: Birch building, floor one.
+A :: Thanks, logged so the port can be patched.
+
+@ network_outage_015 single
+S Security guard reports the security office lost network so camera system can't be reached.
+U network_outage
++ network_scope :: The security office has lost its network connection.
+- :: Bit worrying for a security office.
+A connection_type :: Wired or wifi?
+U network_outage
++ connection_type :: Wired, all our PCs.
++ building :: QRC ground floor.
+A :: Thanks, raised as high priority with the network team.
+
+@ network_outage_016 single
+S Senior engineer reports DNS errors across the building; four turns.
+U network_outage
++ :: Websites won't load, I keep getting DNS errors.
+A network_scope :: Is it just you?
+U network_outage
++ network_scope :: No, it's the whole building as far as I can tell.
+A connection_type :: Wifi, wired, or both?
+U network_outage
++ connection_type :: Both.
+- :: Internal tools work if you type the IP address, oddly.
+A building :: Which building?
+U network_outage
++ building :: N.
+A :: Thanks, raised with the network team.
+
+@ network_outage_017 single
+S Housekeeping staff reports the handheld scanners can't connect to wifi in the store.
+U network_outage
++ connection_type :: Our handheld scanners can't connect to the wifi in the supply store.
++ network_scope :: Only in the store room.
+A building :: Which building?
+U network_outage
++ building :: Pine building basement.
+- :: We're writing everything on paper.
+A :: Thanks, logged with IT.
+
+@ network_outage_018 single
+S Manager reports network slow on the whole floor after a move.
+U undetermined
++ :: Everything on our new floor takes forever to do anything.
+- :: I thought moving would be the fun part.
+A :: What exactly is slow?
+U network_outage
++ network_scope :: Since we moved to this floor, the network has been painfully slow for everyone.
++ connection_type :: Both wifi and wired.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: QRC, floor six.
+- :: Nobody else moved with us, so we can't compare.
+A :: Thanks, logged with the network team.
+
+@ network_outage_019 single
+S Visitor in the cafe can't get online; vague start.
+U undetermined
+- :: I need to send an email urgently.
+A :: Is something stopping you?
+U network_outage
++ connection_type network_scope :: The wifi in the cafe area isn't working for me or anyone at my table.
++ building :: The Horizon building.
+A :: Thanks, logged with IT.
+
+@ network_outage_020 single
+S Night-shift worker reports a whole building outage after a storm.
+U network_outage
++ network_scope connection_type :: After the storm, the whole building lost network, wired and wifi.
++ building :: Lakeview.
+- :: Power is fine, it's just the network.
+A :: Thanks, raised as high priority.
+
+@ network_outage_021 single
+S Lab technician reports wifi dead zone in a shielded lab; five turns.
+U network_outage
++ connection_type :: There's no wifi at all in our lab.
+A network_scope :: Is it the whole lab?
+U network_outage
++ network_scope :: The whole lab, it's one room.
+A building :: Which building?
+U network_outage
++ building :: QRC.
+- :: The walls are shielded, but it used to work.
+A floor :: Which floor?
+U network_outage
++ floor :: Fourth.
+A occurred_at :: When did it stop working?
+U network_outage
++ occurred_at :: After they changed the access points last week.
+A :: Thanks, logged with the network team.
+
+@ network_outage_022 single
+S Contractor reports network outage after cutting a cable by mistake; apologetic.
+U network_outage
+- :: I think I've done something bad.
++ :: We drilled through a cable and now the floor has no network.
++ network_scope connection_type :: The whole floor, both wifi and wired.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: Elm building, floor two.
+A :: Thanks for telling us, raised with the network team.
+
+@ network_outage_023 single
+S Senior engineer calmly reports a single user's laptop can't join wifi.
+U network_outage
++ connection_type network_scope :: My laptop can't join the corporate wifi, everyone else is fine.
+- :: I suspect my certificate expired.
++ building floor :: N, floor six.
+A :: Thanks, logged with IT.
+
+@ network_outage_024 single
+S Receptionist reports the reception desk PCs and phones offline; three turns.
+U network_outage
++ :: The reception computers and desk phones have all gone offline.
+A connection_type :: Wired or wifi?
+U network_outage
++ connection_type :: Wired.
+A network_scope,building :: Just reception, and which building?
+U network_outage
++ network_scope :: Just reception.
++ building :: Willow building.
+- :: I'm signing visitors in on paper.
+A :: Thanks, logged with the network team.
+
+@ network_outage_025 single
+S Manager tersely reports a room with no wifi; one turn.
+U network_outage
++ connection_type network_scope building floor :: No wifi in the training room on QRC floor one, the whole room.
+A :: Thanks, logged with the network team.
+
+@ network_outage_026 single
+S Intern jokes they've been offline so long they've started talking to colleagues.
+U network_outage
+- :: I've been offline so long I've started talking to my colleagues.
++ connection_type network_scope :: The wifi has been down for our whole room since lunch.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: N, floor three, the open plan room.
+A :: Thanks, logged with the network team.
+
+@ network_outage_027 single
+S Lab technician reports instruments can't reach licence server; wired; whole floor.
+U network_outage
++ :: Our instruments can't reach the licence server.
++ network_scope connection_type :: The whole floor's wired network seems down.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: QRC, floor five.
+- :: Half the software won't start without it.
+A :: Thanks, raised with the network team.
+
+@ network_outage_028 single
+S Housekeeping staff reports building wifi down affecting their tablets; vague start.
+U undetermined
++ :: None of our work tablets will sync this morning.
+- :: The supervisor is getting cross.
+A :: Is the wifi working?
+U network_outage
++ connection_type :: The wifi looks like it's there but nothing connects.
++ network_scope :: Everywhere in the building.
++ building :: Oak building.
+A :: Thanks, raised with the network team.
+
+@ network_outage_029 single
+S Security guard reports wifi outage on the car park level only.
+U network_outage
++ connection_type network_scope :: The wifi on the car park level is down.
++ building :: Under N.
+- :: The barrier tablets need it.
+A :: Thanks, logged with IT.
+
+@ network_outage_030 single
+S Senior engineer reports their docking station port has no network; just them.
+U undetermined
+- :: Weird one for you.
++ :: When I sit down at my desk and plug in, nothing works.
+A :: What doesn't work?
+U network_outage
++ connection_type :: My docking station gives no network when I plug in.
++ network_scope :: Just me, others have the same dock and it's fine.
+A building,floor :: Which building and floor?
+U network_outage
++ building floor :: Willow building, floor three.
+A :: Thanks, logged with IT.
+
+@ network_outage_031 single
+S Manager reports the network outage spanning two floors; four turns.
+U network_outage
++ network_scope :: Floors seven and eight have no network.
+A connection_type :: Wifi, wired, or both?
+U network_outage
++ connection_type :: Both.
+A building :: Which building?
+U network_outage
++ building :: N.
+A occurred_at :: When did it start?
+U network_outage
++ occurred_at :: About twenty minutes ago.
+- :: Phones are ringing off the hook.
+A :: Thanks, raised as high priority.
+
+@ network_outage_032 single
+S Visitor reports the conference centre wifi down for an event.
+U network_outage
++ connection_type :: The wifi in the conference hall isn't working.
++ network_scope :: The whole hall, about eighty people.
++ building :: The Summit building.
+- :: We're about to start a live stream.
+A :: Thanks, raised with IT.
+
+@ network_outage_033 confusable confused=device_fault
+S Receptionist thinks the printer is broken; the whole floor's wired network is down.
+U device_fault
++ :: The printer on our floor says it's offline.
+A :: Is it showing any error on the screen?
+U network_outage
++ :: The printer is fine, it's the network.
++ network_scope connection_type :: Nobody on the floor has a wired connection right now.
++ building floor :: QRC, floor two.
+A :: Thanks, raised with the network team.
+
+@ network_outage_034 confusable confused=device_fault
+S Lab technician thinks a scanner failed; the building network is down.
+U device_fault
++ :: The document scanner can't send to email.
+A :: Does it show an error?
+U network_outage
++ :: The scanner works, but nothing in the building can get online.
++ network_scope connection_type :: Whole building, wifi and wired.
++ building :: Research Hall 2.
+A :: Thanks, raised as high priority.
+
+@ network_outage_035 confusable confused=conference_room_av
+S Manager thinks video conferencing is broken; the room's wifi is down.
+U conference_room_av
++ :: Our video call keeps freezing in the meeting room.
+A :: Is the camera or display faulty?
+U network_outage
++ :: The equipment works.
++ connection_type network_scope :: The room's wifi keeps dropping, only in this room.
++ building floor :: N, floor ten.
+A :: Thanks, logged with the network team.
+
+@ network_outage_036 confusable confused=conference_room_av
+S Visitor can't cast to the screen; it's the network in the room.
+U conference_room_av
++ :: I can't cast my laptop to the screen in this room.
+A :: Is the screen turning on?
+U network_outage
++ :: The screen is on.
++ connection_type network_scope :: My laptop can't connect to any wifi in this room at all.
++ building :: Willow building.
+A :: Thanks, logged with IT.
+
+@ network_outage_037 confusable confused=power_outage
+S Night-shift worker thinks power is out because computers are dead; only the network rack.
+U power_outage
++ :: I think we've lost power to the computers.
+A :: Are the lights and sockets working?
+U network_outage
++ :: Lights and sockets are fine, the PCs are on.
++ network_scope connection_type :: They just have no network, the whole floor, cables and wifi.
++ building floor :: N, floor two.
+A :: Thanks, raised with the network team.
+
+@ network_outage_038 confusable confused=access_control_fault
+S Security guard thinks the badge readers are broken; the building network is down.
+U access_control_fault
++ :: All the badge readers in the building just went offline.
+A :: Are the doors locked?
+U network_outage
++ :: The doors are on fallback mode.
++ network_scope connection_type :: The whole building network is down, wired and wifi, the readers just can't reach the server.
++ building :: QRC.
+A :: Thanks, raised as high priority with the network team.

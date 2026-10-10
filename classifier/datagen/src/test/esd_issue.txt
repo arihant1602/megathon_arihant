@@ -1,0 +1,40 @@
+@ test_esd_issue_001 single
+S Auditor notices the ESD wrist strap tester has no calibration and fails.
+U esd_issue
++ esd_issue :: The wrist strap tester at the lab door fails every strap, including new ones.
++ building :: Granite Tower lab.
+- :: I'm noting it for the audit too.
+A :: Thanks, logged for the lab team.
+
+@ test_esd_issue_002 single
+S Photographer in the product photo lab sees ESD mats torn.
+U esd_issue
++ esd_issue :: The ESD mats on the product photo table are torn.
+A building :: Which building?
+U esd_issue
++ building :: Sapphire Block, floor three.
+A :: Thanks, logged for the lab team.
+
+@ test_esd_issue_003 single
+S Courier delivering parts vague: got zapped at the lab bench; grounding fault; three turns.
+U undetermined
++ :: I got a zap off the bench when I put the parts down.
+A :: Was it a static zap or a mains shock?
+U esd_issue
++ :: Just a static zap.
++ esd_issue :: The tech says the bench ground cord is unplugged.
+A building :: Which building?
+U esd_issue
++ building :: Cobalt House lab.
+A :: Thanks, logged for the lab team.
+
+@ test_esd_issue_004 confusable confused=lab_equipment_fault
+S Clinic lab nurse thinks an analyser is faulty; the ESD ground strap is disconnected.
+U lab_equipment_fault
++ :: The blood analyser keeps resetting when we touch it.
+A :: Has it shown an error?
+U esd_issue
++ :: No error.
++ esd_issue :: The engineer found its grounding strap was disconnected.
++ building :: Sapphire Block clinic.
+A :: Thanks, logged as an ESD issue.

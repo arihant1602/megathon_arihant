@@ -1,0 +1,252 @@
+@ water_leak_002 single
+S Night-shift worker finds water dripping from a ceiling vent onto the floor in a made-up office block.
+U water_leak
++ leak_source :: Water's dripping out of the ceiling vent near the photocopier.
+- :: I nearly walked straight through it in my socks.
+A water_spread,near_electrical :: Is the water spreading, and is it close to any sockets or equipment?
+U water_leak
++ water_spread :: It's a puddle about the size of a door mat and getting bigger.
++ near_electrical :: The copier's power cable runs right through it.
+A building,floor :: Please keep clear of the cable. Which building and floor?
+U water_leak
++ building floor :: Maple block, floor three.
+- :: The whole floor is empty apart from me tonight.
+A :: Thanks, I've raised it as urgent with the plumbers and electricians.
+
+@ water_leak_004 single
+S Intern greets first, then reports a dripping pipe under a kitchen sink in an annex.
+U undetermined
+- :: Hi, sorry, I'm new and not sure who to ask.
+A :: You're in the right place. What's up?
+U water_leak
++ leak_source :: The pipe under the kitchen sink is dripping into the cupboard.
++ water_spread :: It's only a small puddle inside the cupboard so far.
+A near_electrical,building :: Is it near anything electrical, and which building are you in?
+U water_leak
++ near_electrical :: There's no plug down there, just bottles of soap.
++ building floor :: The annex, ground floor kitchen.
+A :: Thanks, logged for the plumbing team.
+
+@ water_leak_006 single
+S Senior engineer annoyed that water is coming through the ceiling onto their desk in Tower B.
+U water_leak
++ leak_source :: Water is coming through the ceiling tile right above my desk.
+- :: My notebook is soaked, which is a new low for this week.
+A water_spread,near_electrical :: Is it spreading, and is it near your computer or plugs?
+U water_leak
++ water_spread :: It's dripping steadily and the puddle is getting wider.
++ near_electrical :: My docking station and monitor are right there.
++ immediate_actions_taken :: I've unplugged everything and moved the laptop.
+A building,floor :: Good call. Which building and floor?
+U water_leak
++ building floor :: Tower B, floor seven, desk 7-21.
+A :: Thanks, raised as urgent because it's near electrics.
+
+@ water_leak_008 single
+S Housekeeping staff notices a dishwasher leaking in a pantry; calm.
+U water_leak
++ leak_source space_type :: The dishwasher in the pantry is leaking from underneath.
+A water_spread,near_electrical :: Is the water spreading, and is it near anything electrical?
+U water_leak
++ water_spread :: It's spreading across the floor towards the door.
++ near_electrical :: The fridge plug is on that wall, but it's higher up.
+A building :: Which building?
+U water_leak
++ building floor :: The Harbour building, second floor pantry.
+- :: I've put the wet floor sign out.
+A :: Thanks, logged for the plumbing team.
+
+@ water_leak_010 single
+S Receptionist vague at first: a stain on the wall; then water running behind the panel.
+U undetermined
++ :: There's a dark stain spreading down the wall behind reception.
+- :: It wasn't there when I opened up.
+A :: Does it look wet?
+U water_leak
++ leak_source :: Yes, there's water running down behind the wall panel from somewhere.
++ water_spread :: It's starting to pool at the skirting.
+A near_electrical,building :: Is it near any sockets, and which building?
+U water_leak
++ near_electrical :: The reception computers are plugged in right below it.
++ building :: Riverside campus, main building reception.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_012 single
+S Lab technician tersely reports a burst hose on a sink in an invented research building.
+U water_leak
++ leak_source :: Burst hose on the lab sink, water spraying under the bench.
++ water_spread near_electrical :: Spreading, and there's a power strip under there.
++ immediate_actions_taken :: Turned off the isolation valve.
++ building floor :: Hollis research building, floor two.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_014 single
+S Contractor reports a pipe they knocked has started leaking; apologetic.
+U water_leak
+- :: I'm really sorry, this one's on me.
++ leak_source :: I knocked a pipe while drilling and now it's leaking at the joint.
+A water_spread,near_electrical :: Is the water spreading, and is it near anything electrical?
+U water_leak
++ water_spread :: It's a steady drip into a bucket I found.
++ near_electrical :: There's a light switch on the same wall, a bit to the left.
+A building,floor :: Which building and floor?
+U water_leak
++ building floor :: Block C, floor four corridor.
+A :: Thanks for telling us, logged for the plumbing team.
+
+@ water_leak_016 single
+S Manager jokes about an indoor waterfall in the stairwell; four turns.
+U water_leak
+- :: We have a new water feature in the stairwell.
++ leak_source space_type :: Water is pouring down the wall from somewhere above the stairs.
+A water_spread :: Is it spreading onto the steps?
+U water_leak
++ water_spread :: It's running down three steps and pooling at the landing.
+A near_electrical :: Is it near any lights or electrics?
+U water_leak
++ near_electrical :: There's an emergency light on that wall.
+A building :: Which building?
+U water_leak
++ building :: The east wing of the Harbour building.
+- :: People are using the other stairs now.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_018 single
+S Security guard reports water coming in under a door from outside during heavy rain.
+U water_leak
++ leak_source :: Rainwater is coming in under the side door.
++ water_spread :: It's already spread a couple of metres into the corridor.
+A near_electrical,building :: Is it near anything electrical, and which building?
+U water_leak
++ near_electrical :: No, the corridor's empty.
++ building floor :: The Lakeside annex, ground floor.
+- :: The drains outside are overflowing.
+A :: Thanks, logged for the facilities team.
+
+@ water_leak_020 single
+S Visitor notices a puddle under a radiator in a waiting room; unsure.
+U undetermined
+- :: This might be nothing, but I thought I'd mention it.
++ :: There's a puddle on the floor in the waiting room.
+A :: Can you see where the water is coming from?
+U water_leak
++ leak_source :: It's dripping from the valve on the radiator.
++ water_spread :: It's not spreading much.
++ near_electrical :: There's nothing electrical near it.
+A building :: Which building?
+U water_leak
++ building :: The Orchard building.
+A :: Thanks for flagging it, logged for the plumbing team.
+
+@ water_leak_022 single
+S Senior engineer reports the ice machine supply line leaking in a canteen; one detailed turn.
+U water_leak
++ leak_source :: The water line feeding the ice machine in the canteen has come loose and is leaking.
++ water_spread near_electrical :: Water is spreading behind the counter towards the drinks fridge sockets.
++ building floor :: Willowbrook office, ground floor canteen.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_024 single
+S Lab technician vague: everything in the lab smells damp; then a leaking pipe in the ceiling void.
+U undetermined
++ :: Our lab has smelled really damp for two days.
+- :: I assumed it was the weather.
+A :: Have you seen any water?
+U water_leak
++ leak_source :: We lifted a ceiling tile and a pipe up there is wet and dripping.
++ water_spread :: The tile below it is soaked through.
+A near_electrical,building :: Is it near any electrics, and which building?
+U water_leak
++ near_electrical :: There's a cable tray right next to the pipe.
++ building floor :: Hollis research building, floor one.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_026 single
+S Housekeeping staff reports a leaking toilet cistern supply pipe flooding a cleaner's store.
+U water_leak
++ leak_source :: The supply pipe in the cleaner's store has split and water's going everywhere.
+A water_spread,near_electrical :: Is it spreading, and is there anything electrical?
+U water_leak
++ water_spread :: It's flooding out under the door.
++ near_electrical :: The floor polisher is plugged in there.
+- :: I've grabbed every mop I own.
+A building,floor :: Which building and floor?
+U water_leak
++ building floor :: Block C, ground floor.
+A :: Thanks, raised as urgent.
+
+@ water_leak_028 single
+S Night-shift worker reports a slow drip from an air conditioning unit in a meeting room.
+U water_leak
++ leak_source :: The wall air conditioning unit in the meeting room is dripping water.
+- :: It's a slow plink plink plink.
+A water_spread,near_electrical :: Is the water spreading, and is it near anything electrical?
+U water_leak
++ water_spread :: It's dripping into a bin I put under it.
++ near_electrical :: The unit itself is electric, obviously, but the floor socket is far away.
++ building floor :: Tower B, floor two, room Linden.
+A :: Thanks, logged for the facilities team.
+
+@ water_leak_030 single
+S Manager reports a leak from the floor above coming through a light fitting; urgent; three turns.
+U water_leak
++ leak_source :: Water is coming through the light fitting in our office ceiling!
++ near_electrical :: It's literally inside the light.
+A water_spread :: Please keep away from it and don't touch the switch. Is it spreading?
+U water_leak
++ water_spread :: It's dripping onto the carpet and the patch is growing.
+A building,floor :: Which building and floor?
+U water_leak
++ building floor :: Maple block, floor five.
+- :: I've moved everyone to the other side of the room.
+A :: Thanks, raised as urgent with the plumbers and electricians.
+
+@ water_leak_032 single
+S Contractor tersely reports an outdoor tap left running onto a path; minor.
+U water_leak
++ leak_source :: The outside tap by the bike shed won't turn off.
++ water_spread :: Water's running across the path.
++ near_electrical :: Nothing electrical nearby.
++ building :: Orchard building.
+A :: Thanks, logged for the plumbing team.
+
+@ water_leak_034 confusable confused=washroom_plumbing
+S Receptionist thinks a toilet is overflowing; water is actually coming from a pipe in the ceiling above the washroom.
+U washroom_plumbing
++ :: I think one of the toilets is overflowing, the washroom floor is wet.
+A :: Is a toilet actually overflowing?
+U water_leak
++ :: The toilets are all fine.
++ leak_source :: The water is dripping from a pipe in the ceiling above the sinks.
++ water_spread :: It's spreading into the corridor.
+A near_electrical,building :: Is it near any hand dryers or sockets, and which building?
+U water_leak
++ near_electrical :: The hand dryer is right below the drip.
++ building :: The Harbour building, floor one.
+A :: Thanks, raised as urgent.
+
+@ water_leak_036 confusable confused=washroom_plumbing
+S Housekeeping staff thinks a washroom sink is blocked; a supply pipe behind the wall is leaking.
+U washroom_plumbing
++ :: The washroom sink must be blocked, there's water all under it.
+A :: Is the sink draining?
+U water_leak
++ :: It drains perfectly.
++ leak_source :: The water is coming from a pipe behind the wall panel.
++ water_spread :: It's a growing puddle.
++ near_electrical :: There's no socket nearby.
++ building :: The annex, floor two.
+A :: Thanks, logged for the plumbing team.
+
+@ water_leak_038 confusable confused=washroom_plumbing
+S Visitor reports a running washroom tap; it's water seeping from the ceiling over the sinks.
+U washroom_plumbing
++ :: A tap in the washroom seems to be running non-stop.
+A :: Can you turn it off?
+U water_leak
++ :: The taps are all off.
++ leak_source :: The water is dribbling from the ceiling down the mirror.
++ water_spread :: It's contained in the sink area.
++ near_electrical :: The mirror has a light strip that's getting wet.
++ building :: Willowbrook office.
+A :: Thanks, raised as urgent.

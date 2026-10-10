@@ -1,0 +1,42 @@
+@ test_injury_medical_001 single
+S Event organiser reports a delegate fainted in the hall.
+U injury_medical
++ injury_kind :: A delegate has fainted in the main hall.
+A person_conscious :: Is she conscious now?
+U injury_medical
++ person_conscious :: Her eyes are open now and she's answering questions.
++ persons_count :: Just her.
++ building :: Granite Tower conference centre.
+A :: First aid is on the way.
+
+@ test_injury_medical_002 single
+S Gardener cut their hand on shears; one turn.
+U injury_medical
++ injury_kind person_conscious :: I've cut my hand on the hedge shears, it's bleeding but I'm fine.
++ building :: The West Pavilion.
+- :: Should've worn the thick gloves.
+A :: First aid is on the way.
+
+@ test_injury_medical_003 single
+S Courier vague: colleague went down lifting a crate; back injury; three turns.
+U undetermined
++ :: My mate just went down lifting a crate.
+A :: Is he hurt?
+U injury_medical
++ injury_kind :: He's hurt his back, he can't stand up.
++ person_conscious :: He's conscious and talking.
+A building :: Which building?
+U injury_medical
++ building :: Cobalt House delivery bay.
+A :: First aid is on the way. Don't move him.
+
+@ test_injury_medical_004 confusable confused=unsafe_condition
+S Translator reports a loose cable in the booth; someone already tripped and hurt their ankle.
+U unsafe_condition
++ :: There's a loose cable on the booth floor.
+A :: Has anyone tripped?
+U injury_medical
++ injury_kind :: Yes, my colleague tripped and twisted her ankle.
++ person_conscious :: She's okay to talk.
++ building :: Cobalt House, floor two.
+A :: First aid is on the way.

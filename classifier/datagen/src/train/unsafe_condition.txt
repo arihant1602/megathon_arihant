@@ -1,0 +1,424 @@
+@ unsafe_condition_001 single
+S Security guard finds a fire exit blocked by pallets of boxes.
+U unsafe_condition
++ hazard_description :: The fire exit at the end of the corridor is completely blocked with pallets of boxes.
+- :: Someone clearly thought it was a good storage spot.
+A building,floor :: Thanks. Which building and floor is that exit on?
+U unsafe_condition
++ building floor landmark :: Building N, ground floor, the west exit by the loading bay.
++ occurred_at :: It was clear on my morning round, so sometime after ten.
+- :: I'd move them myself, but they're on a pallet and really heavy.
+A :: Thanks, I've raised it with EHS so it's cleared today.
+
+@ unsafe_condition_002 single
+S Intern worries about cables trailing across a walkway in an open office; vague opening.
+U undetermined
+- :: This might be me being overly cautious.
++ :: I've nearly tripped twice in the same spot today.
+A :: Not at all. What are you tripping on?
+U unsafe_condition
++ hazard_description :: There are loose power cables running across the walkway between two desk rows.
++ building floor :: QRC, floor three, near the windows.
+- :: They're grey, so they blend into the carpet perfectly.
+A :: Thanks, I've logged it so facilities can cover or reroute them.
+
+@ unsafe_condition_003 single
+S Manager calmly reports a forklift driving too fast near a pedestrian route; witnesses.
+U unsafe_condition
++ hazard_description :: The forklift at the loading dock keeps speeding through the pedestrian crossing.
++ witnesses :: Two of my team saw it nearly clip someone this morning.
+A building :: Which building's loading dock?
+U unsafe_condition
++ building space_type :: The Cedar building, the main loading dock.
+- :: I don't want to get the driver in trouble, I just don't want anyone hurt.
+A :: Thanks, I've raised it with EHS as a near miss.
+
+@ unsafe_condition_004 single
+S Housekeeping staff sees a ladder left standing unsecured in a busy corridor; terse.
+U unsafe_condition
++ hazard_description :: A tall ladder has been left standing in the corridor with nobody near it.
++ building floor :: Willow building, floor two.
+- :: People are walking under it.
+A :: Thanks, logged with EHS and facilities.
+
+@ unsafe_condition_005 single
+S Senior engineer reports a fire door propped open with a fire extinguisher; one detailed turn.
+U unsafe_condition
++ hazard_description :: Someone has propped the fire door on N floor eight open using the fire extinguisher, so the door won't shut and the extinguisher isn't where it should be.
+- :: I see it every afternoon when it gets hot.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_006 single
+S Lab technician reports a daisy-chain of power strips under a bench; four turns.
+U unsafe_condition
++ hazard_description :: Under bench 4 there are three power strips plugged into each other with everything running off them.
+- :: It looks like a Christmas tree of plugs.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: QRC, floor five.
+A :: Is anything hot or smelling of burning?
+U unsafe_condition
++ :: The middle one feels warm to the touch, but no smell.
+A occurred_at :: How long has it been set up like that?
+U unsafe_condition
++ occurred_at :: Since we rearranged the lab two weeks ago.
+- :: Nobody wanted to wait for an electrician.
+A :: Thanks, logged with EHS and the electricians.
+
+@ unsafe_condition_007 single
+S Visitor notices an empty fire extinguisher bracket in the lobby.
+U unsafe_condition
++ hazard_description :: The fire extinguisher bracket by the lobby stairs is empty.
+- :: I only noticed because I was reading the safety sign while waiting.
+A building :: Which building?
+U unsafe_condition
++ building :: The Summit building.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_008 single
+S Night-shift worker reports an open floor hatch with no barrier; urgent.
+U unsafe_condition
++ hazard_description :: There's an open floor hatch in the corridor and no barrier around it.
+- :: In the dark you'd walk straight into it.
+A building,floor :: Please stay clear. Which building and floor?
+U unsafe_condition
++ building floor :: N, floor two, outside the comms room.
++ immediate_actions_taken :: I've put a chair over it as a warning.
+A :: Thanks, raised urgently with EHS.
+
+@ unsafe_condition_009 single
+S Contractor apologises, reports workers not using harnesses on the roof.
+U unsafe_condition
+- :: Sorry, I don't want to rat anyone out.
++ hazard_description :: Two workers are on the roof edge without harnesses.
+A building :: Which building?
+U unsafe_condition
++ building :: Spruce block.
++ witnesses :: My foreman saw it as well.
+A :: Thanks, raised urgently with EHS.
+
+@ unsafe_condition_010 single
+S Receptionist reports ice on the outdoor steps at the entrance.
+U unsafe_condition
++ hazard_description space_type :: The steps outside the main entrance are covered in ice.
+- :: Two people have already wobbled.
+A building :: Which building?
+U unsafe_condition
++ building :: Lakeview.
++ occurred_at :: Since first thing this morning.
+A :: Thanks, logged with facilities for gritting.
+
+@ unsafe_condition_011 single
+S Security guard notices a dark walkway in the car park; vague start.
+U undetermined
++ :: The walk from the car park to the side door feels really unsafe at night.
+A :: What makes it unsafe?
+U unsafe_condition
++ hazard_description :: The walkway lights are out and the paving is uneven, so people stumble in the dark.
++ building :: QRC car park.
+- :: Staff have asked me to walk them to their cars.
+A :: Thanks, logged with EHS and facilities.
+
+@ unsafe_condition_012 single
+S Senior engineer reports a near miss with a falling monitor from a high shelf.
+U unsafe_condition
++ hazard_description :: An old monitor slid off the top of a cabinet and landed right next to my colleague.
+- :: It missed her by about a foot.
+A building,floor :: Glad she's okay. Which building and floor?
+U unsafe_condition
++ building floor :: N, floor ten.
++ witnesses :: Three people at the next desks saw the whole thing.
+A :: Thanks, logged as a near miss with EHS.
+
+@ unsafe_condition_013 single
+S Housekeeping staff reports a loose carpet edge at the top of the stairs.
+U undetermined
+- :: Morning, I'm doing the stairs today.
++ :: Something at the top of the staircase keeps catching my mop.
+A :: What is it?
+U unsafe_condition
++ hazard_description :: The carpet edge at the top of the stairs has come loose and curls up.
+- :: I catch my mop on it every single time.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: Birch building, floor two.
+A occurred_at :: How long has the carpet been like that?
+U unsafe_condition
++ occurred_at :: At least a week, it's been getting worse.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_014 single
+S Lab technician reports chemical bottles left on the corridor floor.
+U unsafe_condition
++ hazard_description :: Someone has left a box of chemical bottles on the corridor floor outside the lab.
+- :: I almost kicked it.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: QRC, floor four.
++ :: The bottles are sealed, nothing has leaked.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_015 single
+S Manager reports people without PPE in a lab; three turns.
+U unsafe_condition
++ hazard_description :: People keep walking into the soldering lab without safety glasses.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: N, floor six.
+- :: I've reminded them politely, twice.
+A witnesses :: Has anyone else raised it?
+U unsafe_condition
++ witnesses :: The lab manager has seen it too.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_016 single
+S Visitor reports a broken handrail on an outdoor ramp.
+U unsafe_condition
++ hazard_description :: The handrail on the ramp to the entrance is loose and wobbles.
+- :: I use a cane, so I really rely on it.
+A building :: Which building?
+U unsafe_condition
++ building :: The Horizon building.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_017 single
+S Intern reports boxes stacked dangerously high in a store room.
+U unsafe_condition
++ hazard_description :: The boxes in the store room are stacked almost to the ceiling and leaning.
+- :: It looks like a game of Jenga.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: QRC, floor one.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_018 single
+S Night-shift worker reports broken glass left in a bin bag; housekeeping risk.
+U unsafe_condition
++ hazard_description :: Someone threw broken glass into a normal bin bag and it's poking through.
++ building floor :: N, floor four, the pantry bin.
+- :: The cleaners could get cut.
+A :: Thanks, logged with EHS and housekeeping.
+
+@ unsafe_condition_019 single
+S Lab technician reports a hot plate left on and unattended overnight; four turns.
+U unsafe_condition
++ hazard_description :: A hot plate was left on in the lab overnight with nobody there.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: The physics lab in Research Hall 2, first floor.
+A :: Is it still on?
+U unsafe_condition
++ immediate_actions_taken :: I've switched it off now.
++ :: Nothing was on it, thankfully.
+A occurred_at :: When was it left on?
+U unsafe_condition
++ occurred_at :: Sometime yesterday evening.
+- :: I'll ask around who was last in.
+A :: Thanks, logged as a near miss with EHS.
+
+@ unsafe_condition_020 single
+S Contractor reports an unguarded saw on site.
+U unsafe_condition
++ hazard_description :: The bench saw on site has had its guard taken off.
+- :: Someone said it was getting in the way.
+A building :: Which building?
+U unsafe_condition
++ building :: Elm building, floor three.
+A :: Thanks, raised with EHS.
+
+@ unsafe_condition_021 single
+S Receptionist greets, then reports a revolving door spinning too fast.
+U undetermined
+- :: Hi, slightly odd one.
+A :: Go ahead.
+U unsafe_condition
++ hazard_description :: The revolving door is spinning really fast and nearly knocked over an older visitor.
++ building :: QRC.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_022 single
+S Security guard reports a gate left unlocked to a roof.
+U unsafe_condition
++ hazard_description :: The gate to the roof is unlocked and the roof edge has no railing on that side.
++ building :: N.
+- :: Anyone could wander up there.
+A :: Thanks, raised with EHS and security.
+
+@ unsafe_condition_023 single
+S Housekeeping staff reports a wet floor without sign after mopping.
+U unsafe_condition
++ hazard_description :: The floor near the lifts has been mopped but there's no wet floor sign.
+- :: Not my mop, before anyone asks.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: Willow building, floor one.
+A :: Thanks, logged with housekeeping.
+
+@ unsafe_condition_024 single
+S Senior engineer reports overloaded shelving that bends in a lab.
+U undetermined
++ :: I'm worried about something in our lab before it turns into a real problem.
+- :: Probably overthinking it.
+A :: Better to raise it. What is it?
+U unsafe_condition
++ hazard_description :: The metal shelving in our lab is bending under heavy equipment.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: QRC, floor six.
+- :: The middle shelf is visibly bowed.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_025 single
+S Manager reports tripping hazard from uneven paving outside; three turns.
+U unsafe_condition
++ hazard_description :: The paving stones outside the bike shed are lifted and uneven.
+A building :: Which building?
+U unsafe_condition
++ building :: Pine building.
+- :: I've seen a couple of people stumble.
+A witnesses :: Did anyone fall?
+U unsafe_condition
++ witnesses :: Not yet, but the cyclists all talk about it.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_026 single
+S Lab technician reports a gas cylinder not chained up; one turn.
+U unsafe_condition
++ hazard_description :: Gas cylinder standing loose in the lab, not chained to the wall, QRC floor three.
+- :: It wobbles when you walk past.
+A :: Thanks, raised with EHS.
+
+@ unsafe_condition_027 single
+S Visitor reports a glass door with no markings people walk into.
+U undetermined
+- :: I just watched something slightly funny but also not funny.
+A :: What happened?
+U unsafe_condition
++ hazard_description :: The glass door in the atrium has no markings and people keep walking into it.
+- :: I watched two people do it in ten minutes.
+A building :: Which building?
+U unsafe_condition
++ building :: The Summit building.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_028 single
+S Night-shift worker reports a blocked emergency eyewash station; five turns.
+U unsafe_condition
++ hazard_description :: The emergency eyewash station in the lab is blocked by a big cabinet.
+A building :: Which building?
+U unsafe_condition
++ building :: N.
+A floor :: Which floor?
+U unsafe_condition
++ floor :: Floor seven.
+- :: You couldn't get to it in an emergency.
+A occurred_at :: When was it blocked?
+U unsafe_condition
++ occurred_at :: The cabinet was delivered this afternoon.
+A immediate_actions_taken :: Has anyone tried to move it?
+U unsafe_condition
++ immediate_actions_taken :: It's too heavy for me alone.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_029 single
+S Contractor reports an uncovered trench across a footpath.
+U unsafe_condition
++ hazard_description :: There's an open trench across the footpath with no cover or fence.
++ building :: The Cedar building, by the side gate.
+- :: It's from the cable works.
+A :: Thanks, raised urgently with EHS.
+
+@ unsafe_condition_030 single
+S Intern reports a balcony door that doesn't lock with a low rail.
+U unsafe_condition
++ hazard_description :: The balcony door on our floor doesn't lock and the railing outside is really low.
+A building,floor :: Which building and floor?
+U unsafe_condition
++ building floor :: N, floor nine.
+- :: People go out there for phone calls.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_031 single
+S Receptionist reports a heavy sign leaning against a wall that could fall.
+U unsafe_condition
++ hazard_description :: A big metal sign is leaning against the lobby wall and could tip over.
++ building :: Lakeview.
+- :: It's been there since the event yesterday.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_032 single
+S Housekeeping staff vague: something wrong in a corridor; then reports exposed nails on a skirting.
+U undetermined
++ :: Something in the corridor ripped my trousers.
+- :: Brand new trousers too.
+A :: What caught them?
+U unsafe_condition
++ hazard_description :: There are nails sticking out of a loose skirting board by the stairs.
++ building floor :: QRC, floor two.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_033 confusable confused=structural_damage
+S Manager thinks a wall is damaged; it's a hazard: a heavy picture frame hung with tape.
+U structural_damage
++ :: There's a problem with the wall in our meeting room.
+A :: Is the wall cracked or damaged?
+U unsafe_condition
++ :: The wall is fine.
++ hazard_description :: Someone's hung a heavy picture frame with tape and it's slipping above people's heads.
++ building floor :: N, floor five.
+A :: Thanks, logged with EHS.
+
+@ unsafe_condition_034 confusable confused=structural_damage
+S Security guard thinks the floor is broken; it's a missing floor tile cover over a cable box.
+U structural_damage
++ :: Part of the floor in the bay looks broken.
+A :: Is it cracked or collapsed?
+U unsafe_condition
++ hazard_description :: Nothing's broken, someone left the cover off a floor box and there's an open hole.
++ building floor :: QRC, floor four.
+- :: Easy to put an ankle in it.
+A :: Thanks, logged with facilities.
+
+@ unsafe_condition_035 confusable confused=injury_medical
+S Intern thinks someone got hurt; it was a near miss on the stairs.
+U injury_medical
++ :: Someone just fell on the stairs.
+A :: Are they hurt?
+U unsafe_condition
+- :: No, they caught the rail, they're fine.
++ hazard_description :: The stair edge has no grip strip and it's really slippery.
++ building :: Birch building.
+A :: Thanks, logged as a near miss with EHS.
+
+@ unsafe_condition_036 confusable confused=injury_medical
+S Lab technician thinks a colleague was injured by a falling cylinder; it was a near miss.
+U injury_medical
++ :: A gas cylinder fell over next to my colleague.
+A :: Is your colleague hurt?
+U unsafe_condition
++ :: No, it missed her.
++ hazard_description :: The cylinder wasn't chained and the floor there slopes.
++ building floor :: Research Hall 2, down on the ground floor gas store.
+A :: Thanks, logged as a near miss with EHS.
+
+@ unsafe_condition_037 confusable confused=spill_cleanup
+S Visitor thinks there's a spill; the floor was just polished and is slippery with no sign.
+U spill_cleanup
++ :: There's something slippery on the lobby floor.
+A :: Is something spilled?
+U unsafe_condition
++ :: Nothing's spilled.
++ hazard_description :: They've just polished it and there's no sign, it's like an ice rink.
++ building :: Horizon building.
+A :: Thanks, logged with housekeeping and EHS.
+
+@ unsafe_condition_038 confusable confused=fire_smoke
+S Night-shift worker mentions fire safety; there's no fire, extinguishers are missing from a floor.
+U fire_smoke
++ :: I've got a fire safety problem on our floor.
+A :: Is there any smoke or fire?
+U unsafe_condition
++ :: No fire at all.
++ hazard_description :: All the fire extinguishers on the floor have been taken away and not replaced.
++ building floor :: N, floor three.
+A :: Thanks, raised with EHS.

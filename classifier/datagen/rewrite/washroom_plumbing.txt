@@ -1,0 +1,216 @@
+@ washroom_plumbing_002 single
+S Senior engineer annoyed that a toilet won't flush in the men's washroom of Tower B.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The end toilet in the men's washroom won't flush at all.
+- :: The handle just flops around like it's given up.
+A building,floor :: Sorry about that. Which building and floor?
+U washroom_plumbing
++ building floor :: Tower B, floor six.
++ occurred_at :: It's been like that since this morning.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_004 single
+S Intern greets awkwardly, then reports a blocked sink in a washroom.
+U undetermined
+- :: Hi, this is a bit awkward.
+A :: No problem, what's up?
+U washroom_plumbing
++ fixture_type plumbing_issue :: The sink in the ladies' washroom is completely blocked.
++ :: The water just sits there and doesn't drain.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: Block C, floor two.
+- :: Someone has put a sign on it saying don't use.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_006 single
+S Housekeeping staff calmly reports an overflowing urinal.
+U washroom_plumbing
++ fixture_type plumbing_issue :: One of the urinals is overflowing onto the floor.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: The Harbour building, ground floor.
++ immediate_actions_taken :: I've closed the washroom and put out the wet floor sign.
+- :: Not my favourite part of the job.
+A :: Thanks, raised with the plumbing team and housekeeping.
+
+@ washroom_plumbing_008 single
+S Visitor reports no water from any tap in a washroom; vague start.
+U undetermined
++ :: I couldn't wash my hands just now.
+A :: What happened when you tried?
+U washroom_plumbing
++ fixture_type plumbing_issue :: None of the taps in the washroom give any water.
+- :: I tried all four of them.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: The Orchard building, first floor near the cafe.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_010 single
+S Night-shift worker reports a shower in the gym changing room dripping constantly.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The shower in the gym changing room keeps dripping even when it's off.
+- :: The drip echoes all night.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: Willowbrook office, basement gym.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_012 single
+S Receptionist tersely reports a blocked toilet in the visitor washroom; one turn.
+U washroom_plumbing
++ fixture_type plumbing_issue :: Visitor washroom toilet is blocked, water's right up to the rim.
++ building :: The Riverside campus main building, by reception.
+- :: I've taped a note to the door.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_014 single
+S Lab technician reports the drinking fountain has no pressure.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The drinking fountain outside our lab barely trickles.
+- :: You have to put your face right into it.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: Second floor of the Hollis research building, by the stairs.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_016 single
+S Manager reports a toilet running constantly; four turns.
+U washroom_plumbing
++ fixture_type :: One of the toilets in our washroom keeps running.
+A plumbing_issue :: Is it overflowing, or just running water into the bowl?
+U washroom_plumbing
++ plumbing_issue :: Just running nonstop, you can hear it hissing.
+A building :: Which building?
+U washroom_plumbing
++ building :: Maple block.
+A floor :: Which floor?
+U washroom_plumbing
++ floor :: Floor five, the men's.
+- :: It's been going for days.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_018 single
+S Contractor reports a broken sink tap handle that won't turn off fully.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The tap handle on a washroom sink snapped off and it won't turn off fully.
++ building floor :: The annex, floor one.
+- :: It's not flooding, just dribbling.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_020 single
+S Security guard vague: bad noise from washroom pipes; then a urinal won't stop flushing; three turns.
+U undetermined
++ :: There's a loud gushing noise coming from the washroom near the lifts.
+A :: Can you see what's causing it?
+U washroom_plumbing
++ fixture_type plumbing_issue :: A urinal is flushing over and over without stopping.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: Tower B, floor one.
+- :: It's oddly relaxing, like a waterfall.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_022 single
+S Intern jokes the shower in the gym is either freezing or nothing.
+U washroom_plumbing
+- :: The gym shower has two settings, ice bath and off.
++ fixture_type plumbing_issue :: There's no hot water in the showers at all.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: Lakeside annex, ground floor gym.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_024 single
+S Housekeeping staff reports a blocked floor drain in a shower room; three turns.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The floor drain in the shower room is blocked and water is standing.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: Willowbrook office, basement.
+A occurred_at :: When did you notice?
+U washroom_plumbing
++ occurred_at :: First thing this morning.
+- :: There's hair everywhere, sorry for the detail.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_026 single
+S Senior engineer reports a toilet seat cracked and the flush button stuck; one turn.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The flush button on the accessible toilet is stuck down and keeps flushing.
++ building floor :: Block C, ground floor accessible washroom.
+- :: I'm worried it'll flood eventually.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_028 single
+S Visitor apologises, then reports a sink tap spraying sideways.
+U washroom_plumbing
+- :: Sorry, I've just soaked my shirt.
++ fixture_type plumbing_issue :: The tap in the washroom sprays sideways instead of into the sink.
+A building :: Which building?
+U washroom_plumbing
++ building floor :: The Orchard building, ground floor.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_030 single
+S Night-shift worker reports toilets not refilling; five turns.
+U washroom_plumbing
++ plumbing_issue :: The toilets don't refill after you flush.
+A fixture_type :: Is it all the toilets?
+U washroom_plumbing
++ fixture_type :: All the toilets in the men's, the urinals seem fine.
+A building :: Which building?
+U washroom_plumbing
++ building :: Harbour building.
+A floor :: Which floor?
+U washroom_plumbing
++ floor :: Fourth.
+- :: Is there a water outage tonight?
+A occurred_at :: I'm not aware of one. When did you notice?
+U washroom_plumbing
++ occurred_at :: About an hour ago.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_032 single
+S Manager reports a sink overflowing because the overflow hole is blocked.
+U washroom_plumbing
++ fixture_type plumbing_issue :: The washroom sink overflowed onto the floor, the drain is blocked solid.
+A building,floor :: Which building and floor?
+U washroom_plumbing
++ building floor :: Tower B, floor four.
+- :: Someone left the tap on, which didn't help.
+A :: Thanks, raised with the plumbing team and housekeeping.
+
+@ washroom_plumbing_034 confusable confused=water_leak
+S Security guard thinks a pipe has burst; a toilet is overflowing.
+U water_leak
++ :: I think a pipe has burst, there's water flowing out of the washroom.
+A :: Can you see where the water is coming from?
+U washroom_plumbing
++ fixture_type plumbing_issue :: It's not a pipe, one of the toilets is overflowing and won't stop.
++ building floor :: Maple block, floor two.
+- :: I've closed the stopcock I found under the sink.
+A :: Thanks, raised with the plumbing team.
+
+@ washroom_plumbing_036 confusable confused=water_leak
+S Receptionist sees water under the washroom door and thinks the ceiling is leaking; a sink is blocked and overflowing.
+U water_leak
++ :: There's water coming under the washroom door, maybe the ceiling is leaking.
+A :: Is any water dripping from above?
+U washroom_plumbing
++ :: The ceiling is dry.
++ fixture_type plumbing_issue :: A sink inside is blocked and someone left the tap running, so it overflowed.
++ building :: The Riverside campus main building.
+A :: Thanks, logged for the plumbing team.
+
+@ washroom_plumbing_038 confusable confused=water_leak
+S Housekeeping staff hears constant running water and suspects a hidden leak; it's a toilet cistern not shutting off.
+U water_leak
++ :: I can hear water running behind the wall in the washroom, I think there's a hidden leak.
+A :: Is there any water on the floor or walls?
+U washroom_plumbing
++ :: Everything is dry.
++ fixture_type plumbing_issue :: It's the toilet cistern, it never stops filling.
++ building floor :: Hollis research building, floor three.
+A :: Thanks, logged for the plumbing team.

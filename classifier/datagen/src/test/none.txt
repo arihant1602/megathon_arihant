@@ -1,0 +1,89 @@
+@ test_none_001 none
+S Translator asks for the wifi password.
+U none
+- :: Could I get the wifi password for my laptop?
+A :: Reception can give you the guest wifi details.
+U none
+- :: Thank you.
+A :: You're welcome.
+
+@ test_none_002 none
+S Auditor asks if the app can produce reports for the audit.
+U none
+- :: Can this app export a list of all reports for my audit?
+A :: I can't export data, sorry. The facilities team can help.
+U none
+- :: Okay.
+A :: Thanks.
+
+@ test_none_003 none
+S Courier asks where to park the van.
+U none
+- :: Where am I allowed to park the van?
+A :: Security at the gate can tell you.
+U none
+- :: Cheers.
+A :: Thanks.
+
+@ test_none_004 none
+S Gardener says the roses are on fire this year, meaning blooming.
+U undetermined
+- :: The roses are on fire this year.
+A :: Is there an actual fire?
+U none
+- :: No, they're blooming like crazy.
+A :: Lovely. I'm here if anything needs reporting.
+
+@ test_none_005 none
+S Event organiser asks for the catering headcount deadline.
+U none
+- :: When's the deadline for catering numbers?
+A :: Catering bookings aren't handled here, sorry.
+U none
+- :: No problem.
+A :: Thanks.
+
+@ test_none_006 none
+S Clinic nurse tests the app's microphone.
+U none
+- :: Hello, can you hear me clearly?
+A :: Yes, loud and clear.
+U none
+- :: Great, just testing before my shift.
+A :: All good.
+
+@ test_none_007 none
+S Photographer says the photos are killer, idiom.
+U undetermined
+- :: These shots are killer.
+A :: Is anyone hurt?
+U none
+- :: No, I mean the photos look amazing.
+A :: Glad to hear it.
+
+@ test_none_008 none
+S Cafeteria cashier asks about holiday pay.
+U none
+- :: How is holiday pay worked out for part-time staff?
+A :: That's an HR question, sorry.
+U none
+- :: Okay, I'll ask HR.
+A :: Thanks.
+
+@ test_none_009 none
+S Mail room clerk says the mail is flooding in at Christmas.
+U undetermined
+- :: We're flooded down here.
+A :: Is there water in the mail room?
+U none
+- :: No, just Christmas post.
+A :: Ha, good luck.
+
+@ test_none_010 none
+S Auditor asks what time the building closes.
+U none
+- :: What time does the building lock up tonight?
+A :: Security can confirm closing times.
+U none
+- :: Thank you.
+A :: You're welcome.
