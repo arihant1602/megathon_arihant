@@ -1,0 +1,2700 @@
+{
+"tokens": [
+{
+"text": "There's water dripping from the ceiling near the pantry.",
+"ids": [
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+15
+]
+},
+{
+"text": "It's on the fourth floor of N building.",
+"ids": [
+733,
+434,
+327,
+253,
+7002,
+5254,
+273,
+427,
+3652,
+15
+]
+},
+{
+"text": "I think the pipe burst, it's spreading towards the server room!!",
+"ids": [
+309,
+1158,
+253,
+12881,
+12948,
+13,
+352,
+434,
+17355,
+4404,
+253,
+4771,
+2316,
+4672
+]
+},
+{
+"text": "The lift is stuck between floors 3 and 4 with two people inside.",
+"ids": [
+380,
+8488,
+310,
+10960,
+875,
+23467,
+495,
+285,
+577,
+342,
+767,
+952,
+3304,
+15
+]
+},
+{
+"text": "Someone left a wet mop and the floor is super slippery.",
+"ids": [
+24955,
+1669,
+247,
+9685,
+278,
+412,
+285,
+253,
+5254,
+310,
+2221,
+46903,
+15
+]
+},
+{
+"text": "QRC, 2nd floor, conference room 2B.",
+"ids": [
+1165,
+19921,
+13,
+374,
+2109,
+5254,
+13,
+8059,
+2316,
+374,
+35,
+15
+]
+},
+{
+"text": "I don't know if anyone is hurt.",
+"ids": [
+309,
+1053,
+626,
+871,
+604,
+3780,
+310,
+8513,
+15
+]
+},
+{
+"text": "The AC in Room 4B-12 isn't working; it's 31\u00b0C in here.",
+"ids": [
+380,
+11940,
+275,
+19121,
+577,
+35,
+14,
+805,
+3548,
+626,
+2444,
+28,
+352,
+434,
+4562,
+3272,
+36,
+275,
+1060,
+15
+]
+},
+{
+"text": "Smoke is coming out of the electrical panel near the lifts!",
+"ids": [
+3774,
+3136,
+310,
+3551,
+562,
+273,
+253,
+8545,
+5370,
+2822,
+253,
+35408,
+2
+]
+},
+{
+"text": "Hi, I need to report something.",
+"ids": [
+17459,
+13,
+309,
+878,
+281,
+1304,
+1633,
+15
+]
+},
+{
+"text": "How do I apply for leave?",
+"ids": [
+1359,
+513,
+309,
+4647,
+323,
+3553,
+32
+]
+},
+{
+"text": "There's a snake near the parking lot at the ground floor.",
+"ids": [
+1707,
+434,
+247,
+24980,
+2822,
+253,
+12102,
+2257,
+387,
+253,
+3216,
+5254,
+15
+]
+},
+{
+"text": "The lights keep flickering   in the corridor.",
+"ids": [
+380,
+10654,
+1978,
+22336,
+2158,
+50275,
+249,
+253,
+25506,
+15
+]
+},
+{
+"text": "it happened just now, around 9:30am...",
+"ids": [
+352,
+4592,
+816,
+1024,
+13,
+1475,
+898,
+27,
+1229,
+312,
+1051
+]
+},
+{
+"text": "Caf\u00e9 na\u00efve r\u00e9sum\u00e9 \u2014 \u00e9moji \ud83d\udd25 test.",
+"ids": [
+42107,
+860,
+36060,
+9568,
+2204,
+860,
+1905,
+3974,
+6972,
+8020,
+22692,
+231,
+100,
+1071,
+15
+]
+},
+{
+"text": "tabs\tand  double  spaces",
+"ids": [
+28815,
+186,
+395,
+50276,
+12237,
+50276,
+31748
+]
+},
+{
+"text": "done",
+"ids": [
+2218
+]
+},
+{
+"text": "that's all",
+"ids": [
+326,
+434,
+512
+]
+},
+{
+"text": "Building N, floor 7, washroom near the stairs.",
+"ids": [
+16790,
+427,
+13,
+5254,
+818,
+13,
+14841,
+4461,
+2822,
+253,
+16303,
+15
+]
+},
+{
+"text": "The toilet on level 2 is overflowing and there's no water in the taps.",
+"ids": [
+380,
+21487,
+327,
+1268,
+374,
+310,
+19068,
+272,
+285,
+627,
+434,
+642,
+1824,
+275,
+253,
+50156,
+15
+]
+},
+{
+"text": "A chair's leg broke and someone fell, they're bleeding a bit.",
+"ids": [
+329,
+6951,
+434,
+1791,
+9377,
+285,
+3095,
+6497,
+13,
+597,
+1472,
+14771,
+247,
+2372,
+15
+]
+},
+{
+"text": "Power is out on the whole eleventh floor since 10 minutes.",
+"ids": [
+8916,
+310,
+562,
+327,
+253,
+2644,
+2232,
+19894,
+5254,
+1580,
+884,
+2909,
+15
+]
+},
+{
+"text": "Can you send someone? It's urgent!!!",
+"ids": [
+2615,
+368,
+5007,
+3095,
+32,
+733,
+434,
+21007,
+15844
+]
+},
+{
+"text": "My email is |||EMAIL_ADDRESS||| by the way.",
+"ids": [
+2752,
+4579,
+310,
+209,
+50277,
+407,
+253,
+1039,
+15
+]
+},
+{
+"text": "100% sure it's the third floor, not the 2nd.",
+"ids": [
+2233,
+6,
+2119,
+352,
+434,
+253,
+2626,
+5254,
+13,
+417,
+253,
+374,
+2109,
+15
+]
+},
+{
+"text": "non\u00a0breaking\u00a0space and ideographic\u3000space\u2003em  end ",
+"ids": [
+1327,
+575,
+22071,
+575,
+5641,
+285,
+1827,
+5576,
+19409,
+5641,
+3930,
+358,
+50276,
+423,
+209
+]
+}
+],
+"samples": [
+{
+"turns": [
+[
+"There's water dripping from the ceiling near the pantry.",
+"It's on the fourth floor of N building."
+]
+],
+"ids": [
+50281,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+15,
+733,
+434,
+327,
+253,
+7002,
+5254,
+273,
+427,
+3652,
+15,
+50282,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283
+],
+"mask": [
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+"sent": [
+-1,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1
+]
+},
+{
+"turns": [
+[
+"There's water dripping from the ceiling near the pantry."
+],
+[
+"It's on the fourth floor of N building.",
+"I think the pipe burst, it's spreading towards the server room!!"
+],
+[
+"I don't know if anyone is hurt."
+]
+],
+"ids": [
+50281,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+15,
+50282,
+733,
+434,
+327,
+253,
+7002,
+5254,
+273,
+427,
+3652,
+15,
+309,
+1158,
+253,
+12881,
+12948,
+13,
+352,
+434,
+17355,
+4404,
+253,
+4771,
+2316,
+4672,
+50282,
+309,
+1053,
+626,
+871,
+604,
+3780,
+310,
+8513,
+15,
+50282,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283,
+50283
+],
+"mask": [
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0
+],
+"sent": [
+-1,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+-1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+-1,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1,
+-1
+]
+},
+{
+"turns": [
+[
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute.",
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute.",
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute."
+],
+[
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute.",
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute.",
+"There's water dripping from the ceiling near the pantry and it is getting worse every minute."
+],
+[
+"It's on the fourth floor of N building."
+]
+],
+"ids": [
+50281,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+50282,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+1707,
+434,
+1824,
+45687,
+432,
+253,
+16720,
+2822,
+253,
+20018,
+610,
+285,
+352,
+310,
+2970,
+7197,
+1046,
+7017,
+15,
+50282,
+733,
+434,
+327,
+253,
+7002,
+5254,
+273,
+427,
+3652,
+15,
+50282
+],
+"mask": [
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1
+],
+"sent": [
+-1,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+0,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+1,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+2,
+-1,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+3,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+4,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+5,
+-1,
+6,
+6,
+6,
+6,
+6,
+6,
+6,
+6,
+6,
+6,
+-1
+]
+}
+],
+"convs": [
+{
+"name": "leak",
+"probs": [
+{
+"water_leak": 0.95
+},
+{
+"water_leak": 0.96
+},
+{
+"water_leak": 0.96
+},
+{
+"water_leak": 0.96
+}
+],
+"turns": [
+{
+"user": "There's water dripping from the ceiling.",
+"kind": "ask",
+"text": "Which building are you in? And which floor?",
+"fields": [
+"building",
+"floor"
+],
+"note": "type settled: water_leak (0.95 >= 0.8)",
+"type": "water_leak",
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+},
+{
+"user": "It's on the fourth floor of N building.",
+"kind": "detail",
+"text": "Got it, your report is ready and Facilities Engineering will handle it. Is the water contained, or still spreading? And is the water near any sockets, cables or equipment? (You can also say 'done' to file the report now.)",
+"fields": [
+"water_spread",
+"near_electrical"
+],
+"note": "type holds: water_leak (0.96)",
+"type": "water_leak",
+"values": {
+"floor": 4,
+"building": "N"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+},
+{
+"user": "I don't know.",
+"kind": "detail",
+"text": "Which room or area exactly, for example Conference Room 2 or the pantry? And where is the water coming from: a pipe, the ceiling, a tap, or are you not sure? (You can also say 'done' to file the report now.)",
+"fields": [
+"space_id",
+"leak_source"
+],
+"note": "type holds: water_leak (0.96)",
+"type": "water_leak",
+"values": {
+"floor": 4,
+"building": "N"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+},
+{
+"user": "done",
+"kind": "submit",
+"text": "Report filed. Facilities Engineering has been notified. Thanks!",
+"fields": [],
+"note": "type holds: water_leak (0.96)",
+"type": "water_leak",
+"values": {
+"floor": 4,
+"building": "N"
+},
+"ready": true,
+"done": true,
+"outcome": "submitted",
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+}
+]
+},
+{
+"name": "menu",
+"probs": [
+{
+"water_leak": 0.45,
+"washroom_plumbing": 0.3,
+"spill_cleanup": 0.1
+},
+{
+"water_leak": 0.5,
+"washroom_plumbing": 0.3
+},
+{
+"washroom_plumbing": 0.6
+}
+],
+"turns": [
+{
+"user": "Something is wrong with the water here.",
+"kind": "confirm",
+"text": "Just to make sure I file this right, is it about (1) Water leak, (2) Washroom plumbing fault, (3) Spill (non-hazardous), or something else?",
+"fields": [],
+"note": "not settled: top water_leak 0.45 < 0.8",
+"type": null,
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": null
+},
+{
+"user": "the second one",
+"kind": "ask",
+"text": "Which building are you in? And which floor?",
+"fields": [
+"building",
+"floor"
+],
+"note": "type confirmed by user: washroom_plumbing",
+"type": "washroom_plumbing",
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+},
+{
+"user": "QRC, ground floor",
+"kind": "detail",
+"text": "Got it, your report is ready and Facilities Engineering will handle it. Which room or area exactly, for example Conference Room 2 or the pantry? And which fixture is it? (You can also say 'done' to file the report now.)",
+"fields": [
+"space_id",
+"fixture_type"
+],
+"note": "type confirmed by user: washroom_plumbing",
+"type": "washroom_plumbing",
+"values": {
+"floor": 1,
+"building": "QRC"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+}
+]
+},
+{
+"name": "early_done",
+"probs": [
+{
+"undetermined": 0.9
+},
+{
+"undetermined": 0.9
+}
+],
+"turns": [
+{
+"user": "Hi, I need to report something.",
+"kind": "open",
+"text": "Can you tell me a bit more about what's happening?",
+"fields": [],
+"note": "not settled: top undetermined 0.90 < 0.8",
+"type": null,
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": null
+},
+{
+"user": "done",
+"kind": "open",
+"text": "I can't file this yet: I still need to know what the problem is. Can you tell me a bit more about what's happening?",
+"fields": [],
+"note": "not settled: top undetermined 0.90 < 0.8",
+"type": null,
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": null
+}
+]
+},
+{
+"name": "out_of_scope",
+"probs": [
+{
+"none": 0.93
+}
+],
+"turns": [
+{
+"user": "How do I apply for leave?",
+"kind": "out_of_scope",
+"text": "This assistant is only for reporting facility incidents (leaks, faults, safety, security). Nothing has been filed.",
+"fields": [],
+"note": "not settled: top none 0.93 < 0.8",
+"type": null,
+"values": {},
+"ready": false,
+"done": true,
+"outcome": "out_of_scope",
+"routing": null
+}
+]
+},
+{
+"name": "switch",
+"probs": [
+{
+"water_leak": 0.85
+},
+{
+"electrical_hazard": 0.9
+},
+{
+"electrical_hazard": 0.2,
+"undetermined": 0.7
+},
+{
+"fire_smoke": 0.95
+}
+],
+"turns": [
+{
+"user": "Water near the panel.",
+"kind": "ask",
+"text": "Which building are you in? And which floor?",
+"fields": [
+"building",
+"floor"
+],
+"note": "type settled: water_leak (0.85 >= 0.8)",
+"type": "water_leak",
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P3",
+"team": "Facilities Engineering",
+"notify": [
+"Plumbing Technician"
+],
+"secondary": [],
+"sla_min": 240
+}
+},
+{
+"user": "Actually sparks are coming out of the socket.",
+"kind": "ask",
+"text": "Which building are you in? And which floor?",
+"fields": [
+"building",
+"floor"
+],
+"note": "type changed water_leak -> electrical_hazard (0.90)",
+"type": "electrical_hazard",
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P1",
+"team": "Facilities Engineering",
+"notify": [
+"Electrical Technician"
+],
+"secondary": [],
+"sla_min": 15
+}
+},
+{
+"user": "hmm",
+"kind": "open",
+"text": "Can you tell me a bit more about what's happening?",
+"fields": [],
+"note": "un-settled electrical_hazard (now 0.20); top undetermined 0.70 < 0.8, will ask",
+"type": null,
+"values": {},
+"ready": false,
+"done": false,
+"outcome": null,
+"routing": null
+},
+{
+"user": "Now there's smoke! level 3 in building N",
+"kind": "detail",
+"text": "If there is fire, leave the area and use the emergency number now. I am alerting the response team. Got it, your report is ready and Environment, Health & Safety will handle it. Can you see flames, or only smoke? And which room or area exactly, for example Conference Room 2 or the pantry? (You can also say 'done' to file the report now.)",
+"fields": [
+"fire_visible",
+"space_id"
+],
+"note": "type settled: fire_smoke (0.95 >= 0.8)",
+"type": "fire_smoke",
+"values": {
+"floor": 3,
+"building": "N"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P1",
+"team": "Environment, Health & Safety",
+"notify": [
+"Emergency Response Team / First Aid"
+],
+"secondary": [],
+"sla_min": 15
+}
+}
+]
+},
+{
+"name": "fire",
+"probs": [
+{
+"fire_smoke": 0.97
+},
+{
+"fire_smoke": 0.97
+},
+{
+"fire_smoke": 0.97
+}
+],
+"turns": [
+{
+"user": "I smell smoke on the 5th floor of QRC.",
+"kind": "detail",
+"text": "If there is fire, leave the area and use the emergency number now. I am alerting the response team. Got it, your report is ready and Environment, Health & Safety will handle it. Can you see flames, or only smoke? And which room or area exactly, for example Conference Room 2 or the pantry? (You can also say 'done' to file the report now.)",
+"fields": [
+"fire_visible",
+"space_id"
+],
+"note": "type settled: fire_smoke (0.97 >= 0.8)",
+"type": "fire_smoke",
+"values": {
+"floor": 5,
+"building": "QRC"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P1",
+"team": "Environment, Health & Safety",
+"notify": [
+"Emergency Response Team / First Aid"
+],
+"secondary": [],
+"sla_min": 15
+}
+},
+{
+"user": "no idea",
+"kind": "detail",
+"text": "Has the area been evacuated? And roughly when did this happen or when did you notice it? (You can also say 'done' to file the report now.)",
+"fields": [
+"evacuation_status",
+"occurred_at"
+],
+"note": "type holds: fire_smoke (0.97)",
+"type": "fire_smoke",
+"values": {
+"floor": 5,
+"building": "QRC"
+},
+"ready": true,
+"done": false,
+"outcome": null,
+"routing": {
+"priority": "P1",
+"team": "Environment, Health & Safety",
+"notify": [
+"Emergency Response Team / First Aid"
+],
+"secondary": [],
+"sla_min": 15
+}
+},
+{
+"user": "that's all",
+"kind": "submit",
+"text": "Report filed. Environment, Health & Safety has been notified. Thanks!",
+"fields": [],
+"note": "type holds: fire_smoke (0.97)",
+"type": "fire_smoke",
+"values": {
+"floor": 5,
+"building": "QRC"
+},
+"ready": true,
+"done": true,
+"outcome": "submitted",
+"routing": {
+"priority": "P1",
+"team": "Environment, Health & Safety",
+"notify": [
+"Emergency Response Team / First Aid"
+],
+"secondary": [],
+"sla_min": 15
+}
+}
+]
+}
+],
+"rules": [
+{
+"text": "There's water dripping from the ceiling near the pantry.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "It's on the fourth floor of N building.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 4,
+"building": "N"
+}
+},
+{
+"text": "I think the pipe burst, it's spreading towards the server room!!",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "The lift is stuck between floors 3 and 4 with two people inside.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "Someone left a wet mop and the floor is super slippery.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 2,
+"building": "QRC"
+}
+},
+{
+"text": "I don't know if anyone is hurt.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "The AC in Room 4B-12 isn't working; it's 31\u00b0C in here.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "Smoke is coming out of the electrical panel near the lifts!",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "Hi, I need to report something.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "How do I apply for leave?",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "There's a snake near the parking lot at the ground floor.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 1
+}
+},
+{
+"text": "The lights keep flickering   in the corridor.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "it happened just now, around 9:30am...",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"occurred_at": "just now"
+}
+},
+{
+"text": "Caf\u00e9 na\u00efve r\u00e9sum\u00e9 \u2014 \u00e9moji \ud83d\udd25 test.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "tabs\tand  double  spaces",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "done",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "that's all",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "Building N, floor 7, washroom near the stairs.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 7,
+"building": "N"
+}
+},
+{
+"text": "The toilet on level 2 is overflowing and there's no water in the taps.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 2
+}
+},
+{
+"text": "A chair's leg broke and someone fell, they're bleeding a bit.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "Power is out on the whole eleventh floor since 10 minutes.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 11
+}
+},
+{
+"text": "Can you send someone? It's urgent!!!",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "My email is |||EMAIL_ADDRESS||| by the way.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+},
+{
+"text": "100% sure it's the third floor, not the 2nd.",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {
+"floor": 3
+}
+},
+{
+"text": "non\u00a0breaking\u00a0space and ideographic\u3000space\u2003em  end ",
+"want": [
+"building",
+"floor",
+"occurred_at"
+],
+"out": {}
+}
+],
+"validate": [
+{
+"text": "the pantry on floor 4",
+"field": "water_spread",
+"value": "flooding",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "space_id",
+"value": "Room 9 basement",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "floor",
+"value": "4",
+"out": {
+"floor": 4
+}
+},
+{
+"text": "the pantry on floor 4",
+"field": "floor",
+"value": "fourth",
+"out": {
+"floor": 4
+}
+},
+{
+"text": "the pantry on floor 4",
+"field": "building",
+"value": "pantry",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "building",
+"value": "N",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "building",
+"value": "Tower B",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "near_electrical",
+"value": "yes",
+"out": {
+"near_electrical": true
+}
+},
+{
+"text": "the pantry on floor 4",
+"field": "leak_source",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "space_id",
+"value": "conference room 2B",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "persons_trapped",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "the pantry on floor 4",
+"field": "leak_source",
+"value": "pipe",
+"out": {
+"leak_source": "pipe"
+}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "water_spread",
+"value": "flooding",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "space_id",
+"value": "Room 9 basement",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "floor",
+"value": "4",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "floor",
+"value": "fourth",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "building",
+"value": "pantry",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "building",
+"value": "N",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "building",
+"value": "Tower B",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "near_electrical",
+"value": "yes",
+"out": {
+"near_electrical": true
+}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "leak_source",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "space_id",
+"value": "conference room 2B",
+"out": {
+"space_id": "conference room 2B"
+}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "persons_trapped",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "QRC, 2nd floor, conference room 2B",
+"field": "leak_source",
+"value": "pipe",
+"out": {
+"leak_source": "pipe"
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "water_spread",
+"value": "flooding",
+"out": {}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "space_id",
+"value": "Room 9 basement",
+"out": {}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "floor",
+"value": "4",
+"out": {
+"floor": 4
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "floor",
+"value": "fourth",
+"out": {
+"floor": 4
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "building",
+"value": "pantry",
+"out": {}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "building",
+"value": "N",
+"out": {}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "building",
+"value": "Tower B",
+"out": {
+"building": "Tower B"
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "near_electrical",
+"value": "yes",
+"out": {
+"near_electrical": true
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "leak_source",
+"value": "unknown",
+"out": {
+"leak_source": "unknown"
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "space_id",
+"value": "conference room 2B",
+"out": {}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "persons_trapped",
+"value": "unknown",
+"out": {
+"persons_trapped": "unknown"
+}
+},
+{
+"text": "I don't know, it's near Tower B on the fourth floor",
+"field": "leak_source",
+"value": "pipe",
+"out": {
+"leak_source": "pipe"
+}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "water_spread",
+"value": "flooding",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "space_id",
+"value": "Room 9 basement",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "floor",
+"value": "4",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "floor",
+"value": "fourth",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "building",
+"value": "pantry",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "building",
+"value": "N",
+"out": {
+"building": "N"
+}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "building",
+"value": "Tower B",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "near_electrical",
+"value": "yes",
+"out": {
+"near_electrical": true
+}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "leak_source",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "space_id",
+"value": "conference room 2B",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "persons_trapped",
+"value": "unknown",
+"out": {}
+},
+{
+"text": "It's in N, yes near the socket",
+"field": "leak_source",
+"value": "pipe",
+"out": {
+"leak_source": "pipe"
+}
+}
+],
+"ends": {
+"done": true,
+"that's all": true,
+"no that's it": true,
+"done, it's on floor 3": false,
+"Done.": true,
+"nothing else": true,
+"I'm done thanks bye now ok": false,
+"file it": true
+}
+}

@@ -43,7 +43,7 @@ Java_org_seedhecode_incidentassistant_engine_NativeLlama_load(JNIEnv *env, jobje
     if (!item->ctx) { llama_model_free(model); delete item; return 0; }
     return reinterpret_cast<jlong>(item);
 }
-static jbyteArray generate(JNIEnv *env, jlong handle, jstring text, jint maximum, bool interview) {
+static jbyteArray generate(JNIEnv *env, jlong handle, jstring text, jint maximum, bool interview, const char *custom = nullptr) {
     auto item = reinterpret_cast<Model *>(handle);
     if (!item || maximum < 1 || maximum > 1024) { fail(env, "Invalid Qwen request."); return nullptr; }
     item->cancelled.store(false);
@@ -93,7 +93,7 @@ ws ::= | " " | "\n" [ \t]{0,20}
 )gbnf";
     auto sampler = std::unique_ptr<llama_sampler, decltype(&llama_sampler_free)>(
         llama_sampler_chain_init(llama_sampler_chain_default_params()), llama_sampler_free);
-    auto constrained = llama_sampler_init_grammar(vocab, interview ? jsonGrammar : grammar, "root");
+    auto constrained = llama_sampler_init_grammar(vocab, custom ? custom : interview ? jsonGrammar : grammar, "root");
     if (!constrained) { fail(env, "Qwen JSON grammar initialization failed."); return nullptr; }
     llama_sampler_chain_add(sampler.get(), constrained);
     llama_sampler_chain_add(sampler.get(), llama_sampler_init_greedy());
@@ -127,6 +127,13 @@ extern "C" JNIEXPORT jbyteArray JNICALL
 Java_org_seedhecode_incidentassistant_engine_NativeLlama_generateJson(JNIEnv *env, jobject,
         jlong handle, jstring text, jint maximum) {
     return generate(env, handle, text, maximum, true);
+}
+// Caller-supplied GBNF (the incident assistant builds one per extraction from the form's field schema).
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_org_seedhecode_incidentassistant_engine_NativeLlama_generateGrammar(JNIEnv *env, jobject,
+        jlong handle, jstring text, jstring gbnf, jint maximum) {
+    std::string grammarText = utf8(env, gbnf);
+    return generate(env, handle, text, maximum, true, grammarText.c_str());
 }
 extern "C" JNIEXPORT void JNICALL
 Java_org_seedhecode_incidentassistant_engine_NativeLlama_cancel(JNIEnv *, jobject, jlong handle) {

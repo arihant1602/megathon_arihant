@@ -61,6 +61,8 @@ android {
     kotlinOptions { jvmTarget = "17" }
     if (bundleModels.get()) sourceSets.getByName("main").assets.srcDir(bundledAssets)
     androidResources { noCompress += "zip" }
+    // The Hexagon skel must exist as a real file in nativeLibraryDir for the DSP loader (ADSP_LIBRARY_PATH).
+    packaging { jniLibs.useLegacyPackaging = true }
     buildFeatures {
         compose = true
     }
@@ -79,6 +81,7 @@ dependencies {
         implementation(project(":core:native-whisper"))
         implementation(project(":core:native-llama"))
     }
+    if (providers.gradleProperty("snpeSdk").isPresent) implementation(project(":core:native-snpe"))
 
     val composeBom = platform("androidx.compose:compose-bom:2024.02.00")
     implementation(composeBom)

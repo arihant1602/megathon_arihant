@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.22)
+project(incident_snpe LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+add_library(SNPE SHARED IMPORTED)
+set_target_properties(SNPE PROPERTIES IMPORTED_LOCATION "${SNPE_ROOT}/lib/aarch64-android/libSNPE.so")
+add_library(incident_snpe SHARED snpe_jni.cpp)
+target_include_directories(incident_snpe PRIVATE "${SNPE_ROOT}/include/SNPE")
+target_link_libraries(incident_snpe PRIVATE SNPE log)

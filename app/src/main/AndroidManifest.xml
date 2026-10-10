@@ -11,6 +11,8 @@
         android:icon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.IncidentAssistant">
+        <!-- FastRPC to the Hexagon NPU (SNPE HTP stub); vendor library, absent on non-Qualcomm devices. -->
+        <uses-native-library android:name="libcdsprpc.so" android:required="false" />
         <activity android:name=".ConversationActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>

@@ -14,15 +14,24 @@ object NativeLlama {
     external fun load(path: String): Long
     external fun generate(handle: Long, prompt: String, maxTokens: Int): ByteArray
     external fun generateJson(handle: Long, prompt: String, maxTokens: Int): ByteArray
+    external fun generateGrammar(handle: Long, prompt: String, grammar: String, maxTokens: Int): ByteArray
     external fun cancel(handle: Long)
     external fun release(handle: Long)
 }
 
-class WhisperSpeech(pack: ModelPack) : SpeechModel {
+object NativeSnpe {
+    val available: Boolean = runCatching { System.loadLibrary("incident_snpe"); true }.getOrDefault(false)
+    external fun load(path: String): Long
+    external fun run(handle: Long, ids: IntArray, mask: IntArray): FloatArray
+    external fun release(handle: Long)
+}
+
+class WhisperSpeech(path: String) : SpeechModel {
+    constructor(pack: ModelPack) : this(pack.artifact("asr").absolutePath)
     private val handle: Long
     init {
         check(NativeWhisper.available) { "This APK has no Whisper runtime. Build with -PnativeModels=true." }
-        handle = NativeWhisper.load(pack.artifact("asr").absolutePath)
+        handle = NativeWhisper.load(path)
         check(handle != 0L) { "Cannot load multilingual Whisper model." }
     }
     override fun transcribe(audio16k: FloatArray, language: String, final: Boolean): Transcript {
