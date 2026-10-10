@@ -1,5 +1,9 @@
 # Implementation validation
 
+Historical results for the earlier engine/screen. The new voice interview,
+department templates and JNI JSON entry point have not been built or tested here.
+See `voice-interview.md` for their current scope and Android Studio handoff.
+
 Validated on Windows with Java 17, Gradle 8.11.1, SDK 34, NDK 27.2.12479018 and
 CMake 3.22.1. Native source revisions are pinned in `scripts/prepare_native.ps1`.
 

@@ -1,5 +1,9 @@
 # Two-model update validation
 
+These results cover the previous extraction screen. The subsequent voice
+interview and department-form changes have not been built or tested here;
+see [voice-interview.md](voice-interview.md) for the Android Studio handoff.
+
 ## Completed on the workstation
 
 - Native ARM64 debug APK builds successfully with Whisper and llama runtimes.

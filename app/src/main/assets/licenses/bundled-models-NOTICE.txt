@@ -1,0 +1,17 @@
+Bundled model artifacts
+
+Whisper Base (multilingual), converted by ggerganov/whisper.cpp:
+https://huggingface.co/ggerganov/whisper.cpp
+Revision: 5359861c739e955e79d9a303bcbc70fb988958b1
+File: ggml-base.bin
+Original model: https://github.com/openai/whisper
+License: MIT; see Whisper-model-LICENSE.txt.
+
+Qwen3 0.6B Q8_0 GGUF:
+https://huggingface.co/Qwen/Qwen3-0.6B-GGUF
+Revision: 23749fefcc72300e3a2ad315e1317431b06b590a
+File: Qwen3-0.6B-Q8_0.gguf
+License: Apache 2.0; see Qwen3-LICENSE.txt.
+
+Model provenance and checksums are retained in the bundled ZIP manifest.
+Runtime licenses for whisper.cpp and llama.cpp are supplied separately here.

@@ -1,5 +1,10 @@
 # Whisper + Qwen integration and live test plan
 
+**Previous extraction-flow reference:** the launcher now uses the voice interview
+in [voice-interview.md](voice-interview.md). Its routing/form behavior supersedes
+the screen instructions below. Model artifact preparation still applies.
+The new interview has not been built or tested here.
+
 ## Current scope
 
 The `asr_llm` bundle runs real pretrained multilingual Whisper Base and Qwen3
@@ -41,14 +46,18 @@ python -m unittest discover -s scripts -p 'test_*.py' -v
 
 Outputs:
 
-- APK: `app/build/outputs/apk/debug/app-debug.apk` (native ARM64 runtime; no weights).
+- APK: `app/build/outputs/apk/debug/app-debug.apk` (native ARM64 runtime and bundled weights by default).
 - Import ZIP: `tmp/reference-models/incident-asr-llm.zip` (about 787 MB decimal).
 - Model spec: `tmp/reference-models/asr-llm.spec.json`.
 
 Use an ARM64 Android device, API 24 or newer. Allow space for the ZIP and unpacked
 models plus temporary import staging. Confirm available RAM before loading. In
 Android Studio uses the repository's `nativeModels=true` default. After preparing
-native sources, sync and Run. An explicit `-PnativeModels=false` build cannot load
+native sources and model ZIP, sync and Run. First launch extracts and checksum-validates
+the bundled pack in private storage; existing imported packs are reused. No phone
+download or import is required for the default build. Use `-PbundleModels=false`
+for the previous import-only packaging, or `-PmodelBundlePath=...` for a custom ZIP.
+An explicit `-PnativeModels=false` build cannot load
 these native models.
 
 ## Integration checks now
@@ -69,9 +78,11 @@ these native models.
 
 ## Your live phone test sequence
 
-1. Install the native APK. Copy the ZIP to the phone, open **Incident conversation**,
-   choose **Import bundle**, select the ZIP, then **Load models**. Check that status
-   names `asr_llm` and shows CfC/Laya disabled. Import/load may take a while.
+1. Install the default native APK and open the app. Built-in Whisper and Qwen are
+   prepared automatically on first launch; wait for loading to finish. Only an
+   import-only build needs a ZIP copied to the phone and imported through **Setup**.
+   The remaining sequence below documents the earlier extraction screen; use
+   [voice interview](voice-interview.md) for the current launcher flow.
 2. Begin with English text: `There is water leaking in Conference Room 2, building
    N, floor 1. I noticed it ten minutes ago.` Inspect candidates and exact evidence;
    `space_id`, `building`, `floor` and `occurred_at` are configured fields. The

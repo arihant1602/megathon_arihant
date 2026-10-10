@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "common_required": ["description", "reporter_name", "building", "floor", "space_id", "occurred_at", "injuries_reported", "safety_risk"],
+  "common_optional": ["immediate_actions_taken"],
+  "fields": {
+    "reporter_name": {"type":"string", "question":"What name should I put on the report?"},
+    "injuries_reported": {"type":"bool", "safety":true, "question":"Has anyone been hurt?"},
+    "safety_risk": {"type":"string", "safety":true, "question":"Is there any immediate danger to people or equipment?"},
+    "affected_system": {"type":"string", "question":"Which equipment, fixture or system is affected?"},
+    "service_needed": {"type":"string", "question":"What cleaning or workplace service is needed?"},
+    "security_concern": {"type":"string", "safety":true, "question":"What security concern did you observe?"},
+    "hazard_details": {"type":"string", "safety":true, "question":"What hazard or health concern did you observe?"},
+    "technology_affected": {"type":"string", "question":"Which device, application or connection is affected?"},
+    "lab_item": {"type":"string", "question":"Which lab equipment or utility is affected?"},
+    "impact_details": {"type":"string", "question":"Who or what is affected by the problem?"}
+  },
+  "departments": {
+    "FAC": {"required":["affected_system", "impact_details"]},
+    "HWS": {"required":["service_needed", "impact_details"]},
+    "SEC": {"required":["security_concern", "impact_details"]},
+    "EHS": {"required":["hazard_details", "impact_details"]},
+    "ITW": {"required":["technology_affected", "impact_details"]},
+    "LAB": {"required":["lab_item", "impact_details"]}
+  }
+}

@@ -5,6 +5,7 @@ import android.net.Uri
 import org.json.JSONObject
 import org.seedhecode.core.inference.PipelineMode
 import java.io.File
+import java.io.InputStream
 import java.security.MessageDigest
 import java.util.zip.ZipInputStream
 
@@ -30,14 +31,26 @@ class ModelStore(private val context: Context) {
     private val root = File(context.filesDir, "models")
     fun load(): ModelPack? = if (File(root, "manifest.json").isFile) validate(root) else null
 
-    fun import(uri: Uri): ModelPack {
+    /** Reuse an imported pack, or provision the APK's offline models on first launch. */
+    fun loadOrInstallBundled(onInstalling: () -> Unit = {}): ModelPack? {
+        load()?.let { return it }
+        if (context.assets.list("bundled-models")?.contains("incident-asr-llm.zip") != true) return null
+        onInstalling()
+        return importStream(context.assets.open("bundled-models/incident-asr-llm.zip"))
+    }
+
+    fun import(uri: Uri): ModelPack = importStream(
+        context.contentResolver.openInputStream(uri) ?: error("Cannot open model bundle.")
+    )
+
+    private fun importStream(source: InputStream): ModelPack {
         val staging = File(context.filesDir, "models-import")
-        staging.deleteRecursively()
-        check(staging.mkdirs())
         try {
+            staging.deleteRecursively()
+            check(staging.mkdirs())
             var total = 0L
             var count = 0
-            context.contentResolver.openInputStream(uri)?.use { stream ->
+            source.use { stream ->
                 ZipInputStream(stream).use { zip ->
                     var entry = zip.nextEntry
                     val buffer = ByteArray(128 * 1024)
@@ -59,8 +72,8 @@ class ModelStore(private val context: Context) {
                         zip.closeEntry(); entry = zip.nextEntry
                     }
                 }
-            } ?: error("Cannot open model bundle.")
-            validate(staging)
+            }
+            val validated = validate(staging)
             val backup = File(context.filesDir, "models-previous")
             backup.deleteRecursively()
             if (root.exists()) check(root.renameTo(backup)) { "Cannot archive current model pack." }
@@ -69,8 +82,9 @@ class ModelStore(private val context: Context) {
                 error("Cannot activate model pack.")
             }
             backup.deleteRecursively()
-            return validate(root)
+            return ModelPack(root, validated.manifest)
         } catch (error: Exception) { staging.deleteRecursively(); throw error }
+        finally { source.close() }
     }
 
     private fun validate(directory: File): ModelPack {

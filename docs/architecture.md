@@ -45,5 +45,7 @@ their own implementation and validation.
 
 Those recording-screen limits do not describe the separate conversation engine.
 Conversation capture has pause endpointing, local Whisper/Qwen execution with
-supplied weights, trained CfC/Laya ONNX adapters and logged fixture tools. Full
-forms/submission, the actual Phase 3-4 merge and Hexagon validation remain pending.
+supplied weights, trained CfC/Laya ONNX adapters and logged fixture tools. The
+launcher now uses `VoiceInterviewEngine` for a Whisper/Qwen interview and local
+department-form review; see `voice-interview.md`. Submission, the actual Phase 3-4
+merge and Hexagon validation remain pending.

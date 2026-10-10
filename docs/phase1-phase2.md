@@ -1,5 +1,9 @@
 # Phase 1-2 implementation and device handoff
 
+The current launcher uses the [voice interview](voice-interview.md), with dynamic
+questions and an assembled department form. The screen/turn-engine description
+below documents the earlier integration and its retained code.
+
 For the current Whisper + Qwen mode with CfC/Laya deferred, follow
 [the model integration and live test plan](reference-model-integration.md).
 An explicitly declared `asr_llm` pack needs only those two pretrained artifacts;

@@ -43,9 +43,7 @@ Java_org_seedhecode_incidentassistant_engine_NativeLlama_load(JNIEnv *env, jobje
     if (!item->ctx) { llama_model_free(model); delete item; return 0; }
     return reinterpret_cast<jlong>(item);
 }
-extern "C" JNIEXPORT jbyteArray JNICALL
-Java_org_seedhecode_incidentassistant_engine_NativeLlama_generate(JNIEnv *env, jobject,
-        jlong handle, jstring text, jint maximum) {
+static jbyteArray generate(JNIEnv *env, jlong handle, jstring text, jint maximum, bool interview) {
     auto item = reinterpret_cast<Model *>(handle);
     if (!item || maximum < 1 || maximum > 1024) { fail(env, "Invalid Qwen request."); return nullptr; }
     item->cancelled.store(false);
@@ -84,9 +82,18 @@ string ::= "\"" ([^"\\\x7F\x00-\x1F] | "\\" (["\\bfnrt] | "u" [0-9a-fA-F]{4}))* 
 number ::= "-"? ("0" | [1-9] [0-9]{0,15}) ("." [0-9]+)? ([eE] [-+]? [0-9]{1,16})? ws
 ws ::= | " " | "\n" [ \t]{0,20}
 )gbnf";
+    static const char *jsonGrammar = R"gbnf(
+root ::= object
+value ::= object | array | string | number | ("true" | "false" | "null") ws
+object ::= "{" ws (string ":" ws value ("," ws string ":" ws value)*)? "}" ws
+array ::= "[" ws (value ("," ws value)*)? "]" ws
+string ::= "\"" ([^"\\\x7F\x00-\x1F] | "\\" (["\\bfnrt] | "u" [0-9a-fA-F]{4}))* "\"" ws
+number ::= "-"? ("0" | [1-9] [0-9]{0,15}) ("." [0-9]+)? ([eE] [-+]? [0-9]{1,16})? ws
+ws ::= | " " | "\n" [ \t]{0,20}
+)gbnf";
     auto sampler = std::unique_ptr<llama_sampler, decltype(&llama_sampler_free)>(
         llama_sampler_chain_init(llama_sampler_chain_default_params()), llama_sampler_free);
-    auto constrained = llama_sampler_init_grammar(vocab, grammar, "root");
+    auto constrained = llama_sampler_init_grammar(vocab, interview ? jsonGrammar : grammar, "root");
     if (!constrained) { fail(env, "Qwen JSON grammar initialization failed."); return nullptr; }
     llama_sampler_chain_add(sampler.get(), constrained);
     llama_sampler_chain_add(sampler.get(), llama_sampler_init_greedy());
@@ -110,6 +117,16 @@ ws ::= | " " | "\n" [ \t]{0,20}
     auto bytes = env->NewByteArray(output.size());
     env->SetByteArrayRegion(bytes, 0, output.size(), (const jbyte *)output.data());
     return bytes;
+}
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_org_seedhecode_incidentassistant_engine_NativeLlama_generate(JNIEnv *env, jobject,
+        jlong handle, jstring text, jint maximum) {
+    return generate(env, handle, text, maximum, false);
+}
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_org_seedhecode_incidentassistant_engine_NativeLlama_generateJson(JNIEnv *env, jobject,
+        jlong handle, jstring text, jint maximum) {
+    return generate(env, handle, text, maximum, true);
 }
 extern "C" JNIEXPORT void JNICALL
 Java_org_seedhecode_incidentassistant_engine_NativeLlama_cancel(JNIEnv *, jobject, jlong handle) {

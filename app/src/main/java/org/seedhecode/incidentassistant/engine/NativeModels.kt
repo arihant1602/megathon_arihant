@@ -13,6 +13,7 @@ object NativeLlama {
     val available: Boolean = runCatching { System.loadLibrary("incident_llama"); true }.getOrDefault(false)
     external fun load(path: String): Long
     external fun generate(handle: Long, prompt: String, maxTokens: Int): ByteArray
+    external fun generateJson(handle: Long, prompt: String, maxTokens: Int): ByteArray
     external fun cancel(handle: Long)
     external fun release(handle: Long)
 }

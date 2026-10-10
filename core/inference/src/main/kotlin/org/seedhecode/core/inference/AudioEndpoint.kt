@@ -40,16 +40,31 @@ class PauseEndpoint(
     private val pauseMs: Int = 800,
     private val minSpeechMs: Int = 200,
     private val maxSegmentSeconds: Int = 20,
+    private val adaptive: Boolean = false,
+    private val calibrationMs: Int = 0,
 ) {
     private val audio = ArrayList<Float>()
     private val preroll = ArrayDeque<Float>()
     private var speaking = false
     private var silence = 0
     private var voiced = 0
+    private var noiseFloor = 0.0015
+    private var calibrationSamples = 0
+    private var calibrationEnergy = 0.0
+    val calibrated: Boolean get() = !adaptive || calibrationSamples >= calibrationMs * 16
     fun accept(pcm: FloatArray): EndpointEvent {
         if (pcm.isEmpty()) return EndpointEvent(false, null, false)
         val rms = sqrt(pcm.fold(0.0) { sum, value -> sum + value * value } / pcm.size)
-        val speech = rms >= threshold
+        if (!calibrated) {
+            calibrationEnergy += rms * rms * pcm.size; calibrationSamples += pcm.size
+            noiseFloor = sqrt(calibrationEnergy / calibrationSamples).coerceAtLeast(0.0005)
+            pcm.forEach { preroll.addLast(it) }
+            while (preroll.size > 3200) preroll.removeFirst()
+            return EndpointEvent(false, null, false)
+        }
+        val cutoff = if (adaptive) maxOf(0.004, noiseFloor * 1.8) else threshold
+        val speech = rms >= if (adaptive && speaking) cutoff * 0.7 else cutoff
+        if (adaptive && !speaking && !speech) noiseFloor = noiseFloor * 0.95 + rms * 0.05
         val started = speech && !speaking
         if (started) { speaking = true; audio.addAll(preroll); preroll.clear() }
         if (!speaking) {
@@ -74,5 +89,8 @@ class PauseEndpoint(
     }
     fun preview(): FloatArray? = if (speaking && audio.size >= 16_000) audio.toFloatArray() else null
     fun flush(): FloatArray? = if (voiced >= minSpeechMs * 16 && audio.isNotEmpty()) audio.toFloatArray().also { reset() } else null
-    fun reset() { audio.clear(); preroll.clear(); speaking = false; silence = 0; voiced = 0 }
+    fun reset() {
+        audio.clear(); preroll.clear(); speaking = false; silence = 0; voiced = 0
+        calibrationSamples = 0; calibrationEnergy = 0.0
+    }
 }

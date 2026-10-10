@@ -3,6 +3,36 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+val bundleModels = providers.gradleProperty("bundleModels").orElse("true").map { it.toBoolean() }
+val modelBundle = rootProject.layout.projectDirectory.file(
+    providers.gradleProperty("modelBundlePath").orElse("tmp/reference-models/incident-asr-llm.zip").get()
+)
+val bundledAssets = layout.buildDirectory.dir("generated/bundledModelAssets")
+val prepareBundledModels = tasks.register<Sync>("prepareBundledModels") {
+    into(bundledAssets)
+    if (bundleModels.get()) {
+        from(modelBundle) {
+            into("bundled-models")
+            rename { "incident-asr-llm.zip" }
+        }
+        doFirst {
+            check(modelBundle.asFile.isFile) {
+                "Missing model bundle. Run python scripts/fetch_reference_models.py before building, or use -PbundleModels=false for an import-only APK."
+            }
+        }
+    }
+}
+tasks.named("preBuild") {
+    if (bundleModels.get()) {
+        dependsOn(prepareBundledModels)
+        doFirst {
+            check(modelBundle.asFile.isFile) {
+                "Missing model bundle. Run python scripts/fetch_reference_models.py before building, or use -PbundleModels=false."
+            }
+        }
+    }
+}
+
 android {
     namespace = "org.seedhecode.incidentassistant"
     compileSdk = 34
@@ -29,6 +59,8 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions { jvmTarget = "17" }
+    if (bundleModels.get()) sourceSets.getByName("main").assets.srcDir(bundledAssets)
+    androidResources { noCompress += "zip" }
 }
 
 dependencies {
