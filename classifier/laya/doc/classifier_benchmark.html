@@ -1,0 +1,532 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Classifier Benchmark</title><style>
+:root { --ink:#1d2329; --muted:#5d6670; --line:#d9dde2; --soft:#f4f6f8; --acc:#2f5d8a; --bad:#c0392b; }
+@page { size: A4; margin: 16mm 15mm; }
+body { background:#fff; color:var(--ink); font:9.8pt/1.5 "Noto Sans","DejaVu Sans",Arial,sans-serif; margin:0; }
+main { max-width:180mm; margin:0 auto; }
+h1 { font-size:20pt; margin:0 0 1mm; letter-spacing:-0.3px; }
+h1 + p em { color:var(--muted); font-style:normal; }
+h2 { font-size:13pt; margin:7mm 0 2.5mm; padding-bottom:1.5mm; border-bottom:1.5px solid var(--ink); }
+h3 { font-size:10.5pt; margin:4mm 0 1.5mm; color:var(--acc); }
+p { margin:0 0 2.5mm; } ul, ol { margin:0 0 3mm; padding-left:5mm; } li { margin-bottom:1.1mm; }
+table { border-collapse:collapse; width:100%; font-size:8.6pt; margin:2mm 0 3.5mm; break-inside:auto; }
+th, td { padding:1.3mm 1.8mm; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+th { background:var(--soft); font-weight:600; }
+tr { break-inside:avoid; }
+pre { background:var(--soft); padding:3mm; white-space:pre-wrap; overflow-wrap:anywhere; font-size:8pt; }
+pre code { background:none; padding:0; }
+code { font-family:"JetBrainsMono NF","Adwaita Mono",monospace; font-size:8.3pt; background:var(--soft); padding:0 1mm; }
+strong { font-weight:700; }
+td { overflow-wrap:break-word; } td code { font-size:7.4pt; overflow-wrap:anywhere; }
+@media (max-width:700px) { main { padding:0 16px; } table { display:block; overflow-x:auto; } }
+</style></head><body><main><h1>Incident classifier benchmark: Laya (base vs fine-tuned) vs LNN</h1>
+<p><em>Qualcomm SM8750P dev kit (Snapdragon 8 Elite, Hexagon v79 NPU) · QAIRT/SNPE 2.47 · 11 Oct 2026</em></p>
+<h2>1. Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Best on-device build</th>
+<th>Type accuracy</th>
+<th>Relevance acc</th>
+<th>Fields F1</th>
+<th>ms / turn</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Laya (no fine-tuning, zero-shot)</td>
+<td>W8A16 on NPU</td>
+<td>9.3%</td>
+<td>—</td>
+<td>—</td>
+<td>10.8</td>
+<td>859 MB</td>
+</tr>
+<tr>
+<td><strong>Fine-tuned Laya</strong></td>
+<td><strong>W8A16 on NPU</strong></td>
+<td><strong>87.6%</strong></td>
+<td><strong>95.2%</strong></td>
+<td><strong>0.661</strong></td>
+<td><strong>10.9</strong></td>
+<td>860 MB</td>
+</tr>
+<tr>
+<td>LNN (CfC, trained from scratch)</td>
+<td>W8A8 on NPU</td>
+<td>57.5%</td>
+<td>74.7%</td>
+<td>0.047</td>
+<td><strong>0.96</strong></td>
+<td><strong>9 MB</strong></td>
+</tr>
+</tbody>
+</table>
+<p><em>Type accuracy over all 259 test turns; chance is 3.3%. File size includes the HTP graph prepared for SM8750.</em></p>
+<ul>
+<li><strong>Fine-tuning is what makes Laya work:</strong> 11.6% → 88.0% at full precision.</li>
+<li><strong>Fine-tuned Laya runs on the NPU with almost no loss:</strong> 87.6% with 8-bit weights and 16-bit activations,
+  against 88.0% unquantized on the same kit's CPU, and 47× faster (10.9 ms vs 510 ms).</li>
+<li><strong>Laya cannot use fully 8-bit activations;</strong> that build collapses to chance. The LNN can (0.96 ms, no accuracy loss).</li>
+<li><strong>The LNN file is about 95× smaller and the model 11× faster, but 30 points less accurate,</strong> and it barely detects form fields.</li>
+<li><strong>Department-first (two-stage) classification never beats flat classification</strong> for any model.</li>
+</ul>
+<p><strong>Recommendation:</strong> fine-tuned Laya, W8A16 on the NPU, for accuracy. Its cost is size: about 380 MB of weights
+(860 MB file with the prepared graph). Next step: fine-tune the 6 MB Ettin-17m (<code>bench/RESULTS.md</code>) with the same
+notebook to see how much of Laya's accuracy a model about 60× smaller keeps.</p>
+<h2>2. Setup</h2>
+<p><strong>Data</strong> (<code>datagen/out</code>, see <code>datagen/doc/fine_tuning_dataset.pdf</code>). One sample per user turn; input is the
+user's sentences so far (assistant text is never input). Every model uses the same split, by conversation:</p>
+<table>
+<thead>
+<tr>
+<th>Split</th>
+<th>Conversations</th>
+<th>Turn samples</th>
+<th>Used for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Train</td>
+<td>1,048</td>
+<td>2,442</td>
+<td>fitting</td>
+</tr>
+<tr>
+<td>Validation</td>
+<td>116</td>
+<td>275</td>
+<td>picking the best epoch, confidence calibration</td>
+</tr>
+<tr>
+<td>Test</td>
+<td>128</td>
+<td>259</td>
+<td>every number in this document (held out; written with unseen reporters and places)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outputs scored:</strong> incident type (30 labels: 28 types + <code>undetermined</code> + <code>none</code>), sentence relevance
+(relevant / filler) and form fields mentioned (60, multi-label). Base Laya has no heads, so only its type is scored.</p>
+<p><strong>Two-stage (department first):</strong> step 1 = department (Facilities, Housekeeping, Security, EHS, IT, Labs) or
+<code>undetermined</code> / <code>none</code>; step 2 = the best type inside that department. For base Laya, from embedding similarity to
+department descriptions. For the classifiers, from the type head (department probability = sum of its types'
+probabilities). Same single forward pass.</p>
+<p><strong>Builds compared</strong> (all on the dev kit except where noted):</p>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Where</th>
+<th>Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fp32</td>
+<td>Kryo CPU (base Laya also Adreno GPU)</td>
+<td>unquantized</td>
+</tr>
+<tr>
+<td>W8A16</td>
+<td>Hexagon v79 NPU</td>
+<td>8-bit weights, 16-bit activations, per-channel, 32-bit bias</td>
+</tr>
+<tr>
+<td>W8A8</td>
+<td>Hexagon v79 NPU</td>
+<td>8-bit weights and activations, per-channel, 32-bit bias</td>
+</tr>
+</tbody>
+</table>
+<p>All NPU builds: calibrated on 50 training samples, HTP graph prepared offline for SM8750, no CPU fallback,
+burst performance mode.</p>
+<h2>3. Models</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Base Laya</th>
+<th>Fine-tuned Laya</th>
+<th>LNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Architecture</td>
+<td>ModernBERT-large encoder, 28 layers, d=1024</td>
+<td>same + LoRA (r=16) merged + 3 heads</td>
+<td>bidirectional CfC, hidden 192, embedding 256</td>
+</tr>
+<tr>
+<td>Parameters</td>
+<td>395M</td>
+<td>395M (7.3M trained)</td>
+<td>1.56M (all trained)</td>
+</tr>
+<tr>
+<td>Vocabulary</td>
+<td>50,368</td>
+<td>50,368</td>
+<td>4,118: training-split tokens only; 8.7% of test tokens are unknown</td>
+</tr>
+<tr>
+<td>Training</td>
+<td>none (published weights, revision <code>7b928d8</code>)</td>
+<td>6 epochs on a Colab T4, LoRA lr 3e-4, heads 1e-3</td>
+<td>39 epochs on the laptop CPU (445 s), early stopping (best = epoch 33)</td>
+</tr>
+<tr>
+<td>Calibration temperature (validation)</td>
+<td>—</td>
+<td>1.57</td>
+<td>fitted, stored in <code>lnn.pt</code></td>
+</tr>
+</tbody>
+</table>
+<h2>4. Full results (259 test turns)</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Build</th>
+<th>Type acc (all turns)</th>
+<th>Final turn</th>
+<th>Macro-F1</th>
+<th>Two-stage</th>
+<th>Stage-1 dept</th>
+<th>Relevance</th>
+<th>Filler F1</th>
+<th>Fields F1</th>
+<th>ms / turn</th>
+<th>Init ms</th>
+<th>File MB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base Laya</td>
+<td>fp32 CPU</td>
+<td>11.6%</td>
+<td>11.7%</td>
+<td>0.077</td>
+<td>8.9%</td>
+<td>10.0%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>495</td>
+<td>506</td>
+<td>1,507</td>
+</tr>
+<tr>
+<td>Base Laya</td>
+<td>fp32 GPU</td>
+<td>12.4%</td>
+<td>11.7%</td>
+<td>0.086</td>
+<td>8.9%</td>
+<td>10.0%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>80</td>
+<td>3,266</td>
+<td>1,507</td>
+</tr>
+<tr>
+<td>Base Laya</td>
+<td>W8A16 NPU</td>
+<td>9.3%</td>
+<td>7.8%</td>
+<td>0.057</td>
+<td>8.5%</td>
+<td>8.5%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>10.8</td>
+<td>107</td>
+<td>859</td>
+</tr>
+<tr>
+<td>Base Laya</td>
+<td>W8A8 NPU</td>
+<td>4.2%</td>
+<td>5.5%</td>
+<td>0.028</td>
+<td>4.2%</td>
+<td>13.1%</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>6.8</td>
+<td>87</td>
+<td>759</td>
+</tr>
+<tr>
+<td><strong>Fine-tuned Laya</strong></td>
+<td>fp32 CPU</td>
+<td><strong>88.0%</strong></td>
+<td>89.8%</td>
+<td>0.886</td>
+<td>87.6%</td>
+<td>89.6%</td>
+<td>95.5%</td>
+<td>0.859</td>
+<td>0.659</td>
+<td>510</td>
+<td>476</td>
+<td>1,507</td>
+</tr>
+<tr>
+<td><strong>Fine-tuned Laya</strong></td>
+<td><strong>W8A16 NPU</strong></td>
+<td><strong>87.6%</strong></td>
+<td><strong>90.6%</strong></td>
+<td><strong>0.882</strong></td>
+<td>87.3%</td>
+<td>89.2%</td>
+<td><strong>95.2%</strong></td>
+<td><strong>0.850</strong></td>
+<td><strong>0.661</strong></td>
+<td><strong>10.9</strong></td>
+<td>107</td>
+<td>860</td>
+</tr>
+<tr>
+<td>Fine-tuned Laya</td>
+<td>W8A8 NPU</td>
+<td>1.9%</td>
+<td>1.6%</td>
+<td>0.005</td>
+<td>3.1%</td>
+<td>26.6%</td>
+<td>59.1%</td>
+<td>0.179</td>
+<td>0.014</td>
+<td>6.8</td>
+<td>91</td>
+<td>759</td>
+</tr>
+<tr>
+<td>LNN</td>
+<td>fp32 CPU</td>
+<td>57.1%</td>
+<td>53.1%</td>
+<td>0.515</td>
+<td>56.8%</td>
+<td>69.5%</td>
+<td>74.7%</td>
+<td>0.486</td>
+<td>0.047</td>
+<td>355</td>
+<td>1,331</td>
+<td>9</td>
+</tr>
+<tr>
+<td>LNN</td>
+<td>W8A16 NPU</td>
+<td>57.5%</td>
+<td>53.9%</td>
+<td>0.517</td>
+<td>57.1%</td>
+<td>69.9%</td>
+<td>74.5%</td>
+<td>0.484</td>
+<td>0.047</td>
+<td>1.6</td>
+<td>29</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>LNN</strong></td>
+<td><strong>W8A8 NPU</strong></td>
+<td><strong>57.5%</strong></td>
+<td>53.9%</td>
+<td>0.518</td>
+<td>57.1%</td>
+<td>69.9%</td>
+<td>74.7%</td>
+<td>0.486</td>
+<td>0.047</td>
+<td><strong>0.96</strong></td>
+<td>25</td>
+<td><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Cross-checks: fine-tuned Laya fp32 on the kit equals the Colab GPU result exactly (88.0%, relevance 95.5%,
+fields 0.659); base Laya fp32 on the kit equals the laptop; the LNN on the kit equals the laptop (57.1%).</p>
+<h2>5. Findings</h2>
+<p><strong>Fine-tuning.</strong> Base Laya's embeddings do not encode the incident type: they are nearly identical for every input
+(mean cosine 0.90), and even step 1 of the two-stage method (8 options) is at chance. LoRA fine-tuning of 7.3M
+parameters on 2,442 samples took it to 88%, with sentence relevance at 95% and form-field detection F1 0.66.</p>
+<p><strong>Quantization.</strong></p>
+<ol>
+<li><em>Attention mask (fixed for every build).</em> ModernBERT adds <code>float32.min</code> (−3.4e38) for masked positions. In a
+   quantized graph that one value destroys the range of the attention scores and every input gets nearly the same
+   output. Exporting with −60 instead (identical in fp32, max difference 0.0) fixed it: base W8A16 went from cosine
+   0.14 to 0.985 with the fp32 embedding, and from 18.8 to 10.8 ms.</li>
+<li><em>8-bit activations.</em> Laya (base and fine-tuned) collapses to chance with 8-bit activations, even with the mask
+   fix, per-channel weights and 32-bit biases: its activations have outliers that one 8-bit range cannot hold.
+   <strong>W8A16 is lossless</strong> (fine-tuned: 87.6% vs 88.0%). The small LNN quantizes cleanly even at W8A8.</li>
+<li><em>Multiple outputs (fixed).</em> SNPE on the NPU only wrote the last of the three output tensors, so the classifiers
+   are exported with one concatenated output, split again by the scorer.</li>
+</ol>
+<p><strong>Two-stage (department first).</strong> It never helps: fine-tuned Laya 87.3% vs 87.6% flat, the LNN 57.1% vs 57.5%,
+base Laya 8.9% vs 11.6%. A flat 30-way head already ranks departments implicitly; forcing a hard department
+choice first adds a second place to make a mistake.</p>
+<p><strong>LNN.</strong> Trained from scratch on 2,442 samples, it overfits (training loss 0.016 against 45% validation accuracy)
+and has no knowledge of English beyond the training split (8.7% of test tokens unknown). It learns the incident type
+partly (57.5%) and relevance weakly (74.7%), but almost never finds form fields (F1 0.047). Its strengths are
+size (9 MB) and speed (0.96 ms, fully 8-bit).</p>
+<p><strong>Speed and size.</strong> The NPU makes the big model practical: 10.9 ms per turn versus 510 ms on the kit's CPU and
+80 ms on its GPU. Laya's cost is memory: about 380 MB of 8-bit weights (860 MB file with the prepared graph),
+plus about 0.1 s first load.</p>
+<h2>6. Test-time shuffling and strategies for &gt;95% per conversation</h2>
+<p>Model: fine-tuned Laya, W8A16 on the NPU (the shipped build), same 259 test turns / 128 conversations.
+"Final turn" = the decision at the end of each conversation, which is what the report form uses.</p>
+<h3>6a. Shuffle-and-vote (test-time augmentation)</h3>
+<p>Each input (the user's turns so far) was shuffled 5 times: the order of turns and of the sentences inside each
+turn, turn separators kept (seeded, <code>laya/tta.py</code>). 182 of 259 turns have more than one sentence, so their shuffles
+differ. 1,295 NPU runs took 15 s.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>All turns</th>
+<th>Final turn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Single input, original order</strong></td>
+<td><strong>87.6%</strong></td>
+<td><strong>90.6%</strong></td>
+</tr>
+<tr>
+<td>5 shuffles, majority vote (tie → highest summed probability)</td>
+<td>84.9%</td>
+<td>86.7%</td>
+</tr>
+<tr>
+<td>5 shuffles, mean probability</td>
+<td>85.3%</td>
+<td>86.7%</td>
+</tr>
+<tr>
+<td>Original + 4 shuffles, majority vote</td>
+<td>86.5%</td>
+<td>88.3%</td>
+</tr>
+<tr>
+<td>One shuffled view alone</td>
+<td>84.6%</td>
+<td>85.2%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shuffling hurts.</strong> The model was trained on conversations in their real order, where the latest turn usually
+carries the decisive detail ("it's actually the fourth floor", "turns out it's the ceiling pipe"). Shuffled
+inputs are out of distribution (a single shuffled view drops to 84.6%), and voting over five weaker views
+cannot beat one stronger one: the views make correlated mistakes. Test-time augmentation only helps when the
+augmentation is a transformation the model was trained to be invariant to.</p>
+<h3>6b. What does work: measured on the same outputs</h3>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Conversations answered directly</th>
+<th>Final-decision accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Always answer (baseline)</td>
+<td>100%</td>
+<td>90.6%</td>
+</tr>
+<tr>
+<td>Right type is in the <strong>top-2</strong></td>
+<td>—</td>
+<td>96.1%</td>
+</tr>
+<tr>
+<td>Right type is in the <strong>top-3</strong></td>
+<td>—</td>
+<td>97.7%</td>
+</tr>
+<tr>
+<td>Answer if confidence ≥ 0.8, otherwise confirm between top-2</td>
+<td>73.4% (96.8% correct)</td>
+<td>94.5%</td>
+</tr>
+<tr>
+<td><strong>Answer if confidence ≥ 0.8, otherwise offer the top-3 to pick from</strong></td>
+<td>73.4% (96.8% correct)</td>
+<td><strong>96.1%</strong></td>
+</tr>
+<tr>
+<td>"Sticky": lock in the first type predicted with ≥ 0.9 confidence</td>
+<td>100%</td>
+<td>75.8% (worse)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Confidence = calibrated probability (temperature 1.57 from validation). 128 conversations: ±3–4 points is noise. The 0.8 threshold was read off these test results, which flatters it; for the product, choose it on the validation split and confirm on new data.</em></p>
+<p><strong>Where the 32 wrong turns come from:</strong> 11 are "undetermined vs a type", i.e. <em>when</em> to commit, not <em>which</em>
+type. Accuracy when neither label is undetermined is 90.7%. The most common type mix-ups are lab equipment →
+printer/device, lighting → conference-room AV, theft → suspicious person.</p>
+<h3>6c. Strategies to reach &gt;95% within a conversation (ranked)</h3>
+<ol>
+<li><strong>Confidence gate + 3-option confirmation (measured: 96.1%).</strong> Answer directly when confident (≥ 0.8); otherwise
+   the assistant asks "Is this about A, B or C?". About 1 in 4 conversations gets one extra tap. This extends the
+   taxonomy's existing rule (confidence &lt; 0.6 → confirm top-2) and needs no retraining.</li>
+<li><strong>Keep asking before committing.</strong> Many low-confidence turns are early "undetermined" ones; the app is already
+   asking follow-up questions, so the gate should apply to the final decision, not to every turn. The answer is
+   committed only when the form is submitted.</li>
+<li><strong>Targeted data for the confusable pairs above</strong> (lab equipment vs device, lighting vs AV, theft vs suspicious),
+   plus a consistency pass on when <code>undetermined</code> switches to a type (a third of the errors).</li>
+<li><strong>Real ensembles instead of input shuffles:</strong> 2–3 fine-tunes with different seeds, averaging probabilities. Weight
+   diversity gives independent errors; shuffled inputs do not. Costs 2–3× NPU time (~22–33 ms) and memory, so it
+   suits a smaller base model (Ettin) better than Laya.</li>
+<li><strong>Train with order augmentation, then shuffle at test time.</strong> If shuffled orders are part of training, TTA stops
+   hurting and can help, at 5× inference cost.</li>
+<li><strong>Use the field head as evidence.</strong> Fields that only one type uses (<code>persons_trapped</code>, <code>pest_kind</code>,
+   <code>av_equipment</code>...) are strong type signals; combining them with the type head, tuned on validation, can fix
+   type confusions.</li>
+<li><strong>Stronger fine-tune:</strong> full fine-tuning instead of LoRA, more epochs with early stopping, label smoothing. Each
+   needs a validation run; gains are typically a few points.</li>
+<li><strong>Real user data:</strong> the biggest unknown is not the model but the test set. A team-written, spoken test set will
+   show the real number to optimise against.</li>
+</ol>
+<h2>7. Limits</h2>
+<ul>
+<li><strong>259 test turns from 128 conversations:</strong> differences under about 3–4 points are within noise.</li>
+<li><strong>Synthetic data:</strong> the test set is LLM-written like the training data, so absolute accuracy is optimistic.
+  A team-written test set, ideally spoken and transcribed, is needed before trusting these numbers for the product.</li>
+<li><strong>One training run each,</strong> no hyperparameter search. The LNN in particular could improve with regularisation,
+  a larger vocabulary or pretrained embeddings; it would not close a 30-point gap without pretraining.</li>
+<li><strong>Timing is model execution on the device only;</strong> tokenization and app overhead are not included.</li>
+<li><strong>Fully unquantized Laya cannot run on the NPU in this SDK path</strong> (the SNPE HTP runtime is fixed-point), so
+  "unquantized on the device" means the CPU (and GPU for base Laya).</li>
+</ul>
+<h2>8. Reproduce</h2>
+<pre><code class="language-sh">source qairt-env.sh
+# base Laya
+python laya/export.py base &amp;&amp; qairt-converter --input_network laya/out/base/model.onnx --output_path laya/out/base/model.dlc
+# fine-tuned Laya (laya_ft.pt from laya/laya_finetune.ipynb on Colab)
+python laya/export.py ft laya_ft.pt &amp;&amp; qairt-converter --input_network laya/out/ft/model.onnx --output_path laya/out/ft/model.dlc
+# LNN: trains on CPU and exports
+python laya/train_lnn.py &amp;&amp; qairt-converter --input_network laya/out/lnn/model.onnx --output_path laya/out/lnn/model.dlc
+# for each of base / ft / lnn:
+laya/quant_variant.sh &lt;mode&gt; w8a16 --act_bitwidth 16 --bias_bitwidth 32 --use_per_channel_quantization
+laya/quant_variant.sh &lt;mode&gt; w8a8  --use_per_channel_quantization --bias_bitwidth 32
+ANDROID_SERIAL=fe7980db laya/run_device.sh &lt;mode&gt; w8a16   # also: w8a8, fp32cpu, fp32gpu
+python laya/score.py &lt;mode&gt; w8a16
+# shuffle-and-vote + strategy analysis (fine-tuned model)
+python laya/tta.py build &amp;&amp; ANDROID_SERIAL=fe7980db laya/run_device.sh ft w8a16 tta &amp;&amp; python laya/tta.py score w8a16
+</code></pre></main></body></html>

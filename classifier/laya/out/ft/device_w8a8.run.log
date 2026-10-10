@@ -1,0 +1,1047 @@
+Logging level is : SNPE_LOG_LEVEL_ERROR
+-------------------------------------------------------------------------------
+Model String: 
+SNPE v2.47.0.260601114230
+-------------------------------------------------------------------------------
+
+Processing graph : model
+Input: input_ids
+Input: attention_mask
+Output: logits
+Processing DNN input(s):
+test/ids_000.raw
+Processing DNN input(s):
+test/mask_000.raw
+Processing DNN input(s):
+test/ids_001.raw
+Processing DNN input(s):
+test/mask_001.raw
+Processing DNN input(s):
+test/ids_002.raw
+Processing DNN input(s):
+test/mask_002.raw
+Processing DNN input(s):
+test/ids_003.raw
+Processing DNN input(s):
+test/mask_003.raw
+Processing DNN input(s):
+test/ids_004.raw
+Processing DNN input(s):
+test/mask_004.raw
+Processing DNN input(s):
+test/ids_005.raw
+Processing DNN input(s):
+test/mask_005.raw
+Processing DNN input(s):
+test/ids_006.raw
+Processing DNN input(s):
+test/mask_006.raw
+Processing DNN input(s):
+test/ids_007.raw
+Processing DNN input(s):
+test/mask_007.raw
+Processing DNN input(s):
+test/ids_008.raw
+Processing DNN input(s):
+test/mask_008.raw
+Processing DNN input(s):
+test/ids_009.raw
+Processing DNN input(s):
+test/mask_009.raw
+Processing DNN input(s):
+test/ids_010.raw
+Processing DNN input(s):
+test/mask_010.raw
+Processing DNN input(s):
+test/ids_011.raw
+Processing DNN input(s):
+test/mask_011.raw
+Processing DNN input(s):
+test/ids_012.raw
+Processing DNN input(s):
+test/mask_012.raw
+Processing DNN input(s):
+test/ids_013.raw
+Processing DNN input(s):
+test/mask_013.raw
+Processing DNN input(s):
+test/ids_014.raw
+Processing DNN input(s):
+test/mask_014.raw
+Processing DNN input(s):
+test/ids_015.raw
+Processing DNN input(s):
+test/mask_015.raw
+Processing DNN input(s):
+test/ids_016.raw
+Processing DNN input(s):
+test/mask_016.raw
+Processing DNN input(s):
+test/ids_017.raw
+Processing DNN input(s):
+test/mask_017.raw
+Processing DNN input(s):
+test/ids_018.raw
+Processing DNN input(s):
+test/mask_018.raw
+Processing DNN input(s):
+test/ids_019.raw
+Processing DNN input(s):
+test/mask_019.raw
+Processing DNN input(s):
+test/ids_020.raw
+Processing DNN input(s):
+test/mask_020.raw
+Processing DNN input(s):
+test/ids_021.raw
+Processing DNN input(s):
+test/mask_021.raw
+Processing DNN input(s):
+test/ids_022.raw
+Processing DNN input(s):
+test/mask_022.raw
+Processing DNN input(s):
+test/ids_023.raw
+Processing DNN input(s):
+test/mask_023.raw
+Processing DNN input(s):
+test/ids_024.raw
+Processing DNN input(s):
+test/mask_024.raw
+Processing DNN input(s):
+test/ids_025.raw
+Processing DNN input(s):
+test/mask_025.raw
+Processing DNN input(s):
+test/ids_026.raw
+Processing DNN input(s):
+test/mask_026.raw
+Processing DNN input(s):
+test/ids_027.raw
+Processing DNN input(s):
+test/mask_027.raw
+Processing DNN input(s):
+test/ids_028.raw
+Processing DNN input(s):
+test/mask_028.raw
+Processing DNN input(s):
+test/ids_029.raw
+Processing DNN input(s):
+test/mask_029.raw
+Processing DNN input(s):
+test/ids_030.raw
+Processing DNN input(s):
+test/mask_030.raw
+Processing DNN input(s):
+test/ids_031.raw
+Processing DNN input(s):
+test/mask_031.raw
+Processing DNN input(s):
+test/ids_032.raw
+Processing DNN input(s):
+test/mask_032.raw
+Processing DNN input(s):
+test/ids_033.raw
+Processing DNN input(s):
+test/mask_033.raw
+Processing DNN input(s):
+test/ids_034.raw
+Processing DNN input(s):
+test/mask_034.raw
+Processing DNN input(s):
+test/ids_035.raw
+Processing DNN input(s):
+test/mask_035.raw
+Processing DNN input(s):
+test/ids_036.raw
+Processing DNN input(s):
+test/mask_036.raw
+Processing DNN input(s):
+test/ids_037.raw
+Processing DNN input(s):
+test/mask_037.raw
+Processing DNN input(s):
+test/ids_038.raw
+Processing DNN input(s):
+test/mask_038.raw
+Processing DNN input(s):
+test/ids_039.raw
+Processing DNN input(s):
+test/mask_039.raw
+Processing DNN input(s):
+test/ids_040.raw
+Processing DNN input(s):
+test/mask_040.raw
+Processing DNN input(s):
+test/ids_041.raw
+Processing DNN input(s):
+test/mask_041.raw
+Processing DNN input(s):
+test/ids_042.raw
+Processing DNN input(s):
+test/mask_042.raw
+Processing DNN input(s):
+test/ids_043.raw
+Processing DNN input(s):
+test/mask_043.raw
+Processing DNN input(s):
+test/ids_044.raw
+Processing DNN input(s):
+test/mask_044.raw
+Processing DNN input(s):
+test/ids_045.raw
+Processing DNN input(s):
+test/mask_045.raw
+Processing DNN input(s):
+test/ids_046.raw
+Processing DNN input(s):
+test/mask_046.raw
+Processing DNN input(s):
+test/ids_047.raw
+Processing DNN input(s):
+test/mask_047.raw
+Processing DNN input(s):
+test/ids_048.raw
+Processing DNN input(s):
+test/mask_048.raw
+Processing DNN input(s):
+test/ids_049.raw
+Processing DNN input(s):
+test/mask_049.raw
+Processing DNN input(s):
+test/ids_050.raw
+Processing DNN input(s):
+test/mask_050.raw
+Processing DNN input(s):
+test/ids_051.raw
+Processing DNN input(s):
+test/mask_051.raw
+Processing DNN input(s):
+test/ids_052.raw
+Processing DNN input(s):
+test/mask_052.raw
+Processing DNN input(s):
+test/ids_053.raw
+Processing DNN input(s):
+test/mask_053.raw
+Processing DNN input(s):
+test/ids_054.raw
+Processing DNN input(s):
+test/mask_054.raw
+Processing DNN input(s):
+test/ids_055.raw
+Processing DNN input(s):
+test/mask_055.raw
+Processing DNN input(s):
+test/ids_056.raw
+Processing DNN input(s):
+test/mask_056.raw
+Processing DNN input(s):
+test/ids_057.raw
+Processing DNN input(s):
+test/mask_057.raw
+Processing DNN input(s):
+test/ids_058.raw
+Processing DNN input(s):
+test/mask_058.raw
+Processing DNN input(s):
+test/ids_059.raw
+Processing DNN input(s):
+test/mask_059.raw
+Processing DNN input(s):
+test/ids_060.raw
+Processing DNN input(s):
+test/mask_060.raw
+Processing DNN input(s):
+test/ids_061.raw
+Processing DNN input(s):
+test/mask_061.raw
+Processing DNN input(s):
+test/ids_062.raw
+Processing DNN input(s):
+test/mask_062.raw
+Processing DNN input(s):
+test/ids_063.raw
+Processing DNN input(s):
+test/mask_063.raw
+Processing DNN input(s):
+test/ids_064.raw
+Processing DNN input(s):
+test/mask_064.raw
+Processing DNN input(s):
+test/ids_065.raw
+Processing DNN input(s):
+test/mask_065.raw
+Processing DNN input(s):
+test/ids_066.raw
+Processing DNN input(s):
+test/mask_066.raw
+Processing DNN input(s):
+test/ids_067.raw
+Processing DNN input(s):
+test/mask_067.raw
+Processing DNN input(s):
+test/ids_068.raw
+Processing DNN input(s):
+test/mask_068.raw
+Processing DNN input(s):
+test/ids_069.raw
+Processing DNN input(s):
+test/mask_069.raw
+Processing DNN input(s):
+test/ids_070.raw
+Processing DNN input(s):
+test/mask_070.raw
+Processing DNN input(s):
+test/ids_071.raw
+Processing DNN input(s):
+test/mask_071.raw
+Processing DNN input(s):
+test/ids_072.raw
+Processing DNN input(s):
+test/mask_072.raw
+Processing DNN input(s):
+test/ids_073.raw
+Processing DNN input(s):
+test/mask_073.raw
+Processing DNN input(s):
+test/ids_074.raw
+Processing DNN input(s):
+test/mask_074.raw
+Processing DNN input(s):
+test/ids_075.raw
+Processing DNN input(s):
+test/mask_075.raw
+Processing DNN input(s):
+test/ids_076.raw
+Processing DNN input(s):
+test/mask_076.raw
+Processing DNN input(s):
+test/ids_077.raw
+Processing DNN input(s):
+test/mask_077.raw
+Processing DNN input(s):
+test/ids_078.raw
+Processing DNN input(s):
+test/mask_078.raw
+Processing DNN input(s):
+test/ids_079.raw
+Processing DNN input(s):
+test/mask_079.raw
+Processing DNN input(s):
+test/ids_080.raw
+Processing DNN input(s):
+test/mask_080.raw
+Processing DNN input(s):
+test/ids_081.raw
+Processing DNN input(s):
+test/mask_081.raw
+Processing DNN input(s):
+test/ids_082.raw
+Processing DNN input(s):
+test/mask_082.raw
+Processing DNN input(s):
+test/ids_083.raw
+Processing DNN input(s):
+test/mask_083.raw
+Processing DNN input(s):
+test/ids_084.raw
+Processing DNN input(s):
+test/mask_084.raw
+Processing DNN input(s):
+test/ids_085.raw
+Processing DNN input(s):
+test/mask_085.raw
+Processing DNN input(s):
+test/ids_086.raw
+Processing DNN input(s):
+test/mask_086.raw
+Processing DNN input(s):
+test/ids_087.raw
+Processing DNN input(s):
+test/mask_087.raw
+Processing DNN input(s):
+test/ids_088.raw
+Processing DNN input(s):
+test/mask_088.raw
+Processing DNN input(s):
+test/ids_089.raw
+Processing DNN input(s):
+test/mask_089.raw
+Processing DNN input(s):
+test/ids_090.raw
+Processing DNN input(s):
+test/mask_090.raw
+Processing DNN input(s):
+test/ids_091.raw
+Processing DNN input(s):
+test/mask_091.raw
+Processing DNN input(s):
+test/ids_092.raw
+Processing DNN input(s):
+test/mask_092.raw
+Processing DNN input(s):
+test/ids_093.raw
+Processing DNN input(s):
+test/mask_093.raw
+Processing DNN input(s):
+test/ids_094.raw
+Processing DNN input(s):
+test/mask_094.raw
+Processing DNN input(s):
+test/ids_095.raw
+Processing DNN input(s):
+test/mask_095.raw
+Processing DNN input(s):
+test/ids_096.raw
+Processing DNN input(s):
+test/mask_096.raw
+Processing DNN input(s):
+test/ids_097.raw
+Processing DNN input(s):
+test/mask_097.raw
+Processing DNN input(s):
+test/ids_098.raw
+Processing DNN input(s):
+test/mask_098.raw
+Processing DNN input(s):
+test/ids_099.raw
+Processing DNN input(s):
+test/mask_099.raw
+Processing DNN input(s):
+test/ids_100.raw
+Processing DNN input(s):
+test/mask_100.raw
+Processing DNN input(s):
+test/ids_101.raw
+Processing DNN input(s):
+test/mask_101.raw
+Processing DNN input(s):
+test/ids_102.raw
+Processing DNN input(s):
+test/mask_102.raw
+Processing DNN input(s):
+test/ids_103.raw
+Processing DNN input(s):
+test/mask_103.raw
+Processing DNN input(s):
+test/ids_104.raw
+Processing DNN input(s):
+test/mask_104.raw
+Processing DNN input(s):
+test/ids_105.raw
+Processing DNN input(s):
+test/mask_105.raw
+Processing DNN input(s):
+test/ids_106.raw
+Processing DNN input(s):
+test/mask_106.raw
+Processing DNN input(s):
+test/ids_107.raw
+Processing DNN input(s):
+test/mask_107.raw
+Processing DNN input(s):
+test/ids_108.raw
+Processing DNN input(s):
+test/mask_108.raw
+Processing DNN input(s):
+test/ids_109.raw
+Processing DNN input(s):
+test/mask_109.raw
+Processing DNN input(s):
+test/ids_110.raw
+Processing DNN input(s):
+test/mask_110.raw
+Processing DNN input(s):
+test/ids_111.raw
+Processing DNN input(s):
+test/mask_111.raw
+Processing DNN input(s):
+test/ids_112.raw
+Processing DNN input(s):
+test/mask_112.raw
+Processing DNN input(s):
+test/ids_113.raw
+Processing DNN input(s):
+test/mask_113.raw
+Processing DNN input(s):
+test/ids_114.raw
+Processing DNN input(s):
+test/mask_114.raw
+Processing DNN input(s):
+test/ids_115.raw
+Processing DNN input(s):
+test/mask_115.raw
+Processing DNN input(s):
+test/ids_116.raw
+Processing DNN input(s):
+test/mask_116.raw
+Processing DNN input(s):
+test/ids_117.raw
+Processing DNN input(s):
+test/mask_117.raw
+Processing DNN input(s):
+test/ids_118.raw
+Processing DNN input(s):
+test/mask_118.raw
+Processing DNN input(s):
+test/ids_119.raw
+Processing DNN input(s):
+test/mask_119.raw
+Processing DNN input(s):
+test/ids_120.raw
+Processing DNN input(s):
+test/mask_120.raw
+Processing DNN input(s):
+test/ids_121.raw
+Processing DNN input(s):
+test/mask_121.raw
+Processing DNN input(s):
+test/ids_122.raw
+Processing DNN input(s):
+test/mask_122.raw
+Processing DNN input(s):
+test/ids_123.raw
+Processing DNN input(s):
+test/mask_123.raw
+Processing DNN input(s):
+test/ids_124.raw
+Processing DNN input(s):
+test/mask_124.raw
+Processing DNN input(s):
+test/ids_125.raw
+Processing DNN input(s):
+test/mask_125.raw
+Processing DNN input(s):
+test/ids_126.raw
+Processing DNN input(s):
+test/mask_126.raw
+Processing DNN input(s):
+test/ids_127.raw
+Processing DNN input(s):
+test/mask_127.raw
+Processing DNN input(s):
+test/ids_128.raw
+Processing DNN input(s):
+test/mask_128.raw
+Processing DNN input(s):
+test/ids_129.raw
+Processing DNN input(s):
+test/mask_129.raw
+Processing DNN input(s):
+test/ids_130.raw
+Processing DNN input(s):
+test/mask_130.raw
+Processing DNN input(s):
+test/ids_131.raw
+Processing DNN input(s):
+test/mask_131.raw
+Processing DNN input(s):
+test/ids_132.raw
+Processing DNN input(s):
+test/mask_132.raw
+Processing DNN input(s):
+test/ids_133.raw
+Processing DNN input(s):
+test/mask_133.raw
+Processing DNN input(s):
+test/ids_134.raw
+Processing DNN input(s):
+test/mask_134.raw
+Processing DNN input(s):
+test/ids_135.raw
+Processing DNN input(s):
+test/mask_135.raw
+Processing DNN input(s):
+test/ids_136.raw
+Processing DNN input(s):
+test/mask_136.raw
+Processing DNN input(s):
+test/ids_137.raw
+Processing DNN input(s):
+test/mask_137.raw
+Processing DNN input(s):
+test/ids_138.raw
+Processing DNN input(s):
+test/mask_138.raw
+Processing DNN input(s):
+test/ids_139.raw
+Processing DNN input(s):
+test/mask_139.raw
+Processing DNN input(s):
+test/ids_140.raw
+Processing DNN input(s):
+test/mask_140.raw
+Processing DNN input(s):
+test/ids_141.raw
+Processing DNN input(s):
+test/mask_141.raw
+Processing DNN input(s):
+test/ids_142.raw
+Processing DNN input(s):
+test/mask_142.raw
+Processing DNN input(s):
+test/ids_143.raw
+Processing DNN input(s):
+test/mask_143.raw
+Processing DNN input(s):
+test/ids_144.raw
+Processing DNN input(s):
+test/mask_144.raw
+Processing DNN input(s):
+test/ids_145.raw
+Processing DNN input(s):
+test/mask_145.raw
+Processing DNN input(s):
+test/ids_146.raw
+Processing DNN input(s):
+test/mask_146.raw
+Processing DNN input(s):
+test/ids_147.raw
+Processing DNN input(s):
+test/mask_147.raw
+Processing DNN input(s):
+test/ids_148.raw
+Processing DNN input(s):
+test/mask_148.raw
+Processing DNN input(s):
+test/ids_149.raw
+Processing DNN input(s):
+test/mask_149.raw
+Processing DNN input(s):
+test/ids_150.raw
+Processing DNN input(s):
+test/mask_150.raw
+Processing DNN input(s):
+test/ids_151.raw
+Processing DNN input(s):
+test/mask_151.raw
+Processing DNN input(s):
+test/ids_152.raw
+Processing DNN input(s):
+test/mask_152.raw
+Processing DNN input(s):
+test/ids_153.raw
+Processing DNN input(s):
+test/mask_153.raw
+Processing DNN input(s):
+test/ids_154.raw
+Processing DNN input(s):
+test/mask_154.raw
+Processing DNN input(s):
+test/ids_155.raw
+Processing DNN input(s):
+test/mask_155.raw
+Processing DNN input(s):
+test/ids_156.raw
+Processing DNN input(s):
+test/mask_156.raw
+Processing DNN input(s):
+test/ids_157.raw
+Processing DNN input(s):
+test/mask_157.raw
+Processing DNN input(s):
+test/ids_158.raw
+Processing DNN input(s):
+test/mask_158.raw
+Processing DNN input(s):
+test/ids_159.raw
+Processing DNN input(s):
+test/mask_159.raw
+Processing DNN input(s):
+test/ids_160.raw
+Processing DNN input(s):
+test/mask_160.raw
+Processing DNN input(s):
+test/ids_161.raw
+Processing DNN input(s):
+test/mask_161.raw
+Processing DNN input(s):
+test/ids_162.raw
+Processing DNN input(s):
+test/mask_162.raw
+Processing DNN input(s):
+test/ids_163.raw
+Processing DNN input(s):
+test/mask_163.raw
+Processing DNN input(s):
+test/ids_164.raw
+Processing DNN input(s):
+test/mask_164.raw
+Processing DNN input(s):
+test/ids_165.raw
+Processing DNN input(s):
+test/mask_165.raw
+Processing DNN input(s):
+test/ids_166.raw
+Processing DNN input(s):
+test/mask_166.raw
+Processing DNN input(s):
+test/ids_167.raw
+Processing DNN input(s):
+test/mask_167.raw
+Processing DNN input(s):
+test/ids_168.raw
+Processing DNN input(s):
+test/mask_168.raw
+Processing DNN input(s):
+test/ids_169.raw
+Processing DNN input(s):
+test/mask_169.raw
+Processing DNN input(s):
+test/ids_170.raw
+Processing DNN input(s):
+test/mask_170.raw
+Processing DNN input(s):
+test/ids_171.raw
+Processing DNN input(s):
+test/mask_171.raw
+Processing DNN input(s):
+test/ids_172.raw
+Processing DNN input(s):
+test/mask_172.raw
+Processing DNN input(s):
+test/ids_173.raw
+Processing DNN input(s):
+test/mask_173.raw
+Processing DNN input(s):
+test/ids_174.raw
+Processing DNN input(s):
+test/mask_174.raw
+Processing DNN input(s):
+test/ids_175.raw
+Processing DNN input(s):
+test/mask_175.raw
+Processing DNN input(s):
+test/ids_176.raw
+Processing DNN input(s):
+test/mask_176.raw
+Processing DNN input(s):
+test/ids_177.raw
+Processing DNN input(s):
+test/mask_177.raw
+Processing DNN input(s):
+test/ids_178.raw
+Processing DNN input(s):
+test/mask_178.raw
+Processing DNN input(s):
+test/ids_179.raw
+Processing DNN input(s):
+test/mask_179.raw
+Processing DNN input(s):
+test/ids_180.raw
+Processing DNN input(s):
+test/mask_180.raw
+Processing DNN input(s):
+test/ids_181.raw
+Processing DNN input(s):
+test/mask_181.raw
+Processing DNN input(s):
+test/ids_182.raw
+Processing DNN input(s):
+test/mask_182.raw
+Processing DNN input(s):
+test/ids_183.raw
+Processing DNN input(s):
+test/mask_183.raw
+Processing DNN input(s):
+test/ids_184.raw
+Processing DNN input(s):
+test/mask_184.raw
+Processing DNN input(s):
+test/ids_185.raw
+Processing DNN input(s):
+test/mask_185.raw
+Processing DNN input(s):
+test/ids_186.raw
+Processing DNN input(s):
+test/mask_186.raw
+Processing DNN input(s):
+test/ids_187.raw
+Processing DNN input(s):
+test/mask_187.raw
+Processing DNN input(s):
+test/ids_188.raw
+Processing DNN input(s):
+test/mask_188.raw
+Processing DNN input(s):
+test/ids_189.raw
+Processing DNN input(s):
+test/mask_189.raw
+Processing DNN input(s):
+test/ids_190.raw
+Processing DNN input(s):
+test/mask_190.raw
+Processing DNN input(s):
+test/ids_191.raw
+Processing DNN input(s):
+test/mask_191.raw
+Processing DNN input(s):
+test/ids_192.raw
+Processing DNN input(s):
+test/mask_192.raw
+Processing DNN input(s):
+test/ids_193.raw
+Processing DNN input(s):
+test/mask_193.raw
+Processing DNN input(s):
+test/ids_194.raw
+Processing DNN input(s):
+test/mask_194.raw
+Processing DNN input(s):
+test/ids_195.raw
+Processing DNN input(s):
+test/mask_195.raw
+Processing DNN input(s):
+test/ids_196.raw
+Processing DNN input(s):
+test/mask_196.raw
+Processing DNN input(s):
+test/ids_197.raw
+Processing DNN input(s):
+test/mask_197.raw
+Processing DNN input(s):
+test/ids_198.raw
+Processing DNN input(s):
+test/mask_198.raw
+Processing DNN input(s):
+test/ids_199.raw
+Processing DNN input(s):
+test/mask_199.raw
+Processing DNN input(s):
+test/ids_200.raw
+Processing DNN input(s):
+test/mask_200.raw
+Processing DNN input(s):
+test/ids_201.raw
+Processing DNN input(s):
+test/mask_201.raw
+Processing DNN input(s):
+test/ids_202.raw
+Processing DNN input(s):
+test/mask_202.raw
+Processing DNN input(s):
+test/ids_203.raw
+Processing DNN input(s):
+test/mask_203.raw
+Processing DNN input(s):
+test/ids_204.raw
+Processing DNN input(s):
+test/mask_204.raw
+Processing DNN input(s):
+test/ids_205.raw
+Processing DNN input(s):
+test/mask_205.raw
+Processing DNN input(s):
+test/ids_206.raw
+Processing DNN input(s):
+test/mask_206.raw
+Processing DNN input(s):
+test/ids_207.raw
+Processing DNN input(s):
+test/mask_207.raw
+Processing DNN input(s):
+test/ids_208.raw
+Processing DNN input(s):
+test/mask_208.raw
+Processing DNN input(s):
+test/ids_209.raw
+Processing DNN input(s):
+test/mask_209.raw
+Processing DNN input(s):
+test/ids_210.raw
+Processing DNN input(s):
+test/mask_210.raw
+Processing DNN input(s):
+test/ids_211.raw
+Processing DNN input(s):
+test/mask_211.raw
+Processing DNN input(s):
+test/ids_212.raw
+Processing DNN input(s):
+test/mask_212.raw
+Processing DNN input(s):
+test/ids_213.raw
+Processing DNN input(s):
+test/mask_213.raw
+Processing DNN input(s):
+test/ids_214.raw
+Processing DNN input(s):
+test/mask_214.raw
+Processing DNN input(s):
+test/ids_215.raw
+Processing DNN input(s):
+test/mask_215.raw
+Processing DNN input(s):
+test/ids_216.raw
+Processing DNN input(s):
+test/mask_216.raw
+Processing DNN input(s):
+test/ids_217.raw
+Processing DNN input(s):
+test/mask_217.raw
+Processing DNN input(s):
+test/ids_218.raw
+Processing DNN input(s):
+test/mask_218.raw
+Processing DNN input(s):
+test/ids_219.raw
+Processing DNN input(s):
+test/mask_219.raw
+Processing DNN input(s):
+test/ids_220.raw
+Processing DNN input(s):
+test/mask_220.raw
+Processing DNN input(s):
+test/ids_221.raw
+Processing DNN input(s):
+test/mask_221.raw
+Processing DNN input(s):
+test/ids_222.raw
+Processing DNN input(s):
+test/mask_222.raw
+Processing DNN input(s):
+test/ids_223.raw
+Processing DNN input(s):
+test/mask_223.raw
+Processing DNN input(s):
+test/ids_224.raw
+Processing DNN input(s):
+test/mask_224.raw
+Processing DNN input(s):
+test/ids_225.raw
+Processing DNN input(s):
+test/mask_225.raw
+Processing DNN input(s):
+test/ids_226.raw
+Processing DNN input(s):
+test/mask_226.raw
+Processing DNN input(s):
+test/ids_227.raw
+Processing DNN input(s):
+test/mask_227.raw
+Processing DNN input(s):
+test/ids_228.raw
+Processing DNN input(s):
+test/mask_228.raw
+Processing DNN input(s):
+test/ids_229.raw
+Processing DNN input(s):
+test/mask_229.raw
+Processing DNN input(s):
+test/ids_230.raw
+Processing DNN input(s):
+test/mask_230.raw
+Processing DNN input(s):
+test/ids_231.raw
+Processing DNN input(s):
+test/mask_231.raw
+Processing DNN input(s):
+test/ids_232.raw
+Processing DNN input(s):
+test/mask_232.raw
+Processing DNN input(s):
+test/ids_233.raw
+Processing DNN input(s):
+test/mask_233.raw
+Processing DNN input(s):
+test/ids_234.raw
+Processing DNN input(s):
+test/mask_234.raw
+Processing DNN input(s):
+test/ids_235.raw
+Processing DNN input(s):
+test/mask_235.raw
+Processing DNN input(s):
+test/ids_236.raw
+Processing DNN input(s):
+test/mask_236.raw
+Processing DNN input(s):
+test/ids_237.raw
+Processing DNN input(s):
+test/mask_237.raw
+Processing DNN input(s):
+test/ids_238.raw
+Processing DNN input(s):
+test/mask_238.raw
+Processing DNN input(s):
+test/ids_239.raw
+Processing DNN input(s):
+test/mask_239.raw
+Processing DNN input(s):
+test/ids_240.raw
+Processing DNN input(s):
+test/mask_240.raw
+Processing DNN input(s):
+test/ids_241.raw
+Processing DNN input(s):
+test/mask_241.raw
+Processing DNN input(s):
+test/ids_242.raw
+Processing DNN input(s):
+test/mask_242.raw
+Processing DNN input(s):
+test/ids_243.raw
+Processing DNN input(s):
+test/mask_243.raw
+Processing DNN input(s):
+test/ids_244.raw
+Processing DNN input(s):
+test/mask_244.raw
+Processing DNN input(s):
+test/ids_245.raw
+Processing DNN input(s):
+test/mask_245.raw
+Processing DNN input(s):
+test/ids_246.raw
+Processing DNN input(s):
+test/mask_246.raw
+Processing DNN input(s):
+test/ids_247.raw
+Processing DNN input(s):
+test/mask_247.raw
+Processing DNN input(s):
+test/ids_248.raw
+Processing DNN input(s):
+test/mask_248.raw
+Processing DNN input(s):
+test/ids_249.raw
+Processing DNN input(s):
+test/mask_249.raw
+Processing DNN input(s):
+test/ids_250.raw
+Processing DNN input(s):
+test/mask_250.raw
+Processing DNN input(s):
+test/ids_251.raw
+Processing DNN input(s):
+test/mask_251.raw
+Processing DNN input(s):
+test/ids_252.raw
+Processing DNN input(s):
+test/mask_252.raw
+Processing DNN input(s):
+test/ids_253.raw
+Processing DNN input(s):
+test/mask_253.raw
+Processing DNN input(s):
+test/ids_254.raw
+Processing DNN input(s):
+test/mask_254.raw
+Processing DNN input(s):
+test/ids_255.raw
+Processing DNN input(s):
+test/mask_255.raw
+Processing DNN input(s):
+test/ids_256.raw
+Processing DNN input(s):
+test/mask_256.raw
+Processing DNN input(s):
+test/ids_257.raw
+Processing DNN input(s):
+test/mask_257.raw
+Processing DNN input(s):
+test/ids_258.raw
+Processing DNN input(s):
+test/mask_258.raw
+Successfully executed graph model

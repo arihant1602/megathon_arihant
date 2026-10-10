@@ -1,0 +1,29 @@
+Log File Created: Wed Aug 14 03:16:24 2024
+Time Scale: 1e-06
+Epoch Timestamp: 1723585584318008 Steady Clock Timestamp: 2052195595
+Software library version: 2.47.0.260601114230
+------------------------------------------------------------
+
+SNPE Create Statistics:
+----------------------------------------
+  Load: 1841 us
+  Deserialize: 0 
+  Create: 85115 us
+
+  Init: 90929 us
+  De-Init: 14203 us
+
+  Create Network(s): 0 
+  RPC Init Time: 0 
+  Snpe Accelerator Init Time: 0 
+  Accelerator Init Time: 0 
+
+SNPE Execute Statistics (Averaged):
+----------------------------------------
+  Total Inference Time: 6806 us
+  Forward Propagate Time: 0 
+  RPC Execute Time: 0 
+  Snpe Accelerator Time: 0 
+  Num times yield occurred: 0
+  Accelerator Time: 0 
+

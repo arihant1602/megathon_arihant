@@ -1,0 +1,602 @@
+{
+ "log": [
+  {
+   "turn": 1,
+   "user": "Hi, there's water dripping from the ceiling in our pantry.",
+   "probs": {
+    "water_leak": 0.7409109473228455,
+    "washroom_plumbing": 0.0007421629270538688,
+    "power_outage": 4.353007170720957e-05,
+    "electrical_hazard": 0.00020873879839200526,
+    "lighting_fault": 0.0001825879153329879,
+    "hvac_issue": 0.0006342667620629072,
+    "elevator_fault": 0.0001363876071991399,
+    "structural_damage": 0.0014772972790524364,
+    "furniture_fixture": 5.718020111089572e-05,
+    "spill_cleanup": 0.160187765955925,
+    "washroom_hygiene": 7.305114559130743e-05,
+    "pest_sighting": 0.0019918843172490597,
+    "cafeteria_issue": 0.00018252211157232523,
+    "access_control_fault": 6.418796692742035e-05,
+    "lost_badge": 0.00016807076463010162,
+    "suspicious_activity": 0.0001694380771368742,
+    "theft_missing_asset": 0.00014539931726176292,
+    "cctv_fault": 0.0053205001167953014,
+    "injury_medical": 0.0002882533008232713,
+    "fire_smoke": 0.006471247877925634,
+    "chemical_spill": 0.0035371750127524137,
+    "unsafe_condition": 0.0017467830330133438,
+    "network_outage": 7.099942013155669e-05,
+    "conference_room_av": 0.0002795285836327821,
+    "device_fault": 7.373651897069067e-05,
+    "lab_equipment_fault": 5.432553734863177e-05,
+    "esd_issue": 0.00010760222357930616,
+    "lab_utility_failure": 0.000598388200160116,
+    "undetermined": 0.07393334060907364,
+    "none": 0.0001427343813702464
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "Hi, there's water dripping from the ceiling in our pantry.",
+     "relevant": 0.9962078332901001,
+     "fields": []
+    }
+   ],
+   "classifier_ms": 369.72498893737793,
+   "note": "not settled: top water_leak 0.74 < 0.8",
+   "extracted": {},
+   "llm": null,
+   "question_llm": null,
+   "action": {
+    "kind": "confirm",
+    "fields": [],
+    "reason": "essential: type below 0.8, offer top-3",
+    "text": "Just to make sure I file this right, is it about (1) Water leak, (2) Spill (non-hazardous), (3) Fire / smoke, or something else?",
+    "template": "Just to make sure I file this right, is it about (1) Water leak, (2) Spill (non-hazardous), (3) Fire / smoke, or something else?"
+   },
+   "form": {
+    "type": null,
+    "type_source": null,
+    "type_conf": 0.0,
+    "values": {
+     "floor": {
+      "value": 4,
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "building": {
+      "value": "N",
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "near_electrical": {
+      "value": true,
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "space_id": {
+      "value": "Building N, fourth floor",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "leak_source": {
+      "value": "pipe",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "water_spread": {
+      "value": "contained",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     }
+    },
+    "followups": 0,
+    "asked": [
+     [
+      3,
+      [
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": null,
+    "ready": false,
+    "ready_turn": null
+   },
+   "routing": null
+  },
+  {
+   "turn": 2,
+   "user": "Building N, fourth floor.",
+   "probs": {
+    "water_leak": 0.7960938215255737,
+    "washroom_plumbing": 0.0010079387575387955,
+    "power_outage": 0.00012581019836943597,
+    "electrical_hazard": 0.00033211533445864916,
+    "lighting_fault": 0.00023095282085705549,
+    "hvac_issue": 0.0017194673418998718,
+    "elevator_fault": 0.00011775717575801536,
+    "structural_damage": 0.0021876476239413023,
+    "furniture_fixture": 0.00012692179006990045,
+    "spill_cleanup": 0.15169748663902283,
+    "washroom_hygiene": 9.721477545099333e-05,
+    "pest_sighting": 0.0018896247493103147,
+    "cafeteria_issue": 0.000427413935540244,
+    "access_control_fault": 6.851802754681557e-05,
+    "lost_badge": 0.00016304774908348918,
+    "suspicious_activity": 0.00021065947657916695,
+    "theft_missing_asset": 0.0002073173673124984,
+    "cctv_fault": 0.0047774165868759155,
+    "injury_medical": 0.0006549975369125605,
+    "fire_smoke": 0.004396017640829086,
+    "chemical_spill": 0.0016110340366140008,
+    "unsafe_condition": 0.0018495511030778289,
+    "network_outage": 0.0001460676867282018,
+    "conference_room_av": 0.0003591903077904135,
+    "device_fault": 0.00010348459909437224,
+    "lab_equipment_fault": 7.078469934640452e-05,
+    "esd_issue": 0.00014200704754330218,
+    "lab_utility_failure": 0.000781988725066185,
+    "undetermined": 0.02821590006351471,
+    "none": 0.00018789604655466974
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "Hi, there's water dripping from the ceiling in our pantry.",
+     "relevant": 0.9950012564659119,
+     "fields": []
+    },
+    {
+     "turn": 1,
+     "text": "Building N, fourth floor.",
+     "relevant": 0.9999982118606567,
+     "fields": [
+      "building",
+      "floor"
+     ]
+    }
+   ],
+   "classifier_ms": 353.03544998168945,
+   "note": "not settled: top water_leak 0.80 < 0.8",
+   "extracted": {
+    "floor": 4,
+    "building": "N"
+   },
+   "llm": null,
+   "question_llm": null,
+   "action": {
+    "kind": "confirm",
+    "fields": [],
+    "reason": "essential: type below 0.8, offer top-3",
+    "text": "Just to make sure I file this right, is it about (1) Water leak, (2) Spill (non-hazardous), (3) CCTV camera fault, or something else?",
+    "template": "Just to make sure I file this right, is it about (1) Water leak, (2) Spill (non-hazardous), (3) CCTV camera fault, or something else?"
+   },
+   "form": {
+    "type": null,
+    "type_source": null,
+    "type_conf": 0.0,
+    "values": {
+     "floor": {
+      "value": 4,
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "building": {
+      "value": "N",
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "near_electrical": {
+      "value": true,
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "space_id": {
+      "value": "Building N, fourth floor",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "leak_source": {
+      "value": "pipe",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "water_spread": {
+      "value": "contained",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     }
+    },
+    "followups": 0,
+    "asked": [
+     [
+      3,
+      [
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": null,
+    "ready": false,
+    "ready_turn": null
+   },
+   "routing": null
+  },
+  {
+   "turn": 3,
+   "user": "It's spreading, and there's a plug socket right next to it.",
+   "probs": {
+    "water_leak": 0.9937356114387512,
+    "washroom_plumbing": 0.00023526731820311397,
+    "power_outage": 0.00019976706244051456,
+    "electrical_hazard": 0.00021196293528191745,
+    "lighting_fault": 5.0236161769134924e-05,
+    "hvac_issue": 0.0005018232041038573,
+    "elevator_fault": 1.2797527233487926e-05,
+    "structural_damage": 0.0006661004154011607,
+    "furniture_fixture": 1.2446316759451292e-05,
+    "spill_cleanup": 0.0017569689080119133,
+    "washroom_hygiene": 7.078940143401269e-06,
+    "pest_sighting": 8.085378794930875e-05,
+    "cafeteria_issue": 3.99093514715787e-05,
+    "access_control_fault": 7.614567039126996e-06,
+    "lost_badge": 9.230609975929838e-06,
+    "suspicious_activity": 1.9824203263851814e-05,
+    "theft_missing_asset": 2.6488129151402973e-05,
+    "cctv_fault": 0.000307459500618279,
+    "injury_medical": 8.065001748036593e-05,
+    "fire_smoke": 0.0005224982742220163,
+    "chemical_spill": 0.0001655280648265034,
+    "unsafe_condition": 9.745492570800707e-05,
+    "network_outage": 3.13907912641298e-05,
+    "conference_room_av": 3.965791984228417e-05,
+    "device_fault": 7.675385859329253e-06,
+    "lab_equipment_fault": 2.094354567816481e-05,
+    "esd_issue": 1.1022830221918412e-05,
+    "lab_utility_failure": 0.0007334068068303168,
+    "undetermined": 0.0003974685969296843,
+    "none": 1.0901716450462118e-05
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "Hi, there's water dripping from the ceiling in our pantry.",
+     "relevant": 0.9992904663085938,
+     "fields": [
+      "leak_source"
+     ]
+    },
+    {
+     "turn": 1,
+     "text": "Building N, fourth floor.",
+     "relevant": 0.9999977350234985,
+     "fields": [
+      "building",
+      "floor"
+     ]
+    },
+    {
+     "turn": 2,
+     "text": "It's spreading, and there's a plug socket right next to it.",
+     "relevant": 0.9998886585235596,
+     "fields": [
+      "near_electrical"
+     ]
+    }
+   ],
+   "classifier_ms": 662.9388332366943,
+   "note": "type settled: water_leak (0.99 >= 0.8)",
+   "extracted": {
+    "near_electrical": true,
+    "space_id": "Building N, fourth floor",
+    "leak_source": "pipe",
+    "water_spread": "contained"
+   },
+   "llm": {
+    "ms": 277,
+    "prompt_tokens": 198,
+    "output_tokens": 61,
+    "fits_device": false
+   },
+   "question_llm": {
+    "ms": 107,
+    "prompt_tokens": 98,
+    "output_tokens": 15,
+    "fits_device": true
+   },
+   "action": {
+    "kind": "detail",
+    "fields": [
+     "occurred_at"
+    ],
+    "reason": "detail: more information",
+    "text": "Got it, your report is ready and Facilities Engineering will handle it. When did you notice this water leak? (You can also say 'done' to file the report now.)",
+    "template": "Got it, your report is ready and Facilities Engineering will handle it. Roughly when did this happen or when did you notice it? (You can also say 'done' to file the report now.)",
+    "question_by": "llm"
+   },
+   "form": {
+    "type": "water_leak",
+    "type_source": "classifier",
+    "type_conf": 0.9937356114387512,
+    "values": {
+     "floor": {
+      "value": 4,
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "building": {
+      "value": "N",
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "near_electrical": {
+      "value": true,
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "space_id": {
+      "value": "Building N, fourth floor",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "leak_source": {
+      "value": "pipe",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "water_spread": {
+      "value": "contained",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     }
+    },
+    "followups": 1,
+    "asked": [
+     [
+      3,
+      [
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": null,
+    "ready": true,
+    "ready_turn": 3
+   },
+   "routing": {
+    "priority": "P1",
+    "priority_label": "Critical",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Plumbing Technician",
+     "Electrical Technician",
+     "EHS Engineer"
+    ],
+    "rules_fired": [
+     "near_electrical eq True"
+    ],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 15
+   }
+  },
+  {
+   "turn": 3,
+   "user": "done",
+   "probs": {
+    "water_leak": 0.9937356114387512,
+    "washroom_plumbing": 0.00023526731820311397,
+    "power_outage": 0.00019976706244051456,
+    "electrical_hazard": 0.00021196293528191745,
+    "lighting_fault": 5.0236161769134924e-05,
+    "hvac_issue": 0.0005018232041038573,
+    "elevator_fault": 1.2797527233487926e-05,
+    "structural_damage": 0.0006661004154011607,
+    "furniture_fixture": 1.2446316759451292e-05,
+    "spill_cleanup": 0.0017569689080119133,
+    "washroom_hygiene": 7.078940143401269e-06,
+    "pest_sighting": 8.085378794930875e-05,
+    "cafeteria_issue": 3.99093514715787e-05,
+    "access_control_fault": 7.614567039126996e-06,
+    "lost_badge": 9.230609975929838e-06,
+    "suspicious_activity": 1.9824203263851814e-05,
+    "theft_missing_asset": 2.6488129151402973e-05,
+    "cctv_fault": 0.000307459500618279,
+    "injury_medical": 8.065001748036593e-05,
+    "fire_smoke": 0.0005224982742220163,
+    "chemical_spill": 0.0001655280648265034,
+    "unsafe_condition": 9.745492570800707e-05,
+    "network_outage": 3.13907912641298e-05,
+    "conference_room_av": 3.965791984228417e-05,
+    "device_fault": 7.675385859329253e-06,
+    "lab_equipment_fault": 2.094354567816481e-05,
+    "esd_issue": 1.1022830221918412e-05,
+    "lab_utility_failure": 0.0007334068068303168,
+    "undetermined": 0.0003974685969296843,
+    "none": 1.0901716450462118e-05
+   },
+   "sentences": [
+    {
+     "turn": 0,
+     "text": "Hi, there's water dripping from the ceiling in our pantry.",
+     "relevant": 0.9992904663085938,
+     "fields": [
+      "leak_source"
+     ]
+    },
+    {
+     "turn": 1,
+     "text": "Building N, fourth floor.",
+     "relevant": 0.9999977350234985,
+     "fields": [
+      "building",
+      "floor"
+     ]
+    },
+    {
+     "turn": 2,
+     "text": "It's spreading, and there's a plug socket right next to it.",
+     "relevant": 0.9998886585235596,
+     "fields": [
+      "near_electrical"
+     ]
+    }
+   ],
+   "classifier_ms": 662.9388332366943,
+   "note": "type settled: water_leak (0.99 >= 0.8)",
+   "extracted": {
+    "near_electrical": true,
+    "space_id": "Building N, fourth floor",
+    "leak_source": "pipe",
+    "water_spread": "contained"
+   },
+   "llm": {
+    "ms": 277,
+    "prompt_tokens": 198,
+    "output_tokens": 61,
+    "fits_device": false
+   },
+   "question_llm": null,
+   "action": {
+    "kind": "submit",
+    "fields": [],
+    "reason": "user ended the conversation",
+    "text": "Report filed. Facilities Engineering has been notified. Thanks!",
+    "template": "Report filed. Facilities Engineering has been notified. Thanks!"
+   },
+   "form": {
+    "type": "water_leak",
+    "type_source": "classifier",
+    "type_conf": 0.9937356114387512,
+    "values": {
+     "floor": {
+      "value": 4,
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "building": {
+      "value": "N",
+      "evidence": "Building N, fourth floor.",
+      "turn": 2
+     },
+     "near_electrical": {
+      "value": true,
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "space_id": {
+      "value": "Building N, fourth floor",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "leak_source": {
+      "value": "pipe",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     },
+     "water_spread": {
+      "value": "contained",
+      "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+      "turn": 3
+     }
+    },
+    "followups": 1,
+    "asked": [
+     [
+      3,
+      [
+       "occurred_at"
+      ]
+     ]
+    ],
+    "outcome": "submitted",
+    "ready": true,
+    "ready_turn": 3
+   },
+   "routing": {
+    "priority": "P1",
+    "priority_label": "Critical",
+    "team": "Facilities Engineering",
+    "notify": [
+     "Plumbing Technician",
+     "Electrical Technician",
+     "EHS Engineer"
+    ],
+    "rules_fired": [
+     "near_electrical eq True"
+    ],
+    "reroute_to": null,
+    "secondary": [],
+    "sla_min": 15
+   }
+  }
+ ],
+ "final": {
+  "type": "water_leak",
+  "type_source": "classifier",
+  "type_conf": 0.9937356114387512,
+  "values": {
+   "floor": {
+    "value": 4,
+    "evidence": "Building N, fourth floor.",
+    "turn": 2
+   },
+   "building": {
+    "value": "N",
+    "evidence": "Building N, fourth floor.",
+    "turn": 2
+   },
+   "near_electrical": {
+    "value": true,
+    "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+    "turn": 3
+   },
+   "space_id": {
+    "value": "Building N, fourth floor",
+    "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+    "turn": 3
+   },
+   "leak_source": {
+    "value": "pipe",
+    "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+    "turn": 3
+   },
+   "water_spread": {
+    "value": "contained",
+    "evidence": "Hi, there's water dripping from the ceiling in our pantry. Building N, fourth floor. It's spreading, and there's a plug socket right next to it.",
+    "turn": 3
+   }
+  },
+  "followups": 1,
+  "asked": [
+   [
+    3,
+    [
+     "occurred_at"
+    ]
+   ]
+  ],
+  "outcome": "submitted",
+  "ready": true,
+  "ready_turn": 3
+ },
+ "routing": {
+  "priority": "P1",
+  "priority_label": "Critical",
+  "team": "Facilities Engineering",
+  "notify": [
+   "Plumbing Technician",
+   "Electrical Technician",
+   "EHS Engineer"
+  ],
+  "rules_fired": [
+   "near_electrical eq True"
+  ],
+  "reroute_to": null,
+  "secondary": [],
+  "sla_min": 15
+ },
+ "summary": "A water leak from the ceiling in Building N, fourth floor, spreading to the pantry, with a plug socket adjacent."
+}
