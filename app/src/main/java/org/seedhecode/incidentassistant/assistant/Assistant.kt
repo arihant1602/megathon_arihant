@@ -32,6 +32,12 @@ class Assistant(val tax: Taxonomy, private val classify: (List<List<String>>) ->
         extracted = emptyMap(); routing = null; summary = ""; log.clear(); prevType = null; extractor.calls.clear()
     }
 
+    /** A value the user typed into the form: stored like an extraction, evidence marks it as a manual edit. */
+    fun edit(field: String, value: Any?) {
+        if (value == null) state.values.remove(field) else state.set(field, value, "edited by user", turns.size)
+        routing = policy.route(state, turns.flatten().joinToString(" "))
+    }
+
     private fun confirm(text: String): String? {
         val opts = state.pendingConfirm ?: return null
         val words = Regex("[a-z0-9]+").findAll(text.lowercase()).map { it.value }.toList()

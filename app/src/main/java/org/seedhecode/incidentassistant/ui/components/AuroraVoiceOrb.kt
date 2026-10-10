@@ -33,7 +33,11 @@ fun AuroraVoiceOrb(
     captureState: CaptureState,
     modifier: Modifier = Modifier
 ) {
-    val reducedMotion = false // Default handling if reduced motion is requested
+    // Reduced motion: the system "remove animations" setting sets the animator duration scale to 0.
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val reducedMotion = androidx.compose.runtime.remember {
+        android.provider.Settings.Global.getFloat(context.contentResolver, android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f
+    }
 
     var smoothedLevel by remember { mutableFloatStateOf(0f) }
 

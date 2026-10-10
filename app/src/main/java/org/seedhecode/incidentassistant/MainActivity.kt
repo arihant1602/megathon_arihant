@@ -10,11 +10,9 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import org.seedhecode.incidentassistant.feature.assistant.IncidentAssistantViewModel
 import org.seedhecode.incidentassistant.feature.assistant.Phase
-import org.seedhecode.incidentassistant.ui.assistant.AssistantScreen
+import org.seedhecode.incidentassistant.ui.app.SentinelApp
 import org.seedhecode.incidentassistant.ui.theme.IncidentAssistantTheme
 
 class MainActivity : ComponentActivity() {
@@ -28,16 +26,9 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             IncidentAssistantTheme {
-                val state by assistant.state.collectAsState()
-                AssistantScreen(
-                    state = state,
-                    onMic = { if (state.phase == Phase.LISTENING) assistant.stopListening() else talk() },
-                    onSend = assistant::send,
-                    onDone = assistant::done,
-                    onNewReport = assistant::newReport,
-                    onRetryLoad = assistant::load,
-                    onToggleSpeech = assistant::toggleSpeech,
-                )
+                SentinelApp(assistant) {
+                    if (assistant.state.value.phase == Phase.LISTENING) assistant.stopListening() else talk()
+                }
             }
         }
     }

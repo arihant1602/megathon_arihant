@@ -71,6 +71,11 @@ data class AssistantView(
     val sentences: List<SentenceInfo>,
     val note: String,
     val timings: Timings?,
+    val actionKind: String?,                  // last assistant move: ask/detail/confirm/open/offer_end/submit/out_of_scope
+    val actionFields: List<String>,           // fields the open question asks for
+    val confirmOptions: List<Pair<String, String>>,   // "Is it (1) A, (2) B ...": type id -> label
+    val fieldMeta: Map<String, FieldMeta>,    // every field shown on the form
+    val whisperOnNpu: Boolean,
 )
 
 data class Timings(val whisperMs: Long?, val classifierMs: Double, val llm: List<LlmStat>, val turnMs: Long)
@@ -139,7 +144,30 @@ class IncidentEngine(context: Context,
             st.ready, st.done, st.outcome, a.routing, a.summary,
             a.cls?.probs?.entries?.sortedByDescending { it.value }?.take(5)?.map { it.key to it.value } ?: emptyList(),
             a.cls?.sentences ?: emptyList(), a.note,
-            last?.let { Timings(whisperMs.takeIf { it > 0 }, it.classifierMs, it.llm, it.turnMs) })
+            last?.let { Timings(whisperMs.takeIf { it > 0 }, it.classifierMs, it.llm, it.turnMs) },
+            a.lastAction?.kind, a.lastAction?.fields ?: emptyList(),
+            (if (a.lastAction?.kind == "confirm") st.pendingConfirm else null)?.map { it to tax.label(it) } ?: emptyList(),
+            (tax.requiredFields(st.type) + st.values.keys).distinct().associateWith { tax.fieldMeta(it) },
+            speech.encoderOnNpu)
+    }
+
+    /** Form edit: parse [raw] by the field's kind; blank clears the field. */
+    fun editField(field: String, raw: String) {
+        submit(inference) {
+            val meta = assistant.tax.fieldMeta(field)
+            val text = raw.trim()
+            val value: Any? = when {
+                text.isEmpty() -> null
+                meta.kind == "int" -> text.toIntOrNull() ?: throw IllegalArgumentException("${field.replace('_', ' ')} needs a number.")
+                meta.kind == "bool" -> when (text.lowercase()) { "yes", "true" -> true; "no", "false" -> false; "unknown" -> "unknown"
+                    else -> throw IllegalArgumentException("Answer yes or no.") }
+                meta.kind == "enum" -> text.takeIf { it in meta.values || it == "unknown" } ?: throw IllegalArgumentException("Pick one of the listed options.")
+                field == "building" -> text.uppercase().takeIf { it in assistant.tax.buildingCodes } ?: text
+                else -> text
+            }
+            assistant.edit(field, value)
+            onView(view())
+        }
     }
 
     fun reset() { cancel(); submit(inference) { assistant.reset(); whisperMs = 0; onView(view()) } }

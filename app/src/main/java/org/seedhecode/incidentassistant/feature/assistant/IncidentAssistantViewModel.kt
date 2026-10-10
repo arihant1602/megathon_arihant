@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import org.seedhecode.core.audio.ConversationCapture
+import org.seedhecode.incidentassistant.data.FiledReport
+import org.seedhecode.incidentassistant.data.ReportStatus
+import org.seedhecode.incidentassistant.data.ReportStore
 import org.seedhecode.incidentassistant.engine.AssistantView
 import org.seedhecode.incidentassistant.engine.IncidentEngine
 import org.seedhecode.incidentassistant.engine.OfflineSpeaker
@@ -25,6 +28,8 @@ data class AssistantUiState(
     val loadMs: Map<String, Long> = emptyMap(),
     val error: String? = null,
     val speakQuestions: Boolean = true,
+    val filedReportId: String? = null,     // set once the current conversation's report is saved
+    val notice: String? = null,            // one-off message (e.g. a rejected form edit)
 )
 
 /** Drives one incident conversation: mic -> IncidentEngine -> spoken question -> listen again. */
@@ -37,6 +42,9 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     private var capture: ConversationCapture? = null
     private var capturing = false
     private var conversing = false   // started by voice: listen again after each spoken question
+    private val store = ReportStore(application.filesDir)
+    private val _reports = MutableStateFlow(store.all())
+    val reports: StateFlow<List<FiledReport>> = _reports.asStateFlow()
     private val speaker = OfflineSpeaker(application, { msg -> ui { _state.update { it.copy(status = msg) } } },
         { _, _ -> }, { _ -> ui { afterSpeech() } })
 
@@ -101,15 +109,43 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
 
     fun newReport() {
         conversing = false; speaker.stop(); capture?.stop()
-        _state.update { it.copy(caption = "") }
+        _state.update { it.copy(caption = "", filedReportId = null) }
         engine?.reset()
+    }
+
+    /** Form correction; the engine validates it against the field's type. */
+    fun editField(field: String, value: String) { engine?.editField(field, value) }
+
+    fun clearNotice() = _state.update { it.copy(notice = null) }
+
+    fun setStatus(id: String, status: ReportStatus) {
+        store.setStatus(id, status); _reports.value = store.all()
+    }
+
+    private fun save(v: AssistantView): String {
+        val r = v.routing!!
+        val fields = (v.requiredFields + v.values.keys).distinct().mapNotNull { f ->
+            v.values[f]?.value?.let { f to when (it) { true -> "yes"; false -> "no"; else -> it.toString() } }
+        }
+        val report = FiledReport("IR-" + java.lang.Long.toString(System.currentTimeMillis(), 36).uppercase(), System.currentTimeMillis(),
+            v.type!!, v.typeLabel!!, r.team, r.priority, r.priorityLabel, r.slaMin, r.notify, r.secondary, fields, v.summary, v.chat,
+            ReportStatus.NEW)
+        store.save(report); _reports.value = store.all()
+        return report.id
     }
 
     fun toggleSpeech() = _state.update { it.copy(speakQuestions = !it.speakQuestions) }
 
+    private var answeredTurns = 0   // chat length already spoken; form edits refresh the view without a new question
+
     private fun onView(v: AssistantView) {
-        _state.update { it.copy(view = v, phase = Phase.IDLE, status = if (v.done) "Report closed" else "Your turn", error = null) }
-        if (v.chat.isEmpty()) return
+        val filed = _state.value.filedReportId ?: if (v.done && v.outcome == "submitted" && v.routing != null) save(v) else null
+        val newTurn = v.chat.size > answeredTurns
+        answeredTurns = v.chat.size
+        _state.update { it.copy(view = v, error = null, filedReportId = filed,
+            phase = if (newTurn || it.phase == Phase.THINKING) Phase.IDLE else it.phase,
+            status = if (v.done) "Report closed" else if (newTurn) "Your turn" else it.status) }
+        if (!newTurn) return
         if (_state.value.speakQuestions && speaker.speak(v.question)) {
             _state.update { it.copy(phase = Phase.SPEAKING, status = "Speaking…") }
         } else afterSpeech()
@@ -121,7 +157,7 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     }
 
     private fun onEngineError(message: String) {
-        _state.update { it.copy(phase = Phase.IDLE, status = message, level = 0f) }
+        _state.update { it.copy(phase = Phase.IDLE, status = message, level = 0f, notice = message) }
     }
 
     /** Activity stopped: release the mic and silence speech. */
