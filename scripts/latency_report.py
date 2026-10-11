@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the conversation-latency report (HTML -> PDF via headless Chromium) from VoiceBench results.
 
-usage: scripts/latency_report.py OUT.pdf RUN1.json [RUN2.json ...]
+usage: scripts/latency_report.py OUT.pdf RUN1.json [RUN2.json ...] [--note "text for the accuracy section"]
 The JSON files come from: VOICE=1 ANDROID_SERIAL=<kit> scripts/probe_kit.sh SCRIPT.txt > RUN.json
 """
 import html, io, json, os, statistics, subprocess, sys, tempfile, datetime
@@ -158,6 +158,11 @@ def main(out_pdf, paths):
         f"<td><b>{t['speech_end_to_reply_audible_ms']:.0f}</b></td></tr>" for t in ok if t["run"] == ok[0]["run"])
     failures_items = "".join(f"<li>Conversation {t['conversation']}, turn {t['turn']} (“{html.escape(t['said'])}”): {html.escape(t['error'])}</li>" for t in bad)
     failures_html = f"<h3>Turns that did not complete</h3><ul>{failures_items}</ul>" if bad else ""
+    note_html = f"<p>{html.escape(NOTE)}</p>" if NOTE else ""
+    misheard = [t for t in ok if t["wer"] > 0]
+    misheard_html = ("<p>Misheard turns:</p><ul>" + "".join(
+        f"<li>said “{html.escape(t['said'])}”, heard “{html.escape(t['heard'])}” (WER {t['wer']:.2f})</li>" for t in misheard) +
+        "</ul>") if misheard else ""
 
     commit = subprocess.run(["git", "-C", os.path.dirname(os.path.abspath(__file__)), "rev-parse", "--short", "HEAD"],
                             capture_output=True, text=True).stdout.strip()
@@ -266,6 +271,8 @@ weak spot: a single letter spoken as a letter ("N building") is easily heard as 
 primed with the site's building codes, and a small normalization step maps the common confusions back
 ("an end building" → "N building", "Q.R.C." → "QRC", a lone "Dunn" → "done"). {filed} conversations were filed by voice.
 </p>
+{misheard_html}
+{note_html}
 
 <h2>Resources</h2>
 <table>
@@ -307,5 +314,10 @@ Raw data and the generator: scripts/latency_report.py, scripts/probe_kit.sh (VOI
 </body></html>"""
 
 
+NOTE = ""
+
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2:])
+    args = sys.argv[2:]
+    if "--note" in args:
+        i = args.index("--note"); NOTE = args[i + 1]; args = args[:i] + args[i + 2:]
+    main(sys.argv[1], args)
