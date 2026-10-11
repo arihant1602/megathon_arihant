@@ -1,4 +1,4 @@
-# Sentinel AI: on-device voice incident assistant
+# Sentinel : an on-device voice incident assistant
 
 Report a workplace incident by talking. The app transcribes speech (Whisper, encoder on the NPU), works out the
 incident type (fine-tuned Laya classifier on the NPU), asks only for what is missing, extracts the details (Qwen3-0.6B)
