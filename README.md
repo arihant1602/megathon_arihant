@@ -1,115 +1,209 @@
-# Incident Assistant
+# Sentinel AI: on-device voice incident assistant
 
-## Voice interview
+Report a workplace incident by talking. The app transcribes speech (Whisper, encoder on the NPU), works out the
+incident type (fine-tuned Laya classifier on the NPU), asks only for what is missing, extracts the details (Qwen3-0.6B)
+and speaks its questions (Piper). Everything runs on the device; no network is used.
 
-The app opens directly into a single voice screen. Tap the circle to begin,
-describe the incident, then pause. Whisper supplies live captions and final
-English answers; Qwen extracts grounded facts and proposes context-aware
-follow-up questions. The app checks fixed department templates and incident
-requirements, asks for extra details after required answers are resolved, then
-shows the assembled report for correction and JSON export. Unknown answers stay
-explicit. Drafts are saved locally; reports are not submitted automatically.
+**Supported device: Qualcomm Snapdragon 8 Elite (SM8750) with Android 15**, e.g. the SM8750 HDK / dev kit used at
+Megathon. The NPU models are compiled for the SM8750's Hexagon v79 HTP and will not run on other chips.
 
-Use **Setup** for model import, language, a new report or incident-type correction.
-See [voice interview flow, templates and prompts](docs/voice-interview.md).
-The interview APK is built with bundled models. Device behavior still needs your testing.
+There are two ways to run it:
 
-## Underlying Phase 1-2 engine
+- **[Option A: install the ready-made APK](#option-a-install-the-ready-made-apk)** (about 5 minutes; everything is inside).
+- **[Option B: build from source](#option-b-build-from-source)** (for developers).
 
-The Android app now includes a local model-bundle importer, native Whisper/Qwen
-runtime adapters, CfC/Laya ONNX adapters, natural-pause conversation capture,
-revision-safe extraction, logged SQLite fixture tools and diagnostic export.
-The earlier extraction pipeline remains in code for later integration. Whisper and Qwen
-weights are bundled by default; trained CfC/Laya artifacts remain separate.
+---
 
-The current `asr_llm` mode runs pretrained **Whisper Base + Qwen3 0.6B**, with
-CfC/Laya deferred. Run `python scripts/fetch_reference_models.py` to prepare the
-pinned, verified bundle on the workstation. Gradle includes it in the APK, and the
-app extracts and verifies it automatically on first launch without a phone download
-or manual import. Native models are enabled by default for Android Studio Run.
-The model payload is about 787 MB, with another 787 MB needed for extracted weights.
-Use `-PbundleModels=false` for an import-only APK or `-PmodelBundlePath=...` to
-select another compatible bundle. Model binaries remain outside Git.
-See [integration and live phone testing](docs/reference-model-integration.md) and
-[automated check results](docs/reference-model-validation.md).
+## Option A: install the ready-made APK
 
-Build the ARM64 native-enabled APK with `./gradlew.bat :app:assembleDebug -PnativeModels=true`
-after running `powershell -File scripts/prepare_native.ps1`.
-Android **7.0 / API 24** is required. All current inference adapters are explicitly
-CPU reference implementations; Hexagon/QNN execution and physical-kit benchmarks
-are pending. Android offline TTS supplies reference speech output.
+The APK (`sentinel-ai-v1.0.apk`, 1.68 GB) contains the app and all models.
 
-See [implementation, model ABI and merge instructions](docs/phase1-phase2.md).
-The original recorder remains in code; the voice interview is the launcher.
+SHA-256: `c21fb2086531994bd1e714a28cd0548d72074193c1ca35d0229ef5c42b8a3195`
 
-Kotlin Android starter for SeedheCode's on-device incident reporting app.
-First target: a regular Android phone. Later target: HDK8750 with QAIRT/QNN.
+**Download:** __APK_DOWNLOAD_LINK__
 
-## What works in this starter
+### What you need
 
-- Microphone permission, including denial and settings recovery.
-- Foreground mono PCM16 recording with a live level meter and timer.
-- Private WAV recordings, capped at two minutes; replay and confirmed deletion.
-- Recordings persist across app restarts. Capture stops when the app leaves the foreground.
-- An audio-frame interface for future local ASR/LNN/QNN implementations.
-- No Internet permission, cloud API, fabricated transcription or model download.
+- The SM8750 device, with **USB debugging** on (Settings → About → tap *Build number* 7 times → Developer options →
+  *USB debugging*).
+- A computer with `adb` ([Android platform-tools](https://developer.android.com/tools/releases/platform-tools)).
+- **About 5 GB free on the device**: the APK plus the models it unpacks on first launch (2.1 GB).
 
-The original recording screen remains capture-only. The new interview uses
-Whisper and Qwen with fixed templates and a local review form. Integration with
-the friend's reporting workflow and actual submission still awaits its code.
+### Steps
 
-## Run on your Android through Android Studio
+1. Connect the device and check that it is listed:
+   ```bash
+   adb devices
+   ```
+   If several devices are listed, add `-s <serial>` after `adb` in the commands below.
+2. If any other build of this app is installed (for example a teammate's), remove it first. Android refuses to
+   install over an app signed with a different key:
+   ```bash
+   adb uninstall org.seedhecode.incidentassistant
+   ```
+   ("Unknown package" just means it was not installed.)
+3. Install the APK (it is large, so this takes a minute):
+   ```bash
+   adb install -r -g sentinel-ai-v1.0.apk
+   ```
+   `-g` grants the microphone permission up front. Without it, the app asks the first time you tap the mic.
+4. Open **Sentinel AI** on the device. The **first launch unpacks the models** (about 10–30 seconds). The home
+   screen shows *"Preparing on-device models (first launch only)… NN%"*, then *"Loading on-device models…"*.
+   It is ready when the badges read **Runs offline on this device · Incident type on NPU · Speech on NPU ·
+   Natural voice**. Later launches take a few seconds.
 
-1. Open the repository root (the folder containing `settings.gradle.kts`).
-2. Set the Gradle JDK to **17** in Settings > Build Tools > Gradle. Android
-   Studio's embedded compatible JDK can also be used.
-3. Install **Android SDK Platform 34**, **NDK 27.2.12479018**, **CMake 3.22.1** and
-   the SDK Build Tools using Tools > SDK Manager. Run
-   `powershell -File scripts/prepare_native.ps1`, then sync the project.
-4. Enable Developer options and USB debugging on your phone. Connect it by
-   USB, approve the debugging prompt, and select the device in Android Studio.
-5. Run `python scripts/fetch_reference_models.py` once on the workstation, then
-   Run the `app` configuration. First launch prepares the built-in models;
-   wait for model loading to finish before starting the conversation.
-6. Tap the voice circle, grant microphone access, and answer each question.
-   Wait for “Your turn - speak now”, then pause for about 1.6 seconds after an
-   answer or tap “I'm done answering”. Review and export the final form.
+Then see [Using the app](#using-the-app).
 
-Android 7.0 / API 24 or newer with a microphone is required. This intentionally
-uses native Android views to keep the starter small and dependencies minimal.
-Pinned build stack: AGP 8.5.0, Kotlin 1.9.22, Gradle 8.11.1, JDK 17, SDK 34.
-These are compatibility-oriented baseline versions, not a claim to use the
-latest Android toolchain. Raise SDK/toolchain versions before a Play release.
+---
 
-CLI on Windows: `./gradlew.bat :app:assembleDebug :core:audio:testDebugUnitTest :app:lintDebug`
-CLI on macOS/Linux: `sh gradlew :app:assembleDebug :core:audio:testDebugUnitTest :app:lintDebug`
-Debug APK: `app/build/outputs/apk/debug/app-debug.apk`.
+## Option B: build from source
 
-## Directory structure
+Tested on Linux (Arch) with the versions below. The helper scripts are bash. On Windows, use WSL, or
+`scripts/prepare_native.ps1` for step 3.
 
-```text
-app/                         Application, screen, permissions and playback
-  src/main/java/.../
-    feature/report/          Recording UI state; future reporting feature
-  src/main/res/              Layouts, strings, theme and vector artwork
-core/
-  audio/                     AudioRecord capture, WAV writer and private library
-  inference/                 Platform-neutral PCM and local engine contracts
-docs/                        Architecture and physical-device smoke checks
-gradle/wrapper/              Reproducible Gradle entry point
+### 1. Prerequisites
+
+| What | Version | Notes |
+|---|---|---|
+| JDK | **17** (exactly) | One module requires a Java 17 toolchain. Point `JAVA_HOME` at it. |
+| Android SDK | platform **34**, build-tools **34.0.0** | Gradle installs these by itself if the SDK licenses are accepted. |
+| Android NDK | **27.2.12479018** | Or any installed NDK via `-PndkVersion=<version>` (also built with 30.0.16248370). |
+| CMake | **3.22.1** (from the SDK) | Or a system CMake: `-PcmakeVersion=<version>` plus `cmake.dir=<prefix>` in `local.properties` (also built with 4.4.3). |
+| Qualcomm AI Runtime SDK (QAIRT / SNPE) | **2.47.0.260601** | From Qualcomm (free account). Provides the NPU runtime libraries and headers. The model files were compiled with this version. |
+| git, curl, python3, unzip, adb | any recent | |
+
+Install the SDK parts with the SDK manager if you don't use Android Studio:
+```bash
+sdkmanager "platforms;android-34" "build-tools;34.0.0" "ndk;27.2.12479018" "cmake;3.22.1"
 ```
 
-Local ideation, supplied PDF, taxonomy, QNN installer and existing scratch
-files are ignored. They stay on the workstation and are not repository inputs.
-No SDK path, signing credential, audio capture or model weight is committed.
+### 2. Clone and configure
 
-## Next integration point
+```bash
+git clone https://github.com/IIIT-ECell/megathon26-seedhecode.git
+cd megathon26-seedhecode
+git checkout integration
+echo "sdk.dir=$HOME/Android/Sdk" > local.properties        # your Android SDK path
+```
 
-Replace `CaptureOnlyVoiceEngine` at composition time with a local engine. It
-receives 100 ms PCM frames on the recording worker; enqueue bounded inference
-work rather than blocking that callback. Default capture is 16 kHz, with device
-fallback to 48/44.1 kHz. Read `AudioFrame.sampleRateHz` and resample explicitly
-when a model requires 16 kHz. Session identity and transcript revisions are
-part of the contract to support future corrections and streaming output.
+Tell Gradle where the QAIRT SDK is, either on every command line (`-PsnpeSdk=...`, used below) or once in
+`~/.gradle/gradle.properties`:
+```properties
+snpeSdk=/path/to/qairt/2.47.0.260601
+```
+The folder must contain `lib/aarch64-android/libSNPE.so`, `lib/hexagon-v79/unsigned/libSnpeHtpV79Skel.so` and
+`include/SNPE/`. Without `snpeSdk` the app builds but cannot run its NPU models.
 
-See [architecture](docs/architecture.md) and [device checks](docs/device-testing.md).
+### 3. Fetch the native sources and the voice runtime
+
+```bash
+scripts/prepare_native.sh          # whisper.cpp + llama.cpp at the pinned commits -> third_party/
+scripts/fetch_sherpa_onnx.sh       # sherpa-onnx 1.13.8 Android runtime (voice) -> third_party/sherpa-onnx/
+```
+
+### 4. Build
+
+```bash
+export JAVA_HOME=/path/to/jdk-17
+bash ./gradlew :app:assembleDebug -PsnpeSdk=/path/to/qairt/2.47.0.260601
+```
+The APK is `app/build/outputs/apk/debug/app-debug.apk` (about 77 MB, without models). The first build compiles
+whisper.cpp and llama.cpp and takes several minutes.
+
+Optional checks: `bash ./gradlew :app:testDebugUnitTest :core:inference:test`. These are the Kotlin-vs-Python parity
+tests, the endpointing tests and the speech-filter tests.
+
+### 5. Get the model files
+
+Put them in one folder, laid out exactly like this (it mirrors the app's `files/models/`):
+
+```
+models/
+├── laya_w8a16_htp.dlc                      901,310,747 bytes  fine-tuned Laya incident classifier, W8A16, SM8750 HTP
+├── ggml-base.bin                           147,951,465 bytes  Whisper base (multilingual), whisper.cpp format
+├── whisper_base_encoder_fp16_htp.dlc       261,897,167 bytes  Whisper encoder on the NPU, 30 s window
+├── whisper_base_encoder_10s_fp16_htp.dlc    89,926,975 bytes  Whisper encoder on the NPU, 10 s window
+├── Qwen3-0.6B-Q8_0.gguf                    639,446,688 bytes  Qwen3-0.6B, llama.cpp format
+└── voice/                                                     Piper en_US lessac-medium (sherpa-onnx)
+    ├── en_US-lessac-medium.onnx
+    ├── en_US-lessac-medium.onnx.json
+    ├── tokens.txt
+    └── espeak-ng-data/
+```
+
+**Easiest: take them out of the ready-made APK** (Option A's download). The APK is a zip:
+```bash
+unzip sentinel-ai-v1.0.apk 'assets/models/*' -d apk_models
+mv apk_models/assets/models models && rm -r apk_models models/manifest.json
+```
+
+**Or get each one yourself:**
+
+| File | Where it comes from |
+|---|---|
+| `ggml-base.bin` | `curl -L -o models/ggml-base.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin` |
+| `Qwen3-0.6B-Q8_0.gguf` | `curl -L -o models/Qwen3-0.6B-Q8_0.gguf https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/resolve/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf` |
+| `voice/` | `scripts/fetch_sherpa_onnx.sh models` (fetches the runtime again and the voice into `models/voice/`) |
+| the two `whisper_base_encoder_*.dlc` | `scripts/whisper_npu/build_encoder_dlc.sh models/ggml-base.bin models`. Needs the QAIRT SDK environment (`qairt-converter`, `snpe-dlc-graph-prepare` on `PATH`) and Python with `torch` + `onnx`. Delete the intermediate `encoder_*` files it leaves in `models/`. |
+| `laya_w8a16_htp.dlc` | Our fine-tuned model; take it from the APK. It is produced by the training/export pipeline on the `classifier-model` branch (`classifier/`): LoRA fine-tune → ONNX with bounded attention masks and one concatenated output → QAIRT W8A16 → HTP graph prepared for SM8750. |
+
+Check that you have the right files (`cd models && sha256sum laya_w8a16_htp.dlc ggml-base.bin whisper_base_encoder_*.dlc Qwen3-0.6B-Q8_0.gguf voice/*.onnx`):
+```text
+07de147df64fb7fea5eca2224b453d90eaca68d8036ef53beb564cc6894153a6  laya_w8a16_htp.dlc
+60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe  ggml-base.bin
+73f9cd370569d13945c0fc9eacf607a4779b3ddc4e1c02ec49eeb93456618add  whisper_base_encoder_10s_fp16_htp.dlc
+9b214fcbaca8f40246a99d94792dfee34608f6f53d82d2533dd076032b4d2a0d  whisper_base_encoder_fp16_htp.dlc
+9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031  Qwen3-0.6B-Q8_0.gguf
+4ba07d8549906668ee855fd9abf9faf66c5db74742712ff026a159f7277fca9f  voice/en_US-lessac-medium.onnx
+```
+Encoder DLCs you build yourself will have different checksums; that's fine.
+
+### 6. Install and copy the models to the device
+
+```bash
+adb uninstall org.seedhecode.incidentassistant      # only if another build is installed
+adb install -r -g app/build/outputs/apk/debug/app-debug.apk
+ANDROID_SERIAL=<serial from adb devices> scripts/push_models_kit.sh models/*
+```
+`push_models_kit.sh` copies the files into the app's private storage (`files/models/`) through `run-as`, which is why
+this route uses the **debug** build. It prints the folder listing at the end; all five files and `voice/` must be there.
+Then open the app as in Option A, step 4 (no unpacking step this time).
+
+### Optional: build the all-in-one APK yourself
+
+With the `models/` folder from step 5:
+```bash
+scripts/build_full_apk.sh models sentinel-ai-v1.0.apk /path/to/scratch
+```
+This builds the release APK with every model inside (the same as Option A). It needs about 5 GB free in the scratch
+folder and about 8 GB of RAM.
+
+---
+
+## Using the app
+
+1. Choose **Report an incident** (or **Facilities desk** to see filed reports) → **Continue**.
+2. Tap **Start talking** (or the **Talk** tab, then the mic button) and say what happened and where, e.g.
+   *"There's water dripping from the ceiling near the pantry, N building, fourth floor."* Then just stop talking:
+   a short pause ends your turn.
+3. The assistant speaks its question and the mic re-opens by itself. Answer out loud. It first makes sure it knows
+   **what** happened and **where** (building and floor), then says your report is ready and asks for optional details.
+4. Say **"done"** (or tap **File report now**) to file. The report shows its priority, the team it went to and a
+   respond-by time.
+5. **See the form** shows everything extracted so far (tap a field to correct it). **History** lists your reports.
+   **Facilities desk** shows all reports, most urgent first. A report's page can be read aloud (**Listen to report**)
+   and marked *in progress* or *resolved*.
+
+Buildings known to the demo site: **N** and **QRC** (from `app/src/main/assets/incident_taxonomy.json`).
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | Another build is installed: `adb uninstall org.seedhecode.incidentassistant`, then install again. |
+| `INSTALL_FAILED_INSUFFICIENT_STORAGE` or "Not enough free storage to unpack the models" | Free about 5 GB on the device. |
+| "The on-device models didn't load: Missing model files …" (Option B) | Step 6 didn't copy everything; run `push_models_kit.sh` again and check the listing. |
+| Error mentioning SNPE, DSP or `ADSP` | Not an SM8750 device, or the app was built without `-PsnpeSdk`. |
+| The mic never hears you (the caption stays empty) | Check that the device's microphone records in another app. Some SM8750 HDK units ship with a broken microphone route that records silence. |
+| It answers background noise | Speak close to the device; turns quieter than about −35 dBFS and music/noise transcripts are ignored. |
+| No voice | Check the media volume. The top-bar **Voice on/off** toggle must be on. |

@@ -65,6 +65,16 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
         _state.update { it.copy(phase = Phase.LOADING, status = "Loading on-device models…", error = null) }
         loader.execute {
             try {
+                // APK with bundled models: unpack them on first launch (about a minute), then load as usual.
+                val installer = org.seedhecode.incidentassistant.engine.ModelInstaller(getApplication())
+                if (installer.needed()) {
+                    var shown = -1
+                    installer.install { f ->
+                        val pct = (f * 100).toInt()
+                        if (pct != shown) { shown = pct; ui { _state.update { it.copy(status = "Preparing on-device models (first launch only)… $pct%") } } }
+                    }
+                    ui { _state.update { it.copy(status = "Loading on-device models…") } }
+                }
                 val e = IncidentEngine(getApplication(),
                     onCaption = { text -> ui { _state.update { it.copy(caption = text) } } },
                     onProcessing = { ui { capture?.stop(); _state.update { it.copy(phase = Phase.THINKING, status = "Thinking…", level = 0f) } } },

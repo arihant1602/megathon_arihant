@@ -63,7 +63,7 @@ fun HomeScreen(state: AssistantUiState, reports: List<FiledReport>, onStart: () 
 private fun ModelStatus(state: AssistantUiState) {
     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
         when (state.phase) {
-            Phase.LOADING -> Badge("Loading on-device models…", MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant)
+            Phase.LOADING -> Badge(state.status, MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant)
             Phase.ERROR -> Badge("Models not loaded", MaterialTheme.colorScheme.errorContainer, MaterialTheme.colorScheme.onErrorContainer)
             else -> {
                 Badge("Runs offline on this device", SuccessContainer, Success)
@@ -137,7 +137,7 @@ private fun VoiceStage(state: AssistantUiState) {
             Phase.LISTENING -> Badge("● Listening", MaterialTheme.colorScheme.errorContainer, MaterialTheme.colorScheme.onErrorContainer)
             Phase.THINKING -> Badge("Thinking")
             Phase.SPEAKING -> Badge("Speaking")
-            Phase.LOADING -> Badge("Loading models", MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant)
+            Phase.LOADING -> Badge(state.status, MaterialTheme.colorScheme.surfaceVariant, MaterialTheme.colorScheme.onSurfaceVariant)
             else -> Badge("Ready", SuccessContainer, Success)
         }
         AuroraVoiceOrb(audioLevel = state.level, captureState = capture, modifier = Modifier.size(180.dp))

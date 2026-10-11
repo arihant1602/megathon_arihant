@@ -9,7 +9,7 @@ here=$(cd "$(dirname "$0")" && pwd)
 mkdir -p "$2"
 for spec in "1500 whisper_base_encoder_fp16_htp" "500 whisper_base_encoder_10s_fp16_htp"; do
     set -- "$1" "$2" $spec
-    python "$here/export_encoder.py" "$1" "$2/encoder_$3.onnx" "$3"
+    "${PYTHON:-python3}" "$here/export_encoder.py" "$1" "$2/encoder_$3.onnx" "$3"
     qairt-converter --input_network "$2/encoder_$3.onnx" --float_bitwidth 16 --output_path "$2/encoder_$3_fp16.dlc"
     snpe-dlc-graph-prepare --input_dlc "$2/encoder_$3_fp16.dlc" --htp_socs sm8750 --output_dlc "$2/$4.dlc"
 done
