@@ -101,7 +101,7 @@ class IncidentEngine(context: Context,
     private val classifier: LayaClassifier
     private val assistant: Assistant
     private var resampler = PcmResampler(16000)
-    // Ends a turn on a ~0.9 s pause even with fans/AC/chatter in the room (see NoiseRobustEndpoint).
+    // Ends a turn on a 0.55 s pause even with fans/AC/chatter in the room (see NoiseRobustEndpoint).
     private val endpoint = NoiseRobustEndpoint()
     private var readySent = false
     private var samples = 0L

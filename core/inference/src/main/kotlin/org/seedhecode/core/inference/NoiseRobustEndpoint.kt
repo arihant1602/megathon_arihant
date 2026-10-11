@@ -22,7 +22,7 @@ import kotlin.math.sqrt
  * Same event contract as [PauseEndpoint]: a segment with turnEnded = true carries the whole utterance.
  */
 class NoiseRobustEndpoint(
-    private val pauseMs: Int = 900,
+    private val pauseMs: Int = 550,   // was 900; 0.55 s cuts ~350 ms off every turn (more mid-sentence cut-off risk)
     private val minSpeechMs: Int = 300,
     private val minStartMs: Int = 200,
     private val maxTurnMs: Int = 15_000,

@@ -90,41 +90,37 @@ fun ReportScreen(state: AssistantUiState, onMic: () -> Unit, onFile: () -> Unit,
     }
     val list = rememberLazyListState()
     val turns = v?.chat?.size ?: 0
-    LaunchedEffect(turns) { if (turns > 0) list.animateScrollToItem(0) }
+    // Conversation reads top to bottom; keep the newest message in view.
+    LaunchedEffect(turns, v?.done) { if (turns > 0) list.animateScrollToItem(maxOf(0, list.layoutInfo.totalItemsCount - 1)) }
     Column(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.weight(1f), state = list, contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)) {
+            verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item { VoiceStage(state) }
-            if (v != null) item {
-                DataCard {
-                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                        ReadyBadge(v)
-                        v.routing?.let { PriorityBadge(it.priority, it.priorityLabel) }
-                    }
-                    Spacer(Modifier.height(8.dp))
-                    Essentials(v)
-                    Spacer(Modifier.height(12.dp))
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        OutlinedPill("Form", onForm, Modifier.weight(1f), icon = Icons.Default.Assignment)
-                        if (!v.done && (v.confirmOptions.isNotEmpty() || v.actionFields.isNotEmpty()))
-                            OutlinedPill("Answer options", onQuestions, Modifier.weight(1f), icon = Icons.Default.TouchApp)
-                    }
+            // The conversation first; the form and its details live behind a link until the report is filed.
+            if (v != null) items(v.chat) { (who, text) -> Turn(who, text) }
+            if (v != null && !v.done && v.chat.isNotEmpty()) item {
+                Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+                    TextButton(onForm, Modifier.heightIn(min = 48.dp)) { Text("See the form") }
+                    if (v.confirmOptions.isNotEmpty() || v.actionFields.isNotEmpty())
+                        TextButton(onQuestions, Modifier.heightIn(min = 48.dp)) { Text("Answer options") }
                 }
             }
             if (v != null && v.done && state.filedReportId != null) item {
                 DataCard(container = SuccessContainer) {
-                    Text("Report filed", style = MaterialTheme.typography.headlineSmall, color = Success)
-                    Text("${v.team} has it. Reference ${state.filedReportId}.", style = MaterialTheme.typography.bodyMedium)
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                        Text("Report filed", style = MaterialTheme.typography.headlineSmall, color = Success)
+                        v.routing?.let { PriorityBadge(it.priority, it.priorityLabel) }
+                    }
+                    Text("Reference ${state.filedReportId}", style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Spacer(Modifier.height(8.dp))
+                    Essentials(v)
                     Spacer(Modifier.height(12.dp))
                     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         OutlinedPill("View report", { onOpenReport(state.filedReportId) }, Modifier.weight(1f))
                         OutlinedPill("New report", onNewReport, Modifier.weight(1f))
                     }
                 }
-            }
-            if (v != null && v.chat.isNotEmpty()) {
-                item { SectionTitle("Conversation") }
-                items(v.chat.reversed()) { (who, text) -> Turn(who, text) }
             }
         }
         Controls(state, onMic, onFile, onNewReport)
@@ -158,10 +154,14 @@ private fun VoiceStage(state: AssistantUiState) {
 
 @Composable
 private fun Turn(who: String, text: String) {
-    Row(Modifier.fillMaxWidth()) {
-        Text(if (who == "user") "You" else "Assistant", Modifier.width(84.dp), style = MaterialTheme.typography.labelMedium,
-            color = if (who == "user") MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(text, style = MaterialTheme.typography.bodyMedium)
+    val mine = who == "user"
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = if (mine) Arrangement.End else Arrangement.Start) {
+        Surface(color = if (mine) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
+            shape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp, bottomStart = if (mine) 18.dp else 6.dp, bottomEnd = if (mine) 6.dp else 18.dp),
+            modifier = Modifier.widthIn(max = 300.dp)) {
+            Text(text, Modifier.padding(horizontal = 14.dp, vertical = 10.dp), style = MaterialTheme.typography.bodyLarge,
+                color = if (mine) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant)
+        }
     }
 }
 

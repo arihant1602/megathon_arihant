@@ -36,8 +36,8 @@ class NoiseRobustEndpointTest {
     @Test fun speechInNoiseEndsAfterThePause() {
         val r = run(NoiseRobustEndpoint(), noise(1000, 0.02f), speech(2500, 0.25f, 0.02f), noise(2000, 0.02f))
         assertTrue(r.started); assertTrue(r.ended)
-        // ends ~0.9 s into the trailing noise (1000 + 2500 + 900 ms), not held open by the noise
-        assertTrue("ended at ${r.endAtMs}", r.endAtMs in 4300..4700)
+        // ends ~0.55 s into the trailing noise (1000 + 2500 + 550 ms), not held open by the noise
+        assertTrue("ended at ${r.endAtMs}", r.endAtMs in 3950..4350)
         assertTrue(r.segmentMs >= 2500)
     }
 
@@ -49,7 +49,7 @@ class NoiseRobustEndpointTest {
     @Test fun fanSwitchingOnIsLearnedNotTreatedAsSpeech() {
         val r = run(NoiseRobustEndpoint(), noise(1000, 0.003f), noise(6000, 0.03f), speech(2000, 0.3f, 0.03f), noise(2000, 0.03f))
         assertTrue(r.ended)
-        assertTrue("ended at ${r.endAtMs}", r.endAtMs in 9700..10100)   // the speech turn, not the fan
+        assertTrue("ended at ${r.endAtMs}", r.endAtMs in 9350..9750)   // the speech turn, not the fan
     }
 
     @Test fun nonStopNoiseCannotHoldATurnOpenForever() {
