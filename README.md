@@ -226,3 +226,10 @@ Buildings known to the demo site: **N** and **QRC** (from `app/src/main/assets/i
 `scripts/build_full_apk.sh models sentinel-ai.apk /path/to/scratch` (with the `models/` folder from Option B, step 5)
 builds the same kind of APK as Option A, with every model inside (about 1.7 GB; needs about 5 GB free scratch space and
 8 GB of RAM). Install it as in Option A.
+
+
+## BASE MODEL WEIGHTS (The fine tuned and quantized ones are mentioned above)
+https://huggingface.co/ggerganov/whisper.cpp/blob/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin
+https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/blob/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf
+https://huggingface.co/csukuangfj/vits-piper-en_US-lessac-medium
+https://github.com/NandhaKishorM/laya#installation-details
