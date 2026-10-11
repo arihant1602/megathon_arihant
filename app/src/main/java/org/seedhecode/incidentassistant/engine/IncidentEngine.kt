@@ -221,7 +221,8 @@ class IncidentEngine(context: Context,
             if (ended) {
                 english.clear()
                 val said = spoken(en)
-                android.util.Log.i("IncidentEngine", "heard: \"$en\" -> ${if (said == null) "ignored" else "turn"}")
+                // Never log what the user said; only whether it counted.
+                android.util.Log.i("IncidentEngine", "heard ${en.length} chars -> ${if (said == null) "ignored as non-speech" else "turn"}")
                 // Music, noise or a fragment: not a turn. Keep listening instead of answering it.
                 if (said == null) { onNoSpeech(); return@submit }
                 step(said)
