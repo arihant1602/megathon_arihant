@@ -57,7 +57,7 @@ scripts/fetch_sherpa_onnx.sh       # sherpa-onnx 1.13.8 Android runtime (voice) 
 export JAVA_HOME=/path/to/jdk-17
 ./gradlew :app:assembleDebug -PsnpeSdk=/path/to/qairt/2.47.0.260601
 ```
-The APK is `app/build/outputs/apk/debug/app-debug.apk` (about 77 MB, without models). The first build compiles
+The APK is `app/build/outputs/apk/debug/app-debug.apk` (about 70 MB, without models). The first build compiles
 whisper.cpp and llama.cpp and takes several minutes.
 
 Optional checks: `./gradlew :app:testDebugUnitTest :core:inference:test`. These are the Kotlin-vs-Python parity tests,
