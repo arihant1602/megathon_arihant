@@ -62,6 +62,8 @@ Java_org_seedhecode_incidentassistant_engine_NativeWhisper_transcribe(JNIEnv *en
     params.print_realtime = false; params.print_progress = false;
     params.print_timestamps = false; params.print_special = false;
     params.suppress_blank = true;
+    // Optional vocabulary bias set by the app (e.g. building codes: "N building" is otherwise heard as "M building").
+    if (const char *prompt = getenv("WHISPER_INITIAL_PROMPT")) params.initial_prompt = prompt;
     if (samples.empty() || whisper_full(ctx, params, samples.data(), samples.size()) != 0) {
         env->ThrowNew(env->FindClass("java/lang/IllegalStateException"), "Whisper transcription failed."); return nullptr;
     }

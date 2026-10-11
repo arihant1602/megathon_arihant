@@ -26,6 +26,16 @@ class ProbeActivity : Activity() {
         val wav = intent.getStringExtra("wav")
         val levelsSeconds = intent.getIntExtra("levels", 0)
         val dir = File(filesDir, "probe")
+        if (intent.getBooleanExtra("voice", false)) {   // voice-path latency benchmark (VoiceBench)
+            Thread {
+                val result = runCatching { VoiceBench(this).run(File(dir, name).readLines()) }
+                    .getOrElse { JSONObject().put("error", it.toString()).also { _ -> Log.e("Probe", "voice bench failed", it) } }
+                File(dir, "$name.out.json").writeText(result.toString(1))
+                Log.i("Probe", "DONE voice $name")
+                runOnUiThread { text.append("DONE\n") }
+            }.start()
+            return
+        }
         Thread {
             val out = JSONObject()
             try {

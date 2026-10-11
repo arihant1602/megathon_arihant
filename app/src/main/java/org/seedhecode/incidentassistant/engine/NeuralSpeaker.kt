@@ -60,6 +60,9 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
     override val name = if (kokoro) "Kokoro" else "Piper"
     /** Time from speak() to the first synthesized audio, for the last utterance. */
     @Volatile var lastFirstAudioMs = 0L; private set
+    /** System.nanoTime() of the last speak() call and of the moment its first frame actually played (0 if not yet). */
+    @Volatile var lastSpeakNanos = 0L; private set
+    @Volatile var lastPlaybackStartNanos = 0L; private set
 
     override fun speak(text: String): Boolean {
         if (text.isBlank()) return false
@@ -67,6 +70,7 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
         val id = generation.incrementAndGet()
         speaking = true
         val t0 = System.nanoTime()
+        lastSpeakNanos = t0; lastPlaybackStartNanos = 0L
         worker.execute {
             if (generation.get() != id) return@execute
             val chunks = LinkedBlockingQueue<ShortArray>()
@@ -105,6 +109,12 @@ class NeuralSpeaker(dir: File, private val onFinished: () -> Unit, private val s
                     .setChannelMask(AudioFormat.CHANNEL_OUT_MONO).build())
                 .setBufferSizeInBytes(maxOf(min * 4, OUTPUT_RATE)).setTransferMode(AudioTrack.MODE_STREAM).build()
             track = out
+            // Marker at the first frame: fires when the speaker actually starts playing this utterance.
+            out.notificationMarkerPosition = 1
+            out.setPlaybackPositionUpdateListener(object : AudioTrack.OnPlaybackPositionUpdateListener {
+                override fun onMarkerReached(t: AudioTrack?) { if (generation.get() == id) lastPlaybackStartNanos = System.nanoTime() }
+                override fun onPeriodicNotification(t: AudioTrack?) {}
+            }, main)
             out.play()
             while (generation.get() == id) {
                 val chunk = chunks.take()

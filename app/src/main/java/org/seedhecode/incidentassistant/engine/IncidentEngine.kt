@@ -125,6 +125,9 @@ class IncidentEngine(context: Context,
             val tokenizer = timed("tokenizer") { LayaTokenizer(asset("laya_tokenizer.json")) }
             r = timed("laya_npu") { SnpeLayaRunner(models.laya, context.applicationInfo.nativeLibraryDir) }
             classifier = LayaClassifier(tokenizer, asset("laya_labels.json"), r)
+            // Bias Whisper toward the site's building codes (single letters like "N" are easily misheard).
+            android.system.Os.setenv("WHISPER_INITIAL_PROMPT", "Facility incident report. Buildings: " +
+                tax.buildingCodes.joinToString(", ") { "$it building" } + ". Floors: ground floor, first floor, second floor. Done.", true)
             s = timed("whisper") { WhisperSpeech(models.whisper.absolutePath,
                 models.whisperEncoder.takeIf { it.isFile }, models.whisperEncoderShort.takeIf { it.isFile }) }
             l = timed("qwen") { LlamaLlm(models.qwen) }
@@ -220,7 +223,7 @@ class IncidentEngine(context: Context,
             onCaption(NON_SPEECH.replace(en, " ").trim())
             if (ended) {
                 english.clear()
-                val said = spoken(en)
+                val said = spoken(en)?.let { normalizeSpeech(it, assistant.tax.buildingCodes) }
                 // Never log what the user said; only whether it counted.
                 android.util.Log.i("IncidentEngine", "heard ${en.length} chars -> ${if (said == null) "ignored as non-speech" else "turn"}")
                 // Music, noise or a fragment: not a turn. Keep listening instead of answering it.
@@ -287,6 +290,27 @@ class IncidentEngine(context: Context,
     companion object {
         const val OPENING = "Tell me what happened and where you are."
         private val NON_SPEECH = Regex("""\[[^\]]*]|\([^)]*\)|\*[^*]*\*|[♪♫]""")
+
+        /**
+         * Fixes what speech recognition reliably gets wrong for this domain, before the assistant sees the text:
+         * single-letter building codes said as letters ("en building" heard as "end"/"an"/"M building" -> "N building"),
+         * spelled codes ("Q R C", "Q.R.C." -> "QRC") and a lone "done" heard as "Dunn".
+         */
+        fun normalizeSpeech(text: String, buildingCodes: List<String>): String {
+            var t = text
+            for (code in buildingCodes) {
+                if (code.length == 1) {
+                    val sounds = when (code.uppercase()) { "N" -> "en|end|enn|an|n|m|em"; else -> code.lowercase() }
+                    t = Regex("\\b(?:an?\\s+)?(?:$sounds)\\.?\\s+(building|block|wing|tower)\\b", RegexOption.IGNORE_CASE)
+                        .replace(t) { "$code ${it.groupValues[1]}" }
+                } else {
+                    val spelled = code.toCharArray().joinToString("\\.?\\s*") { Regex.escape(it.toString()) } + "\\.?"
+                    t = Regex("\\b$spelled(?=\\s|,|$)", RegexOption.IGNORE_CASE).replace(t, code)
+                }
+            }
+            if (Regex("^\\W*(dunn|dun|dawn|don)\\W*$", RegexOption.IGNORE_CASE).matches(t)) t = "done"
+            return t
+        }
 
         // What Whisper typically "hears" in silence or noise.
         private val HALLUCINATIONS = setOf("you", "thank you", "thanks", "thanks for watching", "thank you for watching",

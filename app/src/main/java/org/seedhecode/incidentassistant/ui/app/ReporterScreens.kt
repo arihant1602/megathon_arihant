@@ -41,9 +41,9 @@ fun HomeScreen(state: AssistantUiState, reports: List<FiledReport>, onStart: () 
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).then(Margins).padding(vertical = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)) {
         DataCard(container = MaterialTheme.colorScheme.primaryContainer) {
-            Text("Report an incident", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
+            Text("Report it by voice", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onPrimaryContainer)
             Spacer(Modifier.height(8.dp))
-            Text("Say what happened and where. The assistant asks only for what's missing, then sends it to the right team.",
+            Text("Just say what happened and where. It listens, asks only for what's missing, and sends it to the right team.",
                 style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onPrimaryContainer)
             Spacer(Modifier.height(20.dp))
             PillButton("Start talking", onStart, icon = Icons.Default.Mic, enabled = state.phase != Phase.LOADING && state.phase != Phase.ERROR)
@@ -79,7 +79,7 @@ private fun ModelStatus(state: AssistantUiState) {
 // ------------------------------------------------------------------------------------------------ voice report
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun ReportScreen(state: AssistantUiState, onMic: () -> Unit, onSend: (String) -> Unit, onFile: () -> Unit, onNewReport: () -> Unit,
+fun ReportScreen(state: AssistantUiState, onMic: () -> Unit, onFile: () -> Unit, onNewReport: () -> Unit,
                  onForm: () -> Unit, onQuestions: () -> Unit, onOpenReport: (String) -> Unit, onRetry: () -> Unit) {
     val v = state.view
     if (state.phase == Phase.ERROR) {
@@ -127,7 +127,7 @@ fun ReportScreen(state: AssistantUiState, onMic: () -> Unit, onSend: (String) ->
                 items(v.chat.reversed()) { (who, text) -> Turn(who, text) }
             }
         }
-        Controls(state, onMic, onSend, onFile, onNewReport)
+        Controls(state, onMic, onFile, onNewReport)
     }
 }
 
@@ -165,36 +165,29 @@ private fun Turn(who: String, text: String) {
     }
 }
 
+/** Voice only: one large mic control. It re-opens by itself after each spoken question (see the view model). */
 @Composable
-private fun Controls(state: AssistantUiState, onMic: () -> Unit, onSend: (String) -> Unit, onFile: () -> Unit, onNewReport: () -> Unit) {
+private fun Controls(state: AssistantUiState, onMic: () -> Unit, onFile: () -> Unit, onNewReport: () -> Unit) {
     val v = state.view
-    var text by rememberSaveable { mutableStateOf("") }
     val busy = state.phase == Phase.THINKING || state.phase == Phase.LOADING
+    val listening = state.phase == Phase.LISTENING
     Surface(color = MaterialTheme.colorScheme.surface, shadowElevation = 0.dp) {
-        Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp).imePadding(), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        Column(Modifier.fillMaxWidth().padding(horizontal = 20.dp, vertical = 10.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
             HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
-            // No early return here: returning out of an inline composable lambda corrupts the composer (crash on filing).
-            if (v?.done == true) PillButton("Start a new report", onNewReport, icon = Icons.Default.Add)
+            if (v?.done == true) PillButton("Start a new report", onNewReport, icon = Icons.Default.Mic)
             else {
-                if (v?.ready == true) PillButton("File report now", onFile, enabled = !busy, icon = Icons.Default.Send)
-                Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    val listening = state.phase == Phase.LISTENING
-                    Button(onMic, Modifier.heightIn(min = 56.dp), enabled = !busy, shape = RoundedCornerShape(28.dp),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = if (listening) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)) {
-                        Icon(if (listening) Icons.Default.Stop else Icons.Default.Mic, null)
-                        Spacer(Modifier.width(6.dp))
-                        Text(if (listening) "Stop" else "Talk", style = MaterialTheme.typography.titleMedium)
-                    }
-                    OutlinedTextField(text, { text = it }, Modifier.weight(1f), placeholder = { Text("Or type") }, singleLine = true,
-                        enabled = !busy, shape = RoundedCornerShape(14.dp),
-                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Send),
-                        keyboardActions = KeyboardActions(onSend = { if (text.isNotBlank()) { onSend(text); text = "" } }),
-                        trailingIcon = {
-                            IconButton({ onSend(text); text = "" }, enabled = text.isNotBlank() && !busy) {
-                                Icon(Icons.AutoMirrored.Filled.Send, "Send")
-                            }
-                        })
+                if (v?.ready == true) OutlinedPill("File report now", onFile, enabled = !busy, icon = Icons.Default.Send)
+                Button(onMic, Modifier.fillMaxWidth().heightIn(min = 64.dp), enabled = !busy, shape = RoundedCornerShape(32.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (listening) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.primary)) {
+                    Icon(if (listening) Icons.Default.Stop else Icons.Default.Mic, null, Modifier.size(26.dp))
+                    Spacer(Modifier.width(10.dp))
+                    Text(when (state.phase) {
+                        Phase.LISTENING -> "Listening · tap to stop"
+                        Phase.THINKING -> "Thinking…"
+                        Phase.SPEAKING -> "Speaking · tap to answer now"
+                        else -> "Tap to talk"
+                    }, style = MaterialTheme.typography.titleMedium)
                 }
             }
         }

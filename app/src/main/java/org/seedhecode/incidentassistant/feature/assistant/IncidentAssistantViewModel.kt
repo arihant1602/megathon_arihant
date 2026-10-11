@@ -49,7 +49,7 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     private var engine: IncidentEngine? = null
     private var capture: ConversationCapture? = null
     private var capturing = false
-    private var conversing = false   // started by voice: listen again after each spoken question
+    private var conversing = false   // the assistant asked something and waits for a spoken answer: open the mic after speech
     private val store = ReportStore(application.filesDir)
     private val _reports = MutableStateFlow(store.all())
     val reports: StateFlow<List<FiledReport>> = _reports.asStateFlow()
@@ -175,6 +175,7 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
             phase = if (newTurn || it.phase == Phase.THINKING) Phase.IDLE else it.phase,
             status = if (v.done) "Report closed" else if (newTurn) "Your turn" else it.status) }
         if (!newTurn) return
+        conversing = !v.done   // every question expects an answer: the mic opens as soon as it has been spoken
         if (_state.value.speakQuestions && speaker.speak(v.question)) {
             _state.update { it.copy(phase = Phase.SPEAKING, status = "Speaking…") }
         } else afterSpeech()
@@ -183,7 +184,8 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     private fun afterSpeech() {
         if (_state.value.readingReportId != null) _state.update { it.copy(readingReportId = null) }
         if (_state.value.phase == Phase.SPEAKING) _state.update { it.copy(phase = Phase.IDLE, status = "Your turn") }
-        if (conversing && _state.value.view?.done != true) main.postDelayed({ if (conversing && !capturing) startListening() }, 450)   // let the speaker's tail die out
+        // 300 ms lets the speaker's tail die out so the mic doesn't hear the assistant's own last word.
+        if (conversing && _state.value.view?.done != true) main.postDelayed({ if (conversing && !capturing) startListening() }, 300)
     }
 
     private fun onEngineError(message: String) {

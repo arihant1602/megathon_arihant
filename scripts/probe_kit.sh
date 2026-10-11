@@ -14,9 +14,10 @@ if [ -n "${2:-}" ]; then
     adb shell "chmod 644 /data/local/tmp/$wav && run-as $pkg cp /data/local/tmp/$wav files/probe/ && rm /data/local/tmp/$wav"
     extra=(--es wav "$wav")
 fi
-[ -n "${LEVELS:-}" ] && extra+=(--ei levels "$LEVELS")   # LEVELS=40: measure room levels for 40 s first
+[ -n "${LEVELS:-}" ] && extra+=(--ei levels "$LEVELS")
+[ -n "${VOICE:-}" ] && extra+=(--ez voice true)        # VOICE=1: voice-path latency benchmark over the script   # LEVELS=40: measure room levels for 40 s first
 adb shell am start -W -n $pkg/.ProbeActivity --es script "$name" "${extra[@]}" >/dev/null
-for _ in $(seq 1 300); do
+for _ in $(seq 1 900); do
     sleep 2
     adb shell "run-as $pkg test -f files/probe/$name.out.json" 2>/dev/null && break
 done

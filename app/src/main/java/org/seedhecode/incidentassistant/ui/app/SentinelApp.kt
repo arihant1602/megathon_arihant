@@ -41,7 +41,7 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
     LaunchedEffect(state.notice) { state.notice?.let { snackbar.showSnackbar(it); vm.clearNotice() } }
 
     val title = when (route) {
-        Routes.HOME -> "Sentinel AI"; Routes.REPORT -> "Report"; Routes.HISTORY -> "History"; Routes.FORM -> "Incident form"
+        Routes.HOME -> "Sentinel AI"; Routes.REPORT -> "Voice report"; Routes.HISTORY -> "History"; Routes.FORM -> "Incident form"
         Routes.QUESTIONS -> "Questions"; Routes.REVIEW -> "Review and file"; Routes.DESK -> "Sentinel AI"; Routes.DETAIL -> "Report"; else -> "Sentinel AI"
     }
     val topLevel = route in setOf(Routes.HOME, Routes.REPORT, Routes.HISTORY, Routes.DESK)
@@ -54,7 +54,14 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
         topBar = {
             TopAppBar(
                 title = { Text(title, style = MaterialTheme.typography.titleLarge) },
-                navigationIcon = { if (!topLevel) IconButton({ nav.popBackStack() }) { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back") } },
+                // Labeled back with a full-size target (the bare arrow was a 27dp target at the screen edge and taps missed it).
+                navigationIcon = {
+                    if (!topLevel) TextButton({ if (!nav.popBackStack()) tab(root) }, Modifier.heightIn(min = 48.dp).padding(start = 4.dp)) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, null, Modifier.size(22.dp))
+                        Spacer(Modifier.width(6.dp))
+                        Text("Back", style = MaterialTheme.typography.labelLarge)
+                    }
+                },
                 actions = {
                     // Labeled actions: icon-only buttons here read as decoration.
                     if (route == Routes.REPORT) TextButton(vm::toggleSpeech, Modifier.heightIn(min = 48.dp)) {
@@ -72,7 +79,7 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
         bottomBar = {
             if (current == Role.REPORTER && route in setOf(Routes.HOME, Routes.REPORT, Routes.HISTORY)) {
                 NavigationBar(containerColor = MaterialTheme.colorScheme.surface, tonalElevation = 0.dp) {
-                    listOf(Triple(Routes.HOME, "Home", Icons.Default.Home), Triple(Routes.REPORT, "Report", Icons.Default.Mic),
+                    listOf(Triple(Routes.HOME, "Home", Icons.Default.Home), Triple(Routes.REPORT, "Talk", Icons.Default.Mic),
                         Triple(Routes.HISTORY, "History", Icons.Default.History)).forEach { (r, label, icon) ->
                         NavigationBarItem(selected = route == r, onClick = { if (route != r) tab(r) },
                             icon = { Icon(icon, null) }, label = { Text(label, style = MaterialTheme.typography.labelSmall) },
@@ -87,7 +94,7 @@ fun SentinelApp(vm: IncidentAssistantViewModel, onMic: () -> Unit) {
         NavHost(nav, startDestination = root, modifier = Modifier.padding(padding).consumeWindowInsets(padding)) {
             composable(Routes.HOME) { HomeScreen(state, reports, ::start, { nav.navigate(Routes.detail(it)) }, { tab(Routes.HISTORY) }) }
             composable(Routes.REPORT) {
-                ReportScreen(state, onMic, vm::send, vm::done, vm::newReport, { nav.navigate(Routes.FORM) }, { nav.navigate(Routes.QUESTIONS) },
+                ReportScreen(state, onMic, vm::done, vm::newReport, { nav.navigate(Routes.FORM) }, { nav.navigate(Routes.QUESTIONS) },
                     { nav.navigate(Routes.detail(it)) }, vm::load)
             }
             composable(Routes.HISTORY) { HistoryScreen(reports, { nav.navigate(Routes.detail(it)) }, ::start) }
