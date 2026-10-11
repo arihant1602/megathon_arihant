@@ -1,3 +1,5 @@
+#include <cstdlib>
+#include <algorithm>
 #include <jni.h>
 #include <string>
 #include <vector>
@@ -45,18 +47,30 @@ Java_org_seedhecode_incidentassistant_engine_NativeWhisper_transcribe(JNIEnv *en
     env->GetFloatArrayRegion(input, 0, samples.size(), samples.data());
     std::string lang = utf8(env, language);
     auto params = whisper_full_default_params(WHISPER_SAMPLING_GREEDY);
-    params.n_threads = 4;
+    params.n_threads = 6;
+    // Encode only the clip (50 frames/s + margin) instead of a padded 30 s window: ~5-10x faster for short turns.
+    // NPU encoder graphs have fixed windows: 10 s (audio_ctx 500) for short turns if that graph exists, else 30 s.
+    // The CPU encoder takes any context, so it gets the clip length plus a margin.
+    const double seconds = samples.size() / 16000.0;
+    if (getenv("ANEFORGE_ENCODER")) params.audio_ctx = getenv("WHISPER_NPU_ENCODER_SHORT") && seconds <= 9.5 ? 500 : 0;
+    else params.audio_ctx = std::min(1500, (int)(seconds * 50) + 128);
+    params.single_segment = true;
+    params.no_timestamps = true;
     params.translate = translate;
     params.language = lang == "auto" ? nullptr : lang.c_str();
     params.no_context = true;
     params.print_realtime = false; params.print_progress = false;
     params.print_timestamps = false; params.print_special = false;
     params.suppress_blank = true;
+    // Optional vocabulary bias set by the app (e.g. building codes: "N building" is otherwise heard as "M building").
+    if (const char *prompt = getenv("WHISPER_INITIAL_PROMPT")) params.initial_prompt = prompt;
     if (samples.empty() || whisper_full(ctx, params, samples.data(), samples.size()) != 0) {
         env->ThrowNew(env->FindClass("java/lang/IllegalStateException"), "Whisper transcription failed."); return nullptr;
     }
     std::string text;
-    for (int i = 0; i < whisper_full_n_segments(ctx); ++i) text += whisper_full_get_segment_text(ctx, i);
+    // Skip segments Whisper itself rates as probably not speech (music, room noise, distant chatter).
+    for (int i = 0; i < whisper_full_n_segments(ctx); ++i)
+        if (whisper_full_get_segment_no_speech_prob(ctx, i) < 0.6f) text += whisper_full_get_segment_text(ctx, i);
     const char *detected = whisper_lang_str(whisper_full_lang_id(ctx));
     return result(env, "{\"text\":" + quote(text) + ",\"language\":" + quote(detected ? detected : "unknown") + "}");
 }

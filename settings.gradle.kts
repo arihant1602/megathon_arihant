@@ -19,3 +19,6 @@ include(":app", ":core:audio", ":core:inference")
 if (providers.gradleProperty("nativeModels").orNull == "true") {
     include(":core:native-whisper", ":core:native-llama")
 }
+if (providers.gradleProperty("snpeSdk").isPresent) {
+    include(":core:native-snpe")
+}

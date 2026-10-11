@@ -1,9 +1,0 @@
-{
- "mode": "ft",
- "onnx_MB": 1507.1,
- "nodes": 2517,
- "export_s": 7.6,
- "ort_vs_torch_maxdiff": 1.8596649169921875e-05,
- "n_test_inputs": 259,
- "n_test_samples": 259
-}

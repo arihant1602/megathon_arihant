@@ -1,0 +1,29 @@
+There is water dripping from the ceiling near the pantry.
+It is in N building, on the fourth floor.
+It is coming from a pipe, and it is spreading.
+Yes, there is a socket right below it.
+done
+---
+I can smell smoke near the electrical room.
+It is in QRC, on the second floor.
+No one is hurt, and the alarm is ringing.
+done
+---
+The lift is stuck between floors with two people inside.
+It is in N building, ground floor.
+Yes, two people are trapped.
+done
+---
+The lights keep flickering in the corridor.
+QRC building, third floor.
+Several lights are affected.
+done
+---
+Someone spilled coffee all over the floor in the cafeteria.
+It is in N building, first floor.
+done
+---
+Something is wrong with the water here.
+The toilet is overflowing.
+QRC building, fifth floor.
+done

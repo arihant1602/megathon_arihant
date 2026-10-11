@@ -11,8 +11,10 @@
         android:icon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.IncidentAssistant">
-        <activity android:name=".MainActivity" android:exported="false" />
-        <activity android:name=".ConversationActivity" android:exported="true">
+        <!-- FastRPC to the Hexagon NPU (SNPE HTP stub); vendor library, absent on non-Qualcomm devices. -->
+        <uses-native-library android:name="libcdsprpc.so" android:required="false" />
+        <activity android:name=".ConversationActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

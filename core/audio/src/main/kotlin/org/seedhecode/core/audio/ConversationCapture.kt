@@ -51,6 +51,7 @@ class ConversationCapture(private val engine: VoiceEngine, private val listener:
     }
     private fun capture() {
         var echo: AcousticEchoCanceler? = null
+        var suppressor: android.media.audiofx.NoiseSuppressor? = null
         var begun = false
         try {
             val (recorder, rate) = microphone()
@@ -58,6 +59,10 @@ class ConversationCapture(private val engine: VoiceEngine, private val listener:
             check(!stopping.get()) { "Capture cancelled." }
             if (AcousticEchoCanceler.isAvailable()) echo = runCatching {
                 AcousticEchoCanceler.create(recorder.audioSessionId)?.apply { enabled = true }
+            }.getOrNull()
+            // Platform noise suppression (when the device offers it) before our own endpointing.
+            if (android.media.audiofx.NoiseSuppressor.isAvailable()) suppressor = runCatching {
+                android.media.audiofx.NoiseSuppressor.create(recorder.audioSessionId)?.apply { enabled = true }
             }.getOrNull()
             recorder.startRecording()
             check(recorder.recordingState == AudioRecord.RECORDSTATE_RECORDING) { "Microphone is busy." }
@@ -81,7 +86,7 @@ class ConversationCapture(private val engine: VoiceEngine, private val listener:
         } catch (error: Exception) {
             if (!stopping.get()) listener.onError(error.message ?: "Microphone error.")
         } finally {
-            runCatching { mic?.stop() }; echo?.release(); mic?.release(); mic = null
+            runCatching { mic?.stop() }; echo?.release(); suppressor?.release(); mic?.release(); mic = null
             if (begun) engine.endSession()
             active.set(false)
             listener.onStopped()

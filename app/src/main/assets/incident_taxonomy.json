@@ -21,7 +21,9 @@
     "unknown_answers_allowed": true,
     "unknown_on_safety_field": "assume_worse_case",
     "default_occurred_at": "If user says 'just now' or gives no time after one ask, use reported_at and mark approximate.",
-    "evidence_required": "Every user-provided field must carry the transcript span it came from; no span means leave empty."
+    "evidence_required": "Every user-provided field must carry the transcript span it came from; no span means leave empty.",
+    "essential_fields": ["incident_type", "building", "floor"],
+    "essential_rule": "The report is ready to file once the essential fields are known: WHAT (incident_type, which also decides WHO responds) and WHERE (building, floor). Until then the assistant asks only for missing essentials. After that it asks for further details one at a time, and the user can end the conversation at any point."
   },
 
   "location_model": {
@@ -39,10 +41,10 @@
   },
 
   "common_fields": {
-    "incident_type":           { "source": "classifier", "required": true },
+    "incident_type":           { "source": "classifier", "required": true, "essential": true },
     "description":             { "source": "llm_summary_of_relevant_sentences", "required": true },
-    "building":                { "source": "user", "required": true,  "type": "enum_ref:location_model.buildings", "question": "Which building are you in?" },
-    "floor":                   { "source": "user", "required": true,  "type": "int",    "question": "Which floor?" },
+    "building":                { "source": "user", "required": true,  "essential": true, "type": "enum_ref:location_model.buildings", "question": "Which building are you in?" },
+    "floor":                   { "source": "user", "required": true,  "essential": true, "type": "int",    "question": "Which floor?" },
     "space_type":              { "source": "user_or_inferred", "required": false, "type": "enum_ref:location_model.space_types" },
     "space_id":                { "source": "user", "required": true,  "type": "string", "question": "Which room or area exactly, for example Conference Room 2 or the pantry?" },
     "landmark":                { "source": "user", "required": false, "type": "string" },
