@@ -96,8 +96,8 @@ fun ReportScreen(state: AssistantUiState, onMic: () -> Unit, onFile: () -> Unit,
         LazyColumn(Modifier.weight(1f), state = list, contentPadding = PaddingValues(horizontal = 20.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp)) {
             item { VoiceStage(state) }
-            // The conversation first; the form and its details live behind a link until the report is filed.
-            if (v != null) items(v.chat) { (who, text) -> Turn(who, text) }
+            // Voice first: no message list. The stage shows the current question and what the user last said;
+            // the form and its details live behind a link until the report is filed.
             if (v != null && !v.done && v.chat.isNotEmpty()) item {
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
                     TextButton(onForm, Modifier.heightIn(min = 48.dp)) { Text("See the form") }
@@ -143,24 +143,13 @@ private fun VoiceStage(state: AssistantUiState) {
         AuroraVoiceOrb(audioLevel = state.level, captureState = capture, modifier = Modifier.size(180.dp))
         Text(v?.question?.takeIf { v.chat.isNotEmpty() } ?: "Tell me what happened and where you are.",
             style = MaterialTheme.typography.headlineMedium, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
-        val live = state.caption.takeIf { it.isNotBlank() && (state.phase == Phase.LISTENING || state.phase == Phase.THINKING) }
+        val listening = state.phase == Phase.LISTENING || state.phase == Phase.THINKING
+        val live = state.caption.takeIf { it.isNotBlank() && listening }
+            ?: v?.chat?.lastOrNull { it.first == "user" }?.second?.takeIf { !listening }
         if (live != null) {
             Spacer(Modifier.height(10.dp))
             Text("“$live”", style = MaterialTheme.typography.bodyLarge, fontStyle = FontStyle.Italic, textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.fillMaxWidth())
-        }
-    }
-}
-
-@Composable
-private fun Turn(who: String, text: String) {
-    val mine = who == "user"
-    Row(Modifier.fillMaxWidth(), horizontalArrangement = if (mine) Arrangement.End else Arrangement.Start) {
-        Surface(color = if (mine) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.surfaceVariant,
-            shape = RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp, bottomStart = if (mine) 18.dp else 6.dp, bottomEnd = if (mine) 6.dp else 18.dp),
-            modifier = Modifier.widthIn(max = 300.dp)) {
-            Text(text, Modifier.padding(horizontal = 14.dp, vertical = 10.dp), style = MaterialTheme.typography.bodyLarge,
-                color = if (mine) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onSurfaceVariant)
         }
     }
 }

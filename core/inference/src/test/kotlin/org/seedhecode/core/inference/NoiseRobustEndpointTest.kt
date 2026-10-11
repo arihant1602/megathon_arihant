@@ -59,6 +59,22 @@ class NoiseRobustEndpointTest {
         assertTrue("ended at ${r.endAtMs}", r.endAtMs <= 1000 + 15000 + 100)
     }
 
+    /** Babble = speech-like noise from other people: modulated, so not "steady", and well above the floor. */
+    private fun babble(ms: Int, amp: Float) = FloatArray(ms * 16) { i ->
+        val env = 0.4f + 0.6f * kotlin.math.abs(sin(2 * PI * 3.3 * i / 16000.0)).toFloat()
+        (rnd.nextFloat() * 2 - 1) * amp * env }
+
+    @Test fun backgroundChatterDoesNotHoldTheTurnOpen() {
+        // user at ~-15 dBFS, other people talking at ~-38 dBFS the whole time (kit: -60 dB floor, 15 s turns before)
+        val r = run(NoiseRobustEndpoint(), babble(3000, 0.02f), speechOver(2500, 0.25f, 0.02f), babble(4000, 0.02f))
+        assertTrue(r.ended)
+        assertTrue("ended at ${r.endAtMs}", r.endAtMs < 3000 + 2500 + 1200)   // the user's pause, not the 15 s cap
+    }
+    private fun speechOver(ms: Int, amp: Float, babbleAmp: Float): FloatArray {
+        val s = speech(ms, amp, 0f); val b = babble(ms, babbleAmp)
+        return FloatArray(s.size) { s[it] + b[it] }
+    }
+
     @Test fun distantTalkerIsIgnored() {
         // someone a few metres away: clearly speech, but peaks around -40 dBFS
         val r = run(NoiseRobustEndpoint(), noise(1000, 0.0003f), speech(2000, 0.012f, 0.0003f), noise(2000, 0.0003f))

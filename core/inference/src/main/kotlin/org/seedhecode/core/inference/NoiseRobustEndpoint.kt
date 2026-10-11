@@ -15,6 +15,9 @@ import kotlin.math.sqrt
  * - Speech rises and falls with syllables; a fan or AC switching on is flat. A "turn" whose level stays within a few dB
  *   for a whole second is dropped as noise, and that level becomes the new floor.
  *
+ * - While talking, a frame is also pause if it is more than [belowSpeechDb] under the user's own speech level
+ *   (80th percentile of this turn's voiced frames): background voices and music near the floor+6 dB line would
+ *   otherwise keep a turn open until the cap (seen on the kit: 10.7 s and 15 s turns at a -60 dB floor).
  * - A turn only counts if its loudest frame reaches [minPeakDb]: the user close to the device is louder than people
  *   talking a few metres away (SM8750 kit in a busy hall: floor ~-70 dBFS, nearby chatter peaks -41..-28 dBFS).
  *   Quieter turns are dropped and listening simply continues.
@@ -30,6 +33,7 @@ class NoiseRobustEndpoint(
     private val continueDb: Double = 6.0,
     private val minLevelDb: Double = -45.0,
     private val minPeakDb: Double = -35.0,
+    private val belowSpeechDb: Double = 18.0,
     private val historyMs: Int = 3_000,
     private val calibrationMs: Int = 300,
 ) {
@@ -46,6 +50,7 @@ class NoiseRobustEndpoint(
     private var framesSeen = 0
     private var floorAtStart = -60.0
     private val turnLevels = ArrayDeque<Double>()  // last second of frame levels in the current turn
+    private val voicedLevels = ArrayDeque<Double>() // levels of this turn's voiced frames (user's speech level)
     val calibrated: Boolean get() = framesSeen * 20 >= calibrationMs
     /** Current noise floor in dBFS (for diagnostics). */
     var noiseDb = -60.0; private set
@@ -101,7 +106,9 @@ class NoiseRobustEndpoint(
         audio.addAll(f.asList())
         turnLevels.addLast(db); if (turnLevels.size > 50) turnLevels.removeFirst()
         peakDb = maxOf(peakDb, db)
-        val voiced = db >= noiseDb + continueDb && db >= minLevelDb
+        val speechRef = if (voicedLevels.size >= 10) percentile(voicedLevels, 0.8) else Double.NEGATIVE_INFINITY
+        val voiced = db >= noiseDb + continueDb && db >= minLevelDb && db >= speechRef - belowSpeechDb
+        if (voiced) { voicedLevels.addLast(db); if (voicedLevels.size > 250) voicedLevels.removeFirst() }
         if (voiced) { voicedMs += 20; silenceMs = 0 } else silenceMs += 20
         val turnMs = audio.size / 16
         if (silenceMs >= pauseMs || turnMs >= maxTurnMs) {
@@ -124,7 +131,7 @@ class NoiseRobustEndpoint(
     private fun remember(v: Float) { preroll.addLast(v); if (preroll.size > 4800) preroll.removeFirst() }   // 300 ms
 
     private fun endTurn() {
-        audio.clear(); candidate.clear(); preroll.clear(); turnLevels.clear()
+        audio.clear(); candidate.clear(); preroll.clear(); turnLevels.clear(); voicedLevels.clear()
         speaking = false; voicedMs = 0; silenceMs = 0; startRunMs = 0; peakDb = -100.0
     }
 
