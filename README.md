@@ -16,7 +16,8 @@ There are two ways to run it:
 
 ## Option A: install the ready-made APK
 
-> **Download:** [sentinel-ai-v1.0.apk](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/sentinel-ai-v1.0.apk)
+> **Download:** `sentinel-ai-v1.0.apk` from the Google Drive folder
+> **https://drive.google.com/drive/folders/1Tx3F5fRod3SHJhxnrQC0kRt-FFjUindL?usp=sharing**
 > (1.68 GB, contains the app and every model)
 > SHA-256: `c21fb2086531994bd1e714a28cd0548d72074193c1ca35d0229ef5c42b8a3195`
 
@@ -24,7 +25,9 @@ There are two ways to run it:
 options → *USB debugging*), a computer with `adb` ([Android platform-tools](https://developer.android.com/tools/releases/platform-tools)),
 and **about 5 GB free on the device** (the APK plus the 2.1 GB of models it unpacks on first launch).
 
-1. Check the download (optional): `sha256sum sentinel-ai-v1.0.apk` must print the SHA-256 above.
+1. Download `sentinel-ai-v1.0.apk` from the Drive folder above (open the folder, select the file, *Download*; Drive may
+   warn that it can't scan a file this large for viruses, so choose *Download anyway*). Optionally check it:
+   `sha256sum sentinel-ai-v1.0.apk` must print the SHA-256 above.
 2. Connect the device and check it is listed (if several are, add `-s <serial>` after `adb` below):
    ```bash
    adb devices
