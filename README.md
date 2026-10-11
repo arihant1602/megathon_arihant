@@ -65,24 +65,68 @@ the endpointing tests and the speech-filter tests.
 
 ### 5. Download the models
 
+The app needs six model files (about 2.1 GB). **The fine-tuned Laya incident classifier is our own model and is
+hosted on this repository's GitHub release:**
+
+> **Laya model (required):** [laya_w8a16_htp.dlc](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/laya_w8a16_htp.dlc)
+> (901 MB). All our model files are on the release page: https://github.com/arihant1602/megathon_arihant/releases/tag/models-v1
+
+| File | Size | Download link | Source |
+|---|---|---|---|
+| `laya_w8a16_htp.dlc` | 901 MB | [download](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/laya_w8a16_htp.dlc) | ours: fine-tuned Laya, W8A16, compiled for the SM8750 NPU |
+| `whisper_base_encoder_fp16_htp.dlc` | 262 MB | [download](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/whisper_base_encoder_fp16_htp.dlc) | ours: Whisper encoder for the SM8750 NPU (30 s window) |
+| `whisper_base_encoder_10s_fp16_htp.dlc` | 90 MB | [download](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/whisper_base_encoder_10s_fp16_htp.dlc) | ours: Whisper encoder for the SM8750 NPU (10 s window) |
+| `ggml-base.bin` | 148 MB | [download](https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin) | Whisper base, Hugging Face (pinned revision) |
+| `Qwen3-0.6B-Q8_0.gguf` | 639 MB | [download](https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/resolve/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf) | Qwen3-0.6B, Hugging Face (pinned revision) |
+| `voice/` | 79 MB | [download (.tar.bz2)](https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-lessac-medium.tar.bz2) | Piper en_US lessac-medium, sherpa-onnx release (unpack and rename the folder to `voice`) |
+
+**Option 1: one command (recommended).** Downloads everything into `models/`, verifies every checksum, and resumes if
+interrupted (just run it again):
 ```bash
 scripts/download_models.sh models
 ```
-This downloads about 2.1 GB into `models/` and verifies every checksum. If interrupted, run it again; it resumes:
 
+**Option 2: by hand.** From the repository root:
+```bash
+mkdir -p models && cd models
+R=https://github.com/arihant1602/megathon_arihant/releases/download/models-v1
+curl -L -O $R/laya_w8a16_htp.dlc
+curl -L -O $R/whisper_base_encoder_fp16_htp.dlc
+curl -L -O $R/whisper_base_encoder_10s_fp16_htp.dlc
+curl -L -O https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-base.bin
+curl -L -O https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/resolve/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf
+curl -L https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-en_US-lessac-medium.tar.bz2 | tar -xj
+mv vits-piper-en_US-lessac-medium voice
+sha256sum -c - <<'SUMS'
+07de147df64fb7fea5eca2224b453d90eaca68d8036ef53beb564cc6894153a6  laya_w8a16_htp.dlc
+9b214fcbaca8f40246a99d94792dfee34608f6f53d82d2533dd076032b4d2a0d  whisper_base_encoder_fp16_htp.dlc
+73f9cd370569d13945c0fc9eacf607a4779b3ddc4e1c02ec49eeb93456618add  whisper_base_encoder_10s_fp16_htp.dlc
+60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe  ggml-base.bin
+9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031  Qwen3-0.6B-Q8_0.gguf
+4ba07d8549906668ee855fd9abf9faf66c5db74742712ff026a159f7277fca9f  voice/en_US-lessac-medium.onnx
+SUMS
+cd ..
+```
+Every line must print `OK`. If you downloaded with a browser instead, move the files into `models/` with exactly these
+names.
+
+Either way, you should end up with exactly this layout (names matter; the app looks for these files):
 ```
 models/
-├── laya_w8a16_htp.dlc                      fine-tuned Laya incident classifier, W8A16, SM8750 HTP    (GitHub release models-v1)
-├── whisper_base_encoder_fp16_htp.dlc       Whisper encoder on the NPU, 30 s window                   (GitHub release models-v1)
-├── whisper_base_encoder_10s_fp16_htp.dlc   Whisper encoder on the NPU, 10 s window                   (GitHub release models-v1)
-├── ggml-base.bin                           Whisper base (multilingual), whisper.cpp format           (Hugging Face, pinned)
-├── Qwen3-0.6B-Q8_0.gguf                    Qwen3-0.6B, llama.cpp format                              (Hugging Face, pinned)
-└── voice/                                  Piper en_US lessac-medium for sherpa-onnx                 (sherpa-onnx release)
+├── laya_w8a16_htp.dlc
+├── whisper_base_encoder_fp16_htp.dlc
+├── whisper_base_encoder_10s_fp16_htp.dlc
+├── ggml-base.bin
+├── Qwen3-0.6B-Q8_0.gguf
+└── voice/
+    ├── en_US-lessac-medium.onnx
+    ├── en_US-lessac-medium.onnx.json
+    ├── tokens.txt
+    └── espeak-ng-data/
 ```
-
-The release files are at https://github.com/arihant1602/megathon_arihant/releases/tag/models-v1. The two encoder files
-can also be rebuilt from `ggml-base.bin` with `scripts/whisper_npu/build_encoder_dlc.sh` (needs the QAIRT tools and
-Python with `torch` and `onnx`).
+The two encoder files can also be rebuilt from `ggml-base.bin` with `scripts/whisper_npu/build_encoder_dlc.sh` (needs
+the QAIRT tools and Python with `torch` and `onnx`). The Laya file can only be downloaded; it comes from our training
+and export pipeline.
 
 ### 6. Install the app and copy the models to the device
 
