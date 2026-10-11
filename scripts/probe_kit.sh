@@ -14,6 +14,7 @@ if [ -n "${2:-}" ]; then
     adb shell "chmod 644 /data/local/tmp/$wav && run-as $pkg cp /data/local/tmp/$wav files/probe/ && rm /data/local/tmp/$wav"
     extra=(--es wav "$wav")
 fi
+[ -n "${LEVELS:-}" ] && extra+=(--ei levels "$LEVELS")   # LEVELS=40: measure room levels for 40 s first
 adb shell am start -W -n $pkg/.ProbeActivity --es script "$name" "${extra[@]}" >/dev/null
 for _ in $(seq 1 300); do
     sleep 2

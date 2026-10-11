@@ -70,7 +70,11 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
                     onProcessing = { ui { capture?.stop(); _state.update { it.copy(phase = Phase.THINKING, status = "Thinking…", level = 0f) } } },
                     onView = { v -> ui { onView(v) } },
                     onError = { msg -> ui { onEngineError(msg) } },
-                    onListeningReady = { ui { if (capturing) _state.update { it.copy(status = "Listening… speak, then pause") } } })
+                    onListeningReady = { ui { if (capturing) _state.update { it.copy(status = "Listening… speak, then pause") } } },
+                    onNoSpeech = { ui {   // background noise or music, not an answer: quietly listen again
+                        _state.update { it.copy(phase = Phase.IDLE, caption = "", status = "Didn't catch that. Listening again…") }
+                        if (conversing) main.postDelayed({ if (conversing && !capturing) startListening() }, 150)
+                    } })
                 ui {
                     engine = e
                     capture = ConversationCapture(e, object : ConversationCapture.Listener {
@@ -179,7 +183,7 @@ class IncidentAssistantViewModel(application: Application) : AndroidViewModel(ap
     private fun afterSpeech() {
         if (_state.value.readingReportId != null) _state.update { it.copy(readingReportId = null) }
         if (_state.value.phase == Phase.SPEAKING) _state.update { it.copy(phase = Phase.IDLE, status = "Your turn") }
-        if (conversing && _state.value.view?.done != true) main.postDelayed({ if (conversing && !capturing) startListening() }, 250)
+        if (conversing && _state.value.view?.done != true) main.postDelayed({ if (conversing && !capturing) startListening() }, 450)   // let the speaker's tail die out
     }
 
     private fun onEngineError(message: String) {

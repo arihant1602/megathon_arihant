@@ -66,7 +66,9 @@ Java_org_seedhecode_incidentassistant_engine_NativeWhisper_transcribe(JNIEnv *en
         env->ThrowNew(env->FindClass("java/lang/IllegalStateException"), "Whisper transcription failed."); return nullptr;
     }
     std::string text;
-    for (int i = 0; i < whisper_full_n_segments(ctx); ++i) text += whisper_full_get_segment_text(ctx, i);
+    // Skip segments Whisper itself rates as probably not speech (music, room noise, distant chatter).
+    for (int i = 0; i < whisper_full_n_segments(ctx); ++i)
+        if (whisper_full_get_segment_no_speech_prob(ctx, i) < 0.6f) text += whisper_full_get_segment_text(ctx, i);
     const char *detected = whisper_lang_str(whisper_full_lang_id(ctx));
     return result(env, "{\"text\":" + quote(text) + ",\"language\":" + quote(detected ? detected : "unknown") + "}");
 }

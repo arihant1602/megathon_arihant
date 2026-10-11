@@ -24,10 +24,35 @@ class ProbeActivity : Activity() {
         setContentView(text)
         val name = intent.getStringExtra("script") ?: "script.txt"
         val wav = intent.getStringExtra("wav")
+        val levelsSeconds = intent.getIntExtra("levels", 0)
         val dir = File(filesDir, "probe")
         Thread {
             val out = JSONObject()
             try {
+                if (levelsSeconds > 0) {   // room measurement: same mic source + endpoint, no assistant
+                    val rate = 16000
+                    @Suppress("MissingPermission")
+                    val rec = android.media.AudioRecord(android.media.MediaRecorder.AudioSource.VOICE_COMMUNICATION, rate,
+                        android.media.AudioFormat.CHANNEL_IN_MONO, android.media.AudioFormat.ENCODING_PCM_16BIT, rate)
+                    val ep = org.seedhecode.core.inference.NoiseRobustEndpoint()
+                    val frameDb = ArrayList<Double>(); val turns = JSONArray()
+                    val buf = ShortArray(320); rec.startRecording()
+                    val end = System.currentTimeMillis() + levelsSeconds * 1000L
+                    var t = 0
+                    while (System.currentTimeMillis() < end) {
+                        val n = rec.read(buf, 0, buf.size); if (n <= 0) continue
+                        val f = FloatArray(n) { buf[it] / 32768f }
+                        frameDb += 20 * kotlin.math.log10(maxOf(1e-6, kotlin.math.sqrt(f.fold(0.0) { a, v -> a + v * v } / n)))
+                        val ev = ep.accept(f); t += 20
+                        if (ev.speechStarted) Log.i("Probe", "start at ${t} ms, floor ${"%.1f".format(ep.noiseDb)}")
+                        if (ev.turnEnded) turns.put(JSONObject().put("end_ms", t).put("floor", ep.lastTurnFloorDb).put("peak", ep.lastTurnPeakDb)
+                            .put("seconds", ev.segment!!.size / 16000.0))
+                    }
+                    rec.stop(); rec.release()
+                    val sorted = frameDb.sorted()
+                    out.put("levels", JSONObject().put("p10", sorted[sorted.size / 10]).put("p50", sorted[sorted.size / 2])
+                        .put("p90", sorted[sorted.size * 9 / 10]).put("p99", sorted[sorted.size * 99 / 100]).put("max", sorted.last()).put("turns", turns))
+                }
                 if (wav != null) {   // Whisper timing on a 16 kHz mono 16-bit WAV (44-byte header), 3 runs
                     val bytes = File(dir, wav).readBytes()
                     val pcm = FloatArray((bytes.size - 44) / 2) { i ->

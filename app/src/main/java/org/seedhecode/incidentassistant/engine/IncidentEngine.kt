@@ -90,6 +90,7 @@ class IncidentEngine(context: Context,
     private val onView: (AssistantView) -> Unit,
     private val onError: (String) -> Unit,
     private val onListeningReady: () -> Unit = {},
+    private val onNoSpeech: () -> Unit = {},
 ) : VoiceEngine {
     private val audio = worker("incident-audio", 64)
     private val inference = worker("incident-inference", 4)
@@ -100,7 +101,8 @@ class IncidentEngine(context: Context,
     private val classifier: LayaClassifier
     private val assistant: Assistant
     private var resampler = PcmResampler(16000)
-    private val endpoint = PauseEndpoint(pauseMs = 1000, minSpeechMs = 120, adaptive = true, calibrationMs = 250)
+    // Ends a turn on a ~0.9 s pause even with fans/AC/chatter in the room (see NoiseRobustEndpoint).
+    private val endpoint = NoiseRobustEndpoint()
     private var readySent = false
     private var samples = 0L
     private var previewAt = 0L
@@ -192,7 +194,11 @@ class IncidentEngine(context: Context,
             val event = endpoint.accept(pcm)
             if (endpoint.calibrated && !readySent) { readySent = true; onListeningReady() }
             event.segment?.let { segment ->
-                if (event.turnEnded) { accepting = false; onProcessing() }
+                if (event.turnEnded) {
+                    android.util.Log.i("IncidentEngine", "turn: floor %.1f dB, peak %.1f dB, %.1f s".format(
+                        endpoint.lastTurnFloorDb, endpoint.lastTurnPeakDb, segment.size / 16000.0))
+                    accepting = false; onProcessing()
+                }
                 transcribe(stamp, segment, true, event.turnEnded)
             }
             if (event.segment == null && samples - previewAt >= 32000 && inference.activeCount == 0 && inference.queue.isEmpty()) {
@@ -211,11 +217,14 @@ class IncidentEngine(context: Context,
             if (stamp != epoch.get()) return@submit
             val en = (english.toString() + " " + partial.text).trim()
             if (committed) english.clear().append(en)
-            onCaption(en)
+            onCaption(NON_SPEECH.replace(en, " ").trim())
             if (ended) {
                 english.clear()
-                if (en.isBlank()) { onError("I couldn't hear that. Tap the mic and try again."); return@submit }
-                step(en)
+                val said = spoken(en)
+                android.util.Log.i("IncidentEngine", "heard: \"$en\" -> ${if (said == null) "ignored" else "turn"}")
+                // Music, noise or a fragment: not a turn. Keep listening instead of answering it.
+                if (said == null) { onNoSpeech(); return@submit }
+                step(said)
             }
         }
     }
@@ -276,5 +285,21 @@ class IncidentEngine(context: Context,
 
     companion object {
         const val OPENING = "Tell me what happened and where you are."
+        private val NON_SPEECH = Regex("""\[[^\]]*]|\([^)]*\)|\*[^*]*\*|[♪♫]""")
+
+        // What Whisper typically "hears" in silence or noise.
+        private val HALLUCINATIONS = setOf("you", "thank you", "thanks", "thanks for watching", "thank you for watching",
+            "please subscribe", "subtitles by the amara org community", "bye bye")
+
+        /**
+         * Whisper text without non-speech tags ([Music], (applause), ♪). Null if nothing spoken is left or it is one of
+         * Whisper's usual noise hallucinations. One-word answers ("yes", "QRC", "done") are kept.
+         */
+        fun spoken(text: String): String? {
+            val clean = NON_SPEECH.replace(text, " ").replace(Regex("\\s+"), " ").trim()
+            val words = Regex("[\\p{L}\\p{N}]+").findAll(clean.lowercase()).map { it.value }.toList()
+            if (words.isEmpty() || words.joinToString(" ") in HALLUCINATIONS) return null
+            return clean
+        }
     }
 }
