@@ -7,7 +7,47 @@ and speaks its questions (Piper). Everything runs on the device; no network is u
 **Supported device: Qualcomm Snapdragon 8 Elite (SM8750) with Android 15**, e.g. the SM8750 HDK / dev kit used at
 Megathon. The NPU models are compiled for the SM8750's Hexagon v79 HTP and will not run on other chips.
 
-## How to run it
+There are two ways to run it:
+
+- **[Option A: install the ready-made APK](#option-a-install-the-ready-made-apk)**: about 5 minutes; app and all models in one file.
+- **[Option B: build from source](#option-b-build-from-source)**: for developers.
+
+---
+
+## Option A: install the ready-made APK
+
+> **Download:** [sentinel-ai-v1.0.apk](https://github.com/arihant1602/megathon_arihant/releases/download/models-v1/sentinel-ai-v1.0.apk)
+> (1.68 GB, contains the app and every model)
+> SHA-256: `c21fb2086531994bd1e714a28cd0548d72074193c1ca35d0229ef5c42b8a3195`
+
+**You need:** the SM8750 device with USB debugging on (Settings → About → tap *Build number* 7 times → Developer
+options → *USB debugging*), a computer with `adb` ([Android platform-tools](https://developer.android.com/tools/releases/platform-tools)),
+and **about 5 GB free on the device** (the APK plus the 2.1 GB of models it unpacks on first launch).
+
+1. Check the download (optional): `sha256sum sentinel-ai-v1.0.apk` must print the SHA-256 above.
+2. Connect the device and check it is listed (if several are, add `-s <serial>` after `adb` below):
+   ```bash
+   adb devices
+   ```
+3. Remove any other build of this app (for example a teammate's). Android refuses to install over an app signed with
+   a different key. "Unknown package" just means it wasn't installed:
+   ```bash
+   adb uninstall org.seedhecode.incidentassistant
+   ```
+4. Install. `-g` grants the microphone permission up front:
+   ```bash
+   adb install -r -g sentinel-ai-v1.0.apk
+   ```
+5. Open **Sentinel AI** on the device. The **first launch unpacks the models** (about 10–30 seconds). The home screen
+   shows *"Preparing on-device models (first launch only)… NN%"*, then *"Loading on-device models…"*. It is ready when
+   the badges read **Runs offline on this device · Incident type on NPU · Speech on NPU · Natural voice**. Later
+   launches take a few seconds.
+
+Then see [Using the app](#using-the-app). No other downloads are needed for this option.
+
+---
+
+## Option B: build from source
 
 Tested on Linux (Arch) with the versions below. The helper scripts are bash. On Windows, use WSL.
 
@@ -168,6 +208,7 @@ Buildings known to the demo site: **N** and **QRC** (from `app/src/main/assets/i
 | Symptom | Fix |
 |---|---|
 | `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | Another build is installed: `adb uninstall org.seedhecode.incidentassistant`, then install again. |
+| `INSTALL_FAILED_INSUFFICIENT_STORAGE`, or "Not enough free storage to unpack the models" (Option A) | Free about 5 GB on the device. |
 | "The on-device models didn't load: Missing model files …" | Step 6 didn't copy everything; run `push_models_kit.sh` again and check the listing. |
 | `push_models_kit.sh` says to install the debug APK first | `run-as` only works with the debug build from step 4; install it, then push again. |
 | Error mentioning SNPE, DSP or `ADSP` | Not an SM8750 device, or the app was built without `-PsnpeSdk`. |
@@ -177,8 +218,8 @@ Buildings known to the demo site: **N** and **QRC** (from `app/src/main/assets/i
 | It answers background noise | Speak close to the device; turns quieter than about −35 dBFS and music/noise transcripts are ignored. |
 | No voice | Check the media volume. The top-bar **Voice on/off** toggle must be on. |
 
-## Optional: an all-in-one APK
+## Optional: build the all-in-one APK yourself
 
-`scripts/build_full_apk.sh models sentinel-ai.apk /path/to/scratch` builds a release APK with every model inside
-(about 1.7 GB; needs about 5 GB free scratch space and 8 GB of RAM). Install it with `adb install -r -g sentinel-ai.apk`
-and skip step 6; the app unpacks the models on first launch (about 10–30 seconds).
+`scripts/build_full_apk.sh models sentinel-ai.apk /path/to/scratch` (with the `models/` folder from Option B, step 5)
+builds the same kind of APK as Option A, with every model inside (about 1.7 GB; needs about 5 GB free scratch space and
+8 GB of RAM). Install it as in Option A.
